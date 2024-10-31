@@ -12,10 +12,10 @@
 		<div class="">
 			{#if isFilled.link(card.buttonLink)}
 				<PrismicLink field={card.buttonLink} tabindex={-1}>
-					<PrismicImage field={card.image} sizes="100vw" class="w-full" />
+					<PrismicImage field={card.image} sizes="100vw" class="w-full drop-shadow-2xl" />
 				</PrismicLink>
 			{:else}
-				<PrismicImage field={card.image} sizes="100vw" class="w-full" />
+				<PrismicImage field={card.image} sizes="100vw" class="w-full drop-shadow-2xl" />
 			{/if}
 		</div>
 	{/if}

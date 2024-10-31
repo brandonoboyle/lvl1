@@ -22,8 +22,10 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 </svelte:head>
-<div class="">
-	<Header navigation={data.navigation} settings={data.settings}></Header>
-	<main><slot></slot></main>
+<div>
+	<Header navigation={data.navigation} settings={data.settings} />
+
+	<main class="pt-32"><slot /></main>
 </div>
-<PrismicPreview {repositoryName}></PrismicPreview>
+
+<PrismicPreview {repositoryName} />
