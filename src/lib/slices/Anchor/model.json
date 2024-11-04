@@ -1,0 +1,38 @@
+{
+  "id": "anchor",
+  "type": "SharedSlice",
+  "name": "Anchor",
+  "description": "Anchor",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "anchor": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Anchor",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,embed"
+          }
+        },
+        "anchorLink": {
+          "type": "Link",
+          "config": {
+            "label": "Anchor Link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
