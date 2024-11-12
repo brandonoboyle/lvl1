@@ -21,7 +21,7 @@
 				<PrismicText field={slice.primary.heading} />
 			</Heading>
 		{/if}
-		<ul class="grid grid-cols-1 items-start gap-8 md:grid-cols-2 drop-shadow-2xl">
+		<ul class="grid grid-cols-1 items-start gap-12 md:grid-cols-3 drop-shadow-2xl variant-glass p-10">
 			{#each slice.primary.cards as card}
 				<ImageCard {card} />
 			{/each}

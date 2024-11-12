@@ -7,15 +7,21 @@
 	export let card: Content.ImageCardsSliceDefaultPrimaryCardsItem;
 </script>
 
-<li class="grid gap-8">
+<li class="grid gap-10">
 	{#if isFilled.image(card.image)}
 		<div class="">
 			{#if isFilled.link(card.buttonLink)}
+
 				<PrismicLink field={card.buttonLink} tabindex={-1}>
-					<PrismicImage field={card.image} sizes="100vw" class="w-full drop-shadow-2xl" />
+					<div class="border-4">
+					<PrismicImage field={card.image} sizes="100vw" />
+					</div>
 				</PrismicLink>
+
 			{:else}
-				<PrismicImage field={card.image} sizes="100vw" class="w-full drop-shadow-2xl" />
+				<div class="drop-shadow-2xl">
+				<PrismicImage field={card.image} sizes="100vw" />
+				</div>
 			{/if}
 		</div>
 	{/if}
