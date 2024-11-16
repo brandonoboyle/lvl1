@@ -1,0 +1,20 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"search": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Amet pariatur consequat sit elit. In elit anim nisi mollit consectetur duis qui non tempor anim eu."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

@@ -61,6 +61,7 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| SearchSlice
 	| AnchorSlice
 	| HeroSlice
 	| QuoteSlice
@@ -541,6 +542,48 @@ type QuoteSliceVariation = QuoteSliceDefault;
 export type QuoteSlice = prismic.SharedSlice<'quote', QuoteSliceVariation>;
 
 /**
+ * Primary content in *Search → Default → Primary*
+ */
+export interface SearchSliceDefaultPrimary {
+	/**
+	 * Search field in *Search → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: search.default.primary.search
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	search: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Search Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SearchSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<SearchSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Search*
+ */
+type SearchSliceVariation = SearchSliceDefault;
+
+/**
+ * Search Shared Slice
+ *
+ * - **API ID**: `search`
+ * - **Description**: Search
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SearchSlice = prismic.SharedSlice<'search', SearchSliceVariation>;
+
+/**
  * Primary content in *Text → Default → Primary*
  */
 export interface TextSliceDefaultPrimary {
@@ -776,6 +819,10 @@ declare module '@prismicio/client' {
 			QuoteSliceDefaultPrimary,
 			QuoteSliceVariation,
 			QuoteSliceDefault,
+			SearchSlice,
+			SearchSliceDefaultPrimary,
+			SearchSliceVariation,
+			SearchSliceDefault,
 			TextSlice,
 			TextSliceDefaultPrimary,
 			TextSliceTwoColumnsPrimary,

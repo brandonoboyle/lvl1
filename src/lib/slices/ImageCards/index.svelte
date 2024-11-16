@@ -6,6 +6,7 @@
 	import ImageCard from './ImageCard.svelte';
 	import Heading from '$lib/components/Heading.svelte';
 
+
 	export let slice: Content.ImageCardsSlice;
 </script>
 
@@ -15,6 +16,7 @@
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
+
 	<div class="grid gap-12">
 		{#if isFilled.richText(slice.primary.heading)}
 			<Heading class="text-center">
@@ -28,3 +30,4 @@
 		</ul>
 	</div>
 </Bounded>
+

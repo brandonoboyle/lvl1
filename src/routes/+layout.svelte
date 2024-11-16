@@ -6,6 +6,7 @@
 	import { repositoryName } from '$lib/prismicio';
 	import Header from '$lib/components/Header.svelte';
 
+
 	export let data;
 </script>
 
@@ -26,6 +27,9 @@
 	<Header navigation={data.navigation} settings={data.settings} />
 
 	<main class="pt-32"><slot /></main>
+
 </div>
+
+
 
 <PrismicPreview {repositoryName} />
