@@ -17,6 +17,7 @@
 	}
 </script>
 
+<!--TODO: Impliment boardgame db-->
 {#if search === 'ready'}
 	<div class="variant-glass-surface relative w-full font-sans text-2xl drop-shadow-2xl">
 		<input

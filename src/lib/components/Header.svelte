@@ -39,7 +39,7 @@
 <div class="relative">
 	<Drawer>
 		<div class="p-6">
-			<!-- TODO: Ul doesn't take click listeners try changing to button, labels, selects, input (prob not)-->
+			<!-- TODO: Change hamburger to actual svg-->
 			<button><a href="/" class="p-4 text-4xl" on:click={drawerClose}>Home</a></button>
 			<hr />
 			<ul class="pt-6">
