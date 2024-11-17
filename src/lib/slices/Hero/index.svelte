@@ -11,7 +11,7 @@
 </script>
 
 <section
-	class="relative"
+	class="relative drop-shadow-2xl"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
@@ -23,8 +23,8 @@
 		/>
 	{/if}
 	<Bounded tag="div" yPadding="sm" class="relative">
-		<div class="grid justify-items-center gap-8 pt-32">
-			<div class="max-w-2xl text-center space-y-16 pb-6">
+		<div class="grid justify-items-center gap-8">
+			<div class="max-w-2xl text-center space-y-16 py-6">
 				<PrismicRichText
 					field={slice.primary.text}
 					components={{
