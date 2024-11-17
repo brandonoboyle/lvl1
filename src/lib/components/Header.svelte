@@ -40,11 +40,16 @@
 	<Drawer>
 		<div class="p-6">
 			<!-- TODO: Change hamburger to actual svg-->
-			<button><a href="/" class="p-4 text-4xl" on:click={drawerClose}>Home</a></button>
+			<button class="border-none outline-none"
+				><a href="/" class="p-4 text-4xl" on:click={drawerClose}>Home</a></button
+			>
 			<hr />
 			<ul class="pt-6">
 				{#each navigation.data?.links as item}
-					<button class="text-3xl font-semibold tracking-tight grid py-4 pl-4" on:click={drawerClose}>
+					<button
+						class="grid py-4 pl-4 text-3xl font-semibold tracking-tight"
+						on:click={drawerClose}
+					>
 						<PrismicLink field={item.link}>
 							<PrismicText field={item.label} />
 						</PrismicLink>
@@ -56,18 +61,29 @@
 
 	<!--Main page top nav bar-->
 	<nav
-		class="fixed z-10 flex w-screen rounded-lg lg:p-4 items-center justify-center lg:justify-around bg-surface-800 leading-none drop-shadow-2xl"
+		class="fixed z-10 flex w-screen items-center justify-center rounded-lg bg-surface-800 leading-none drop-shadow-2xl lg:justify-around lg:p-4"
 	>
-		<nav class="absolute flex items-center w-full">
-		<button class="lg:hidden pl-8" on:click={drawerOpen}>
-			<span>
-				<svg viewBox="0 0 100 80" class="fill-token h-6 w-6">
-					<rect width="100" height="20" />
-					<rect y="30" width="100" height="20" />
-					<rect y="60" width="100" height="20" />
-				</svg>
-			</span>
-		</button>
+		<nav class="absolute flex w-full items-center">
+			<button class="ml-7 lg:hidden" on:click={drawerOpen}>
+				<span>
+					<svg
+						class="h-8 w-8 text-gray-800 dark:text-white"
+						aria-hidden="true"
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						fill="none"
+						viewBox="0 0 24 24"
+					>
+						<path
+							stroke="currentColor"
+							stroke-linecap="round"
+							stroke-width="2"
+							d="M5 7h14M5 12h14M5 17h14"
+						/>
+					</svg>
+				</span>
+			</button>
 		</nav>
 
 		<a href="/" class="relative scale-50 opacity-80 md:scale-75 lg:scale-100">
