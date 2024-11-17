@@ -25,7 +25,7 @@
 		id: 'sidebar',
 		// Provide your property overrides:
 		bgDrawer: '',
-		bgBackdrop: 'bg-gradient-to-tr from-primary-600/50 via-secondary-600/50 to-tertiary-600/50',
+		bgBackdrop: 'bg-gradient-to-tr from-secondary-600/50 via-surface-600/50 to-tertiary-600/50',
 		width: 'w-[280px] md:w-[480px]',
 		padding: 'p-4',
 		rounded: 'rounded-xl'
