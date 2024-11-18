@@ -12,7 +12,7 @@
 
 <Bounded
 	tag="section"
-	class=""
+	class="sm"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
@@ -23,7 +23,7 @@
 				<PrismicText field={slice.primary.heading} />
 			</Heading>
 		{/if}
-		<ul class="grid grid-cols-1 items-start gap-12 md:grid-cols-3 drop-shadow-2xl variant-glass p-10">
+		<ul class="grid grid-cols-1 items-start gap-12 md:grid-cols-3 drop-shadow-2xl variant-glass p-10 rounded-lg">
 			{#each slice.primary.cards as card}
 				<ImageCard {card} />
 			{/each}

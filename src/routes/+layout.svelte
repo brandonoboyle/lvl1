@@ -23,7 +23,7 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 </svelte:head>
-<div>
+<div class="text-slate-200">
 	<Header navigation={data.navigation} settings={data.settings} />
 
 	<main class="pt-32"><slot /></main>

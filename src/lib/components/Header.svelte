@@ -39,15 +39,14 @@
 <div class="relative">
 	<Drawer>
 		<div class="p-6">
-			<!-- TODO: Change hamburger to actual svg-->
 			<button class="border-none outline-none"
-				><a href="/" class="p-4 text-4xl" on:click={drawerClose}>Home</a></button
+				><a href="/" class="p-4 text-5xl" on:click={drawerClose}>Home</a></button
 			>
 			<hr />
 			<ul class="pt-6">
 				{#each navigation.data?.links as item}
 					<button
-						class="grid py-4 pl-4 text-3xl font-semibold tracking-tight"
+						class="grid py-6 px-2 text-4xl font-semibold tracking-tight rounded-xl hover:shadow-2xl hover:bg-surface-700"
 						on:click={drawerClose}
 					>
 						<PrismicLink field={item.link}>
@@ -67,7 +66,7 @@
 			<button class="ml-7 lg:hidden" on:click={drawerOpen}>
 				<span>
 					<svg
-						class="h-8 w-8 text-gray-800 dark:text-white"
+						class="h-10 w-10 text-gray-800 dark:text-white"
 						aria-hidden="true"
 						xmlns="http://www.w3.org/2000/svg"
 						width="24"
@@ -89,9 +88,9 @@
 		<a href="/" class="relative scale-50 opacity-80 md:scale-75 lg:scale-100">
 			<PrismicImage field={settings.data.logo} />
 		</a>
-		<ul class="relative hidden gap-10 lg:flex lg:items-center">
+		<ul class="relative hidden text-center lg:flex lg:items-center">
 			{#each navigation.data?.links as item}
-				<li class="text-4xl font-semibold tracking-tight text-slate-200 hover:text-primary-200">
+				<li class="rounded-xl text-2xl p-4 lg:text-3xl text-nowrap font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl hover:bg-surface-700">
 					<PrismicLink field={item.link}>
 						<PrismicText field={item.label} />
 					</PrismicLink>
