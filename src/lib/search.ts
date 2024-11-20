@@ -7,7 +7,7 @@ export function createPostsIndex(data: any[]) {
 	postsIndex = new FlexSearch.Index({ tokenize: 'forward' });
 
 	data.forEach((post, i) => {
-		const item = `${post.title} ${post.content}`;
+		const item = `${post.Family} ${post.Category}`;
 		postsIndex.add(i, item);
 	});
 
@@ -19,9 +19,16 @@ export function searchPostsIndex(searchTerm: string) {
 	const match = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 	const results = postsIndex.search(match);
 
-	return results
+	/*return results
 		.map((index) => posts[index as number])
 		.map(({ slug, title, content }) => {
 			return { slug, title, content };
+		});
+}*/
+
+	return results
+		.map((index) => posts[index as number])
+		.map(({ Family, Category }) => {
+			return { Family, Category };
 		});
 }

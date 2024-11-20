@@ -90,7 +90,7 @@
 		</a>
 		<ul class="relative hidden text-center lg:flex lg:items-center">
 			{#each navigation.data?.links as item}
-				<li class="rounded-xl text-2xl p-4 lg:text-3xl text-nowrap font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl hover:bg-surface-700">
+				<li class="rounded-xl text-2xl p-4 lg:text-3xl text-nowrap font-semibold tracking-tight hover:text-primary-200 hover:shadow-2xl hover:bg-surface-700">
 					<PrismicLink field={item.link}>
 						<PrismicText field={item.label} />
 					</PrismicLink>

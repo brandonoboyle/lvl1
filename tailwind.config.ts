@@ -14,7 +14,7 @@ export default {
         preset: [
           {
             name: 'rocket',
-            enhancements: true,
+            enhancements: true
           },
         ],
       },
