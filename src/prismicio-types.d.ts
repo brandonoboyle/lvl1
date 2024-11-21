@@ -61,10 +61,10 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| AlternateGridSlice
 	| SearchSlice
 	| AnchorSlice
 	| HeroSlice
-	| QuoteSlice
 	| TextSlice
 	| ImageSlice
 	| ImageCardsSlice
@@ -197,6 +197,206 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 >;
 
 export type AllDocumentTypes = NavigationDocument | PageDocument | SettingsDocument;
+
+/**
+ * Item in *AlternateGrid → Default → Primary → items*
+ */
+export interface AlternateGridSliceDefaultPrimaryItemsItem {
+	/**
+	 * title field in *AlternateGrid → Default → Primary → items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.default.primary.items[].title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * description field in *AlternateGrid → Default → Primary → items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.default.primary.items[].description
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	description: prismic.RichTextField;
+}
+
+/**
+ * Item in *AlternateGrid → Image Right → Primary → items*
+ */
+export interface AlternateGridSliceImageRightPrimaryItemsItem {
+	/**
+	 * title field in *AlternateGrid → Image Right → Primary → items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.imageRight.primary.items[].title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * description field in *AlternateGrid → Image Right → Primary → items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.imageRight.primary.items[].description
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *AlternateGrid → Default → Primary*
+ */
+export interface AlternateGridSliceDefaultPrimary {
+	/**
+	 * eyebrowHeadline field in *AlternateGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Eyebrow
+	 * - **API ID Path**: alternate_grid.default.primary.eyebrowHeadline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	eyebrowHeadline: prismic.KeyTextField;
+
+	/**
+	 * title field in *AlternateGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * description field in *AlternateGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	description: prismic.RichTextField;
+
+	/**
+	 * image field in *AlternateGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * items field in *AlternateGrid → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<AlternateGridSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for AlternateGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AlternateGridSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<AlternateGridSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Primary content in *AlternateGrid → Image Right → Primary*
+ */
+export interface AlternateGridSliceImageRightPrimary {
+	/**
+	 * eyebrowHeadline field in *AlternateGrid → Image Right → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Eyebrow
+	 * - **API ID Path**: alternate_grid.imageRight.primary.eyebrowHeadline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	eyebrowHeadline: prismic.KeyTextField;
+
+	/**
+	 * title field in *AlternateGrid → Image Right → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.imageRight.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * description field in *AlternateGrid → Image Right → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.imageRight.primary.description
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	description: prismic.RichTextField;
+
+	/**
+	 * image field in *AlternateGrid → Image Right → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.imageRight.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * items field in *AlternateGrid → Image Right → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: alternate_grid.imageRight.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<AlternateGridSliceImageRightPrimaryItemsItem>>;
+}
+
+/**
+ * Image Right variation for AlternateGrid Slice
+ *
+ * - **API ID**: `imageRight`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AlternateGridSliceImageRight = prismic.SharedSliceVariation<
+	'imageRight',
+	Simplify<AlternateGridSliceImageRightPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *AlternateGrid*
+ */
+type AlternateGridSliceVariation = AlternateGridSliceDefault | AlternateGridSliceImageRight;
+
+/**
+ * AlternateGrid Shared Slice
+ *
+ * - **API ID**: `alternate_grid`
+ * - **Description**: AlternateGrid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AlternateGridSlice = prismic.SharedSlice<'alternate_grid', AlternateGridSliceVariation>;
 
 /**
  * Primary content in *Anchor → Default → Primary*
@@ -393,11 +593,11 @@ type ImageSliceVariation = ImageSliceDefault | ImageSliceBanner;
 export type ImageSlice = prismic.SharedSlice<'image', ImageSliceVariation>;
 
 /**
- * Item in *ImageCards → Default → Primary → Cards*
+ * Item in *MenuItems → Default → Primary → Cards*
  */
 export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	/**
-	 * Image field in *ImageCards → Default → Primary → Cards*
+	 * Image field in *MenuItems → Default → Primary → Cards*
 	 *
 	 * - **Field Type**: Image
 	 * - **Placeholder**: *None*
@@ -407,7 +607,7 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	image: prismic.ImageField<never>;
 
 	/**
-	 * Text field in *ImageCards → Default → Primary → Cards*
+	 * Text field in *MenuItems → Default → Primary → Cards*
 	 *
 	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: *None*
@@ -417,7 +617,7 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	text: prismic.RichTextField;
 
 	/**
-	 * Button Link field in *ImageCards → Default → Primary → Cards*
+	 * Button Link field in *MenuItems → Default → Primary → Cards*
 	 *
 	 * - **Field Type**: Link
 	 * - **Placeholder**: *None*
@@ -427,7 +627,7 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	buttonLink: prismic.LinkField;
 
 	/**
-	 * Button Text field in *ImageCards → Default → Primary → Cards*
+	 * Button Text field in *MenuItems → Default → Primary → Cards*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
@@ -438,11 +638,11 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 }
 
 /**
- * Primary content in *ImageCards → Default → Primary*
+ * Primary content in *MenuItems → Default → Primary*
  */
 export interface ImageCardsSliceDefaultPrimary {
 	/**
-	 * Heading field in *ImageCards → Default → Primary*
+	 * Heading field in *MenuItems → Default → Primary*
 	 *
 	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: *None*
@@ -452,7 +652,7 @@ export interface ImageCardsSliceDefaultPrimary {
 	heading: prismic.RichTextField;
 
 	/**
-	 * Cards field in *ImageCards → Default → Primary*
+	 * Cards field in *MenuItems → Default → Primary*
 	 *
 	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
@@ -463,7 +663,7 @@ export interface ImageCardsSliceDefaultPrimary {
 }
 
 /**
- * Default variation for ImageCards Slice
+ * Default variation for MenuItems Slice
  *
  * - **API ID**: `default`
  * - **Description**: ImageCards
@@ -476,70 +676,18 @@ export type ImageCardsSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *ImageCards*
+ * Slice variation for *MenuItems*
  */
 type ImageCardsSliceVariation = ImageCardsSliceDefault;
 
 /**
- * ImageCards Shared Slice
+ * MenuItems Shared Slice
  *
  * - **API ID**: `image_cards`
  * - **Description**: ImageCards
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type ImageCardsSlice = prismic.SharedSlice<'image_cards', ImageCardsSliceVariation>;
-
-/**
- * Primary content in *Quote → Default → Primary*
- */
-export interface QuoteSliceDefaultPrimary {
-	/**
-	 * Quote field in *Quote → Default → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: quote.default.primary.quote
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	quote: prismic.RichTextField;
-
-	/**
-	 * Source field in *Quote → Default → Primary*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: quote.default.primary.source
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	source: prismic.KeyTextField;
-}
-
-/**
- * Default variation for Quote Slice
- *
- * - **API ID**: `default`
- * - **Description**: Quote
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type QuoteSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Simplify<QuoteSliceDefaultPrimary>,
-	never
->;
-
-/**
- * Slice variation for *Quote*
- */
-type QuoteSliceVariation = QuoteSliceDefault;
-
-/**
- * Quote Shared Slice
- *
- * - **API ID**: `quote`
- * - **Description**: Quote
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type QuoteSlice = prismic.SharedSlice<'quote', QuoteSliceVariation>;
 
 /**
  * Primary content in *Search → Default → Primary*
@@ -796,6 +944,14 @@ declare module '@prismicio/client' {
 			SettingsDocument,
 			SettingsDocumentData,
 			AllDocumentTypes,
+			AlternateGridSlice,
+			AlternateGridSliceDefaultPrimaryItemsItem,
+			AlternateGridSliceDefaultPrimary,
+			AlternateGridSliceImageRightPrimaryItemsItem,
+			AlternateGridSliceImageRightPrimary,
+			AlternateGridSliceVariation,
+			AlternateGridSliceDefault,
+			AlternateGridSliceImageRight,
 			AnchorSlice,
 			AnchorSliceDefaultPrimary,
 			AnchorSliceVariation,
@@ -815,10 +971,6 @@ declare module '@prismicio/client' {
 			ImageCardsSliceDefaultPrimary,
 			ImageCardsSliceVariation,
 			ImageCardsSliceDefault,
-			QuoteSlice,
-			QuoteSliceDefaultPrimary,
-			QuoteSliceVariation,
-			QuoteSliceDefault,
 			SearchSlice,
 			SearchSliceDefaultPrimary,
 			SearchSliceVariation,
