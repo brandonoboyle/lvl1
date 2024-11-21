@@ -24,14 +24,6 @@
 		createPostsIndex(posts);
 		search = 'ready';
 	});
-	/*const data = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
-	console.log(data);*/
-
-	/*onMount(async () => {
-		const posts = await fetch('/search.json').then((res) => res.json());
-		createPostsIndex(posts);
-		search = 'ready';
-	});*/
 
 	$: if (search === 'ready') {
 		results = searchPostsIndex(searchTerm);
@@ -69,16 +61,6 @@
 
 {#if search === 'loading'}
 	<section class="card w-full pt-4">
-		<div class="placeholder-circle ml-4 w-16" />
-		<div class="space-y-4 p-4">
-			<div class="placeholder" />
-			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
-			</div>
-			<div class="placeholder" />
-		</div>
 		<div class="placeholder-circle ml-4 w-16" />
 		<div class="space-y-4 p-4">
 			<div class="placeholder" />

@@ -61,7 +61,7 @@
 
 	<!--Main page top nav bar-->
 	<nav
-		class="fixed z-10 flex w-screen items-center justify-center rounded-lg bg-surface-800 leading-none drop-shadow-2xl lg:justify-around lg:p-4"
+		class="fixed z-10 flex w-screen items-center justify-center rounded-lg bg-surface-800 opacity-95 leading-none drop-shadow-2xl lg:justify-around lg:p-4"
 	>
 		<nav class="absolute flex w-full items-center">
 			<button class="ml-7 lg:hidden" on:click={drawerOpen}>
@@ -86,7 +86,7 @@
 			</button>
 		</nav>
 
-		<a href="/" class="relative scale-50 opacity-80 md:scale-75 lg:scale-100">
+		<a href="/" class="relative scale-50 md:scale-75 lg:scale-100">
 			<PrismicImage field={settings.data.logo} />
 		</a>
 		<ul class="relative hidden text-center lg:flex lg:items-center">
