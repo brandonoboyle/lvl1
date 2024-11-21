@@ -41,7 +41,7 @@
 {#if search === 'ready'}
 	<div class="variant-glass-surface h-80 overflow-y-auto p-6 opacity-90">
 		{#if results}
-			<ul class="grid list-none gap-4 text-2xl">
+			<ul class="grid grid-flow-row lg:grid-cols-3 list-none gap-6 text-xl">
 				{#each results as result}
 					<li class="p-2">
 						<a href="/{result.slug}" class="block text-4xl">
@@ -65,24 +65,31 @@
 			class="w-full border-none bg-surface-800 p-6 text-primary-100 outline-none drop-shadow-2xl transition-colors"
 		/>
 	</div>
-	<!--<label class="">
-	<input type="radio" name="Family" /> Adult
-		<input type="radio" name="Family" /> Bilingual
-		<input type="radio" name="Family" /> Classics
-		<input type="radio" name="Family" /> Co-op
-		<input type="radio" name="Family" /> Dexterity
-		<input type="radio" name="Family" /> Family
-		<input type="radio" name="Family" /> Light Strategy
-		<input type="radio" name="Family" /> New
-		<input type="radio" name="Family" /> Party
-		<input type="radio" name="Family" /> Solo Game
-		<input type="radio" name="Family" /> Strategy
-		<input type="radio" name="Family" /> Themed
-		<input type="radio" name="Family" /> Trivia
-		<input type="radio" name="Family" /> Two Player
-	</label>-->
 {/if}
 
 {#if search === 'loading'}
-	<div class="placeholder" />
+	<section class="card w-full pt-4">
+		<div class="placeholder-circle ml-4 w-16" />
+		<div class="space-y-4 p-4">
+			<div class="placeholder" />
+			<div class="grid grid-cols-3 gap-8">
+				<div class="placeholder" />
+				<div class="placeholder" />
+				<div class="placeholder" />
+			</div>
+			<div class="placeholder" />
+		</div>
+		<div class="placeholder-circle ml-4 w-16" />
+		<div class="space-y-4 p-4">
+			<div class="placeholder" />
+			<div class="grid grid-cols-3 gap-8">
+				<div class="placeholder" />
+				<div class="placeholder" />
+				<div class="placeholder" />
+			</div>
+			<div class="placeholder" />
+		</div>
+	</section>
 {/if}
+
+
