@@ -35,6 +35,7 @@
 	export let navigation: Content.NavigationDocument;
 </script>
 
+<!--TODO: investigate header padding right for cool float-->
 <!--Mobile side drawer nav list -->
 <div class="relative">
 	<Drawer>
@@ -46,7 +47,7 @@
 			<ul class="pt-6">
 				{#each navigation.data?.links as item}
 					<button
-						class="grid py-6 px-2 text-4xl font-semibold tracking-tight rounded-xl hover:shadow-2xl hover:bg-surface-700"
+						class="grid py-6 px-2 text-4xl font-semibold tracking-tight rounded-xl hover:shadow-2xl hover:bg-surface-700 hover:text-primary-200"
 						on:click={drawerClose}
 					>
 						<PrismicLink field={item.link}>
