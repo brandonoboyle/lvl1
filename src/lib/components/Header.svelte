@@ -61,7 +61,7 @@
 
 	<!--Main page top nav bar-->
 	<nav
-		class="fixed z-10 flex w-screen items-center justify-center rounded-lg bg-surface-800 opacity-95 leading-none drop-shadow-2xl lg:justify-around lg:p-4"
+		class="variant-glass fixed z-10 flex w-screen items-center justify-center rounded-lg opacity-95 leading-none drop-shadow-2xl lg:justify-around lg:p-4"
 	>
 		<nav class="absolute flex w-full items-center">
 			<button class="ml-7 lg:hidden" on:click={drawerOpen}>

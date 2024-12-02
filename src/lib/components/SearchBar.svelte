@@ -12,10 +12,11 @@
 		Bilingual: string;
 		Category: string;
 	}
+
 	onMount(async () => {
 		const f = await (
 			await fetch(
-				'https://docs.google.com/spreadsheets/d/e/2PACX-1vTuwkH2hnHyRhPIrjhHCs1C9EODB7krniQbuOAhMQJOyYbvdquPOFBmbp2kEDl3sKdsl9SrHMP0PCaW/pubhtml'
+				'https://docs.google.com/spreadsheets/d/e/2PACX-1vRvgOFOz382IuGr6V0fab_yO03dJ8YL2D5AxdXRyogcQSl1GEDcP2wRV7iPfzfu1ZE1y2k-WLBiz5Ib/pubhtml'
 			)
 		).arrayBuffer();
 		const wb = read(f);
@@ -36,7 +37,7 @@
 			<ul class="grid grid-flow-row lg:grid-cols-3 list-none gap-6 text-xl">
 				{#each results as result}
 					<li class="p-2">
-						<a href="/{result.slug}" class="block text-4xl">
+						<a href="{result.URL}" target="_blank" rel="noopener noreferrer" class="block text-4xl">
 							{@html result.Family}
 						</a>
 						<p>{@html result.Category}</p>

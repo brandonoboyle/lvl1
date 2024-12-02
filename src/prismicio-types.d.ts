@@ -63,7 +63,6 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 type PageDocumentDataSlicesSlice =
 	| AlternateGridSlice
 	| SearchSlice
-	| AnchorSlice
 	| HeroSlice
 	| TextSlice
 	| ImageSlice
@@ -397,58 +396,6 @@ type AlternateGridSliceVariation = AlternateGridSliceDefault | AlternateGridSlic
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type AlternateGridSlice = prismic.SharedSlice<'alternate_grid', AlternateGridSliceVariation>;
-
-/**
- * Primary content in *Anchor → Default → Primary*
- */
-export interface AnchorSliceDefaultPrimary {
-	/**
-	 * Anchor field in *Anchor → Default → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: anchor.default.primary.anchor
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	anchor: prismic.RichTextField;
-
-	/**
-	 * Anchor Link field in *Anchor → Default → Primary*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: anchor.default.primary.anchorLink
-	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-	 */
-	anchorLink: prismic.LinkField;
-}
-
-/**
- * Default variation for Anchor Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type AnchorSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Simplify<AnchorSliceDefaultPrimary>,
-	never
->;
-
-/**
- * Slice variation for *Anchor*
- */
-type AnchorSliceVariation = AnchorSliceDefault;
-
-/**
- * Anchor Shared Slice
- *
- * - **API ID**: `anchor`
- * - **Description**: Anchor
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type AnchorSlice = prismic.SharedSlice<'anchor', AnchorSliceVariation>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -952,10 +899,6 @@ declare module '@prismicio/client' {
 			AlternateGridSliceVariation,
 			AlternateGridSliceDefault,
 			AlternateGridSliceImageRight,
-			AnchorSlice,
-			AnchorSliceDefaultPrimary,
-			AnchorSliceVariation,
-			AnchorSliceDefault,
 			HeroSlice,
 			HeroSliceDefaultPrimary,
 			HeroSliceVariation,

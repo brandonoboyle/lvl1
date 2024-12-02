@@ -41,9 +41,6 @@
 						"search": {
 							"type": "SharedSlice"
 						},
-						"anchor": {
-							"type": "SharedSlice"
-						},
 						"hero": {
 							"type": "SharedSlice"
 						},
