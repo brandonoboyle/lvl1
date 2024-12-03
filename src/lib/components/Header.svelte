@@ -47,7 +47,7 @@
 			<ul class="pt-6">
 				{#each navigation.data?.links as item}
 					<button
-						class="grid py-6 px-2 text-4xl font-semibold tracking-tight rounded-xl hover:shadow-2xl hover:bg-surface-700 hover:text-primary-200"
+						class="grid py-6 px-2 text-4xl font-semibold tracking-tight rounded-xl hover:shadow-2xl hover:bg-surface-700 hover:text-tertiary-200"
 						on:click={drawerClose}
 					>
 						<PrismicLink field={item.link}>
@@ -61,10 +61,10 @@
 
 	<!--Main page top nav bar-->
 	<nav
-		class="variant-glass fixed z-10 flex w-screen items-center justify-center rounded-lg opacity-95 leading-none drop-shadow-2xl lg:justify-around lg:p-4"
+		class="variant-glass fixed z-10 flex w-screen items-center justify-center rounded-lg leading-none drop-shadow-2xl lg:justify-around lg:p-4"
 	>
 		<nav class="absolute flex w-full items-center">
-			<button class="ml-7 lg:hidden" on:click={drawerOpen}>
+			<button class="ml-6 lg:hidden" on:click={drawerOpen}>
 				<span>
 					<svg
 						class="h-10 w-10 text-gray-800 dark:text-white"
@@ -86,12 +86,12 @@
 			</button>
 		</nav>
 
-		<a href="/" class="relative scale-50 md:scale-75 lg:scale-100">
+		<a href="/" class="relative scale-50 md:scale-75 lg:scale-100 py-2 md:py-0">
 			<PrismicImage field={settings.data.logo} />
 		</a>
 		<ul class="relative hidden text-center lg:flex lg:items-center">
 			{#each navigation.data?.links as item}
-				<li class="rounded-xl text-2xl p-4 lg:text-3xl text-nowrap font-semibold tracking-tight hover:text-primary-200 hover:shadow-2xl hover:bg-surface-700">
+				<li class="rounded-xl text-2xl p-4 lg:text-3xl text-nowrap font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl hover:bg-surface-700">
 					<PrismicLink field={item.link}>
 						<PrismicText field={item.label} />
 					</PrismicLink>

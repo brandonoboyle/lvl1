@@ -78,8 +78,6 @@
 
 		.es-alternate-grid {
 			font-family: system-ui, sans-serif;
-			background-color: #fff;
-			color: #333;
 		}
 
 		.es-alternate-grid__content {

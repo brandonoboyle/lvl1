@@ -61,6 +61,7 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| GridSelectSlice
 	| AlternateGridSlice
 	| SearchSlice
 	| HeroSlice
@@ -396,6 +397,83 @@ type AlternateGridSliceVariation = AlternateGridSliceDefault | AlternateGridSlic
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type AlternateGridSlice = prismic.SharedSlice<'alternate_grid', AlternateGridSliceVariation>;
+
+/**
+ * Item in *GridSelect → Default → Primary → GridGroup*
+ */
+export interface GridSelectSliceDefaultPrimaryGridgroupItem {
+	/**
+	 * Image Text field in *GridSelect → Default → Primary → GridGroup*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: grid_select.default.primary.gridgroup[].image_text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	image_text: prismic.RichTextField;
+
+	/**
+	 * GridImage field in *GridSelect → Default → Primary → GridGroup*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: grid_select.default.primary.gridgroup[].gridimage
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	gridimage: prismic.ImageField<never>;
+
+	/**
+	 * GridLink field in *GridSelect → Default → Primary → GridGroup*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: grid_select.default.primary.gridgroup[].gridlink
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	gridlink: prismic.LinkField;
+}
+
+/**
+ * Primary content in *GridSelect → Default → Primary*
+ */
+export interface GridSelectSliceDefaultPrimary {
+	/**
+	 * GridGroup field in *GridSelect → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: grid_select.default.primary.gridgroup[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	gridgroup: prismic.GroupField<Simplify<GridSelectSliceDefaultPrimaryGridgroupItem>>;
+}
+
+/**
+ * Default variation for GridSelect Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridSelectSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<GridSelectSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *GridSelect*
+ */
+type GridSelectSliceVariation = GridSelectSliceDefault;
+
+/**
+ * GridSelect Shared Slice
+ *
+ * - **API ID**: `grid_select`
+ * - **Description**: GridSelect
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridSelectSlice = prismic.SharedSlice<'grid_select', GridSelectSliceVariation>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -899,6 +977,11 @@ declare module '@prismicio/client' {
 			AlternateGridSliceVariation,
 			AlternateGridSliceDefault,
 			AlternateGridSliceImageRight,
+			GridSelectSlice,
+			GridSelectSliceDefaultPrimaryGridgroupItem,
+			GridSelectSliceDefaultPrimary,
+			GridSelectSliceVariation,
+			GridSelectSliceDefault,
 			HeroSlice,
 			HeroSliceDefaultPrimary,
 			HeroSliceVariation,

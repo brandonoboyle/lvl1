@@ -1,0 +1,58 @@
+{
+  "id": "grid_select",
+  "type": "SharedSlice",
+  "name": "GridSelect",
+  "description": "GridSelect",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "gridgroup": {
+          "type": "Group",
+          "config": {
+            "label": "GridGroup",
+            "repeat": true,
+            "fields": {
+              "image_text": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Image Text",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+                }
+              },
+              "gridimage": {
+                "type": "Image",
+                "config": {
+                  "label": "GridImage",
+                  "constraint": {
+                    "width": null,
+                    "height": null
+                  },
+                  "thumbnails": []
+                }
+              },
+              "gridlink": {
+                "type": "Link",
+                "config": {
+                  "label": "GridLink",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "select": null,
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
