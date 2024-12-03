@@ -87,7 +87,7 @@
 		</nav>
 
 		<a href="/" class="relative scale-50 md:scale-75 lg:scale-100 py-2 md:py-0">
-			<PrismicImage field={settings.data.logo} />
+			<PrismicImage class="" field={settings.data.logo} />
 		</a>
 		<ul class="relative hidden text-center lg:flex lg:items-center">
 			{#each navigation.data?.links as item}

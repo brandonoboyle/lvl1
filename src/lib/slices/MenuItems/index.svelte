@@ -14,7 +14,7 @@
 
 	<div class="relative grid gap-12 p-4">
 		{#if isFilled.richText(slice.primary.heading)}
-			<Heading class="flex flex-col items-center justify-center bg-surface-800 opacity-95 drop-shadow-2xl">
+			<Heading class="flex flex-col items-center justify-center py-2 bg-surface-800 opacity-95 drop-shadow-2xl rounded-xl">
 				<PrismicText field={slice.primary.heading} />
 			</Heading>
 		{/if}
