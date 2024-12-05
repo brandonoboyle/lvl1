@@ -2,7 +2,11 @@
 	import { PrismicImage, PrismicRichText } from '@prismicio/svelte';
 	import { type Content, isFilled } from '@prismicio/client';
 
-	export let slice: Content.AlternateGridSlice;
+	interface Props {
+		slice: Content.AlternateGridSlice;
+	}
+
+	let { slice }: Props = $props();
 </script>
 
 <section

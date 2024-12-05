@@ -5,7 +5,11 @@
 	import PrismicRichText from '$lib/components/PrismicRichText.svelte';
 	import Bounded from '$lib/components/Bounded.svelte';
 
-	export let card: Content.GridSelectSliceDefaultPrimaryGridgroupItem;
+	interface Props {
+		card: Content.GridSelectSliceDefaultPrimaryGridgroupItem;
+	}
+
+	let { card }: Props = $props();
 </script>
 
 <li class="relative border-tertiary-500 hover:border-2">

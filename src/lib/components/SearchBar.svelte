@@ -1,11 +1,13 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { onMount } from 'svelte';
 	import { createPostsIndex, searchPostsIndex } from '$lib/search';
 	import { read, utils } from 'xlsx';
 
-	let search: 'loading' | 'ready' = 'loading';
-	let searchTerm = '';
-	let results = [];
+	let search: 'loading' | 'ready' = $state('loading');
+	let searchTerm = $state('');
+	let results = $state([]);
 
 	interface Boardgame {
 		Family: string;
@@ -26,9 +28,11 @@
 		search = 'ready';
 	});
 
-	$: if (search === 'ready') {
-		results = searchPostsIndex(searchTerm);
-	}
+	run(() => {
+		if (search === 'ready') {
+			results = searchPostsIndex(searchTerm);
+		}
+	});
 </script>
 
 {#if search === 'ready'}
@@ -62,15 +66,15 @@
 
 {#if search === 'loading'}
 	<section class="card w-full pt-4">
-		<div class="placeholder-circle ml-4 w-16" />
+		<div class="placeholder-circle ml-4 w-16"></div>
 		<div class="space-y-4 p-4">
-			<div class="placeholder" />
+			<div class="placeholder"></div>
 			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder" />
-				<div class="placeholder" />
-				<div class="placeholder" />
+				<div class="placeholder"></div>
+				<div class="placeholder"></div>
+				<div class="placeholder"></div>
 			</div>
-			<div class="placeholder" />
+			<div class="placeholder"></div>
 		</div>
 	</section>
 {/if}

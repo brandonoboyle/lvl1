@@ -31,8 +31,12 @@
 		rounded: 'rounded-xl'
 	};
 
-	export let settings: Content.SettingsDocument;
-	export let navigation: Content.NavigationDocument;
+	interface Props {
+		settings: Content.SettingsDocument;
+		navigation: Content.NavigationDocument;
+	}
+
+	let { settings, navigation }: Props = $props();
 </script>
 
 <!--TODO: investigate header padding right for cool float-->
@@ -41,14 +45,14 @@
 	<Drawer>
 		<div class="p-6">
 			<button class="border-none outline-none"
-				><a href="/" class="p-4 text-5xl" on:click={drawerClose}>Home</a></button
+				><a href="/" class="p-4 text-5xl" onclick={drawerClose}>Home</a></button
 			>
 			<hr />
 			<ul class="pt-6">
 				{#each navigation.data?.links as item}
 					<button
 						class="grid py-6 px-2 text-4xl font-semibold tracking-tight rounded-xl hover:shadow-2xl hover:bg-surface-700 hover:text-tertiary-200"
-						on:click={drawerClose}
+						onclick={drawerClose}
 					>
 						<PrismicLink field={item.link}>
 							<PrismicText field={item.label} />
@@ -64,7 +68,7 @@
 		class="variant-glass fixed z-10 flex w-screen items-center justify-center rounded-lg leading-none drop-shadow-2xl lg:justify-around lg:p-4"
 	>
 		<nav class="absolute flex w-full items-center">
-			<button class="ml-6 lg:hidden" on:click={drawerOpen}>
+			<button class="ml-6 lg:hidden" onclick={drawerOpen}>
 				<span>
 					<svg
 						class="h-10 w-10 text-gray-800 dark:text-white"

@@ -2,7 +2,11 @@
 	import { type Content } from '@prismicio/client';
 	import GridSelect from '$lib/slices/GridSelect/GridSelect.svelte';
 
-	export let slice: Content.GridSelectSlice;
+	interface Props {
+		slice: Content.GridSelectSlice;
+	}
+
+	let { slice }: Props = $props();
 </script>
 
 <div class="">

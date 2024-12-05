@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import '../app.postcss';
 
 	import { PrismicPreview } from '@prismicio/svelte/kit';
@@ -6,7 +6,7 @@
 	import { repositoryName } from '$lib/prismicio';
 	import Header from '$lib/components/Header.svelte';
 
-	export let data;
+	let { data, children } = $props();
 </script>
 
 <svelte:head>
@@ -25,7 +25,7 @@
 <div>
 	<Header navigation={data.navigation} settings={data.settings} />
 
-	<main class="pt-32"><slot /></main>
+	<main class="pt-32">{@render children?.()}</main>
 </div>
 
 <PrismicPreview {repositoryName} />

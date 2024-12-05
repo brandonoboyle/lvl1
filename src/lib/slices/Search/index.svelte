@@ -10,7 +10,11 @@
 
 
 
-	export let slice: Content.SearchSlice;
+	interface Props {
+		slice: Content.SearchSlice;
+	}
+
+	let { slice }: Props = $props();
 </script>
 
 

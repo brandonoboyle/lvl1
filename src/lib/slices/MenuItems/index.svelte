@@ -5,7 +5,11 @@
 	import MenuItems from './MenuItems.svelte';
 	import Heading from '$lib/components/Heading.svelte';
 
-	export let slice: Content.ImageCardsSlice;
+	interface Props {
+		slice: Content.ImageCardsSlice;
+	}
+
+	let { slice }: Props = $props();
 </script>
 
 <div class="relative grid gap-12 p-4">
