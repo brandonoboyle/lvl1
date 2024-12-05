@@ -6,7 +6,6 @@
 	import { repositoryName } from '$lib/prismicio';
 	import Header from '$lib/components/Header.svelte';
 
-
 	export let data;
 </script>
 
@@ -23,13 +22,10 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 </svelte:head>
-<div class="text-tertiary-50">
+<div>
 	<Header navigation={data.navigation} settings={data.settings} />
 
 	<main class="pt-32"><slot /></main>
-
 </div>
-
-
 
 <PrismicPreview {repositoryName} />
