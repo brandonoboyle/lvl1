@@ -39,7 +39,10 @@
           "type": "Image",
           "config": {
             "label": "Background Image",
-            "constraint": {},
+            "constraint": {
+              "width": 1920,
+              "height": 1080
+            },
             "thumbnails": []
           }
         }

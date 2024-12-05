@@ -32,8 +32,8 @@
                 "config": {
                   "label": "GridImage",
                   "constraint": {
-                    "width": null,
-                    "height": null
+                    "width": 1920,
+                    "height": 1080
                   },
                   "thumbnails": []
                 }

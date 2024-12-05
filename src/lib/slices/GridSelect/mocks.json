@@ -2,67 +2,7 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {
-			"gridgroup": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"image_text",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Do mollit dolor duis dolor labore ad. Ut mollit Lorem do voluptate quis nulla. Cupidatat consectetur eiusmod quis sunt nisi magna exercitation consectetur nulla cupidatat voluptate dolore culpa do."
-											}
-										}
-									]
-								}
-							],
-							[
-								"gridimage",
-								{
-									"__TYPE__": "ImageContent",
-									"origin": {
-										"id": "main",
-										"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
-										"width": 4016,
-										"height": 6016
-									},
-									"url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
-									"width": 4016,
-									"height": 6016,
-									"edit": {
-										"zoom": 1,
-										"crop": {
-											"x": 0,
-											"y": 0
-										},
-										"background": "transparent"
-									},
-									"thumbnails": {}
-								}
-							],
-							[
-								"gridlink",
-								{
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "ExternalLink",
-										"url": "https://prismic.io",
-										"text": "cabin"
-									}
-								}
-							]
-						]
-					}
-				]
-			}
-		},
+		"primary": {},
 		"items": []
 	}
 ]
