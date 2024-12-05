@@ -13,3 +13,4 @@ export async function load({ fetch, cookies }) {
 		navigation
 	};
 }
+
