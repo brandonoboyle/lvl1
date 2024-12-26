@@ -1,0 +1,75 @@
+{
+  "id": "grid_image_right",
+  "type": "SharedSlice",
+  "name": "GridImageRight",
+  "description": "GridImageRight",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {
+              "width": 1920,
+              "height": 1080
+            },
+            "thumbnails": []
+          }
+        },
+        "grid": {
+          "type": "Group",
+          "config": {
+            "label": "Grid",
+            "repeat": true,
+            "fields": {
+              "item_title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Item Title",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+                }
+              },
+              "item_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Item Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

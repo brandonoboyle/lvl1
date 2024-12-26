@@ -1,0 +1,28 @@
+{
+  "id": "video_game_search",
+  "type": "SharedSlice",
+  "name": "VideoGameSearch",
+  "description": "VideoGameSearch",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "video_game_search": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Video Game Search",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

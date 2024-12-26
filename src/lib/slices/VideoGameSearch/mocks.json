@@ -1,0 +1,20 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"video_game_search": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cillum irure tempor ad pariatur sint. Occaecat id consectetur enim occaecat velit pariatur minim non mollit. Aute tempor commodo tempor incididunt ipsum reprehenderit exercitation officia ex eiusmod ullamco incididunt duis."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
