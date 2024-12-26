@@ -7,7 +7,7 @@ export function createPostsIndex(data: any[]) {
 	postsIndex = new FlexSearch.Index({ tokenize: 'forward' });
 
 	data.forEach((post, i) => {
-		const item = `${post.Family} ${post.URL}`;
+		const item = `${post.Family} ${post.Category} ${post.URL}`;
 		postsIndex.add(i, item);
 	});
 
@@ -28,7 +28,7 @@ export function searchPostsIndex(searchTerm: string) {
 
 	return results
 		.map((index) => posts[index as number])
-		.map(({ Family, URL }) => {
-			return { Family, URL };
+		.map(({ Family, Category, URL }) => {
+			return { Family, Category, URL };
 		});
 }

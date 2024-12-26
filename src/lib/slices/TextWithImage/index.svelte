@@ -25,7 +25,7 @@
 		<div>
 			{#if isFilled.image(slice.primary.image)}
 				<div class="drop-shadow-2xl">
-					<PrismicImage field={slice.primary.image} sizes="100vw" class="w-full " />
+					<PrismicImage field={slice.primary.image} sizes="100vw" class="w-full opacity-50 rounded-lg drop-shadow-2xl " />
 				</div>
 			{/if}
 		</div>

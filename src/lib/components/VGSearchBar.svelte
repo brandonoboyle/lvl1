@@ -18,13 +18,13 @@
 	onMount(async () => {
 		const f = await (
 			await fetch(
-				'https://docs.google.com/spreadsheets/d/e/2PACX-1vRvgOFOz382IuGr6V0fab_yO03dJ8YL2D5AxdXRyogcQSl1GEDcP2wRV7iPfzfu1ZE1y2k-WLBiz5Ib/pubhtml'
+				'https://docs.google.com/spreadsheets/d/e/2PACX-1vThSfipWWiyIoyAETkBte74vb5JV2goo_HkAG-0grRhOlqfVy-i_vc-A0CylY7-6kaWzVmnmks03ZuC/pubhtml'
 			)
 		).arrayBuffer();
 		const wb = read(f);
 		const posts = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
 		createPostsIndex(posts);
-		console.log(posts);
+		console.log(posts)
 		search = 'ready';
 	});
 
@@ -44,7 +44,7 @@
 						<a href="{result.URL}" target="_blank" rel="noopener noreferrer" class="block text-4xl">
 							{@html result.Family}
 						</a>
-						<p>{@html result.Category}</p>
+						<p class="text-primary-400">{@html result.Category}</p>
 					</li>
 				{/each}
 			</ul>

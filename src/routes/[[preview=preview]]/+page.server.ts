@@ -7,6 +7,8 @@ export async function load({ fetch, cookies }) {
 
 	const page = await client.getByUID('page', 'home');
 
+	/*console.log(page);*/
+
 	return {
 		page,
 		title: asText(page.data.title),

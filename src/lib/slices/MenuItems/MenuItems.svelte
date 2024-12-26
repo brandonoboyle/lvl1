@@ -11,25 +11,19 @@
 	let { card }: Props = $props();
 </script>
 
-<li class="grid md:flex gap-10">
+<li class="grid w-full gap-10 drop-shadow-2xl md:flex">
 	{#if isFilled.image(card.image)}
 		<div class="">
 			{#if isFilled.link(card.buttonLink)}
-
 				<PrismicLink field={card.buttonLink} tabindex={-1}>
-					<div class="drop-shadow-2xl rounded-xl">
-					<PrismicImage field={card.image} sizes="100vw" />
-					</div>
+					<PrismicImage class="" field={card.image} sizes="" />
 				</PrismicLink>
-
 			{:else}
-				<div class="drop-shadow-2xl rounded-xl">
-				<PrismicImage class="rounded-xl" field={card.image} sizes="100vw" />
-				</div>
+				<PrismicImage class="rounded-xl drop-shadow-2xl" field={card.image} sizes="" />
 			{/if}
 		</div>
 	{/if}
-	<div class="leading-relaxed w-full">
+	<div class="w-full leading-relaxed">
 		<PrismicRichText field={card.text} />
 	</div>
 	{#if isFilled.link(card.buttonLink)}

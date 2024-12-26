@@ -35,10 +35,16 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
-						"grid_select": {
+						"video_game_search": {
 							"type": "SharedSlice"
 						},
-						"alternate_grid": {
+						"grid_image_right": {
+							"type": "SharedSlice"
+						},
+						"grid_image_left": {
+							"type": "SharedSlice"
+						},
+						"grid_select": {
 							"type": "SharedSlice"
 						},
 						"search": {
