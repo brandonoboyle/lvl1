@@ -35,6 +35,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"form": {
+							"type": "SharedSlice"
+						},
 						"video_game_search": {
 							"type": "SharedSlice"
 						},

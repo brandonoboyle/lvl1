@@ -16,19 +16,30 @@ export function createPostsIndex(data: any[]) {
 
 export function searchPostsIndex(searchTerm: string) {
 	// escape special regex characters
-	const match = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// 	const match = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+// 	const results = postsIndex.search(match);
+// 	console.log(results);
+//
+// 	return results
+// 		.map((index) => posts[index as number])
+// 		.map(({ Family, Category, URL }) => {
+// 			return { Family, Category, URL };
+// 		});
+// }
+// Escape special regex characters
+	const match = searchTerm.replace(/[.*+?^${}()|[]\]/g, '\$&');
 	const results = postsIndex.search(match);
 
-	/*return results
-		.map((index) => posts[index as number])
-		.map(({ slug, title, content }) => {
-			return { slug, title, content };
-		});
-}*/
+	// Map results to the original posts
+	const mappedResults = results.map((index) => posts[index as number]);
 
-	return results
-		.map((index) => posts[index as number])
-		.map(({ Family, Category, URL }) => {
-			return { Family, Category, URL };
-		});
+	// Sort the mapped results alphabetically by a specific property (e.g., Family)
+	const sortedResults = mappedResults.sort((a, b) =>
+		a.Family.localeCompare(b.Family)
+	);
+
+	// Format the sorted results
+	return sortedResults.map(({ Family, Category, URL }) => {
+		return { Family, Category, URL };
+	});
 }

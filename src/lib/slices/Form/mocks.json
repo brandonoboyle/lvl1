@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"form": {
+				"__TYPE__": "FieldContent",
+				"value": "couple",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

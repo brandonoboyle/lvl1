@@ -61,6 +61,7 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| FormSlice
 	| VideoGameSearchSlice
 	| GridImageRightSlice
 	| GridImageLeftSlice
@@ -199,6 +200,48 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 >;
 
 export type AllDocumentTypes = NavigationDocument | PageDocument | SettingsDocument;
+
+/**
+ * Primary content in *Form → Default → Primary*
+ */
+export interface FormSliceDefaultPrimary {
+	/**
+	 * form field in *Form → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: don't type here
+	 * - **API ID Path**: form.default.primary.form
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	form: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Form Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FormSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<FormSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Form*
+ */
+type FormSliceVariation = FormSliceDefault;
+
+/**
+ * Form Shared Slice
+ *
+ * - **API ID**: `form`
+ * - **Description**: Form
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FormSlice = prismic.SharedSlice<'form', FormSliceVariation>;
 
 /**
  * Item in *GridImageLeft → Default → Primary → Grid Items*
@@ -958,6 +1001,10 @@ declare module '@prismicio/client' {
 			SettingsDocument,
 			SettingsDocumentData,
 			AllDocumentTypes,
+			FormSlice,
+			FormSliceDefaultPrimary,
+			FormSliceVariation,
+			FormSliceDefault,
 			GridImageLeftSlice,
 			GridImageLeftSliceDefaultPrimaryGridItemsItem,
 			GridImageLeftSliceDefaultPrimary,

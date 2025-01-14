@@ -23,7 +23,7 @@
 
 	const drawerSettings: DrawerSettings = {
 		id: 'sidebar',
-		// Provide your property overrides:
+		// Native property overrides:
 		bgDrawer: '',
 		bgBackdrop: 'bg-gradient-to-tr from-secondary-600/50 via-surface-600/50 to-tertiary-600/50',
 		width: 'w-[280px] md:w-[480px]',
@@ -39,7 +39,6 @@
 	let { settings, navigation }: Props = $props();
 </script>
 
-<!--TODO: investigate header padding right for cool float-->
 <!--Mobile side drawer nav list -->
 <div class="relative">
 	<Drawer>
@@ -68,7 +67,7 @@
 		class="variant-glass fixed z-10 flex w-screen items-center justify-center rounded-lg leading-none drop-shadow-2xl lg:justify-around lg:p-4"
 	>
 		<nav class="absolute flex w-full items-center">
-			<button class="ml-6 lg:hidden" onclick={drawerOpen}>
+			<button aria-label="Open mobile nav" class="ml-6 lg:hidden" onclick={drawerOpen}>
 				<span>
 					<svg
 						class="h-10 w-10 text-gray-800 dark:text-white"
@@ -91,12 +90,13 @@
 		</nav>
 
 		<a href="/" class="relative scale-50 md:scale-75 lg:scale-100 py-2 md:py-0">
-			<PrismicImage class="" field={settings.data.logo} />
+			<PrismicImage field={settings.data.logo} />
 		</a>
 		<ul class="relative hidden text-center lg:flex lg:items-center">
 			{#each navigation.data?.links as item}
-				<li class="rounded-xl text-2xl p-4 lg:text-3xl text-nowrap font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl hover:bg-surface-700">
-					<PrismicLink field={item.link}>
+				<li class="rounded-xl p-4 text-2xl lg:text-3xl text-nowrap font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl hover:bg-surface-700">
+<!--					TODO Add padding to Link element to make padding clickable-->
+					<PrismicLink class="py-4 px-2" field={item.link}>
 						<PrismicText field={item.label} />
 					</PrismicLink>
 				</li>

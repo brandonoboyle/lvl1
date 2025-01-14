@@ -13,6 +13,7 @@
 </script>
 
 <Bounded
+	yPadding="sm"
 	as="section"
 	class="leading-relaxed"
 	data-slice-type={slice.slice_type}

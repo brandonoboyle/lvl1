@@ -8,6 +8,7 @@
 	let search: 'loading' | 'ready' = $state('loading');
 	let searchTerm = $state('');
 	let results = $state([]);
+	let values = $state('');
 
 	interface Boardgame {
 		Family: string;
