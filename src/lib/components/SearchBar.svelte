@@ -10,7 +10,7 @@
 	let results = $state([]);
 
 	interface Boardgame {
-		Family: string;
+		Games: string;
 		Bilingual: string;
 		Category: string;
 	}
@@ -18,7 +18,7 @@
 	onMount(async () => {
 		const f = await (
 			await fetch(
-				'https://docs.google.com/spreadsheets/d/e/2PACX-1vRvgOFOz382IuGr6V0fab_yO03dJ8YL2D5AxdXRyogcQSl1GEDcP2wRV7iPfzfu1ZE1y2k-WLBiz5Ib/pubhtml'
+				'https://docs.google.com/spreadsheets/d/e/2PACX-1vQFx_Iv2nSAN_JE0rcJ4CasXx5bGqHiaffaZTwI-hQyN8WouUed9eV6wTWvOlz5zyRhCy5LK-jIB_3p/pubhtml'
 			)
 		).arrayBuffer();
 		const wb = read(f);
@@ -28,7 +28,7 @@
 		search = 'ready';
 	});
 
-	run(() => {
+	$effect(() => {
 		if (search === 'ready') {
 			results = searchPostsIndex(searchTerm);
 		}
@@ -42,9 +42,9 @@
 				{#each results as result}
 					<li class="p-2">
 						<a href="{result.URL}" target="_blank" rel="noopener noreferrer" class="block text-4xl">
-							{@html result.Family}
+							{@html result.Games}
 						</a>
-						<p>{@html result.Category}</p>
+						<p>{@html result.Category} {@html result.Bilingual}</p>
 					</li>
 				{/each}
 			</ul>

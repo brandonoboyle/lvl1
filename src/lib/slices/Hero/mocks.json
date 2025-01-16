@@ -7,20 +7,15 @@
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
-						"type": "heading1",
-						"content": {
-							"text": "Steel"
-						}
-					},
-					{
 						"type": "paragraph",
 						"content": {
-							"text": "Laboris adipisicing est duis in laboris in officia Lorem officia enim culpa consequat sint ut proident."
+							"text": "Occaecat dolore duis cupidatat reprehenderit elit occaecat eiusmod excepteur Lorem est officia. Amet deserunt officia excepteur aliquip cupidatat ut qui do incididunt velit aute qui. Minim aliqua do enim amet mollit cillum id."
 						}
 					}
 				]
 			},
 			"buttonLink": {
+				"key": "f91bac54-a3cb-42fd-96e0-885466784d96",
 				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
@@ -33,7 +28,6 @@
 				"type": "Text"
 			},
 			"backgroundImage": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
@@ -51,6 +45,9 @@
 					},
 					"background": "transparent"
 				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			}
 		},

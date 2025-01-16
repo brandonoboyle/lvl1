@@ -3,7 +3,7 @@
 
 	import Form from '$lib/components/Form.svelte'
 
-	export let slice: Content.FormSlice;
+	// export let slice: Content.FormSlice;
 </script>
 
 <!--<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>-->

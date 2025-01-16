@@ -4,11 +4,34 @@
 @tailwind variants;
 
 /* rocket theme */
+
 @font-face {
-	font-family: 'Space Grotesk';
-	src: url('/fonts/SpaceGrotesk.ttf');
-	font-display: swap;
+	/* Reference name */
+	font-family: 'NexaH';
+	/* For multiple files use commas, ex: url(), url(), ... */
+	src: url('/fonts/Heading.ttf');
+	/* Gives the font face an extremely small block period and an infinite swap period. */
+    font-display: swap;
 }
+
+@font-face {
+	/* Reference name */
+	font-family: 'NexaB';
+	/* For multiple files use commas, ex: url(), url(), ... */
+	src: url('/fonts/Body.ttf');
+	/* Gives the font face an extremely small block period and an infinite swap period. */
+    font-display: swap;
+}
+
+
+:root [data-theme='rocket'] {
+    --theme-font-family-base: 'NexaB', sans-serif;
+    --theme-font-family-heading: 'NexaH', sans-serif;
+    /* ... */
+}
+
+
+
 
 .gradient-heading {
 	@apply box-decoration-clone bg-clip-text text-transparent;
@@ -23,4 +46,16 @@
 	@apply bg-gradient-to-tr;
 	/* Color Stops */
 	@apply from-secondary-500/50 via-tertiary-500/50 to-error-500/50;
+}
+
+
+html, body { @apply h-full; }
+body {
+	background-image:
+		radial-gradient(at 0% 0%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 90%),
+		radial-gradient(at 98% 1%, rgba(var(--color-error-500) / 0.33) 0px, transparent 90%);
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }

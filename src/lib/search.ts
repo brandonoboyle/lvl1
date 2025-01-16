@@ -7,7 +7,7 @@ export function createPostsIndex(data: any[]) {
 	postsIndex = new FlexSearch.Index({ tokenize: 'forward' });
 
 	data.forEach((post, i) => {
-		const item = `${post.Family} ${post.Category} ${post.URL}`;
+		const item = `${post.Games} ${post.Category} ${post.URL} ${post.Bilingual}`;
 		postsIndex.add(i, item);
 	});
 
@@ -35,11 +35,11 @@ export function searchPostsIndex(searchTerm: string) {
 
 	// Sort the mapped results alphabetically by a specific property (e.g., Family)
 	const sortedResults = mappedResults.sort((a, b) =>
-		a.Family.localeCompare(b.Family)
+		a.Games.localeCompare(b.Games)
 	);
 
 	// Format the sorted results
-	return sortedResults.map(({ Family, Category, URL }) => {
-		return { Family, Category, URL };
+	return sortedResults.map(({ Games, Bilingual, Category, URL }) => {
+		return { Games, Bilingual, Category, URL };
 	});
 }

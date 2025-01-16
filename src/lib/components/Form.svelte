@@ -16,7 +16,8 @@
 
 		<label class="label py-2">
 			<span>Comment</span>
-			<textarea class="textarea" rows="4" placeholder="Comment here" />
+			<textarea class="textarea" placeholder="Comment" rows="4"></textarea>
+			<button type="submit" class="variant-glass-tertiary hover:variant-ghost-tertiary px-5 py-3 text-2xl font-bold rounded-xl">Submit</button>
 		</label>
 	</div>
 </Bounded>

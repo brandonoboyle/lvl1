@@ -40,7 +40,7 @@
 			{#if isFilled.link(slice.primary.buttonLink)}
 				<PrismicLink
 					field={slice.primary.buttonLink}
-					class="variant-glass-tertiary hover:variant-ghost-tertiary rounded px-5 py-3 text-2xl font-bold"
+					class="variant-glass-tertiary hover:variant-ghost-tertiary px-5 py-3 text-2xl font-bold rounded-xl"
 				>
 					{slice.primary.buttonText || "Learn More"}
 				</PrismicLink>
