@@ -10,7 +10,7 @@
 </script>
 
 <div class="">
-	<ul class="grid grid-cols-2 gap-8 px-8">
+	<ul class="grid grid-cols-2 gap-4 p-4">
 		{#each slice.primary.gridgroup as card}
 			<GridSelect {card} />
 		{/each}

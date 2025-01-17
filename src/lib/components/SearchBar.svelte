@@ -49,7 +49,7 @@
 		{/if}
 	</div>
 
-	<div class="variant-glass-surface relative w-full font-sans text-2xl">
+	<div class="relative w-full font-sans text-2xl">
 		<input
 			bind:value={searchTerm}
 			placeholder="Search..."
