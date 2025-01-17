@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import { onMount } from 'svelte';
 	import { createPostsIndex, searchPostsIndex } from '$lib/search';
 	import { read, utils } from 'xlsx';
