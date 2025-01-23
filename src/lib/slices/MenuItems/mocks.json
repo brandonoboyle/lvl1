@@ -61,21 +61,24 @@
 								}
 							],
 							[
-								"buttonLink",
+								"title",
 								{
-									"key": "b805a261-d16c-4922-a9b0-cfabdc9eea3e",
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "ExternalLink",
-										"url": "https://slicemachine.dev"
-									}
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading1",
+											"content": {
+												"text": "World"
+											}
+										}
+									]
 								}
 							],
 							[
-								"buttonText",
+								"price",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "front",
+									"value": "excellent",
 									"type": "Text"
 								}
 							]

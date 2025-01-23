@@ -42,18 +42,18 @@
 <!--Mobile side drawer nav list -->
 <div class="relative">
 	<Drawer>
-<!--		Logo positioning-->
-		<div class="px-6 pt-4 h-full">
-			<button class="border-none outline-none w-full"
+		<!--		Logo positioning-->
+		<div class="h-full px-6 pt-4">
+			<button class="w-full border-none outline-none"
 				><a href="/" class="" onclick={drawerClose}>
-				<img src="/static/square-logo.png" alt="Square Logo" class="">
-			</a></button
+					<img src="../assets/square-logo.png" alt="Square Logo" class="" />
+				</a></button
 			>
-<!--			<hr />-->
+			<!--			<hr />-->
 			<ul class="">
 				{#each navigation.data?.links as item}
 					<button
-						class="grid py-4 px-2 text-4xl font-semibold tracking-tight rounded-xl hover:shadow-2xl hover:bg-surface-700 hover:text-tertiary-200"
+						class="grid rounded-xl px-2 py-4 text-4xl font-semibold tracking-tight hover:bg-surface-700 hover:text-tertiary-200 hover:shadow-2xl"
 						onclick={drawerClose}
 					>
 						<PrismicLink field={item.link}>
@@ -66,9 +66,9 @@
 	</Drawer>
 
 	<!--Main page top nav bar-->
-<!--	This is the whole Header-->
+	<!--	This is the whole Header-->
 	<nav
-		class="z-10 grid w-screen p-4 variant-glass items-center justify-center rounded-lg leading-none drop-shadow-2xl lg:justify-around"
+		class="fixed variant-glass z-20 grid w-screen items-center justify-center rounded-lg p-4 leading-none drop-shadow-2xl lg:justify-around"
 	>
 		<nav class="absolute w-full items-center lg:hidden">
 			<button aria-label="Open mobile nav" class="ml-6" onclick={drawerOpen}>
@@ -93,14 +93,18 @@
 			</button>
 		</nav>
 
-		<a href="/" class="grid justify-center scale-50 md:scale-75">
+		<a href="/" class="grid scale-50 justify-center md:scale-75">
 			<PrismicImage field={settings.data.logo} />
 		</a>
-		<ul class="relative hidden w-screen justify-center rounded-xl text-center lg:flex lg:items-center">
+		<ul
+			class="relative hidden w-screen justify-center rounded-xl text-center lg:flex lg:items-center"
+		>
 			{#each navigation.data?.links as item}
-				<li class="rounded-xl px-4 text-2xl lg:text-3xl text-nowrap font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl">
-<!--					TODO Add padding to Link element to make padding clickable-->
-					<PrismicLink class="py-4 px-2" field={item.link}>
+				<li
+					class="text-nowrap rounded-xl px-4 text-2xl font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl lg:text-3xl"
+				>
+					<!--					TODO Add padding to Link element to make padding clickable-->
+					<PrismicLink class="px-2 py-4" field={item.link}>
 						<PrismicText field={item.label} />
 					</PrismicLink>
 				</li>

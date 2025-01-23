@@ -28,7 +28,6 @@
 	{/if}
 	<Bounded tag="div" yPadding="sm" class="relative">
 		<div class="grid justify-items-center gap-8">
-			<!--TODO: Make cool gradient for the headings-->
 			<div class="max-w-2xl text-center space-y-16 py-6">
 				<PrismicRichText
 					field={slice.primary.text}

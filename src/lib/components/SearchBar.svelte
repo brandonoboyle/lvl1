@@ -33,13 +33,15 @@
 	});
 </script>
 
+
+
 {#if search === 'ready'}
 	<div class="variant-glass-surface h-80 overflow-y-auto p-6 opacity-90">
 		{#if results}
-			<ul class="grid grid-flow-row lg:grid-cols-3 list-none gap-6 text-xl">
+			<ul class="grid list-none grid-flow-row gap-6 text-xl lg:grid-cols-3">
 				{#each results as result}
 					<li class="p-2">
-						<a href="{result.URL}" target="_blank" rel="noopener noreferrer" class="block text-4xl">
+						<a href={result.URL} target="_blank" rel="noopener noreferrer" class="block text-4xl">
 							{@html result.Games}
 						</a>
 						<p>{@html result.Category} {@html result.Bilingual}</p>
@@ -76,5 +78,3 @@
 		</div>
 	</section>
 {/if}
-
-

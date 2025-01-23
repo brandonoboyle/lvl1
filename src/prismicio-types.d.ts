@@ -61,6 +61,7 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| CarouselSlice
 	| FormSlice
 	| VideoGameSearchSlice
 	| GridSelectSlice
@@ -198,6 +199,93 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 >;
 
 export type AllDocumentTypes = NavigationDocument | PageDocument | SettingsDocument;
+
+/**
+ * Item in *Carousel → Default → Primary → Carousel Items*
+ */
+export interface CarouselSliceDefaultPrimaryCarouselItemsItem {
+	/**
+	 * content field in *Carousel → Default → Primary → Carousel Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: carousel.default.primary.carousel_items[].content
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	content: prismic.RichTextField;
+
+	/**
+	 * button text field in *Carousel → Default → Primary → Carousel Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: carousel.default.primary.carousel_items[].button_text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	button_text: prismic.KeyTextField;
+
+	/**
+	 * button link field in *Carousel → Default → Primary → Carousel Items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: carousel.default.primary.carousel_items[].button_link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	button_link: prismic.LinkField;
+
+	/**
+	 * background field in *Carousel → Default → Primary → Carousel Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: carousel.default.primary.carousel_items[].background
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	background: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Carousel → Default → Primary*
+ */
+export interface CarouselSliceDefaultPrimary {
+	/**
+	 * Carousel Items field in *Carousel → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: carousel.default.primary.carousel_items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	carousel_items: prismic.GroupField<Simplify<CarouselSliceDefaultPrimaryCarouselItemsItem>>;
+}
+
+/**
+ * Default variation for Carousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarouselSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<CarouselSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Carousel*
+ */
+type CarouselSliceVariation = CarouselSliceDefault;
+
+/**
+ * Carousel Shared Slice
+ *
+ * - **API ID**: `carousel`
+ * - **Description**: Carousel
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarouselSlice = prismic.SharedSlice<'carousel', CarouselSliceVariation>;
 
 /**
  * Primary content in *Form → Default → Primary*
@@ -475,6 +563,16 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	image: prismic.ImageField<never>;
 
 	/**
+	 * Title field in *MenuItems → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: image_cards.default.primary.cards[].title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
 	 * Text field in *MenuItems → Default → Primary → Cards*
 	 *
 	 * - **Field Type**: Rich Text
@@ -485,24 +583,14 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	text: prismic.RichTextField;
 
 	/**
-	 * Button Link field in *MenuItems → Default → Primary → Cards*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: image_cards.default.primary.cards[].buttonLink
-	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-	 */
-	buttonLink: prismic.LinkField;
-
-	/**
-	 * Button Text field in *MenuItems → Default → Primary → Cards*
+	 * price field in *MenuItems → Default → Primary → Cards*
 	 *
 	 * - **Field Type**: Text
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: image_cards.default.primary.cards[].buttonText
+	 * - **API ID Path**: image_cards.default.primary.cards[].price
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
-	buttonText: prismic.KeyTextField;
+	price: prismic.KeyTextField;
 }
 
 /**
@@ -799,6 +887,11 @@ declare module '@prismicio/client' {
 			SettingsDocument,
 			SettingsDocumentData,
 			AllDocumentTypes,
+			CarouselSlice,
+			CarouselSliceDefaultPrimaryCarouselItemsItem,
+			CarouselSliceDefaultPrimary,
+			CarouselSliceVariation,
+			CarouselSliceDefault,
 			FormSlice,
 			FormSliceDefaultPrimary,
 			FormSliceVariation,

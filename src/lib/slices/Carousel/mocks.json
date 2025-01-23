@@ -1,0 +1,79 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"carousel_items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"content",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Non exercitation minim sint eu fugiat ullamco nostrud mollit elit. Minim veniam exercitation ex. Exercitation et ea in minim ex incididunt aliqua ut in consectetur."
+											}
+										}
+									]
+								}
+							],
+							[
+								"background",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+										"width": 4480,
+										"height": 4480
+									},
+									"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e?rect=0%2C980%2C4480%2C2520&w=1920&h=1080",
+									"width": 1920,
+									"height": 1080,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 980
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"button_link",
+								{
+									"key": "1fec8edc-524e-4767-92e8-edaebdf096ea",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "suppose"
+									}
+								}
+							],
+							[
+								"button_text",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "year",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
