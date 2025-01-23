@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import { PrismicLink, PrismicText, PrismicImage } from '@prismicio/svelte';
-
+	import squareLogo from '$lib/assets/square-logo.png';
 	import {
 		initializeStores,
 		Drawer,
@@ -46,7 +46,7 @@
 		<div class="h-full px-6 pt-4">
 			<button class="w-full border-none outline-none"
 				><a href="/" class="" onclick={drawerClose}>
-					<img src="../assets/square-logo.png" alt="Square Logo" class="" />
+					<img src={squareLogo} alt="Square Logo" class="" />
 				</a></button
 			>
 			<!--			<hr />-->
