@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import { PrismicLink, PrismicText, PrismicImage } from '@prismicio/svelte';
-	import squareLogo from '$lib/assets/square-logo.png';
+	import squareLogo from '$lib/assets/logo/square-logo.png';
+	import logo from '$lib/assets/logo/logo-text.png';
+	import smallLogo from '$lib/assets/logo/small-logo.png';
 	import {
 		initializeStores,
 		Drawer,
@@ -40,7 +42,7 @@
 </script>
 
 <!--Mobile side drawer nav list -->
-<div class="relative">
+<div class="relative text-slate-100">
 	<Drawer>
 		<!--		Logo positioning-->
 		<div class="h-full px-6 pt-4">
@@ -53,7 +55,7 @@
 			<ul class="">
 				{#each navigation.data?.links as item}
 					<button
-						class="grid rounded-xl px-2 py-4 text-4xl font-semibold tracking-tight hover:bg-surface-700 hover:text-tertiary-200 hover:shadow-2xl"
+						class="grid rounded-xl px-2 py-4 text-3xl font-semibold tracking-tight hover:bg-surface-700 hover:text-tertiary-200 hover:shadow-2xl"
 						onclick={drawerClose}
 					>
 						<PrismicLink field={item.link}>
@@ -68,13 +70,13 @@
 	<!--Main page top nav bar-->
 	<!--	This is the whole Header-->
 	<nav
-		class="fixed variant-glass z-20 grid w-screen items-center justify-center rounded-lg p-4 leading-none drop-shadow-2xl lg:justify-around"
+		class="fixed variant-glass z-10 w-screen items-center justify-center leading-none drop-shadow-2xl"
 	>
 		<nav class="absolute w-full items-center lg:hidden">
-			<button aria-label="Open mobile nav" class="ml-6" onclick={drawerOpen}>
+			<button aria-label="Open mobile nav" class="ml-2 mt-5" onclick={drawerOpen}>
 				<span>
 					<svg
-						class="h-10 w-10 text-gray-800 dark:text-white"
+						class="h-12 w-12 text-gray-800 dark:text-white"
 						aria-hidden="true"
 						xmlns="http://www.w3.org/2000/svg"
 						width="24"
@@ -85,30 +87,33 @@
 						<path
 							stroke="currentColor"
 							stroke-linecap="round"
-							stroke-width="2"
+							stroke-width="1.5"
 							d="M5 7h14M5 12h14M5 17h14"
 						/>
 					</svg>
 				</span>
 			</button>
 		</nav>
-
-		<a href="/" class="grid scale-50 justify-center md:scale-75">
-			<PrismicImage field={settings.data.logo} />
-		</a>
-		<ul
-			class="relative hidden w-screen justify-center rounded-xl text-center lg:flex lg:items-center"
-		>
-			{#each navigation.data?.links as item}
-				<li
-					class="text-nowrap rounded-xl px-4 text-2xl font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl lg:text-3xl"
-				>
-					<!--					TODO Add padding to Link element to make padding clickable-->
-					<PrismicLink class="px-2 py-4" field={item.link}>
-						<PrismicText field={item.label} />
-					</PrismicLink>
-				</li>
-			{/each}
-		</ul>
+		<div class="items-center pt-3 grid lg:grid-rows-2 justify-items-center">
+			<!-- <a href="/" class="lg:grid w-fit hidden justify-center scale-75 md:scale-100">
+				<img src={smallLogo} alt="levelonelogo" class="" />
+			</a> -->
+			<a href="/" class="grid w-fit justify-center pb-2 lg:pb-0 scale-75 md:scale-90">
+				<img src={logo} alt="levelonelogo" class="" />
+			</a>
+			<ul
+				class="relative hidden justify-center text-center lg:flex lg:items-center"
+			>
+				{#each navigation.data?.links as item}
+					<li
+						class="text-nowrap px-6 font-semibold tracking-tight text-lg hover:text-tertiary-200 hover:shadow-2xl"
+					>
+						<PrismicLink class="" field={item.link}>
+							<PrismicText field={item.label} />
+						</PrismicLink>
+					</li>
+				{/each}
+			</ul>
+		</div>
 	</nav>
 </div>

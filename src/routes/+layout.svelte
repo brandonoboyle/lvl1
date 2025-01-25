@@ -30,7 +30,7 @@
 <div>
 	<Header navigation={data.navigation} settings={data.settings} />
 
-	<main class="pt-20">{@render children?.()}</main>
+	<main class="pt-36 text-slate-100">{@render children?.()}</main>
 </div>
 
 <PrismicPreview {repositoryName} />

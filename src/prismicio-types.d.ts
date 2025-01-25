@@ -26,7 +26,7 @@ export interface NavigationDocumentDataLinksItem {
 	 * - **API ID Path**: navigation.links[].link
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
-	link: prismic.LinkField;
+	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -232,7 +232,7 @@ export interface CarouselSliceDefaultPrimaryCarouselItemsItem {
 	 * - **API ID Path**: carousel.default.primary.carousel_items[].button_link
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
-	button_link: prismic.LinkField;
+	button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
 	/**
 	 * background field in *Carousel → Default → Primary → Carousel Items*
@@ -361,7 +361,7 @@ export interface GridSelectSliceDefaultPrimaryGridgroupItem {
 	 * - **API ID Path**: grid_select.default.primary.gridgroup[].gridlink
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
-	gridlink: prismic.LinkField;
+	gridlink: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -428,7 +428,7 @@ export interface HeroSliceDefaultPrimary {
 	 * - **API ID Path**: hero.default.primary.buttonLink
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
-	buttonLink: prismic.LinkField;
+	buttonLink: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 
 	/**
 	 * Button Text field in *Hero → Default → Primary*
@@ -573,6 +573,16 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	title: prismic.RichTextField;
 
 	/**
+	 * price field in *MenuItems → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: price
+	 * - **API ID Path**: image_cards.default.primary.cards[].price
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	price: prismic.RichTextField;
+
+	/**
 	 * Text field in *MenuItems → Default → Primary → Cards*
 	 *
 	 * - **Field Type**: Rich Text
@@ -583,14 +593,14 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	text: prismic.RichTextField;
 
 	/**
-	 * price field in *MenuItems → Default → Primary → Cards*
+	 * notes field in *MenuItems → Default → Primary → Cards*
 	 *
-	 * - **Field Type**: Text
+	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: image_cards.default.primary.cards[].price
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 * - **API ID Path**: image_cards.default.primary.cards[].notes
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
-	price: prismic.KeyTextField;
+	notes: prismic.RichTextField;
 }
 
 /**

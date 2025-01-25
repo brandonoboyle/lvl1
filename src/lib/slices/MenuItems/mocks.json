@@ -77,9 +77,29 @@
 							[
 								"price",
 								{
-									"__TYPE__": "FieldContent",
-									"value": "excellent",
-									"type": "Text"
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nostrud sint irure excepteur eu cillum ipsum do amet nostrud exercitation adipisicing. Sint qui nostrud sint."
+											}
+										}
+									]
+								}
+							],
+							[
+								"notes",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ad enim pariatur in anim minim voluptate enim sint esse magna do qui sint. Laborum in eu sint consectetur quis."
+											}
+										}
+									]
 								}
 							]
 						]
