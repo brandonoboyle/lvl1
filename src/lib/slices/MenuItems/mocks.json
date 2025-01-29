@@ -61,22 +61,45 @@
 								}
 							],
 							[
-								"buttonLink",
+								"title",
 								{
-									"key": "b805a261-d16c-4922-a9b0-cfabdc9eea3e",
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "ExternalLink",
-										"url": "https://slicemachine.dev"
-									}
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading1",
+											"content": {
+												"text": "World"
+											}
+										}
+									]
 								}
 							],
 							[
-								"buttonText",
+								"price",
 								{
-									"__TYPE__": "FieldContent",
-									"value": "front",
-									"type": "Text"
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nostrud sint irure excepteur eu cillum ipsum do amet nostrud exercitation adipisicing. Sint qui nostrud sint."
+											}
+										}
+									]
+								}
+							],
+							[
+								"notes",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ad enim pariatur in anim minim voluptate enim sint esse magna do qui sint. Laborum in eu sint consectetur quis."
+											}
+										}
+									]
 								}
 							]
 						]

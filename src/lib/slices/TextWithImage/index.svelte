@@ -14,6 +14,7 @@
 
 <Bounded
 	as="section"
+	yPadding="sm"
 	class=""
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}

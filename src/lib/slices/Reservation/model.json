@@ -1,0 +1,16 @@
+{
+	"id": "reservation",
+	"type": "SharedSlice",
+	"name": "Reservation",
+	"description": "Reservation",
+	"variations": [
+		{
+			"id": "default",
+			"name": "Default",
+			"docURL": "...",
+			"version": "initial",
+			"description": "Default",
+			"imageUrl": ""
+		}
+	]
+}

@@ -1,13 +1,20 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import { PrismicLink, PrismicText, PrismicImage } from '@prismicio/svelte';
-
+	import squareLogo from '$lib/assets/logo/square-logo.png';
+	import logo from '$lib/assets/logo/logo-text.png';
+	import smallLogo from '$lib/assets/logo/small-logo.png';
 	import {
 		initializeStores,
 		Drawer,
 		getDrawerStore,
 		type DrawerSettings
 	} from '@skeletonlabs/skeleton';
+
+	import Facebook from '$lib/assets/icons/Facebook.svelte';
+	import Instagram from '$lib/assets/icons/Instagram.svelte';
+	import Twitter from '$lib/assets/icons/Twitter.svelte';
+	import Youtube from '$lib/assets/icons/Youtube.svelte';
 
 	initializeStores();
 
@@ -32,25 +39,27 @@
 	};
 
 	interface Props {
-		settings: Content.SettingsDocument;
 		navigation: Content.NavigationDocument;
 	}
 
-	let { settings, navigation }: Props = $props();
+	let { navigation }: Props = $props();
 </script>
 
 <!--Mobile side drawer nav list -->
-<div class="relative">
+<div class="relative text-slate-100">
 	<Drawer>
-		<div class="p-6">
-			<button class="border-none outline-none"
-				><a href="/" class="p-4 text-5xl" onclick={drawerClose}>Home</a></button
+		<!--		Logo positioning-->
+		<div class="h-full px-6 pt-4">
+			<button class="w-full border-none outline-none"
+				><a href="/" class="" onclick={drawerClose}>
+					<img src={squareLogo} alt="Square Logo" class="" />
+				</a></button
 			>
-			<hr />
-			<ul class="pt-6">
+			<!--			<hr />-->
+			<ul class="">
 				{#each navigation.data?.links as item}
 					<button
-						class="grid py-6 px-2 text-4xl font-semibold tracking-tight rounded-xl hover:shadow-2xl hover:bg-surface-700 hover:text-tertiary-200"
+						class="grid rounded-xl px-2 py-4 text-3xl font-semibold tracking-tight hover:bg-surface-700 hover:text-tertiary-200 hover:shadow-2xl"
 						onclick={drawerClose}
 					>
 						<PrismicLink field={item.link}>
@@ -59,18 +68,33 @@
 					</button>
 				{/each}
 			</ul>
+			<div class="grid grid-flow-col justify-items-center pt-10">
+				<a href="https://twitter.com/LevelOneGamePub" target="_blank">
+					<Twitter />
+				</a>
+				<a href="https://www.facebook.com/leveloneottawa/" target="_blank">
+					<Facebook />
+				</a>
+				<a href="https://www.instagram.com/LevelOneGamePub/" target="_blank">
+					<Instagram />
+				</a>
+				<a href="https://www.youtube.com/channel/UCxUrR521vvkLbU_mIE9xLnQ" target="_blank">
+					<Youtube />
+				</a>
+			</div>
 		</div>
 	</Drawer>
 
 	<!--Main page top nav bar-->
+	<!--	This is the whole Header-->
 	<nav
-		class="variant-glass fixed z-10 flex w-screen items-center justify-center rounded-lg leading-none drop-shadow-2xl lg:justify-around lg:p-4"
+		class="variant-glass fixed z-10 w-screen items-center justify-items-center leading-none drop-shadow-2xl"
 	>
-		<nav class="absolute flex w-full items-center">
-			<button aria-label="Open mobile nav" class="ml-6 lg:hidden" onclick={drawerOpen}>
+		<nav class="absolute w-full items-center lg:hidden">
+			<button aria-label="Open mobile nav" class="ml-2 mt-5" onclick={drawerOpen}>
 				<span>
 					<svg
-						class="h-10 w-10 text-gray-800 dark:text-white"
+						class="h-12 w-12 text-gray-800 dark:text-white"
 						aria-hidden="true"
 						xmlns="http://www.w3.org/2000/svg"
 						width="24"
@@ -81,22 +105,39 @@
 						<path
 							stroke="currentColor"
 							stroke-linecap="round"
-							stroke-width="2"
+							stroke-width="1.5"
 							d="M5 7h14M5 12h14M5 17h14"
 						/>
 					</svg>
 				</span>
 			</button>
 		</nav>
-
-		<a href="/" class="relative scale-50 md:scale-75 lg:scale-100 py-2 md:py-0">
-			<PrismicImage field={settings.data.logo} />
-		</a>
-		<ul class="relative hidden text-center lg:flex lg:items-center">
+		<div class="grid items-center justify-items-center pt-3 lg:grid-cols-1">
+			<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
+				<img src={logo} alt="levelonelogo" class="" />
+			</a>
+			<div class="absolute right-0 hidden grid-flow-col lg:grid h-1/4 w-1/6 pr-6">
+				<a href="https://twitter.com/LevelOneGamePub" target="_blank">
+					<Twitter />
+				</a>
+				<a href="https://www.facebook.com/leveloneottawa/" target="_blank">
+					<Facebook />
+				</a>
+				<a href="https://www.instagram.com/LevelOneGamePub/" target="_blank">
+					<Instagram />
+				</a>
+				<a href="https://www.youtube.com/channel/UCxUrR521vvkLbU_mIE9xLnQ" target="_blank">
+					<Youtube />
+				</a>
+			</div>
+		</div>
+		
+		<ul class="relative hidden justify-center text-center lg:flex lg:items-center">
 			{#each navigation.data?.links as item}
-				<li class="rounded-xl p-4 text-2xl lg:text-3xl text-nowrap font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl hover:bg-surface-700">
-<!--					TODO Add padding to Link element to make padding clickable-->
-					<PrismicLink class="py-4 px-2" field={item.link}>
+				<li
+					class="text-nowrap px-6 text-lg font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl"
+				>
+					<PrismicLink class="" field={item.link}>
 						<PrismicText field={item.label} />
 					</PrismicLink>
 				</li>

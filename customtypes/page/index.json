@@ -35,6 +35,12 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"reservation": {
+							"type": "SharedSlice"
+						},
+						"carousel": {
+							"type": "SharedSlice"
+						},
 						"form": {
 							"type": "SharedSlice"
 						},

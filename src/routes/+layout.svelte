@@ -28,9 +28,9 @@
 	{/if}
 </svelte:head>
 <div>
-	<Header navigation={data.navigation} settings={data.settings} />
+	<Header navigation={data.navigation} />
 
-	<main class="pt-32">{@render children?.()}</main>
+	<main class="pt-36 text-slate-100">{@render children?.()}</main>
 </div>
 
 <PrismicPreview {repositoryName} />
