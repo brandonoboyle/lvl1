@@ -61,6 +61,7 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| ReservationSlice
 	| CarouselSlice
 	| FormSlice
 	| VideoGameSearchSlice
@@ -656,6 +657,33 @@ type ImageCardsSliceVariation = ImageCardsSliceDefault;
 export type ImageCardsSlice = prismic.SharedSlice<'image_cards', ImageCardsSliceVariation>;
 
 /**
+ * Default variation for Reservation Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReservationSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Reservation*
+ */
+type ReservationSliceVariation = ReservationSliceDefault;
+
+/**
+ * Reservation Shared Slice
+ *
+ * - **API ID**: `reservation`
+ * - **Description**: Reservation
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReservationSlice = prismic.SharedSlice<'reservation', ReservationSliceVariation>;
+
+/**
  * Primary content in *Search → Default → Primary*
  */
 export interface SearchSliceDefaultPrimary {
@@ -926,6 +954,9 @@ declare module '@prismicio/client' {
 			ImageCardsSliceDefaultPrimary,
 			ImageCardsSliceVariation,
 			ImageCardsSliceDefault,
+			ReservationSlice,
+			ReservationSliceVariation,
+			ReservationSliceDefault,
 			SearchSlice,
 			SearchSliceDefaultPrimary,
 			SearchSliceVariation,

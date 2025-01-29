@@ -11,6 +11,11 @@
 		type DrawerSettings
 	} from '@skeletonlabs/skeleton';
 
+	import Facebook from '$lib/assets/icons/Facebook.svelte';
+	import Instagram from '$lib/assets/icons/Instagram.svelte';
+	import Twitter from '$lib/assets/icons/Twitter.svelte';
+	import Youtube from '$lib/assets/icons/Youtube.svelte';
+
 	initializeStores();
 
 	const drawerStore = getDrawerStore();
@@ -34,11 +39,10 @@
 	};
 
 	interface Props {
-		settings: Content.SettingsDocument;
 		navigation: Content.NavigationDocument;
 	}
 
-	let { settings, navigation }: Props = $props();
+	let { navigation }: Props = $props();
 </script>
 
 <!--Mobile side drawer nav list -->
@@ -64,13 +68,27 @@
 					</button>
 				{/each}
 			</ul>
+			<div class="grid grid-flow-col justify-items-center pt-10">
+				<a href="https://twitter.com/LevelOneGamePub" target="_blank">
+					<Twitter />
+				</a>
+				<a href="https://www.facebook.com/leveloneottawa/" target="_blank">
+					<Facebook />
+				</a>
+				<a href="https://www.instagram.com/LevelOneGamePub/" target="_blank">
+					<Instagram />
+				</a>
+				<a href="https://www.youtube.com/channel/UCxUrR521vvkLbU_mIE9xLnQ" target="_blank">
+					<Youtube />
+				</a>
+			</div>
 		</div>
 	</Drawer>
 
 	<!--Main page top nav bar-->
 	<!--	This is the whole Header-->
 	<nav
-		class="fixed variant-glass z-10 w-screen items-center justify-center leading-none drop-shadow-2xl"
+		class="variant-glass fixed z-10 w-screen items-center justify-items-center leading-none drop-shadow-2xl"
 	>
 		<nav class="absolute w-full items-center lg:hidden">
 			<button aria-label="Open mobile nav" class="ml-2 mt-5" onclick={drawerOpen}>
@@ -94,26 +112,36 @@
 				</span>
 			</button>
 		</nav>
-		<div class="items-center pt-3 grid lg:grid-rows-2 justify-items-center">
-			<!-- <a href="/" class="lg:grid w-fit hidden justify-center scale-75 md:scale-100">
-				<img src={smallLogo} alt="levelonelogo" class="" />
-			</a> -->
-			<a href="/" class="grid w-fit justify-center pb-2 lg:pb-0 scale-75 md:scale-90">
+		<div class="grid items-center justify-items-center pt-3 lg:grid-cols-1">
+			<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
 				<img src={logo} alt="levelonelogo" class="" />
 			</a>
-			<ul
-				class="relative hidden justify-center text-center lg:flex lg:items-center"
-			>
-				{#each navigation.data?.links as item}
-					<li
-						class="text-nowrap px-6 font-semibold tracking-tight text-lg hover:text-tertiary-200 hover:shadow-2xl"
-					>
-						<PrismicLink class="" field={item.link}>
-							<PrismicText field={item.label} />
-						</PrismicLink>
-					</li>
-				{/each}
-			</ul>
+			<div class="absolute right-0 hidden grid-flow-col lg:grid h-1/4 w-1/6 pr-6">
+				<a href="https://twitter.com/LevelOneGamePub" target="_blank">
+					<Twitter />
+				</a>
+				<a href="https://www.facebook.com/leveloneottawa/" target="_blank">
+					<Facebook />
+				</a>
+				<a href="https://www.instagram.com/LevelOneGamePub/" target="_blank">
+					<Instagram />
+				</a>
+				<a href="https://www.youtube.com/channel/UCxUrR521vvkLbU_mIE9xLnQ" target="_blank">
+					<Youtube />
+				</a>
+			</div>
 		</div>
+		
+		<ul class="relative hidden justify-center text-center lg:flex lg:items-center">
+			{#each navigation.data?.links as item}
+				<li
+					class="text-nowrap px-6 text-lg font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl"
+				>
+					<PrismicLink class="" field={item.link}>
+						<PrismicText field={item.label} />
+					</PrismicLink>
+				</li>
+			{/each}
+		</ul>
 	</nav>
 </div>

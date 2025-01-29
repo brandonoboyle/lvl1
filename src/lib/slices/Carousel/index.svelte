@@ -90,7 +90,7 @@
 	onmouseenter={handleInteractionStart}
     onmouseleave={handleInteractionEnd}
 >
-	<div class="carousel-track flex" style="transform: translateX(-{currentIndex * 100}%)">
+	<div class="carousel-track flex w-11/12 sm:w-full" style="transform: translateX(-{currentIndex * 100}%)">
 		{#each slice.primary.carousel_items as card}
 			<div class="w-full flex-shrink-0">
 				<section class="relative drop-shadow-2xl">
@@ -103,7 +103,7 @@
 					{/if}
 					<Bounded tag="div" yPadding="base" class="relative">
 						<div class="grid h-full justify-items-center gap-8">
-							<div class="min-h-32 max-w-2xl content-center text-center">
+							<div class="min-h-32 max-w-xl md:max-w-2xl content-center text-center">
 								<PrismicRichText
 									field={card.content}
 									components={{

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { isFilled, type Content } from '@prismicio/client';
-	import { PrismicImage, PrismicLink } from '@prismicio/svelte';
+	import { PrismicImage } from '@prismicio/svelte';
 
 	import PrismicRichText from '$lib/components/PrismicRichText.svelte';
 
