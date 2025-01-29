@@ -9,4 +9,9 @@ declare global {
 	}
 }
 
+declare module '$env/static/private' {
+	export const RESEND_API_KEY: string;
+	// Add other environment variables here if needed
+}
+
 export {};

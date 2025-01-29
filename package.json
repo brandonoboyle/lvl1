@@ -54,6 +54,7 @@
 		"@vercel/speed-insights": "^1.1.0",
 		"clsx": "^2.1.1",
 		"flexsearch": "^0.7.43",
+		"resend": "^4.1.1",
 		"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
 	}
 }

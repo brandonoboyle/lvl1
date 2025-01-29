@@ -27,6 +27,7 @@
 	<Bounded tag="div" yPadding="sm" class="relative">
 		<div class="grid justify-items-center gap-8">
 			<div class="max-w-2xl space-y-16 py-6 text-center">
+				<!-- an error is called for this heading declaration but I swear it works fine -->
 				<PrismicRichText
 					field={slice.primary.text}
 					components={{

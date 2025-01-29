@@ -90,49 +90,53 @@
 	<nav
 		class="variant-glass fixed z-10 w-screen items-center justify-items-center leading-none drop-shadow-2xl"
 	>
-		<nav class="absolute w-full items-center lg:hidden">
-			<button aria-label="Open mobile nav" class="ml-2 mt-5" onclick={drawerOpen}>
-				<span>
-					<svg
-						class="h-12 w-12 text-gray-800 dark:text-white"
-						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="24"
-						fill="none"
-						viewBox="0 0 24 24"
-					>
-						<path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-width="1.5"
-							d="M5 7h14M5 12h14M5 17h14"
-						/>
-					</svg>
-				</span>
-			</button>
-		</nav>
-		<div class="grid items-center justify-items-center pt-3 lg:grid-cols-1">
-			<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
-				<img src={logo} alt="levelonelogo" class="" />
-			</a>
-			<div class="absolute right-0 hidden grid-flow-col lg:grid h-1/4 w-1/6 pr-6">
-				<a href="https://twitter.com/LevelOneGamePub" target="_blank">
-					<Twitter />
+		<div class="w-full">
+			<nav class="absolute w-full items-center lg:hidden">
+				<button aria-label="Open mobile nav" class="ml-2 mt-5" onclick={drawerOpen}>
+					<span>
+						<svg
+							class="h-12 w-12 text-gray-800 dark:text-slate-100"
+							aria-hidden="true"
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							fill="none"
+							viewBox="0 0 24 24"
+						>
+							<path
+								stroke="currentColor"
+								stroke-linecap="round"
+								stroke-width="1.5"
+								d="M5 7h14M5 12h14M5 17h14"
+							/>
+						</svg>
+					</span>
+				</button>
+			</nav>
+			<div class="grid items-center justify-items-center pt-3 lg:grid-cols-1">
+				<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
+					<img src={logo} alt="levelonelogo" class="" />
 				</a>
-				<a href="https://www.facebook.com/leveloneottawa/" target="_blank">
-					<Facebook />
-				</a>
-				<a href="https://www.instagram.com/LevelOneGamePub/" target="_blank">
-					<Instagram />
-				</a>
-				<a href="https://www.youtube.com/channel/UCxUrR521vvkLbU_mIE9xLnQ" target="_blank">
-					<Youtube />
-				</a>
+				<div class="absolute right-0 hidden h-1/4 w-1/6 grid-flow-col pr-6 lg:grid">
+					<a href="https://twitter.com/LevelOneGamePub" target="_blank">
+						<Twitter />
+					</a>
+					<a href="https://www.facebook.com/leveloneottawa/" target="_blank">
+						<Facebook />
+					</a>
+					<a href="https://www.instagram.com/LevelOneGamePub/" target="_blank">
+						<Instagram />
+					</a>
+					<a href="https://www.youtube.com/channel/UCxUrR521vvkLbU_mIE9xLnQ" target="_blank">
+						<Youtube />
+					</a>
+				</div>
 			</div>
 		</div>
-		
-		<ul class="relative hidden justify-center text-center lg:flex lg:items-center">
+
+		<ul
+			class="relative hidden h-full w-full justify-center bg-surface-800 py-1 text-center lg:flex lg:items-center"
+		>
 			{#each navigation.data?.links as item}
 				<li
 					class="text-nowrap px-6 text-lg font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl"
