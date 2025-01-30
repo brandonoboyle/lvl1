@@ -15,18 +15,7 @@ export function createPostsIndex(data: any[]) {
 }
 
 export function searchPostsIndex(searchTerm: string) {
-	// escape special regex characters
-// 	const match = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-// 	const results = postsIndex.search(match);
-// 	console.log(results);
-//
-// 	return results
-// 		.map((index) => posts[index as number])
-// 		.map(({ Family, Category, URL }) => {
-// 			return { Family, Category, URL };
-// 		});
-// }
-// Escape special regex characters
+	// Escape special regex characters
 	const match = searchTerm.replace(/[.*+?^${}()|[]\]/g, '\$&');
 	const results = postsIndex.search(match);
 
@@ -34,9 +23,7 @@ export function searchPostsIndex(searchTerm: string) {
 	const mappedResults = results.map((index) => posts[index as number]);
 
 	// Sort the mapped results alphabetically by a specific property (e.g., Family)
-	const sortedResults = mappedResults.sort((a, b) =>
-		a.Games.localeCompare(b.Games)
-	);
+	const sortedResults = mappedResults.sort((a, b) => a.Games.localeCompare(b.Games));
 
 	// Format the sorted results
 	return sortedResults.map(({ Games, Bilingual, Category, URL }) => {

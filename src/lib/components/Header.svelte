@@ -50,7 +50,7 @@
 	<Drawer>
 		<!--		Logo positioning-->
 		<div class="h-full px-6 pt-4">
-			<button class="w-full border-none outline-none"
+			<button class="w-full grid justify-center border-none outline-none"
 				><a href="/" class="" onclick={drawerClose}>
 					<img src={squareLogo} alt="Square Logo" class="" />
 				</a></button

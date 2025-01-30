@@ -21,7 +21,7 @@
 		</Heading>
 	{/if}
 	<ul
-		class="variant-glass grid grid-cols-1 items-start gap-12 rounded-lg p-8 drop-shadow-2xl lg:grid-cols-2"
+		class="variant-glass grid gap-12 rounded-xl p-8 drop-shadow-2xl lg:grid-cols-2"
 	>
 		{#each slice.primary.cards as card}
 			<MenuItems {card} />

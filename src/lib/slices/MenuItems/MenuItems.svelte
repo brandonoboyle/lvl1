@@ -17,11 +17,11 @@
 			<PrismicImage class="rounded-xl drop-shadow-2xl" field={card.image} sizes="" />
 		</div>
 	{/if}
-	<div class="grid h-min w-full grid-cols-2 text-pretty">
+	<div class="grid h-full w-full grid-cols-2 text-pretty">
 		<div class="justify-items-start">
 			<PrismicRichText field={card.title} />
 		</div>
-		<div class="justify-items-end">
+		<div class="grid justify-items-end">
 			<PrismicRichText field={card.price} />
 		</div>
 		<div class="col-span-2 w-full">

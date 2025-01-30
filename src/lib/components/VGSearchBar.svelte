@@ -43,7 +43,7 @@
 				{#each results as result}
 					<li class="p-2">
 						<a href="{result.URL}" target="_blank" rel="noopener noreferrer" class="block text-4xl">
-							{@html result.Family}
+							{@html result.Games}
 						</a>
 						<p class="text-primary-400">{@html result.Category}</p>
 					</li>
