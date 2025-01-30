@@ -5,7 +5,7 @@
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
 
 	let search: 'loading' | 'ready' = $state('loading');
-	let searchTerm = $state(' ');
+	let searchTerm = $state('');
 	let results = $state([]);
 	let tabSet: number = $state(0);
 
@@ -56,7 +56,7 @@
 			<!-- Tab Panels --->
 			<svelte:fragment slot="panel">
 				{#if tabSet === 0}
-					{searchTerm = ' '}
+					{searchTerm = ''}
 				{:else if tabSet === 1}
 					(tab panel 2 contents)
 				{:else if tabSet === 2}
