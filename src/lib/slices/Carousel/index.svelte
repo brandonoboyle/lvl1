@@ -10,7 +10,7 @@
 	let touchEndX = 0;
 	const swipeThreshold = 50; // minimum distance for a swipe
 
-	const AUTO_SLIDE_INTERVAL = 10000; // 10 seconds between slides
+	const AUTO_SLIDE_INTERVAL = 4000; // 4 seconds between slides
     let autoSlideTimer: number;
     let isPaused = false;
 
@@ -90,7 +90,7 @@
 	onmouseenter={handleInteractionStart}
     onmouseleave={handleInteractionEnd}
 >
-	<div class="carousel-track flex w-11/12 sm:w-full" style="transform: translateX(-{currentIndex * 100}%)">
+	<div class="carousel-track flex w-full" style="transform: translateX(-{currentIndex * 100}%)">
 		{#each slice.primary.carousel_items as card}
 			<div class="w-full flex-shrink-0">
 				<section class="relative drop-shadow-2xl">
@@ -118,21 +118,6 @@
 		{/each}
 	</div>
 
-	<!-- <button
-		class="absolute left-[3%] top-1/3 -translate-y-1/2 transform rounded-full bg-surface-800 p-2 text-7xl text-white opacity-75 transition md:left-[10%] md:top-1/2"
-		onclick={() =>
-			(currentIndex =
-				(currentIndex - 1 + slice.primary.carousel_items.length) %
-				slice.primary.carousel_items.length)}
-	>
-		‹
-	</button>
-	<button
-		class="absolute right-[3%] top-1/3 -translate-y-1/2 transform rounded-full bg-surface-800 p-2 text-7xl text-white opacity-75 transition md:right-[10%] md:top-1/2"
-		onclick={() => (currentIndex = (currentIndex + 1) % slice.primary.carousel_items.length)}
-	>
-		›
-	</button> -->
 	<div class="absolute bottom-0 left-1/2 flex -translate-x-1/2 gap-5">
 		{#each slice.primary.carousel_items as _, index}
 			<button

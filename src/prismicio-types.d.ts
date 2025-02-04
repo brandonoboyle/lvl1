@@ -289,6 +289,29 @@ type CarouselSliceVariation = CarouselSliceDefault;
 export type CarouselSlice = prismic.SharedSlice<'carousel', CarouselSliceVariation>;
 
 /**
+ * Default variation for Dnd Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DndSliceDefault = prismic.SharedSliceVariation<'default', Record<string, never>, never>;
+
+/**
+ * Slice variation for *Dnd*
+ */
+type DndSliceVariation = DndSliceDefault;
+
+/**
+ * Dnd Shared Slice
+ *
+ * - **API ID**: `dnd`
+ * - **Description**: Dnd
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DndSlice = prismic.SharedSlice<'dnd', DndSliceVariation>;
+
+/**
  * Primary content in *Form → Default → Primary*
  */
 export interface FormSliceDefaultPrimary {
@@ -930,6 +953,9 @@ declare module '@prismicio/client' {
 			CarouselSliceDefaultPrimary,
 			CarouselSliceVariation,
 			CarouselSliceDefault,
+			DndSlice,
+			DndSliceVariation,
+			DndSliceDefault,
 			FormSlice,
 			FormSliceDefaultPrimary,
 			FormSliceVariation,

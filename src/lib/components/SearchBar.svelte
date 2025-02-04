@@ -8,6 +8,9 @@
 	let searchTerm = $state('');
 	let results = $state([]);
 	let tabSet: number = $state(0);
+	let categoryTerm = $state('');
+	let bilingualTerm = $state('');
+	let searchCombination = $derived([searchTerm, categoryTerm, bilingualTerm]);
 
 	interface Boardgame {
 		Games: string;
@@ -29,7 +32,7 @@
 
 	$effect(() => {
 		if (search === 'ready') {
-			results = searchPostsIndex(searchTerm);
+			results = searchPostsIndex(searchTerm + ' ' + categoryTerm + ' ' + bilingualTerm);
 		}
 	});
 </script>
@@ -54,21 +57,21 @@
 			<Tab bind:group={tabSet} name="tab13" value={12}>Trivia</Tab>
 			<Tab bind:group={tabSet} name="tab14" value={13}>Two Player</Tab>
 			<!-- Tab Panels --->
-			<svelte:fragment slot="panel">
+			
 				{#if tabSet === 0}
-					{searchTerm = ''}
+					<p class="hidden">{categoryTerm = ''}</p>
 				{:else if tabSet === 1}
-					(tab panel 2 contents)
+					<p class="hidden">{bilingualTerm = '(en/fr)'}</p>
 				{:else if tabSet === 2}
 					(tab panel 3 contents)
 				{:else if tabSet === 3}
 					(tab panel 4 contents)
 				{:else if tabSet === 4}
-					(tab panel 5 contents)
+					<p class="hidden">{categoryTerm = 'Dexterity'}</p>
 				{:else if tabSet === 5}
-					(tab panel 6 contents)
+					<p class="hidden">{categoryTerm = 'Family'}</p>
 				{:else if tabSet === 6}
-					(tab panel 7 contents)
+					<p class="hidden">{categoryTerm = 'Light Strategy'}</p>
 				{:else if tabSet === 7}
 					(tab panel 8 contents)
 				{:else if tabSet === 8}
@@ -84,7 +87,7 @@
 				{:else if tabSet === 13}
 					(tab panel 14 contents)
 				{/if}
-			</svelte:fragment>
+			
 		</TabGroup>
 		<div class="variant-glass-surface h-80 overflow-y-auto p-6 opacity-90">
 			{#if results}
