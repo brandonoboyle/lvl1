@@ -123,7 +123,7 @@
 			<button
 				class="h-5 w-5 rounded-full transition-colors duration-300 {index === currentIndex
 					? 'bg-surface-100'
-					: 'bg-surface-500'}"
+					: 'bg-surface-500-'}"
 				onclick={() => (currentIndex = index)}
 				aria-label="Go to slide {index + 1}"
 			></button>

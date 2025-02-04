@@ -52,10 +52,10 @@
 				</a></button
 			>
 			<!--			<hr />-->
-			<ul class="">
+			<ul class="pt-2">
 				{#each navigation.data?.links as item}
 					<button
-						class="grid rounded-xl px-2 py-4 text-3xl font-semibold tracking-tight hover:bg-surface-700 hover:text-tertiary-200 hover:shadow-2xl"
+						class="grid rounded-xl p-2 text-3xl font-semibold tracking-tight hover:bg-surface-700 hover:text-tertiary-200 hover:shadow-2xl"
 						onclick={drawerClose}
 					>
 						<PrismicLink field={item.link}>
@@ -97,6 +97,9 @@
 						</span>
 					</button>
 				</nav>
+				<div class="absolute top-3 left-36 hidden bg-gradient-to-r from-secondary-600/50 to-tertiary-600/50 rounded-xl p-4 lg:block">
+					<p class="text-2xl font-semibold tracking-tight">$9 Stay & Play</p>
+				</div>
 				<div class="grid items-center justify-items-center pt-3 lg:grid-cols-1">
 					<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
 						<img src={logo} alt="levelonelogo" class="" />
