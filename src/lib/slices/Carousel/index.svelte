@@ -101,7 +101,7 @@
 							class="absolute inset-0 h-full w-full left-1/2 -translate-x-1/2 select-none rounded-2xl object-cover opacity-40 shadow-2xl"
 						/>
 					{/if}
-					<Bounded tag="div" yPadding="sm" class="relative px-0 sm:px-4">
+					<Bounded tag="div" yPadding="sm" class="relative">
 						<div class="grid h-full justify-items-center">
 							<div class="min-h-32 max-w-xl md:max-w-2xl justify-items-center content-center text-center">
 								<PrismicRichText

@@ -64,20 +64,6 @@
 					</button>
 				{/each}
 			</ul>
-			<div class="grid grid-flow-col justify-items-center pt-10">
-				<a href="https://twitter.com/LevelOneGamePub" target="_blank">
-					<Twitter />
-				</a>
-				<a href="https://www.facebook.com/leveloneottawa/" target="_blank">
-					<Facebook />
-				</a>
-				<a href="https://www.instagram.com/LevelOneGamePub/" target="_blank">
-					<Instagram />
-				</a>
-				<a href="https://www.youtube.com/channel/UCxUrR521vvkLbU_mIE9xLnQ" target="_blank">
-					<Youtube />
-				</a>
-			</div>
 		</div>
 	</Drawer>
 
