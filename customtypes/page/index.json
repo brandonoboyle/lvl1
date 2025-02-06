@@ -35,6 +35,12 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"dnd": {
+							"type": "SharedSlice"
+						},
+						"googlemap": {
+							"type": "SharedSlice"
+						},
 						"reservation": {
 							"type": "SharedSlice"
 						},

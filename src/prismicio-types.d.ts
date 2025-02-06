@@ -61,6 +61,8 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| DndSlice
+	| GooglemapSlice
 	| ReservationSlice
 	| CarouselSlice
 	| FormSlice
@@ -352,6 +354,33 @@ type FormSliceVariation = FormSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type FormSlice = prismic.SharedSlice<'form', FormSliceVariation>;
+
+/**
+ * Default variation for Googlemap Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GooglemapSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Googlemap*
+ */
+type GooglemapSliceVariation = GooglemapSliceDefault;
+
+/**
+ * Googlemap Shared Slice
+ *
+ * - **API ID**: `googlemap`
+ * - **Description**: Googlemap
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GooglemapSlice = prismic.SharedSlice<'googlemap', GooglemapSliceVariation>;
 
 /**
  * Item in *GridSelect → Default → Primary → GridGroup*
@@ -960,6 +989,9 @@ declare module '@prismicio/client' {
 			FormSliceDefaultPrimary,
 			FormSliceVariation,
 			FormSliceDefault,
+			GooglemapSlice,
+			GooglemapSliceVariation,
+			GooglemapSliceDefault,
 			GridSelectSlice,
 			GridSelectSliceDefaultPrimaryGridgroupItem,
 			GridSelectSliceDefaultPrimary,
