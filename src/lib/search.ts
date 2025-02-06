@@ -1,9 +1,16 @@
 import FlexSearch from 'flexsearch';
 
-let postsIndex: FlexSearch.Index;
-let posts: any[];
+interface Post {
+	Games: string;
+	Category: string;
+	URL: string;
+	Bilingual: string;
+}
 
-export function createPostsIndex(data: any[]) {
+let postsIndex: FlexSearch.Index;
+let posts: Post[];
+
+export function createPostsIndex(data: Post[]) {
 	postsIndex = new FlexSearch.Index({ tokenize: 'forward' });
 
 	data.forEach((post, i) => {

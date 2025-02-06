@@ -14,18 +14,16 @@
 		slice: Content.SearchSlice;
 	}
 
-	let { slice }: Props = $props();
+	let { slice } = $props<Props>();
 </script>
 
 
-<Bounded tag="div" yPadding="sm" class="relative">
-<div data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="">
-<!--	Placeholder component for {slice.slice_type} (variation: {slice.variation}) Slices-->
-	<PrismicRichText field={slice.primary.search} />
-	<!--<SearchBar />-->
-
-<SearchBar />
-
-</div>
+<Bounded tag="div" yPadding="sm" class="relative p-4">
+	<div data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="">
+		{#if slice.primary?.search}
+			<PrismicRichText field={slice.primary.search} />
+		{/if}
+		<SearchBar />
+	</div>
 </Bounded>
 

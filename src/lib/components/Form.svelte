@@ -37,7 +37,7 @@
 	}
 </script>
 
-<Bounded tag="div" class="relative">
+<Bounded tag="div" class="relative p-4">
 	<div class="rounded-xl bg-surface-800 p-4">
 		<form method="POST" action="/api/send-email" on:submit={handleSubmit}>
 			<label class="label py-2">
