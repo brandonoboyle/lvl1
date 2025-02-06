@@ -291,7 +291,7 @@ type CarouselSliceVariation = CarouselSliceDefault;
 export type CarouselSlice = prismic.SharedSlice<'carousel', CarouselSliceVariation>;
 
 /**
- * Default variation for Dnd Slice
+ * Default variation for Eventcalendar Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -300,12 +300,12 @@ export type CarouselSlice = prismic.SharedSlice<'carousel', CarouselSliceVariati
 export type DndSliceDefault = prismic.SharedSliceVariation<'default', Record<string, never>, never>;
 
 /**
- * Slice variation for *Dnd*
+ * Slice variation for *Eventcalendar*
  */
 type DndSliceVariation = DndSliceDefault;
 
 /**
- * Dnd Shared Slice
+ * Eventcalendar Shared Slice
  *
  * - **API ID**: `dnd`
  * - **Description**: Dnd
@@ -736,21 +736,6 @@ type ReservationSliceVariation = ReservationSliceDefault;
 export type ReservationSlice = prismic.SharedSlice<'reservation', ReservationSliceVariation>;
 
 /**
- * Primary content in *Search → Default → Primary*
- */
-export interface SearchSliceDefaultPrimary {
-	/**
-	 * Search field in *Search → Default → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: search.default.primary.search
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	search: prismic.RichTextField;
-}
-
-/**
  * Default variation for Search Slice
  *
  * - **API ID**: `default`
@@ -759,7 +744,7 @@ export interface SearchSliceDefaultPrimary {
  */
 export type SearchSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Simplify<SearchSliceDefaultPrimary>,
+	Record<string, never>,
 	never
 >;
 
@@ -1016,7 +1001,6 @@ declare module '@prismicio/client' {
 			ReservationSliceVariation,
 			ReservationSliceDefault,
 			SearchSlice,
-			SearchSliceDefaultPrimary,
 			SearchSliceVariation,
 			SearchSliceDefault,
 			TextSlice,

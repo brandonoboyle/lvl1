@@ -1,7 +1,7 @@
 {
 	"id": "dnd",
 	"type": "SharedSlice",
-	"name": "Dnd",
+	"name": "Eventcalendar",
 	"description": "Dnd",
 	"variations": [
 		{
@@ -10,7 +10,9 @@
 			"docURL": "...",
 			"version": "initial",
 			"description": "Default",
-			"imageUrl": ""
+			"imageUrl": "",
+			"primary": {},
+			"items": {}
 		}
 	]
 }
