@@ -1,18 +1,45 @@
 <script lang="ts">
 	import Bounded from '$lib/components/Bounded.svelte';
-	import { enhance } from '$app/forms';
-	
+
 	let submitting = false;
 	let success = false;
 	let error = '';
+
+	async function handleSubmit(event: Event) {
+		event.preventDefault();
+		submitting = true;
+		success = false;
+		error = '';
+
+		const form = event.target as HTMLFormElement;
+		const formData = new FormData(form);
+
+		try {
+			const response = await fetch('/api/send-email', {
+				method: 'POST',
+				body: formData
+			});
+
+			const result = await response.json();
+
+			if (result.success) {
+				// Clear form on success
+				success = true;
+				form.reset(); 
+			} else {
+				error = result.error || 'Failed to send message';
+			}
+		} catch (err) {
+			error = 'Failed to send message';
+		} finally {
+			submitting = false;
+		}
+	}
 </script>
 
 <Bounded tag="div" class="relative">
 	<div class="rounded-xl bg-surface-800 p-4">
-		<form
-			method="POST"
-			use:enhance
-		>
+		<form method="POST" action="/api/send-email" on:submit={handleSubmit}>
 			<label class="label py-2">
 				<span>Name</span>
 				<input name="name" class="input" type="text" placeholder="John Doe" required />
@@ -25,18 +52,24 @@
 
 			<label class="label py-2">
 				<span>Comment</span>
-				<textarea name="message" class="textarea" placeholder="Get in touch with us!" rows="4" required></textarea>
+				<textarea
+					name="message"
+					class="textarea"
+					placeholder="Get in touch with us!"
+					rows="4"
+					required
+				></textarea>
 			</label>
 
 			<div class="mt-4">
 				<button
 					type="submit"
-					class="variant-glass-tertiary hover:variant-ghost-tertiary px-5 py-3 text-2xl font-bold rounded-xl"
+					class="variant-glass-tertiary rounded-xl px-5 py-3 text-2xl font-bold hover:variant-ghost-tertiary"
 					disabled={submitting}
 				>
 					{submitting ? 'Sending...' : 'Submit'}
 				</button>
-				
+
 				{#if success}
 					<p class="mt-4 text-success-500">Message sent successfully!</p>
 				{:else if error}
