@@ -10,7 +10,7 @@
 <div class="flex justify-center items-center w-full h-screen p-10">
 	<iframe
 	title="tbdine"
-		class="flex justify-center items-center w-full h-full"
+		class="flex justify-center items-center h-[600px] w-11/12 sm:w-4/5 lg:w-3/5 rounded-xl drop-shadow-2xl"
 		src="https://www.tbdine.com/book/restaurant/level-one?idApp=70349&amp;language=en-us"
 	></iframe>
 </div>

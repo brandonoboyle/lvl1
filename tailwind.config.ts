@@ -25,6 +25,10 @@ export default {
 					{
 						name: 'rocket',
 						enhancements: false
+					},
+					{
+						name: 'skeleton',
+						enhancements: false
 					}
 				]
 			}

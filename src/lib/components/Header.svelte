@@ -4,8 +4,9 @@
 	import squareLogo from '$lib/assets/logo/square-logo.png';
 	import logo from '$lib/assets/logo/logo-text.png';
 	import smallLogo from '$lib/assets/logo/small-logo.png';
-	import bg from '$lib/assets/images/bgimage.jpg'
+	import bg from '$lib/assets/images/bgimage.jpg';
 	import {
+		LightSwitch,
 		initializeStores,
 		Drawer,
 		getDrawerStore,
@@ -72,9 +73,13 @@
 	<nav
 		class="variant-glass fixed z-10 w-screen items-center justify-items-center leading-none drop-shadow-2xl"
 	>
-		<div class="w-full ">
-			<img src={bg} alt="levelonelogo" class="absolute inset-0 h-full w-full object-cover object-center opacity-40" />
-			<div class="w-full ">
+		<div class="w-full">
+			<img
+				src={bg}
+				alt="levelonelogo"
+				class="absolute inset-0 h-full w-full object-cover object-center opacity-40"
+			/>
+			<div class="w-full">
 				<nav class="absolute w-full items-center lg:hidden">
 					<button aria-label="Open mobile nav" class="ml-2 mt-5" onclick={drawerOpen}>
 						<span>
@@ -97,23 +102,28 @@
 						</span>
 					</button>
 				</nav>
-				<div class="absolute top-3 left-36 hidden bg-gradient-to-r from-secondary-600/50 to-tertiary-600/50 rounded-xl p-4 lg:block">
+				<div
+					class="absolute left-36 top-3 hidden rounded-xl bg-gradient-to-r from-secondary-600/50 to-error-600/50 p-4 lg:block"
+				>
 					<p class="text-2xl font-semibold tracking-tight">$9 Stay & Play</p>
 				</div>
-				<div class="grid items-center justify-items-center pt-3 lg:grid-cols-1">
+				<div class="grid items-center justify-items-center pb-2 pt-3 lg:grid-cols-1">
 					<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
 						<img src={logo} alt="levelonelogo" class="" />
 					</a>
+				</div>
+				<div class="absolute right-5 top-6">
+					<LightSwitch />
 				</div>
 			</div>
 		</div>
 
 		<ul
-			class="relative hidden h-full w-full justify-center bg-surface-800 py-1 text-center lg:flex lg:items-center"
+			class="relative hidden h-full w-full justify-center bg-surface-800 text-center lg:flex lg:items-center"
 		>
 			{#each navigation.data?.links as item}
 				<li
-					class="text-nowrap px-6 text-lg font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl"
+					class="text-nowrap px-6 py-1 text-lg font-semibold tracking-tight hover:text-tertiary-200 hover:shadow-2xl"
 				>
 					<PrismicLink class="" field={item.link}>
 						<PrismicText field={item.label} />

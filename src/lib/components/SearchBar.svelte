@@ -2,15 +2,19 @@
 	import { onMount } from 'svelte';
 	import { createPostsIndex, searchPostsIndex } from '$lib/search';
 	import { read, utils } from 'xlsx';
-	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
+	// import { TabGroup, Tab } from '@skeletonlabs/skeleton';
+	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
 	let search: 'loading' | 'ready' = $state('loading');
 	let searchTerm = $state('');
 	let results = $state([]);
-	let tabSet: number = $state(0);
-	let categoryTerm = $state('');
+	// let tabSet: number = $state(0);
+	// let categoryTerm = $state('');
 	let bilingualTerm = $state('');
-	let searchCombination = $derived([searchTerm, categoryTerm, bilingualTerm]);
+	let valueMultiple = $state<string[]>(['']);
+	let searchCombination = $derived([searchTerm, valueMultiple, bilingualTerm]);
+
+	
 
 	interface Boardgame {
 		Games: string;
@@ -32,64 +36,23 @@
 
 	$effect(() => {
 		if (search === 'ready') {
-			results = searchPostsIndex(searchTerm + ' ' + categoryTerm + ' ' + bilingualTerm);
+			results = searchPostsIndex(searchTerm + ' ' + valueMultiple + ' ' + bilingualTerm);
+			console.log(valueMultiple);
+			// results = searchPostsIndex(searchCombination.join(' '));
 		}
 	});
 </script>
 
 {#if search === 'ready'}
 	<div>
-		<TabGroup>
-			<Tab bind:group={tabSet} name="tab1" value={0}>
-				<span>All</span>
-			</Tab>
-			<Tab bind:group={tabSet} name="tab2" value={1}>Bilingual</Tab>
-			<Tab bind:group={tabSet} name="tab3" value={2}>Classics</Tab>
-			<Tab bind:group={tabSet} name="tab4" value={3}>Co-op</Tab>
-			<Tab bind:group={tabSet} name="tab5" value={4}>Dexterity</Tab>
-			<Tab bind:group={tabSet} name="tab6" value={5}>Family</Tab>
-			<Tab bind:group={tabSet} name="tab7" value={6}>Light Strategy</Tab>
-			<Tab bind:group={tabSet} name="tab8" value={7}>Adult</Tab>
-			<Tab bind:group={tabSet} name="tab9" value={8}>Party</Tab>
-			<Tab bind:group={tabSet} name="tab10" value={9}>Solo</Tab>
-			<Tab bind:group={tabSet} name="tab11" value={10}>Strategy</Tab>
-			<Tab bind:group={tabSet} name="tab12" value={11}>Themed</Tab>
-			<Tab bind:group={tabSet} name="tab13" value={12}>Trivia</Tab>
-			<Tab bind:group={tabSet} name="tab14" value={13}>Two Player</Tab>
-			<!-- Tab Panels --->
-			
-				{#if tabSet === 0}
-					<p class="hidden">{categoryTerm = ''}</p>
-				{:else if tabSet === 1}
-					<p class="hidden">{bilingualTerm = '(en/fr)'}</p>
-				{:else if tabSet === 2}
-					(tab panel 3 contents)
-				{:else if tabSet === 3}
-					(tab panel 4 contents)
-				{:else if tabSet === 4}
-					<p class="hidden">{categoryTerm = 'Dexterity'}</p>
-				{:else if tabSet === 5}
-					<p class="hidden">{categoryTerm = 'Family'}</p>
-				{:else if tabSet === 6}
-					<p class="hidden">{categoryTerm = 'Light Strategy'}</p>
-				{:else if tabSet === 7}
-					(tab panel 8 contents)
-				{:else if tabSet === 8}
-					(tab panel 9 contents)
-				{:else if tabSet === 9}
-					(tab panel 10 contents)
-				{:else if tabSet === 10}
-					(tab panel 11 contents)
-				{:else if tabSet === 11}
-					(tab panel 12 contents)
-				{:else if tabSet === 12}
-					(tab panel 13 contents)
-				{:else if tabSet === 13}
-					(tab panel 14 contents)
-				{/if}
-			
-		</TabGroup>
-		<div class="variant-glass-surface h-80 overflow-y-auto p-6 opacity-90">
+		<div class="py-4">
+		<ListBox multiple hover="hover:variant-soft" rounded="" class="variant-glass-tertiary">
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="Family">Family</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="Strategy">Strategy</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="Dexterity">Dexterity</ListBoxItem>
+		</ListBox>
+		</div>
+		<div class="variant-glass-surface h-80 overflow-y-auto p-6 opacity-90 rounded-t-xl">
 			{#if results}
 				<ul class="grid list-none grid-flow-row gap-6 text-xl lg:grid-cols-3">
 					{#each results as result}
