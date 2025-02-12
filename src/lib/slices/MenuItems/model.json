@@ -17,7 +17,7 @@
             "label": "Heading",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading1,heading2,heading3"
+            "multi": "heading1"
           }
         },
         "cards": {
@@ -43,7 +43,7 @@
                   "label": "Title",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "single": "preformatted,heading1,heading2,heading3,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  "single": "heading3"
                 }
               },
               "price": {
@@ -52,7 +52,7 @@
                   "label": "price",
                   "placeholder": "price",
                   "allowTargetBlank": true,
-                  "single": "paragraph,preformatted,heading1,heading2,heading3,strong,em"
+                  "single": "paragraph,heading3"
                 }
               },
               "text": {
@@ -61,7 +61,7 @@
                   "label": "Text",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,preformatted,heading1,heading2,heading3,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                  "multi": "paragraph"
                 }
               },
               "notes": {
@@ -70,7 +70,7 @@
                   "label": "notes",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,preformatted,heading1,heading2,heading3,strong,em"
+                  "multi": "paragraph"
                 }
               }
             }

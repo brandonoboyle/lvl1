@@ -618,12 +618,12 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	/**
 	 * Title field in *MenuItems → Default → Primary → Cards*
 	 *
-	 * - **Field Type**: Rich Text
+	 * - **Field Type**: Title
 	 * - **Placeholder**: *None*
 	 * - **API ID Path**: image_cards.default.primary.cards[].title
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
-	title: prismic.RichTextField;
+	title: prismic.TitleField;
 
 	/**
 	 * price field in *MenuItems → Default → Primary → Cards*

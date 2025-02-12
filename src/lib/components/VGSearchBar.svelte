@@ -1,18 +1,16 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import { onMount } from 'svelte';
 	import { createPostsIndex, searchPostsIndex } from '$lib/search';
 	import { read, utils } from 'xlsx';
+	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
 	let search: 'loading' | 'ready' = $state('loading');
 	let searchTerm = $state('');
 	let results = $state([]);
-	let values = $state('');
+	let valueMultiple = $state<string[]>(['']);
 
 	interface Boardgame {
-		Family: string;
-		Bilingual: string;
+		Games: string;
 		Category: string;
 	}
 
@@ -25,27 +23,55 @@
 		const wb = read(f);
 		const posts = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
 		createPostsIndex(posts);
-		console.log(posts)
+		console.log(posts);
 		search = 'ready';
 	});
 
-	run(() => {
+	$effect(() => {
 		if (search === 'ready') {
-			results = searchPostsIndex(searchTerm);
+			results = searchPostsIndex(searchTerm + ' ' + valueMultiple);
 		}
 	});
 </script>
 
 {#if search === 'ready'}
-	<div class="variant-glass-surface h-80 overflow-y-auto p-6 opacity-90">
+	<div class="grid grid-cols-2 gap-4 py-4">
+		<ListBox
+			multiple
+			hover="hover:variant-glass-secondary"
+			rounded="rounded-xl"
+			class="variant-glass-surface"
+		>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="Gamecube">Gamecube</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="N64">N64</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="NES">NES</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS1">PS1</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS2">PS2</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS3">PS3</ListBoxItem>
+		</ListBox>
+		<ListBox
+			multiple
+			hover="hover:variant-glass-secondary"
+			rounded="rounded-xl"
+			class="variant-glass-surface"
+		>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS4">PS4</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS5">PS5</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="SNES">SNES</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="Switch">Switch</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="Wii">Wii</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="WiiU">WiiU</ListBoxItem>
+		</ListBox>
+	</div>
+	<div class="variant-glass-surface h-80 overflow-y-auto rounded-t-xl p-6 opacity-90">
 		{#if results}
-			<ul class="grid grid-flow-row lg:grid-cols-3 list-none gap-6 text-xl">
+			<ul class="grid list-none grid-flow-row gap-6 text-xl lg:grid-cols-3">
 				{#each results as result}
 					<li class="p-2">
-						<a href="{result.URL}" target="_blank" rel="noopener noreferrer" class="block text-4xl">
+						<a href={result.URL} target="_blank" rel="noopener noreferrer" class="block text-4xl">
 							{@html result.Games}
 						</a>
-						<p class="text-primary-400">{@html result.Category}</p>
+						<p class="text-tertiary-400">{@html result.Category}</p>
 					</li>
 				{/each}
 			</ul>
@@ -79,5 +105,3 @@
 		</div>
 	</section>
 {/if}
-
-

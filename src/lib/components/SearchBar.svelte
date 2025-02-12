@@ -2,19 +2,14 @@
 	import { onMount } from 'svelte';
 	import { createPostsIndex, searchPostsIndex } from '$lib/search';
 	import { read, utils } from 'xlsx';
-	// import { TabGroup, Tab } from '@skeletonlabs/skeleton';
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
 	let search: 'loading' | 'ready' = $state('loading');
 	let searchTerm = $state('');
 	let results = $state([]);
-	// let tabSet: number = $state(0);
-	// let categoryTerm = $state('');
 	let bilingualTerm = $state('');
 	let valueMultiple = $state<string[]>(['']);
-	let searchCombination = $derived([searchTerm, valueMultiple, bilingualTerm]);
-
-	
+	// let searchCombination = $derived([searchTerm, valueMultiple, bilingualTerm]);
 
 	interface Boardgame {
 		Games: string;
@@ -37,22 +32,49 @@
 	$effect(() => {
 		if (search === 'ready') {
 			results = searchPostsIndex(searchTerm + ' ' + valueMultiple + ' ' + bilingualTerm);
-			console.log(valueMultiple);
-			// results = searchPostsIndex(searchCombination.join(' '));
 		}
 	});
 </script>
 
 {#if search === 'ready'}
 	<div>
-		<div class="py-4">
-		<ListBox multiple hover="hover:variant-soft" rounded="" class="variant-glass-tertiary">
-			<ListBoxItem bind:group={valueMultiple} name="medium" value="Family">Family</ListBoxItem>
-			<ListBoxItem bind:group={valueMultiple} name="medium" value="Strategy">Strategy</ListBoxItem>
-			<ListBoxItem bind:group={valueMultiple} name="medium" value="Dexterity">Dexterity</ListBoxItem>
-		</ListBox>
+		<div class="grid grid-cols-2 gap-4 py-4">
+			<ListBox
+				multiple
+				hover="hover:variant-glass-secondary"
+				rounded="rounded-xl"
+				class="variant-glass-surface"
+			>
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="New">New</ListBoxItem>
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="Adult">Adult</ListBoxItem>
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="Cooperative"
+					>Cooperative</ListBoxItem
+				>
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="Dexterity"
+					>Dexterity</ListBoxItem
+				>
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="Family">Family</ListBoxItem>
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="Light Strategy"
+					>Light Strategy</ListBoxItem
+				>
+			</ListBox>
+			<ListBox
+				multiple
+				hover="hover:variant-glass-secondary"
+				rounded="rounded-xl"
+				class="variant-glass-surface"
+			>
+				<!-- String reads en/fr as bilingual not the term bilingual -->
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="en/fr">Bilingual</ListBoxItem>
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="Party">Party</ListBoxItem>
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="Solo">Solo</ListBoxItem>
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="Strategy">Strategy</ListBoxItem
+				>
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="Trivia">Trivia</ListBoxItem>
+				<ListBoxItem bind:group={valueMultiple} name="medium" value="Two">Two</ListBoxItem>
+			</ListBox>
 		</div>
-		<div class="variant-glass-surface h-80 overflow-y-auto p-6 opacity-90 rounded-t-xl">
+		<div class="variant-glass-surface h-80 overflow-y-auto rounded-t-xl p-6 opacity-90">
 			{#if results}
 				<ul class="grid list-none grid-flow-row gap-6 text-xl lg:grid-cols-3">
 					{#each results as result}
@@ -60,7 +82,10 @@
 							<a href={result.URL} target="_blank" rel="noopener noreferrer" class="block text-4xl">
 								{@html result.Games}
 							</a>
-							<p class="text-primary-400">{@html result.Category} {@html result.Bilingual}</p>
+							<div class="flex flex-row gap-2">
+								<p class="text-tertiary-400">{@html result.Category}</p>
+								<p class="text-secondary-400">{@html result.Bilingual}</p>
+							</div>
 						</li>
 					{/each}
 				</ul>
