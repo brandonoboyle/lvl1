@@ -41,7 +41,7 @@
 		<div class="grid grid-cols-2 gap-4 py-4">
 			<ListBox
 				multiple
-				hover="hover:variant-glass-secondary"
+				hover=""
 				rounded="rounded-xl"
 				class="variant-glass-surface"
 			>
@@ -60,7 +60,7 @@
 			</ListBox>
 			<ListBox
 				multiple
-				hover="hover:variant-glass-secondary"
+				hover=""
 				rounded="rounded-xl"
 				class="variant-glass-surface"
 			>
