@@ -112,9 +112,9 @@
 						<img src={logo} alt="levelonelogo" class="" />
 					</a>
 				</div>
-				<div class="absolute right-5 top-6">
+				<!-- <div class="absolute right-5 top-6">
 					<LightSwitch />
-				</div>
+				</div> -->
 			</div>
 		</div>
 
