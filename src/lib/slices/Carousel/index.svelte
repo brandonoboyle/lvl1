@@ -82,7 +82,7 @@
 </script>
 
 <div
-	class="relative grid w-full overflow-hidden drop-shadow-2xl"
+	class="relative grid w-full overflow-hidden drop-shadow-2xl pb-4"
 	role="region"
 	aria-label="Image carousel"
 	ontouchstart={handleTouchStart}

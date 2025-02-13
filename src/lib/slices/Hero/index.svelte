@@ -14,7 +14,7 @@
 	let { slice }: Props = $props();
 </script>
 
-<div class="relative drop-shadow-2xl overflow-hidden">
+<div class="relative drop-shadow-2xl overflow-hidden pb-4">
 	<div class="">
 		{#if isFilled.image(slice.primary.backgroundImage)}
 			<PrismicImage
