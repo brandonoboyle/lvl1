@@ -1,0 +1,39 @@
+{
+  "id": "imagewithtext",
+  "type": "SharedSlice",
+  "name": "Imagewithtext",
+  "description": "Imagewithtext",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {
+              "width": 1920,
+              "height": 1080
+            },
+            "thumbnails": []
+          }
+        },
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading1,heading2,heading3,strong,em,list-item,o-list-item"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

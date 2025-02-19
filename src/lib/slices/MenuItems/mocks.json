@@ -101,6 +101,13 @@
 										}
 									]
 								}
+							],
+							[
+								"remove_items",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
 							]
 						]
 					}

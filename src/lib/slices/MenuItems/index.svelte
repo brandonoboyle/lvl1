@@ -24,7 +24,9 @@
 		class="variant-glass grid gap-12 rounded-xl p-8 drop-shadow-2xl lg:grid-cols-2"
 	>
 		{#each slice.primary.cards as card}
-			<MenuItems {card} />
+			{#if !card.remove_items}
+				<MenuItems {card} />
+			{/if}
 		{/each}
 	</ul>
 </div>

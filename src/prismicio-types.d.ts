@@ -61,6 +61,7 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| ImagewithtextSlice
 	| DndSlice
 	| GooglemapSlice
 	| ReservationSlice
@@ -654,6 +655,17 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	notes: prismic.RichTextField;
+
+	/**
+	 * 86 item field in *MenuItems → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: image_cards.default.primary.cards[].remove_items
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	remove_items: prismic.BooleanField;
 }
 
 /**
@@ -707,6 +719,58 @@ type ImageCardsSliceVariation = ImageCardsSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type ImageCardsSlice = prismic.SharedSlice<'image_cards', ImageCardsSliceVariation>;
+
+/**
+ * Primary content in *Imagewithtext → Default → Primary*
+ */
+export interface ImagewithtextSliceDefaultPrimary {
+	/**
+	 * image field in *Imagewithtext → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: imagewithtext.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * text field in *Imagewithtext → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: imagewithtext.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Imagewithtext Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImagewithtextSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ImagewithtextSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Imagewithtext*
+ */
+type ImagewithtextSliceVariation = ImagewithtextSliceDefault;
+
+/**
+ * Imagewithtext Shared Slice
+ *
+ * - **API ID**: `imagewithtext`
+ * - **Description**: Imagewithtext
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImagewithtextSlice = prismic.SharedSlice<'imagewithtext', ImagewithtextSliceVariation>;
 
 /**
  * Default variation for Reservation Slice
@@ -997,6 +1061,10 @@ declare module '@prismicio/client' {
 			ImageCardsSliceDefaultPrimary,
 			ImageCardsSliceVariation,
 			ImageCardsSliceDefault,
+			ImagewithtextSlice,
+			ImagewithtextSliceDefaultPrimary,
+			ImagewithtextSliceVariation,
+			ImagewithtextSliceDefault,
 			ReservationSlice,
 			ReservationSliceVariation,
 			ReservationSliceDefault,

@@ -72,6 +72,15 @@
                   "allowTargetBlank": true,
                   "multi": "paragraph"
                 }
+              },
+              "remove_items": {
+                "type": "Boolean",
+                "config": {
+                  "label": "86 item",
+                  "placeholder_false": "in stock",
+                  "placeholder_true": "86",
+                  "default_value": false
+                }
               }
             }
           }

@@ -8,6 +8,7 @@ import GridSelect from './GridSelect/index.svelte';
 import Hero from './Hero/index.svelte';
 import Image from './Image/index.svelte';
 import MenuItems from './MenuItems/index.svelte';
+import Imagewithtext from './Imagewithtext/index.svelte';
 import Reservation from './Reservation/index.svelte';
 import Search from './Search/index.svelte';
 import Text from './Text/index.svelte';
@@ -23,6 +24,7 @@ export const components = {
 	hero: Hero,
 	image: Image,
 	image_cards: MenuItems,
+	imagewithtext: Imagewithtext,
 	reservation: Reservation,
 	search: Search,
 	text: Text,

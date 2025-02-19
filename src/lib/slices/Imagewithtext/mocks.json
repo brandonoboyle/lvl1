@@ -1,0 +1,43 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sint incididunt ipsum sit amet ad ut do laborum labore amet. Excepteur est reprehenderit dolore do amet minim in reprehenderit deserunt nisi. Nostrud consequat dolor nisi et laborum ut sunt cillum esse dolor reprehenderit aliqua in mollit."
+						}
+					}
+				]
+			},
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b",
+					"width": 3560,
+					"height": 5340
+				},
+				"url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?rect=0%2C1669%2C3560%2C2003&w=1920&h=1080",
+				"width": 1920,
+				"height": 1080,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 1669
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			}
+		},
+		"items": []
+	}
+]
