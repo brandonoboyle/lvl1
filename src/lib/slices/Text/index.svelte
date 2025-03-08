@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
+	import { isFilled } from '@prismicio/client';
 	import clsx from 'clsx';
 
 	import Bounded from '$lib/components/Bounded.svelte';
@@ -9,17 +10,19 @@
 		slice: Content.TextSlice;
 	}
 
-	let { slice }: Props = $props();
+	export let slice: Props['slice'];
 </script>
 
 <Bounded
 	yPadding="sm"
 	as="section"
-	class="leading-relaxed px-5"
+	class_="leading-relaxed px-5"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
-	<div class={clsx(slice.variation === 'twoColumns' && 'md:columns-2 md:gap-6')}>
-		<PrismicRichText field={slice.primary.text} />
+	<div class="text-center">
+		{#if isFilled.richText(slice?.primary?.text)}
+			<PrismicRichText field={slice.primary.text} />
+		{/if}
 	</div>
 </Bounded>

@@ -12,6 +12,7 @@ import Imagewithtext from './Imagewithtext/index.svelte';
 import Reservation from './Reservation/index.svelte';
 import Search from './Search/index.svelte';
 import Text from './Text/index.svelte';
+import TextColumns from './TextColumns/index.svelte';
 import TextWithImage from './TextWithImage/index.svelte';
 import VideoGameSearch from './VideoGameSearch/index.svelte';
 
@@ -28,6 +29,7 @@ export const components = {
 	reservation: Reservation,
 	search: Search,
 	text: Text,
+	text_columns: TextColumns,
 	text_with_image: TextWithImage,
 	video_game_search: VideoGameSearch
 };

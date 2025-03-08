@@ -14,17 +14,17 @@
 	let { slice }: Props = $props();
 </script>
 
-<div class="relative drop-shadow-2xl overflow-hidden pb-4">
+<div class="relative pb-4 drop-shadow-2xl">
 	<div class="">
 		{#if isFilled.image(slice.primary.backgroundImage)}
 			<PrismicImage
 				field={slice.primary.backgroundImage}
-			alt=""
-			class="pointer-events-none absolute inset-0 h-full w-11/12 left-1/2 -translate-x-1/2 select-none object-cover rounded-xl opacity-40 shadow-2xl"
-		/>
-	{/if}
+				alt=""
+				class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 select-none rounded-2xl object-cover px-6 opacity-40 shadow-2xl md:px-10"
+			/>
+		{/if}
 	</div>
-	<Bounded tag="div" yPadding="sm" class="relative">
+	<Bounded tag="div" yPadding="sm" class="relative px-6">
 		<div class="grid justify-items-center gap-8">
 			<div class="max-w-2xl space-y-16 py-6 text-center">
 				<!-- an error is called for this heading declaration but I swear it works fine -->

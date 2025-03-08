@@ -1,15 +1,15 @@
 @font-face {
-    font-family: 'Heading';
-    src: url('$lib/assets/fonts/Heading.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Heading';
+	src: url('$lib/assets/fonts/heading.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-    font-family: 'Body';
-    src: url('$lib/assets/fonts/Body.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'Body';
+	src: url('$lib/assets/fonts/body.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @tailwind base;
@@ -18,24 +18,34 @@
 @tailwind variants;
 
 :root [data-theme='rocket'] {
-    --theme-font-family-base: 'Body', sans-serif;
-    --theme-font-family-heading: 'Heading', sans-serif;
+	--theme-font-family-base: 'Body', sans-serif;
+	--theme-font-family-heading: 'Heading', sans-serif;
 }
 
 @layer base {
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-heading;
-  }
-  
-  body {
-    @apply font-body;
-  }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-heading;
+		-webkit-font-smoothing: antialiased !important;
+		font-synthesis: none !important;
+	}
+
+	body {
+		@apply font-body;
+		-webkit-font-smoothing: antialiased !important;
+		font-synthesis: none !important;
+	}
 }
 
 html,
 body {
 	@apply h-full;
 }
+
 body {
 	background-image: radial-gradient(
 			at 0% 0%,

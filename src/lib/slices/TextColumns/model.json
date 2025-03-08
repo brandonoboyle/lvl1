@@ -1,0 +1,28 @@
+{
+  "id": "text_columns",
+  "type": "SharedSlice",
+  "name": "TextColumns",
+  "description": "TextColumns",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "text_columns": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text Columns",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,o-list-item,list-item"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

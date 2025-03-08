@@ -61,6 +61,7 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| TextColumnsSlice
 	| ImagewithtextSlice
 	| DndSlice
 	| GooglemapSlice
@@ -855,37 +856,9 @@ export type TextSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *Text → Two Columns → Primary*
- */
-export interface TextSliceTwoColumnsPrimary {
-	/**
-	 * Text field in *Text → Two Columns → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: text.twoColumns.primary.text
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	text: prismic.RichTextField;
-}
-
-/**
- * Two Columns variation for Text Slice
- *
- * - **API ID**: `twoColumns`
- * - **Description**: Text
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type TextSliceTwoColumns = prismic.SharedSliceVariation<
-	'twoColumns',
-	Simplify<TextSliceTwoColumnsPrimary>,
-	never
->;
-
-/**
  * Slice variation for *Text*
  */
-type TextSliceVariation = TextSliceDefault | TextSliceTwoColumns;
+type TextSliceVariation = TextSliceDefault;
 
 /**
  * Text Shared Slice
@@ -895,6 +868,48 @@ type TextSliceVariation = TextSliceDefault | TextSliceTwoColumns;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type TextSlice = prismic.SharedSlice<'text', TextSliceVariation>;
+
+/**
+ * Primary content in *TextColumns → Default → Primary*
+ */
+export interface TextColumnsSliceDefaultPrimary {
+	/**
+	 * Text Columns field in *TextColumns → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text_columns.default.primary.text_columns
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text_columns: prismic.RichTextField;
+}
+
+/**
+ * Default variation for TextColumns Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextColumnsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<TextColumnsSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *TextColumns*
+ */
+type TextColumnsSliceVariation = TextColumnsSliceDefault;
+
+/**
+ * TextColumns Shared Slice
+ *
+ * - **API ID**: `text_columns`
+ * - **Description**: TextColumns
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextColumnsSlice = prismic.SharedSlice<'text_columns', TextColumnsSliceVariation>;
 
 /**
  * Primary content in *TextWithImage → Default → Primary*
@@ -1073,10 +1088,12 @@ declare module '@prismicio/client' {
 			SearchSliceDefault,
 			TextSlice,
 			TextSliceDefaultPrimary,
-			TextSliceTwoColumnsPrimary,
 			TextSliceVariation,
 			TextSliceDefault,
-			TextSliceTwoColumns,
+			TextColumnsSlice,
+			TextColumnsSliceDefaultPrimary,
+			TextColumnsSliceVariation,
+			TextColumnsSliceDefault,
 			TextWithImageSlice,
 			TextWithImageSliceDefaultPrimary,
 			TextWithImageSliceVariation,

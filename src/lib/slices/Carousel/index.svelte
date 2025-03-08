@@ -92,7 +92,7 @@
 >
 	<div class="carousel-track flex w-full" style="transform: translateX(-{currentIndex * 100}%)">
 		{#each slice.primary.carousel_items as card}
-			<div class="w-full flex-shrink-0 px-4 lg:px-12">
+			<div class="w-full flex-shrink-0 px-4 lg:px-10">
 				<section class="relative drop-shadow-2xl">
 					{#if isFilled.image(card.background)}
 						<PrismicImage
