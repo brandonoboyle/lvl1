@@ -27,7 +27,7 @@
 	<Bounded tag="div" yPadding="base" class="z-10 grid justify-center">
 		{#if isFilled.link(card.gridlink)}
 			<PrismicLink field={card.gridlink}>
-<!--				Inner text box-->
+				<!--				Inner text box-->
 				<div
 					class="variant-glass-secondary h-min w-min rounded-xl px-6 py-4 text-center drop-shadow-2xl md:text-nowrap"
 				>

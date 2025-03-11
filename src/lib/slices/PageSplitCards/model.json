@@ -1,0 +1,77 @@
+{
+  "id": "page_split_cards",
+  "type": "SharedSlice",
+  "name": "PageSplitCards",
+  "description": "PageSplitCards",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2,heading3,strong,em"
+          }
+        },
+        "cards": {
+          "type": "Group",
+          "config": {
+            "label": "Cards",
+            "repeat": true,
+            "fields": {
+              "cardtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "CardTitle",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "single": "heading3,heading2,paragraph,strong,em"
+                }
+              },
+              "cardcontent": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "CardContent",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "heading3,paragraph,strong,em"
+                }
+              },
+              "cardlink": {
+                "type": "Link",
+                "config": {
+                  "label": "CardLink",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": true,
+                  "repeat": false
+                }
+              },
+              "cardimage": {
+                "type": "Image",
+                "config": {
+                  "label": "CardImage",
+                  "constraint": {
+                    "width": 1920,
+                    "height": 1080
+                  },
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

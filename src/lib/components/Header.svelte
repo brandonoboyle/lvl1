@@ -51,7 +51,6 @@
 					<img src={squareLogo} alt="Square Logo" class="" />
 				</a></button
 			>
-			<!--			<hr />-->
 			<ul class="pt-2">
 				{#each navigation.data?.links as item}
 					<button

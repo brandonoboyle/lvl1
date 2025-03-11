@@ -9,6 +9,9 @@ import Hero from './Hero/index.svelte';
 import Image from './Image/index.svelte';
 import MenuItems from './MenuItems/index.svelte';
 import Imagewithtext from './Imagewithtext/index.svelte';
+import LargeCarousel from './LargeCarousel/index.svelte';
+import PageSplit from './PageSplit/index.svelte';
+import PageSplitCards from './PageSplitCards/index.svelte';
 import Reservation from './Reservation/index.svelte';
 import Search from './Search/index.svelte';
 import Text from './Text/index.svelte';
@@ -26,6 +29,9 @@ export const components = {
 	image: Image,
 	image_cards: MenuItems,
 	imagewithtext: Imagewithtext,
+	large_carousel: LargeCarousel,
+	page_split: PageSplit,
+	page_split_cards: PageSplitCards,
 	reservation: Reservation,
 	search: Search,
 	text: Text,

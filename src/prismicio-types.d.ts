@@ -4,6 +4,78 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type HomepageDocumentDataSlicesSlice =
+	| TextColumnsSlice
+	| TextWithImageSlice
+	| TextSlice
+	| ImageSlice
+	| ImagewithtextSlice
+	| HeroSlice
+	| GridSelectSlice
+	| CarouselSlice;
+
+/**
+ * Content for HomePage documents
+ */
+interface HomepageDocumentData {
+	/**
+	 * Slice Zone field in *HomePage*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice> /**
+	 * Meta Title field in *HomePage*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: homepage.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */;
+	meta_title: prismic.KeyTextField;
+
+	/**
+	 * Meta Description field in *HomePage*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: homepage.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField;
+
+	/**
+	 * Meta Image field in *HomePage*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: homepage.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * HomePage document from Prismic
+ *
+ * - **API ID**: `homepage`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomepageDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<HomepageDocumentData>,
+	'homepage',
+	Lang
+>;
+
 /**
  * Item in *Navigation → Links*
  */
@@ -61,6 +133,9 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| PageSplitCardsSlice
+	| LargeCarouselSlice
+	| PageSplitSlice
 	| TextColumnsSlice
 	| ImagewithtextSlice
 	| DndSlice
@@ -203,7 +278,11 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 	Lang
 >;
 
-export type AllDocumentTypes = NavigationDocument | PageDocument | SettingsDocument;
+export type AllDocumentTypes =
+	| HomepageDocument
+	| NavigationDocument
+	| PageDocument
+	| SettingsDocument;
 
 /**
  * Item in *Carousel → Default → Primary → Carousel Items*
@@ -774,6 +853,225 @@ type ImagewithtextSliceVariation = ImagewithtextSliceDefault;
 export type ImagewithtextSlice = prismic.SharedSlice<'imagewithtext', ImagewithtextSliceVariation>;
 
 /**
+ * Item in *LargeCarousel → Default → Primary → Large Carousel*
+ */
+export interface LargeCarouselSliceDefaultPrimaryLargeCarouselItem {
+	/**
+	 * content field in *LargeCarousel → Default → Primary → Large Carousel*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: large_carousel.default.primary.large_carousel[].content
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	content: prismic.RichTextField;
+
+	/**
+	 * background field in *LargeCarousel → Default → Primary → Large Carousel*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: large_carousel.default.primary.large_carousel[].background
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	background: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *LargeCarousel → Default → Primary*
+ */
+export interface LargeCarouselSliceDefaultPrimary {
+	/**
+	 * Large Carousel field in *LargeCarousel → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: large_carousel.default.primary.large_carousel[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	large_carousel: prismic.GroupField<Simplify<LargeCarouselSliceDefaultPrimaryLargeCarouselItem>>;
+
+	/**
+	 * Text field in *LargeCarousel → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: Text for right side
+	 * - **API ID Path**: large_carousel.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for LargeCarousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LargeCarouselSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<LargeCarouselSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *LargeCarousel*
+ */
+type LargeCarouselSliceVariation = LargeCarouselSliceDefault;
+
+/**
+ * LargeCarousel Shared Slice
+ *
+ * - **API ID**: `large_carousel`
+ * - **Description**: LargeCarousel
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LargeCarouselSlice = prismic.SharedSlice<'large_carousel', LargeCarouselSliceVariation>;
+
+/**
+ * Primary content in *PageSplit → Default → Primary*
+ */
+export interface PageSplitSliceDefaultPrimary {
+	/**
+	 * Text field in *PageSplit → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: page_split.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for PageSplit Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PageSplitSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<PageSplitSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *PageSplit*
+ */
+type PageSplitSliceVariation = PageSplitSliceDefault;
+
+/**
+ * PageSplit Shared Slice
+ *
+ * - **API ID**: `page_split`
+ * - **Description**: PageSplit
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PageSplitSlice = prismic.SharedSlice<'page_split', PageSplitSliceVariation>;
+
+/**
+ * Item in *PageSplitCards → Default → Primary → Cards*
+ */
+export interface PageSplitCardsSliceDefaultPrimaryCardsItem {
+	/**
+	 * CardTitle field in *PageSplitCards → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: page_split_cards.default.primary.cards[].cardtitle
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	cardtitle: prismic.RichTextField;
+
+	/**
+	 * CardContent field in *PageSplitCards → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: page_split_cards.default.primary.cards[].cardcontent
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	cardcontent: prismic.RichTextField;
+
+	/**
+	 * CardLink field in *PageSplitCards → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: page_split_cards.default.primary.cards[].cardlink
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	cardlink: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+	/**
+	 * CardImage field in *PageSplitCards → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: page_split_cards.default.primary.cards[].cardimage
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	cardimage: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *PageSplitCards → Default → Primary*
+ */
+export interface PageSplitCardsSliceDefaultPrimary {
+	/**
+	 * Title field in *PageSplitCards → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: page_split_cards.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * Cards field in *PageSplitCards → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: page_split_cards.default.primary.cards[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	cards: prismic.GroupField<Simplify<PageSplitCardsSliceDefaultPrimaryCardsItem>>;
+}
+
+/**
+ * Default variation for PageSplitCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PageSplitCardsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<PageSplitCardsSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *PageSplitCards*
+ */
+type PageSplitCardsSliceVariation = PageSplitCardsSliceDefault;
+
+/**
+ * PageSplitCards Shared Slice
+ *
+ * - **API ID**: `page_split_cards`
+ * - **Description**: PageSplitCards
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PageSplitCardsSlice = prismic.SharedSlice<
+	'page_split_cards',
+	PageSplitCardsSliceVariation
+>;
+
+/**
  * Default variation for Reservation Slice
  *
  * - **API ID**: `default`
@@ -1032,6 +1330,9 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			HomepageDocument,
+			HomepageDocumentData,
+			HomepageDocumentDataSlicesSlice,
 			NavigationDocument,
 			NavigationDocumentData,
 			NavigationDocumentDataLinksItem,
@@ -1080,6 +1381,20 @@ declare module '@prismicio/client' {
 			ImagewithtextSliceDefaultPrimary,
 			ImagewithtextSliceVariation,
 			ImagewithtextSliceDefault,
+			LargeCarouselSlice,
+			LargeCarouselSliceDefaultPrimaryLargeCarouselItem,
+			LargeCarouselSliceDefaultPrimary,
+			LargeCarouselSliceVariation,
+			LargeCarouselSliceDefault,
+			PageSplitSlice,
+			PageSplitSliceDefaultPrimary,
+			PageSplitSliceVariation,
+			PageSplitSliceDefault,
+			PageSplitCardsSlice,
+			PageSplitCardsSliceDefaultPrimaryCardsItem,
+			PageSplitCardsSliceDefaultPrimary,
+			PageSplitCardsSliceVariation,
+			PageSplitCardsSliceDefault,
 			ReservationSlice,
 			ReservationSliceVariation,
 			ReservationSliceDefault,

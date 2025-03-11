@@ -43,7 +43,7 @@
 				multiple
 				hover=""
 				rounded="rounded-xl"
-				class="variant-glass-surface"
+				class="bg-surface-800"
 			>
 				<ListBoxItem bind:group={valueMultiple} name="medium" value="New">New</ListBoxItem>
 				<ListBoxItem bind:group={valueMultiple} name="medium" value="Adult">Adult</ListBoxItem>
@@ -62,7 +62,7 @@
 				multiple
 				hover=""
 				rounded="rounded-xl"
-				class="variant-glass-surface"
+				class="bg-surface-800"
 			>
 				<!-- String reads en/fr as bilingual not the term bilingual -->
 				<ListBoxItem bind:group={valueMultiple} name="medium" value="en/fr">Bilingual</ListBoxItem>

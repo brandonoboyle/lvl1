@@ -35,6 +35,15 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"page_split_cards": {
+							"type": "SharedSlice"
+						},
+						"large_carousel": {
+							"type": "SharedSlice"
+						},
+						"page_split": {
+							"type": "SharedSlice"
+						},
 						"text_columns": {
 							"type": "SharedSlice"
 						},

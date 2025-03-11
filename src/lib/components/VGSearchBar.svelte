@@ -40,7 +40,7 @@
 			multiple
 			hover=""
 			rounded="rounded-xl"
-			class="variant-glass-surface"
+			class="bg-surface-800"
 		>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Gamecube">Gamecube</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="N64">N64</ListBoxItem>
@@ -53,7 +53,7 @@
 			multiple
 			hover=""
 			rounded="rounded-xl"
-			class="variant-glass-surface"
+			class="bg-surface-800"
 		>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS4">PS4</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS5">PS5</ListBoxItem>
