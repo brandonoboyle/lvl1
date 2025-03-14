@@ -74,7 +74,7 @@
 	let { slice }: Props = $props();
 </script>
 
-<div class="flex flex-row pb-6">
+<div class="flex flex-row py-6">
 	<div
 		class="relative grid h-full w-1/2 overflow-hidden pb-8"
 		role="region"
@@ -126,7 +126,7 @@
 			{/each}
 		</div>
 	</div>
-	<div class="flex w-1/2 items-center justify-center pr-6 text-center text-lg md:text-2xl">
+	<div class="flex w-1/2 items-center justify-center pr-6 text-center text-lg md:text-4xl">
 		<PrismicRichText field={slice.primary.text} />
 	</div>
 </div>
