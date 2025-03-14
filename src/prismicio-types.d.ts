@@ -133,6 +133,7 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| BgPageSplitCardsSlice
 	| PageSplitCardsSlice
 	| LargeCarouselSlice
 	| PageSplitSlice
@@ -283,6 +284,106 @@ export type AllDocumentTypes =
 	| NavigationDocument
 	| PageDocument
 	| SettingsDocument;
+
+/**
+ * Item in *BgPageSplitCards → Default → Primary → Card*
+ */
+export interface BgPageSplitCardsSliceDefaultPrimaryCardItem {
+	/**
+	 * Card Title field in *BgPageSplitCards → Default → Primary → Card*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: bg_page_split_cards.default.primary.card[].card_title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	card_title: prismic.RichTextField;
+
+	/**
+	 * Card Content field in *BgPageSplitCards → Default → Primary → Card*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: bg_page_split_cards.default.primary.card[].card_content
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	card_content: prismic.RichTextField;
+
+	/**
+	 * Card Link field in *BgPageSplitCards → Default → Primary → Card*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: bg_page_split_cards.default.primary.card[].card_link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	card_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *BgPageSplitCards → Default → Primary*
+ */
+export interface BgPageSplitCardsSliceDefaultPrimary {
+	/**
+	 * Background field in *BgPageSplitCards → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: bg_page_split_cards.default.primary.background
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	background: prismic.ImageField<never>;
+
+	/**
+	 * Title field in *BgPageSplitCards → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: bg_page_split_cards.default.primary.title
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * Card field in *BgPageSplitCards → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: bg_page_split_cards.default.primary.card[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	card: prismic.GroupField<Simplify<BgPageSplitCardsSliceDefaultPrimaryCardItem>>;
+}
+
+/**
+ * Default variation for BgPageSplitCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BgPageSplitCardsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<BgPageSplitCardsSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *BgPageSplitCards*
+ */
+type BgPageSplitCardsSliceVariation = BgPageSplitCardsSliceDefault;
+
+/**
+ * BgPageSplitCards Shared Slice
+ *
+ * - **API ID**: `bg_page_split_cards`
+ * - **Description**: BgPageSplitCards
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BgPageSplitCardsSlice = prismic.SharedSlice<
+	'bg_page_split_cards',
+	BgPageSplitCardsSliceVariation
+>;
 
 /**
  * Item in *Carousel → Default → Primary → Carousel Items*
@@ -1342,6 +1443,11 @@ declare module '@prismicio/client' {
 			SettingsDocument,
 			SettingsDocumentData,
 			AllDocumentTypes,
+			BgPageSplitCardsSlice,
+			BgPageSplitCardsSliceDefaultPrimaryCardItem,
+			BgPageSplitCardsSliceDefaultPrimary,
+			BgPageSplitCardsSliceVariation,
+			BgPageSplitCardsSliceDefault,
 			CarouselSlice,
 			CarouselSliceDefaultPrimaryCarouselItemsItem,
 			CarouselSliceDefaultPrimary,

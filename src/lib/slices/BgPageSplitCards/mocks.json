@@ -1,0 +1,93 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ea excepteur consectetur voluptate ex aliqua non do Lorem in aute occaecat pariatur. Nostrud Lorem do adipisicing commodo ex culpa ea elit."
+						}
+					}
+				]
+			},
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card_title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Fugiat sint consequat irure deserunt laborum adipisicing. Ullamco tempor ut magna aute minim qui nulla et eu mollit dolore nulla duis est aute."
+											}
+										}
+									]
+								}
+							],
+							[
+								"card_content",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ipsum aliqua aute sit aliquip amet occaecat minim consequat proident tempor."
+											}
+										}
+									]
+								}
+							],
+							[
+								"card_link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "e9415b7a-3f17-4cb9-aca0-cb0fabadcb84",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://google.com",
+										"text": "you"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"background": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+					"width": 4380,
+					"height": 2895
+				},
+				"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?rect=0%2C216%2C4380%2C2464&w=1920&h=1080",
+				"width": 1920,
+				"height": 1080,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 216
+					},
+					"background": "transparent"
+				},
+				"alt": "handsome",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			}
+		},
+		"items": []
+	}
+]

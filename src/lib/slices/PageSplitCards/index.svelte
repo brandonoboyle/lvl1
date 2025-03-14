@@ -10,14 +10,11 @@
 	let { slice }: Props = $props();
 </script>
 
-<div class="w-full px-6 pb-12 text-3xl md:text-lg">
+<div class="w-full px-10 pb-12 text-3xl md:text-lg">
 	<div class="flex justify-center pb-6">
 		<PrismicRichText field={slice.primary.title} />
 	</div>
-	<ul
-		class="flex flex-col md:flex-row gap-6 w-full"
-		
-	>
+	<ul class="flex w-full flex-col gap-6 md:flex-row">
 		{#each slice.primary.cards as card}
 			<Cards {card} />
 		{/each}
