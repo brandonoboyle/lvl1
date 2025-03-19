@@ -12,6 +12,17 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "background": {
+          "type": "Image",
+          "config": {
+            "label": "background",
+            "constraint": {
+              "width": 1920,
+              "height": 1080
+            },
+            "thumbnails": []
+          }
+        },
         "large_carousel": {
           "type": "Group",
           "config": {
@@ -26,28 +37,8 @@
                   "allowTargetBlank": true,
                   "single": "heading3,paragraph,strong,em,heading2"
                 }
-              },
-              "background": {
-                "type": "Image",
-                "config": {
-                  "label": "background",
-                  "constraint": {
-                    "width": 1000,
-                    "height": 1000
-                  },
-                  "thumbnails": []
-                }
               }
             }
-          }
-        },
-        "text": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Text",
-            "placeholder": "Text for right side",
-            "allowTargetBlank": true,
-            "multi": "heading2,heading3,paragraph"
           }
         }
       },

@@ -103,7 +103,7 @@
 				<div
 					class="absolute left-36 top-3 hidden rounded-xl bg-gradient-to-r from-secondary-600/50 to-error-600/50 p-4 lg:block"
 				>
-					<p class="text-2xl font-semibold tracking-tight">$9 Stay & Play</p>
+					<p class="text-2xl font-semibold tracking-tight">$9 Stay & Play*</p>
 				</div>
 				<div class="grid items-center justify-items-center pb-2 pt-3 lg:grid-cols-1">
 					<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">

@@ -80,9 +80,9 @@
 									"__TYPE__": "StructuredTextContent",
 									"value": [
 										{
-											"type": "paragraph",
+											"type": "heading3",
 											"content": {
-												"text": "Occaecat sunt pariatur incididunt magna minim dolor sint labore culpa exercitation cupidatat enim officia anim. Occaecat aliqua est commodo magna."
+												"text": "Something"
 											}
 										}
 									]

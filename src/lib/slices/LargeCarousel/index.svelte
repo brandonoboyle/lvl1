@@ -74,9 +74,15 @@
 	let { slice }: Props = $props();
 </script>
 
-<div class="flex flex-row py-6">
+<div class="flex w-full flex-row py-6">
+	<PrismicImage
+		field={slice.primary.background}
+		alt=""
+		class="absolute inset-0 left-1/2 h-1/2 -translate-x-1/2 translate-y-1/4 select-none rounded-2xl border-2 object-cover py-2 opacity-50"
+	/>
+
 	<div
-		class="relative grid h-full w-1/2 overflow-hidden pb-8"
+		class="relative grid w-full overflow-hidden pb-8"
 		role="region"
 		aria-label="Image carousel"
 		ontouchstart={handleTouchStart}
@@ -84,32 +90,21 @@
 		onmouseenter={handleInteractionStart}
 		onmouseleave={handleInteractionEnd}
 	>
-		<div class="carousel-track flex" style="transform: translateX(-{currentIndex * 100}%)">
+		<div class="carousel-track flex w-full" style="transform: translateX(-{currentIndex * 100}%)">
 			{#each slice.primary.large_carousel as card}
-				<div class="w-full flex-shrink-0 px-4 lg:px-10">
-					<section class="relative">
-						{#if isFilled.image(card.background)}
-							<PrismicImage
-								field={card.background}
-								alt=""
-								class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 select-none rounded-2xl object-cover opacity-90"
+				<div class="w-full flex-shrink-0 lg:px-10">
+					<div class="flex h-full justify-center">
+						<div
+							class="min-h-44 w-5/6 content-center justify-items-center bg-surface-800 text-center"
+						>
+							<PrismicRichText
+								field={card.content}
+								components={{
+									heading1: Heading
+								}}
 							/>
-						{/if}
-						<Bounded tag="div" yPadding="lg" class="relative">
-							<div class="grid justify-items-center">
-								<div
-									class="min-h-32 max-w-xl content-center justify-items-center text-center md:max-w-2xl"
-								>
-									<PrismicRichText
-										field={card.content}
-										components={{
-											heading1: Heading
-										}}
-									/>
-								</div>
-							</div>
-						</Bounded>
-					</section>
+						</div>
+					</div>
 				</div>
 			{/each}
 		</div>
@@ -126,9 +121,9 @@
 			{/each}
 		</div>
 	</div>
-	<div class="flex w-1/2 items-center justify-center pr-6 text-center text-lg md:text-4xl">
+	<!-- <div class="flex w-1/2 items-center justify-center pr-6 text-center text-lg md:text-4xl">
 		<PrismicRichText field={slice.primary.text} />
-	</div>
+	</div> -->
 </div>
 
 <style>

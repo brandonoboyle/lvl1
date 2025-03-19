@@ -810,12 +810,12 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	/**
 	 * price field in *MenuItems → Default → Primary → Cards*
 	 *
-	 * - **Field Type**: Rich Text
+	 * - **Field Type**: Title
 	 * - **Placeholder**: price
 	 * - **API ID Path**: image_cards.default.primary.cards[].price
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
-	price: prismic.RichTextField;
+	price: prismic.TitleField;
 
 	/**
 	 * Text field in *MenuItems → Default → Primary → Cards*
@@ -966,22 +966,22 @@ export interface LargeCarouselSliceDefaultPrimaryLargeCarouselItem {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	content: prismic.RichTextField;
-
-	/**
-	 * background field in *LargeCarousel → Default → Primary → Large Carousel*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: large_carousel.default.primary.large_carousel[].background
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	background: prismic.ImageField<never>;
 }
 
 /**
  * Primary content in *LargeCarousel → Default → Primary*
  */
 export interface LargeCarouselSliceDefaultPrimary {
+	/**
+	 * background field in *LargeCarousel → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: large_carousel.default.primary.background
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	background: prismic.ImageField<never>;
+
 	/**
 	 * Large Carousel field in *LargeCarousel → Default → Primary*
 	 *
@@ -991,16 +991,6 @@ export interface LargeCarouselSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
 	large_carousel: prismic.GroupField<Simplify<LargeCarouselSliceDefaultPrimaryLargeCarouselItem>>;
-
-	/**
-	 * Text field in *LargeCarousel → Default → Primary*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: Text for right side
-	 * - **API ID Path**: large_carousel.default.primary.text
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	text: prismic.RichTextField;
 }
 
 /**

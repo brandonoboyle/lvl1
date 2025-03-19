@@ -16,11 +16,11 @@
 <Bounded
 	yPadding="sm"
 	as="section"
-	class_="leading-relaxed px-5"
+	class="leading-relaxed px-5"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
-	<div class="text-center">
+	<div class="">
 		{#if isFilled.richText(slice?.primary?.text)}
 			<PrismicRichText field={slice.primary.text} />
 		{/if}

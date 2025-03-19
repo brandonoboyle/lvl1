@@ -52,7 +52,7 @@
                   "label": "price",
                   "placeholder": "price",
                   "allowTargetBlank": true,
-                  "single": "paragraph,heading3"
+                  "single": "heading3"
                 }
               },
               "text": {

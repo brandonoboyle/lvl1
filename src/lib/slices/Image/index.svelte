@@ -15,7 +15,8 @@
 
 <Bounded
 	tag="section"
-	class={clsx('', index === 0 && 'pt-0 md:pt-0')}
+	yPadding="sm"
+	class={clsx('', index === 0 && 'pt-0 px-5 md:pt-0')}
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >
