@@ -14,6 +14,7 @@
 	let { slice }: Props = $props();
 </script>
 
+<div class="pb-10">
 <div class="relative pb-4 drop-shadow-2xl">
 	<div class="">
 		{#if isFilled.image(slice.primary.backgroundImage)}
@@ -24,7 +25,7 @@
 			/>
 		{/if}
 	</div>
-	<Bounded tag="div" yPadding="sm" class="relative px-6">
+	<Bounded tag="div" yPadding="sm" class="relative">
 		<div class="grid justify-items-center gap-8">
 			<div class="max-w-2xl space-y-16 py-6 text-center">
 				<!-- an error is called for this heading declaration but I swear it works fine -->
@@ -45,4 +46,5 @@
 			{/if}
 		</div>
 	</Bounded>
+</div>
 </div>
