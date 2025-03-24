@@ -21,8 +21,8 @@
 	data-slice-variation={slice.variation}
 >
 	{#if isFilled.image(slice.primary.image)}
-		<div class="">
-			<PrismicImage field={slice.primary.image} sizes="100vw" class="w-full rounded-xl" />
+		<div class="h-full w-full px-4 flex items-center justify-center">
+			<PrismicImage field={slice.primary.image} sizes="100vw" class="h-full rounded-xl" />
 		</div>
 	{/if}
 </Bounded>
