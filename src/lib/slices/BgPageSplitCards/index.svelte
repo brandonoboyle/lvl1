@@ -20,7 +20,7 @@
 				/>
 			{/if}
 		</div>
-		<ul class="flex w-full flex-col md:flex-row md:gap-6">
+		<ul class="flex w-full flex-col lg:flex-row md:gap-6">
 			{#each slice.primary.card as card}
 				<BgCards {card} />
 			{/each}
