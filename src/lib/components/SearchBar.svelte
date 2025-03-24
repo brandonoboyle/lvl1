@@ -4,17 +4,24 @@
 	import { read, utils } from 'xlsx';
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
-	let search: 'loading' | 'ready' = $state('loading');
-	let searchTerm = $state('');
-	let results = $state([]);
-	let bilingualTerm = $state('');
-	let valueMultiple = $state<string[]>(['']);
-	// let searchCombination = $derived([searchTerm, valueMultiple, bilingualTerm]);
-
 	interface Boardgame {
+		Games: string;
 		Bilingual: string;
 		Category: string;
+		URL: string;
 	}
+
+	type SearchResult = {
+		Games: string;
+		Bilingual: string;
+		Category: string;
+		URL: string;
+	}
+
+	let search: 'loading' | 'ready' = $state('loading');
+	let searchTerm = $state('');
+	let results = $state<SearchResult[]>([]);
+	let valueMultiple = $state<string[]>([]);
 
 	onMount(async () => {
 		const f = await (
@@ -26,11 +33,13 @@
 		const posts = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
 		createPostsIndex(posts);
 		search = 'ready';
+		// Initialize with all results
+		results = searchPostsIndex('', []);
 	});
 
 	$effect(() => {
 		if (search === 'ready') {
-			results = searchPostsIndex(searchTerm + ' ' + valueMultiple + ' ' + bilingualTerm);
+			results = searchPostsIndex(searchTerm + ' ' + valueMultiple);
 		}
 	});
 </script>
@@ -61,7 +70,7 @@
 				multiple
 				hover=""
 				rounded="rounded-xl"
-				class="bg-surface-800 py-2"
+				class="bg-surface-800"
 			>
 				<!-- String reads en/fr as bilingual not the term bilingual -->
 				<ListBoxItem bind:group={valueMultiple} name="medium" value="en/fr">Bilingual</ListBoxItem>

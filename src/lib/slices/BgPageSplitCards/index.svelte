@@ -16,7 +16,7 @@
 				<PrismicImage
 					field={slice.primary.background}
 					alt=""
-					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 select-none rounded-xl object-cover opacity-40 shadow-2xl"
+					class="absolute -z-10 inset-0 left-1/2 h-full w-full -translate-x-1/2 select-none rounded-xl object-cover opacity-40 shadow-2xl"
 				/>
 			{/if}
 		</div>
