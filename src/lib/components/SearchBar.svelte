@@ -12,7 +12,6 @@
 	// let searchCombination = $derived([searchTerm, valueMultiple, bilingualTerm]);
 
 	interface Boardgame {
-		Games: string;
 		Bilingual: string;
 		Category: string;
 	}
@@ -62,7 +61,7 @@
 				multiple
 				hover=""
 				rounded="rounded-xl"
-				class="bg-surface-800"
+				class="bg-surface-800 py-2"
 			>
 				<!-- String reads en/fr as bilingual not the term bilingual -->
 				<ListBoxItem bind:group={valueMultiple} name="medium" value="en/fr">Bilingual</ListBoxItem>
@@ -120,3 +119,4 @@
 		</div>
 	</section>
 {/if}
+

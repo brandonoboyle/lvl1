@@ -22,7 +22,7 @@
 >
 	{#if isFilled.image(slice.primary.image)}
 		<div class="">
-			<PrismicImage field={slice.primary.image} sizes="100vw" class="w-full" />
+			<PrismicImage field={slice.primary.image} sizes="100vw" class="w-full rounded-xl" />
 		</div>
 	{/if}
 </Bounded>

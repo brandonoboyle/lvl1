@@ -26,4 +26,3 @@
 		<SearchBar />
 	</div>
 </Bounded>
-
