@@ -12,7 +12,7 @@ export async function POST({ request }) {
 	try {
 		const { data, error } = await resend.emails.send({
 			from: 'send@osddemo.xyz',
-			to: ['brandon.ohboil@icloud.com'],
+			to: ['theloftloungeottawa@gmail.com'],
 			subject: 'New Contact Form Submission',
 			html: `
                 <h1>New Contact Form Submission</h1>

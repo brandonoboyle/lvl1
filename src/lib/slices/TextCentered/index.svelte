@@ -5,17 +5,13 @@
 	import Bounded from '$lib/components/Bounded.svelte';
 	import PrismicRichText from '$lib/components/PrismicRichText.svelte';
 
-	interface Props {
-		slice: Content.TextSlice;
-	}
-
-	export let slice: Props['slice'];
+	export let slice: Content.TextCenteredSlice;
 </script>
 
 <Bounded
 	yPadding="sm"
 	as="section"
-	class="leading-relaxed px-5"
+	class="px-5 leading-relaxed text-center"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >

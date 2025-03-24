@@ -30,6 +30,15 @@
 						}
 					}
 				}
+			},
+			"stayplay": {
+				"type": "StructuredText",
+				"config": {
+					"label": "stayplay",
+					"placeholder": "",
+					"allowTargetBlank": true,
+					"single": "paragraph,heading3"
+				}
 			}
 		}
 	}

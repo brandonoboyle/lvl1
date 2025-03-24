@@ -35,6 +35,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"text_centered": {
+							"type": "SharedSlice"
+						},
 						"bg_page_split_cards": {
 							"type": "SharedSlice"
 						},
