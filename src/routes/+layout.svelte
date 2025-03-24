@@ -9,7 +9,6 @@
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 
-	import bg from '$lib/assets/images/bgimage.jpg';
 
 	inject({ mode: dev ? 'development' : 'production' });
 
