@@ -11,7 +11,7 @@
 		getDrawerStore,
 		type DrawerSettings
 	} from '@skeletonlabs/skeleton';
-
+	import PrismicRichText from './PrismicRichText.svelte';
 	initializeStores();
 
 	const drawerStore = getDrawerStore();
@@ -101,9 +101,9 @@
 					</button>
 				</nav>
 				<div
-					class="absolute left-36 top-3 hidden rounded-xl bg-gradient-to-r from-secondary-600/50 to-error-600/50 p-4 lg:block"
+					class="absolute left-36 top-3 hidden rounded-xl bg-gradient-to-r from-secondary-600/50 to-error-600/50 p-4 text-2xl font-semibold tracking-tight lg:block"
 				>
-					<p class="text-2xl font-semibold tracking-tight">$9 Stay & Play*</p>
+					<PrismicRichText field={navigation.data?.stayplay} />
 				</div>
 				<div class="grid items-center justify-items-center pb-2 pt-3 lg:grid-cols-1">
 					<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
