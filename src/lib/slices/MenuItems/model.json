@@ -61,7 +61,7 @@
                   "label": "Text",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph"
+                  "multi": "paragraph,em,strong"
                 }
               },
               "notes": {

@@ -25,7 +25,7 @@
 			<PrismicRichText field={card.price} />
 		</div>
 		<div class="col-span-2 w-full">
-			<div class="font-body">
+			<div class="">
 				<PrismicRichText field={card.text} />
 			</div>
 			<div class="justify-items-center p-4 text-center">

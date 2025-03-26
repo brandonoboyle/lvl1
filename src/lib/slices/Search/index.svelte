@@ -18,11 +18,11 @@
 </script>
 
 
-<Bounded tag="div" yPadding="sm" class="relative p-4">
-	<div data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="">
+<div class="flex justify-center">
+	<div data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="w-4/5">
 		{#if slice.primary?.search}
 			<PrismicRichText field={slice.primary.search} />
 		{/if}
 		<SearchBar />
 	</div>
-</Bounded>
+</div>

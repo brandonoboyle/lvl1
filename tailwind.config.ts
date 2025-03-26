@@ -12,8 +12,8 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				heading: ['Heading', 'sans-serif'],
-				body: ['Body', 'sans-serif']
+				heading: ['Advent Pro', 'sans-serif'],
+				body: ['Lato', 'sans-serif']
 			}
 		}
 	},
@@ -22,10 +22,6 @@ export default {
 		skeleton({
 			themes: {
 				preset: [
-					{
-						name: 'rocket',
-						enhancements: false
-					},
 					{
 						name: 'skeleton',
 						enhancements: false
