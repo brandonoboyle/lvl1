@@ -11,7 +11,7 @@ export async function POST({ request }) {
 
 	try {
 		const { data, error } = await resend.emails.send({
-			from: 'send@osddemo.xyz',
+			from: 'send@levelonegamepub.com',
 			to: ['theloftloungeottawa@gmail.com'],
 			subject: 'New Contact Form Submission',
 			html: `
