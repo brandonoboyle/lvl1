@@ -9,6 +9,7 @@
 		Bilingual: string;
 		Category: string;
 		URL: string;
+		Hidden: string;
 	}
 
 	type SearchResult = {
@@ -16,6 +17,7 @@
 		Bilingual: string;
 		Category: string;
 		URL: string;
+		Hidden: string;
 	}
 
 	let search: 'loading' | 'ready' = $state('loading');
@@ -32,6 +34,7 @@
 		const wb = read(f);
 		const posts = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
 		createPostsIndex(posts);
+		console.log(posts);
 		search = 'ready';
 		// Initialize with all results
 		results = searchPostsIndex('', []);
