@@ -44,7 +44,7 @@
 		>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Gamecube">Gamecube</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="N64">N64</ListBoxItem>
-			<ListBoxItem bind:group={valueMultiple} name="medium" value="NES">NES</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="Mini">NES/SNES</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS1">PS1</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS2">PS2</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS3">PS3</ListBoxItem>
@@ -57,10 +57,10 @@
 		>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS4">PS4</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS5">PS5</ListBoxItem>
-			<ListBoxItem bind:group={valueMultiple} name="medium" value="SNES">SNES</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Switch">Switch</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Wii">Wii</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="WiiU">WiiU</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="Xbox360">Xbox360</ListBoxItem>
 		</ListBox>
 	</div>
 	<div class="variant-glass-surface h-80 overflow-y-auto rounded-t-xl p-6 opacity-90">
