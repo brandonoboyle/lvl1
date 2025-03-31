@@ -4,6 +4,8 @@ import BgPageSplitCards from './BgPageSplitCards/index.svelte';
 import Carousel from './Carousel/index.svelte';
 import Eventcalendar from './Eventcalendar/index.svelte';
 import Form from './Form/index.svelte';
+import GeekTriviaScores from './GeekTriviaScores/index.svelte';
+import GeekTriviaThemes from './GeekTriviaThemes/index.svelte';
 import Googlemap from './Googlemap/index.svelte';
 import GridSelect from './GridSelect/index.svelte';
 import Hero from './Hero/index.svelte';
@@ -26,6 +28,8 @@ export const components = {
 	carousel: Carousel,
 	dnd: Eventcalendar,
 	form: Form,
+	geek_trivia_scores: GeekTriviaScores,
+	geek_trivia_themes: GeekTriviaThemes,
 	googlemap: Googlemap,
 	grid_select: GridSelect,
 	hero: Hero,

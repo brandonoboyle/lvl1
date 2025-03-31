@@ -35,6 +35,12 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"geek_trivia_themes": {
+							"type": "SharedSlice"
+						},
+						"geek_trivia_scores": {
+							"type": "SharedSlice"
+						},
 						"text_centered": {
 							"type": "SharedSlice"
 						},

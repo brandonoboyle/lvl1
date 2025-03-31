@@ -72,6 +72,8 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| GeekTriviaThemesSlice
+	| GeekTriviaScoresSlice
 	| TextCenteredSlice
 	| BgPageSplitCardsSlice
 	| PageSplitCardsSlice
@@ -472,6 +474,66 @@ type FormSliceVariation = FormSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type FormSlice = prismic.SharedSlice<'form', FormSliceVariation>;
+
+/**
+ * Default variation for GeekTriviaScores Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GeekTriviaScoresSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *GeekTriviaScores*
+ */
+type GeekTriviaScoresSliceVariation = GeekTriviaScoresSliceDefault;
+
+/**
+ * GeekTriviaScores Shared Slice
+ *
+ * - **API ID**: `geek_trivia_scores`
+ * - **Description**: GeekTriviaScores
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GeekTriviaScoresSlice = prismic.SharedSlice<
+	'geek_trivia_scores',
+	GeekTriviaScoresSliceVariation
+>;
+
+/**
+ * Default variation for GeekTriviaThemes Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GeekTriviaThemesSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *GeekTriviaThemes*
+ */
+type GeekTriviaThemesSliceVariation = GeekTriviaThemesSliceDefault;
+
+/**
+ * GeekTriviaThemes Shared Slice
+ *
+ * - **API ID**: `geek_trivia_themes`
+ * - **Description**: GeekTriviaThemes
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GeekTriviaThemesSlice = prismic.SharedSlice<
+	'geek_trivia_themes',
+	GeekTriviaThemesSliceVariation
+>;
 
 /**
  * Default variation for Googlemap Slice
@@ -1425,6 +1487,12 @@ declare module '@prismicio/client' {
 			FormSliceDefaultPrimary,
 			FormSliceVariation,
 			FormSliceDefault,
+			GeekTriviaScoresSlice,
+			GeekTriviaScoresSliceVariation,
+			GeekTriviaScoresSliceDefault,
+			GeekTriviaThemesSlice,
+			GeekTriviaThemesSliceVariation,
+			GeekTriviaThemesSliceDefault,
 			GooglemapSlice,
 			GooglemapSliceVariation,
 			GooglemapSliceDefault,
