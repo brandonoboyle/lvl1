@@ -87,10 +87,10 @@
 		</div>
 		<div class="variant-glass-surface h-80 overflow-y-auto rounded-t-xl p-6 opacity-90">
 			{#if results}
-				<ul class="grid list-none grid-flow-row gap-6 text-xl lg:grid-cols-3">
+				<ul class="grid list-none grid-cols-2 gap-6 lg:grid-cols-3">
 					{#each results as result}
 						<li class="p-2">
-							<a href={result.URL} target="_blank" rel="noopener noreferrer" class="block text-4xl">
+							<a href={result.URL} target="_blank" rel="noopener noreferrer" class="block text-xl lg:text-2xl">
 								{@html result.Games}
 							</a>
 							<div class="flex flex-row gap-2">

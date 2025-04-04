@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 
-	export let slice: Content.GeekTriviaScoresSlice;
 </script>
 
 <div class="flex h-full w-full items-center justify-center py-4">
