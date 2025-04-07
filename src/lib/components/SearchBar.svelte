@@ -79,16 +79,16 @@
 			</ListBox>
 		</div>
 		<div
-			class="variant-glass-surface h-80 w-full overflow-y-auto rounded-t-xl p-6 opacity-90"
+			class="variant-glass-surface h-96 w-full overflow-y-auto rounded-t-xl opacity-90"
 		>
 			{#if results}
-				<ul class="grid w-full list-none grid-flow-row gap-2 lg:grid-cols-3">
+				<ul class="grid w-full list-none grid-flow-row lg:grid-cols-3">
 					{#each results as result}
 						<a
 							href={result.URL}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="block text-xl lg:text-2xl"
+							class="block text-lg lg:text-2xl"
 						>
 							<li class="p-2">
 								<p class="text-pretty">{@html result.Games}</p>

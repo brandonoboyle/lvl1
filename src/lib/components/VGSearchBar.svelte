@@ -4,15 +4,27 @@
 	import { read, utils } from 'xlsx';
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
-	let search: 'loading' | 'ready' = $state('loading');
-	let searchTerm = $state('');
-	let results = $state([]);
-	let valueMultiple = $state<string[]>(['']);
-
 	interface Boardgame {
 		Games: string;
+		Bilingual: string;
 		Category: string;
+		URL: string;
+		Hidden: string;
 	}
+
+	type SearchResult = {
+		Games: string;
+		Bilingual: string;
+		Category: string;
+		URL: string;
+		Hidden: string;
+	};
+
+	let search: 'loading' | 'ready' = $state('loading');
+	let searchTerm = $state('');
+	let results = $state<SearchResult[]>([]);
+	let valueMultiple = $state<string[]>([]);
+	let allPosts: Boardgame[] = [];
 
 	onMount(async () => {
 		const f = await (
@@ -22,14 +34,18 @@
 		).arrayBuffer();
 		const wb = read(f);
 		const posts = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
+		allPosts = posts;
 		createPostsIndex(posts);
-		console.log(posts);
 		search = 'ready';
 	});
 
 	$effect(() => {
 		if (search === 'ready') {
-			results = searchPostsIndex(searchTerm + ' ' + valueMultiple);
+			if (searchTerm.trim() === '' && valueMultiple.length === 0) {
+				results = allPosts;
+			} else {
+				results = searchPostsIndex(searchTerm + ' ' + valueMultiple);
+			}
 		}
 	});
 </script>
@@ -53,31 +69,52 @@
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Xbox360">Xbox360</ListBoxItem>
 		</ListBox>
 	</div>
-	<div class="variant-glass-surface h-80 overflow-y-auto rounded-t-xl p-6 opacity-90">
+	<div class="variant-glass-surface h-96 overflow-y-auto rounded-t-xl opacity-90">
 		{#if results}
-			<ul class="grid list-none grid-flow-row gap-6 text-xl lg:grid-cols-3">
+			<ul class="grid w-full list-none grid-flow-row lg:grid-cols-3">
 				{#each results as result}
-					<li class="p-2">
-						<a href={result.URL} target="_blank" rel="noopener noreferrer" class="block text-4xl">
-							{@html result.Games}
+					<a
+							href={result.URL}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="block text-lg lg:text-2xl"
+						>
+							<li class="p-2">
+								<p class="text-pretty">{@html result.Games}</p>
+
+								<div class="flex flex-row flex-wrap gap-2">
+									<p class="text-sm text-tertiary-400">{@html result.Category}</p>
+									<p class="text-sm text-secondary-400">{@html result.Bilingual}</p>
+								</div>
+							</li>
 						</a>
-						<p class="text-tertiary-400">{@html result.Category}</p>
-					</li>
 				{/each}
 			</ul>
 		{/if}
 	</div>
 
-	<div class="variant-glass-surface relative w-full font-sans text-2xl">
+	<div class="relative flex w-full gap-2 font-sans text-2xl">
 		<input
-			bind:value={searchTerm}
+			value={searchTerm}
 			placeholder="Search..."
 			autocomplete="off"
 			spellcheck="false"
 			type="search"
 			id="Search"
 			class="w-full border-none bg-surface-800 p-6 text-primary-100 outline-none drop-shadow-2xl transition-colors"
+			onkeydown={(e) => {
+				if (e.key === 'Enter') {
+					searchTerm = e.currentTarget.value;
+				}
+			}}
 		/>
+		<button
+			class="variant-filled-primary btn"
+			onclick={() => {
+				searchTerm = '';
+				valueMultiple = [];
+			}}>Clear All</button
+		>
 	</div>
 {/if}
 
