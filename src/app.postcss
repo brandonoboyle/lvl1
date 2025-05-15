@@ -9,15 +9,13 @@
 @tailwind utilities;
 @tailwind variants;
 
-
-
-:root [data-theme='skeleton'] {
+:root [data-theme='myCustonTheme'] {
 	--theme-font-family-heading: 'Advent Pro', sans-serif;
 	--theme-font-family-base: 'Lato', sans-serif;
 }
 
-
-body {
+/* Original Gradient */
+/* body {
 	background-image: radial-gradient(
 			at 0% 0%,
 			rgba(var(--color-secondary-500) / 0.33) 0px,
@@ -30,4 +28,13 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+} */
+
+/* Photo implication */
+body {
+	background-image: url('/wideBG.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 100vh;
 }

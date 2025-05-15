@@ -42,7 +42,7 @@
 </script>
 
 <!--Mobile side drawer nav list -->
-<div class="relative text-slate-100">
+<div class="relative text-primary-100">
 	<Drawer>
 		<!--		Logo positioning-->
 		<div class="h-full px-6 pt-4">
@@ -79,7 +79,7 @@
 			/>
 			<div class="w-full">
 				<nav class="absolute w-full items-center lg:hidden">
-					<button aria-label="Open mobile nav" class="ml-2 mt-5" onclick={drawerOpen}>
+					<button aria-label="Open mobile nav" class="ml-1.5 mt-5" onclick={drawerOpen}>
 						<span>
 							<svg
 								class="h-12 w-12 text-gray-800 dark:text-slate-100"
@@ -101,7 +101,7 @@
 					</button>
 				</nav>
 				<div
-					class="absolute left-36 top-3 hidden rounded-xl bg-gradient-to-r from-secondary-600/50 to-error-600/50 p-4 text-2xl font-semibold tracking-tight lg:block"
+					class="absolute left-36 top-3 hidden rounded-xl bg-gradient-to-r from-secondary-700 to-tertiary-700 p-4 text-2xl text-primary-50 font-semibold tracking-tight lg:block"
 				>
 					<PrismicRichText field={navigation.data?.stayplay} />
 				</div>
@@ -118,7 +118,7 @@
 		>
 			{#each navigation.data?.links as item}
 				<li
-					class="text-nowrap px-6 py-1 text-lg tracking-tight hover:text-tertiary-200 hover:shadow-2xl"
+					class="text-nowrap px-6 py-1 text-lg tracking-tight text-primary-600 hover:text-tertiary-200 hover:shadow-2xl"
 				>
 					<PrismicLink class="" field={item.link}>
 						<PrismicText field={item.label} />

@@ -17,7 +17,7 @@
 		<!--				Inner text box-->
 
 		<div class="flex flex-col items-center justify-center rounded-xl bg-surface-800 min-h-64 px-8 py-8 text-xl drop-shadow-2xl md:px-12 md:py-12">
-			<span class="text-center text-error-100"><PrismicRichText field={card.card_title} /></span>
+			<span class="text-center bg-gradient-to-br from-primary-500 to-tertiary-400 box-decoration-clone bg-clip-text text-transparent"><PrismicRichText field={card.card_title} /></span>
 			<span class="text-center"><PrismicRichText field={card.card_content} /></span>
 		</div>
 	</PrismicLink>
