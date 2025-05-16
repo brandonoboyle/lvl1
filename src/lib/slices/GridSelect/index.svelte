@@ -11,9 +11,10 @@
 
 <div class="">
 	<!-- <ul class="grid grid-cols-2 gap-6 p-4 px-6 md:px-10"> -->
-	<ul class="grid grid-cols-2 gap-6 p-4 px-6 md:px-10">
+	<ul class="grid grid-cols-2 gap-6 p-4 z-10 px-6 md:px-10">
 		{#each slice.primary.gridgroup as card}
 			<GridSelect {card} />
 		{/each}
 	</ul>
+	
 </div>

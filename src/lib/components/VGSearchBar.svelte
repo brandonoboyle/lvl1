@@ -109,7 +109,7 @@
 			}}
 		/>
 		<button
-			class="variant-filled-primary btn"
+			class="variant-glass-primary btn"
 			onclick={() => {
 				searchTerm = '';
 				valueMultiple = [];

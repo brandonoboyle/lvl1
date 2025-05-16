@@ -42,7 +42,7 @@
 </script>
 
 <!--Mobile side drawer nav list -->
-<div class="relative text-primary-100">
+<div class="relative text-primary-50 pb-12">
 	<Drawer>
 		<!--		Logo positioning-->
 		<div class="h-full px-6 pt-4">
@@ -77,12 +77,15 @@
 				alt="levelonelogo"
 				class="absolute inset-0 h-full w-full object-cover object-center opacity-40"
 			/>
+			<div
+					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 bg-gradient-to-br from-tertiary-700/30 to-secondary-600/30 via-surface-600/30 mix-blend-overlay"
+				></div>
 			<div class="w-full">
 				<nav class="absolute w-full items-center lg:hidden">
 					<button aria-label="Open mobile nav" class="ml-1.5 mt-5" onclick={drawerOpen}>
 						<span>
 							<svg
-								class="h-12 w-12 text-gray-800 dark:text-slate-100"
+								class="h-12 w-12 text-tertiary-100"
 								aria-hidden="true"
 								xmlns="http://www.w3.org/2000/svg"
 								width="24"
@@ -118,7 +121,7 @@
 		>
 			{#each navigation.data?.links as item}
 				<li
-					class="text-nowrap px-6 py-1 text-lg tracking-tight text-primary-600 hover:text-tertiary-200 hover:shadow-2xl"
+					class="text-nowrap px-6 py-1 text-lg tracking-tight text-primary-500 hover:text-tertiary-200 hover:shadow-2xl"
 				>
 					<PrismicLink class="" field={item.link}>
 						<PrismicText field={item.label} />

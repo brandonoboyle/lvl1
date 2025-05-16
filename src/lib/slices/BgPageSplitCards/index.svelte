@@ -18,6 +18,9 @@
 					alt=""
 					class="absolute -z-10 inset-0 left-1/2 h-full w-full -translate-x-1/2 select-none rounded-xl object-cover opacity-40 shadow-2xl"
 				/>
+				<div
+					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 bg-gradient-to-br from-tertiary-400/30 to-secondary-400/30 via-surface-400/30 mix-blend-overlay"
+				></div>
 			{/if}
 		</div>
 		<ul class="flex w-full flex-col lg:flex-row md:gap-6">

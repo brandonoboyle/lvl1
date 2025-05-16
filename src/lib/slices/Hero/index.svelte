@@ -14,20 +14,25 @@
 	let { slice }: Props = $props();
 </script>
 
-<div class="pb-10">
-	<div class="relative pb-4 drop-shadow-2xl">
-		<div class="">
+<div class="pb-10 px-6 md:px-10">
+	<div class="relative pb-4 w-full mx-auto drop-shadow-2xl">
+		<div class="rounded-2xl overflow-hidden">
 			{#if isFilled.image(slice.primary.backgroundImage)}
 				<PrismicImage
 					field={slice.primary.backgroundImage}
 					alt=""
-					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 select-none rounded-2xl object-cover px-6 opacity-40 shadow-2xl md:px-10"
+					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 object-cover opacity-50 drop-shadow-2xl rounded-2xl"
 				/>
+				<div
+					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 bg-gradient-to-br from-secondary-400/30 to-tertiary-400/30 via-surface-400/30 mix-blend-overlay rounded-2xl"
+				></div>
 			{/if}
 		</div>
 		<Bounded tag="div" yPadding="sm" class="relative">
 			<div class="grid justify-items-center gap-8">
-				<div class="max-w-2xl space-y-16 px-4 py-6 text-center">
+				<div
+					class="max-w-2xl space-y-16 bg-gradient-to-br from-secondary-600 to-tertiary-400 box-decoration-clone bg-clip-text px-4 py-6 text-center text-transparent"
+				>
 					<!-- an error is called for this heading declaration but I swear it works fine -->
 					<PrismicRichText
 						field={slice.primary.text}
