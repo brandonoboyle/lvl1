@@ -42,7 +42,7 @@
 </script>
 
 <!--Mobile side drawer nav list -->
-<div class="relative text-primary-50 pb-12">
+<div class="relative pb-12 text-primary-50">
 	<Drawer>
 		<!--		Logo positioning-->
 		<div class="h-full px-6 pt-4">
@@ -78,8 +78,8 @@
 				class="absolute inset-0 h-full w-full object-cover object-center opacity-40"
 			/>
 			<div
-					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 bg-gradient-to-br from-tertiary-700/30 to-secondary-600/30 via-surface-600/30 mix-blend-overlay"
-				></div>
+				class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 bg-gradient-to-br from-tertiary-700/30 via-surface-600/30 to-secondary-600/30 mix-blend-overlay"
+			></div>
 			<div class="w-full">
 				<nav class="absolute w-full items-center lg:hidden">
 					<button aria-label="Open mobile nav" class="ml-1.5 mt-5" onclick={drawerOpen}>
@@ -104,7 +104,7 @@
 					</button>
 				</nav>
 				<div
-					class="absolute left-36 top-3 hidden rounded-xl bg-gradient-to-r from-secondary-700 to-tertiary-700 p-4 text-2xl text-primary-50 font-semibold tracking-tight lg:block"
+					class="absolute left-36 top-3 hidden rounded-xl bg-gradient-to-r from-secondary-700 to-tertiary-700 p-4 text-2xl font-semibold tracking-tight text-primary-50 lg:block"
 				>
 					<PrismicRichText field={navigation.data?.stayplay} />
 				</div>

@@ -31,7 +31,7 @@
 		<Bounded tag="div" yPadding="sm" class="relative">
 			<div class="grid justify-items-center gap-8">
 				<div
-					class="max-w-2xl space-y-16 bg-gradient-to-br from-secondary-600 to-tertiary-400 box-decoration-clone bg-clip-text px-4 py-6 text-center text-transparent"
+					class="max-w-2xl space-y-16 bg-gradient-to-br from-primary-600 to-tertiary-400 box-decoration-clone bg-clip-text px-4 py-6 text-center text-transparent"
 				>
 					<!-- an error is called for this heading declaration but I swear it works fine -->
 					<PrismicRichText
@@ -44,7 +44,7 @@
 				{#if isFilled.link(slice.primary.buttonLink)}
 					<PrismicLink
 						field={slice.primary.buttonLink}
-						class="variant-glass-tertiary rounded-xl px-5 py-3 text-2xl font-bold hover:variant-ghost-tertiary"
+						class="variant-glass-secondary rounded-xl px-5 py-3 text-2xl font-bold hover:variant-ghost-tertiary"
 					>
 						{slice.primary.buttonText || 'Learn More'}
 					</PrismicLink>

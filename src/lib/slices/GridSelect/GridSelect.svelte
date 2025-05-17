@@ -19,8 +19,11 @@
 			{#if isFilled.image(card.gridimage)}
 				<PrismicImage
 					field={card.gridimage}
-					class="absolute inset-0 h-full w-full rounded-xl object-cover opacity-60 shadow-2xl"
+					class="absolute inset-0 h-full w-full rounded-xl object-cover opacity-80 shadow-2xl"
 				/>
+				<div
+				class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 rounded-xl bg-gradient-to-br from-surface-700/30 via-tertiary-800/30 to-surface-700/30 mix-blend-overlay"
+			></div>
 			{/if}
 		</PrismicLink>
 	{/if}
@@ -29,7 +32,7 @@
 			<PrismicLink field={card.gridlink}>
 				<!--				Inner text box-->
 				<div
-					class="variant-glass-tertiary h-min w-min rounded-xl px-6 py-4 text-center drop-shadow-2xl md:text-nowrap"
+					class="variant-glass-secondary h-min w-min rounded-xl px-6 py-4 text-center drop-shadow-2xl md:text-nowrap"
 				>
 					<PrismicRichText field={card.image_text} />
 				</div>
