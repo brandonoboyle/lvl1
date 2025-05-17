@@ -21,7 +21,7 @@
 				<PrismicImage
 					field={slice.primary.backgroundImage}
 					alt=""
-					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 object-cover opacity-50 drop-shadow-2xl rounded-2xl"
+					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 object-cover opacity-40 drop-shadow-2xl rounded-2xl"
 				/>
 				<div
 					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 bg-gradient-to-br from-secondary-400/30 to-tertiary-400/30 via-surface-400/30 mix-blend-overlay rounded-2xl"
@@ -36,9 +36,6 @@
 					<!-- an error is called for this heading declaration but I swear it works fine -->
 					<PrismicRichText
 						field={slice.primary.text}
-						components={{
-							heading1: Heading
-						}}
 					/>
 				</div>
 				{#if isFilled.link(slice.primary.buttonLink)}
