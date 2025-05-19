@@ -42,7 +42,7 @@
 </script>
 
 <!--Mobile side drawer nav list -->
-<div class="relative pb-12 text-primary-50">
+<div class="relative pb-8 md:pb-12 text-primary-50">
 	<Drawer>
 		<!--		Logo positioning-->
 		<div class="h-full px-6 pt-4">
