@@ -42,7 +42,7 @@
 </script>
 
 <!--Mobile side drawer nav list -->
-<div class="relative pb-8 md:pb-12 text-primary-50">
+<div class="relative pb-8 text-primary-50 md:pb-12">
 	<Drawer>
 		<!--		Logo positioning-->
 		<div class="h-full px-6 pt-4">
@@ -108,7 +108,7 @@
 				>
 					<PrismicRichText field={navigation.data?.stayplay} />
 				</div>
-				<div class="grid items-center justify-items-center pb-2 pt-3 lg:grid-cols-1">
+				<div class="grid items-center justify-items-center pt-3 lg:grid-cols-1">
 					<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
 						<img src={logo} alt="levelonelogo" class="" />
 					</a>
