@@ -18,7 +18,7 @@
 		</div>
 	{/if}
 	<div class="grid h-full w-full grid-cols-2 text-pretty">
-		<div class="justify-items-start">
+		<div class="justify-items-start bg-gradient-to-br from-primary-500 to-tertiary-400 box-decoration-clone bg-clip-text text-transparent">
 			<PrismicRichText field={card.title} />
 		</div>
 		<div class="grid justify-items-end">

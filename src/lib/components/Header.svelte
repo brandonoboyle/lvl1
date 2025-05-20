@@ -121,7 +121,7 @@
 		>
 			{#each navigation.data?.links as item}
 				<li
-					class="text-nowrap px-6 py-1 text-lg tracking-tight text-primary-500 hover:text-tertiary-200 hover:shadow-2xl"
+					class="text-nowrap px-6 py-1 text-lg tracking-tight text-primary-500 hover:text-tertiary-100 hover:shadow-2xl"
 				>
 					<PrismicLink class="" field={item.link}>
 						<PrismicText field={item.label} />

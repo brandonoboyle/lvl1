@@ -120,7 +120,7 @@
 				}}
 			/>
 			<button
-				class="variant-glass-primary btn"
+				class="rounded-xl bg-gradient-to-br from-tertiary-600 to-secondary-600 px-5 py-3 text-2xl text-primary-50 hover:shadow-lg hover:shadow-tertiary-600"
 				onclick={() => {
 					searchTerm = '';
 					valueMultiple = [];

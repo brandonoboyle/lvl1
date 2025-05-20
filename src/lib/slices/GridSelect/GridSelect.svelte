@@ -13,7 +13,7 @@
 </script>
 
 <!--Affects photo size-->
-<li class="relative py-11 hover:variant-glass-secondary rounded-xl md:py-16">
+<li class="relative rounded-xl py-11 hover:shadow-lg hover:shadow-tertiary-600 md:py-16">
 	{#if isFilled.link(card.gridlink)}
 		<PrismicLink field={card.gridlink}>
 			{#if isFilled.image(card.gridimage)}
@@ -22,8 +22,8 @@
 					class="absolute inset-0 h-full w-full rounded-xl object-cover opacity-80 shadow-2xl"
 				/>
 				<div
-				class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 rounded-xl bg-gradient-to-br from-surface-700/30 via-tertiary-800/30 to-surface-700/30 mix-blend-overlay"
-			></div>
+					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 rounded-xl bg-gradient-to-br from-surface-700/30 via-tertiary-800/30 to-surface-700/30 mix-blend-overlay"
+				></div>
 			{/if}
 		</PrismicLink>
 	{/if}
@@ -32,7 +32,7 @@
 			<PrismicLink field={card.gridlink}>
 				<!--				Inner text box-->
 				<div
-					class="variant-glass-secondary h-min w-min rounded-xl px-6 py-4 text-center drop-shadow-2xl md:text-nowrap"
+					class="h-min w-min rounded-xl bg-gradient-to-br from-tertiary-600 to-secondary-600 px-6 py-4 text-center drop-shadow-2xl md:text-nowrap"
 				>
 					<PrismicRichText field={card.image_text} />
 				</div>

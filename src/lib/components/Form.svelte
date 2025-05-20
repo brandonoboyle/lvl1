@@ -64,7 +64,7 @@
 			<div class="mt-4">
 				<button
 					type="submit"
-					class="variant-glass-tertiary rounded-xl px-5 py-3 text-2xl font-bold hover:variant-ghost-tertiary"
+					class="rounded-xl bg-gradient-to-br from-tertiary-600 to-secondary-600 px-5 py-3 text-2xl font-bold text-primary-50 hover:shadow-lg hover:shadow-tertiary-600"
 					disabled={submitting}
 				>
 					{submitting ? 'Sending...' : 'Submit'}
