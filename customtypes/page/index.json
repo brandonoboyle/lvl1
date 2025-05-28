@@ -50,9 +50,6 @@
 						"page_split_cards": {
 							"type": "SharedSlice"
 						},
-						"large_carousel": {
-							"type": "SharedSlice"
-						},
 						"page_split": {
 							"type": "SharedSlice"
 						},
@@ -69,9 +66,6 @@
 							"type": "SharedSlice"
 						},
 						"reservation": {
-							"type": "SharedSlice"
-						},
-						"carousel": {
 							"type": "SharedSlice"
 						},
 						"form": {

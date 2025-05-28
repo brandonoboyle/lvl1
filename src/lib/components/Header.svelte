@@ -1,9 +1,8 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import { PrismicLink, PrismicText, PrismicImage } from '@prismicio/svelte';
-	import squareLogo from '$lib/assets/logo/square-logo.png';
-	import logo from '$lib/assets/logo/logo-text.png';
-	import smallLogo from '$lib/assets/logo/small-logo.png';
+	import squareLogo from '$lib/assets/logo/big-new-logo.png';
+	import logo from '$lib/assets/logo/new-logo.png';
 	import bg from '$lib/assets/images/bgimage.jpg';
 	import {
 		initializeStores,
@@ -45,7 +44,7 @@
 <div class="relative pb-8 text-primary-50 md:pb-12">
 	<Drawer>
 		<!--		Logo positioning-->
-		<div class="h-full px-6 pt-4">
+		<div class="h-full bg-gradient-to-br from-surface-600 to-surface-800 px-6 pt-4">
 			<button class="grid w-full justify-center border-none outline-none"
 				><a href="/" class="" onclick={drawerClose}>
 					<img src={squareLogo} alt="Square Logo" class="" />
@@ -69,13 +68,13 @@
 	<!--Main page top nav bar-->
 	<!--	This is the whole Header-->
 	<nav
-		class="variant-glass fixed z-10 w-screen items-center justify-items-center leading-none drop-shadow-2xl"
+		class="fixed z-10 w-screen items-center justify-items-center bg-surface-800 leading-none drop-shadow-2xl"
 	>
 		<div class="w-full">
 			<img
 				src={bg}
 				alt="levelonelogo"
-				class="absolute inset-0 h-full w-full object-cover object-center opacity-40"
+				class="absolute inset-0 h-full w-full object-cover object-center opacity-30"
 			/>
 			<div
 				class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 bg-gradient-to-br from-tertiary-700/30 via-surface-600/30 to-secondary-600/30 mix-blend-overlay"
@@ -110,7 +109,7 @@
 				</div>
 				<div class="grid items-center justify-items-center pt-3 lg:grid-cols-1">
 					<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
-						<img src={logo} alt="levelonelogo" class="" />
+						<img src={logo} alt="levelonelogo" class="h-[77px] w-[424px]" />
 					</a>
 				</div>
 			</div>
@@ -121,7 +120,7 @@
 		>
 			{#each navigation.data?.links as item}
 				<li
-					class="text-nowrap px-6 py-1 text-lg tracking-tight text-primary-500 hover:text-tertiary-100 hover:shadow-2xl"
+					class="text-nowrap px-6 py-1 text-lg tracking-tight bg-gradient-to-br from-primary-500 to-tertiary-400 box-decoration-clone bg-clip-text text-transparent hover:text-secondary-500 hover:shadow-secondary-500"
 				>
 					<PrismicLink class="" field={item.link}>
 						<PrismicText field={item.label} />

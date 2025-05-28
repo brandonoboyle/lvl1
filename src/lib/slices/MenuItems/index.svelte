@@ -15,13 +15,13 @@
 <div class="relative grid gap-12 p-4">
 	{#if isFilled.richText(slice.primary.heading)}
 		<Heading
-			class="variant-glass flex flex-col items-center justify-center rounded-xl bg-surface-800 py-2 drop-shadow-2xl"
+			class="flex flex-col items-center justify-center rounded-xl bg-surface-800 py-2 drop-shadow-2xl"
 		>
 			<PrismicText field={slice.primary.heading} />
 		</Heading>
 	{/if}
 	<ul
-		class="variant-glass grid gap-12 rounded-xl p-8 drop-shadow-2xl lg:grid-cols-2"
+		class="grid gap-12 rounded-xl p-8 drop-shadow-2xl lg:grid-cols-2"
 	>
 		{#each slice.primary.cards as card}
 			{#if !card.remove_items}

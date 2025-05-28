@@ -42,19 +42,19 @@
 		<form method="POST" action="/api/send-email" on:submit={handleSubmit}>
 			<label class="label py-2">
 				<span>Name</span>
-				<input name="name" class="input" type="text" placeholder="John Doe" required />
+				<input name="name" class="input bg-surface-700" type="text" placeholder="John Doe" required />
 			</label>
 
 			<label class="label py-2">
 				<span>Email</span>
-				<input name="email" class="input" type="email" placeholder="John@Doe.com" required />
+				<input name="email" class="input bg-surface-700" type="email" placeholder="John@Doe.com" required />
 			</label>
 
 			<label class="label py-2">
 				<span>Comment</span>
 				<textarea
 					name="message"
-					class="textarea"
+					class="textarea bg-surface-700"
 					placeholder="Get in touch with us!"
 					rows="4"
 					required
@@ -64,7 +64,7 @@
 			<div class="mt-4">
 				<button
 					type="submit"
-					class="rounded-xl bg-gradient-to-br from-tertiary-600 to-secondary-600 px-5 py-3 text-2xl font-bold text-primary-50 hover:shadow-lg hover:shadow-tertiary-600"
+					class="rounded-xl bg-gradient-to-br from-primary-600 to-secondary-500 px-5 py-3 text-2xl font-bold text-primary-50 hover:shadow-lg hover:shadow-tertiary-600"
 					disabled={submitting}
 				>
 					{submitting ? 'Sending...' : 'Submit'}

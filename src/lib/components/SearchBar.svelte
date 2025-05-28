@@ -112,7 +112,7 @@
 				spellcheck="false"
 				type="search"
 				id="Search"
-				class="w-full rounded-xl border-none bg-surface-800 p-6 text-primary-100 outline-none drop-shadow-2xl transition-colors"
+				class="w-full rounded-xl border-none bg-surface-800 p-6 text-primary-100 outline-none focus:outline-4 focus:outline-tertiary-700 focus:-outline-offset-1 drop-shadow-2xl transition-colors"
 				onkeydown={(e) => {
 					if (e.key === 'Enter') {
 						searchTerm = e.currentTarget.value;
@@ -131,16 +131,16 @@
 {/if}
 
 {#if search === 'loading'}
-	<section class="card w-full pt-4">
-		<div class="placeholder-circle ml-4 w-16"></div>
+	<section class="card w-full pt-4 bg-surface-900">
+		<div class="placeholder-circle ml-4 w-16 bg-surface-500"></div>
 		<div class="space-y-4 p-4">
-			<div class="placeholder"></div>
+			<div class="placeholder bg-surface-500"></div>
 			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder"></div>
-				<div class="placeholder"></div>
-				<div class="placeholder"></div>
+				<div class="placeholder bg-surface-500"></div>
+				<div class="placeholder bg-surface-500"></div>
+				<div class="placeholder bg-surface-500"></div>
 			</div>
-			<div class="placeholder"></div>
+			<div class="placeholder bg-surface-500"></div>
 		</div>
 	</section>
 {/if}

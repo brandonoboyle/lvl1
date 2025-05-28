@@ -87,11 +87,11 @@ export const myCustomTheme: CustomThemeConfig = {
 		'--color-error-800': '127 15 71', // #7f0f47
 		'--color-error-900': '104 12 58', // #680c3a
 		// surface | #1A093E (deep purple)
-		'--color-surface-50': '234 229 245', // #eae5f5
-		'--color-surface-100': '220 210 240', // #dcd2f0
-		'--color-surface-200': '200 180 230', // #c8b4e6
-		'--color-surface-300': '160 120 210', // #a078d2
-		'--color-surface-400': '100 60 170', // #643caa
+		'--color-surface-50': '11 4 27', // #0b041b
+		'--color-surface-100': '15 6 37', // #0f0625
+		'--color-surface-200': '19 7 46', // #13072e
+		'--color-surface-300': '23 8 55', // #170837
+		'--color-surface-400': '26 9 62', // #1A093E
 		'--color-surface-500': '26 9 62', // #1A093E
 		'--color-surface-600': '23 8 55', // #170837
 		'--color-surface-700': '19 7 46', // #13072e

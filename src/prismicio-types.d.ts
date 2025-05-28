@@ -77,14 +77,12 @@ type PageDocumentDataSlicesSlice =
 	| TextCenteredSlice
 	| BgPageSplitCardsSlice
 	| PageSplitCardsSlice
-	| LargeCarouselSlice
 	| PageSplitSlice
 	| TextColumnsSlice
 	| ImagewithtextSlice
 	| DndSlice
 	| GooglemapSlice
 	| ReservationSlice
-	| CarouselSlice
 	| FormSlice
 	| VideoGameSearchSlice
 	| GridSelectSlice
@@ -322,93 +320,6 @@ export type BgPageSplitCardsSlice = prismic.SharedSlice<
 	'bg_page_split_cards',
 	BgPageSplitCardsSliceVariation
 >;
-
-/**
- * Item in *Carousel → Default → Primary → Carousel Items*
- */
-export interface CarouselSliceDefaultPrimaryCarouselItemsItem {
-	/**
-	 * content field in *Carousel → Default → Primary → Carousel Items*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: carousel.default.primary.carousel_items[].content
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	content: prismic.RichTextField;
-
-	/**
-	 * button text field in *Carousel → Default → Primary → Carousel Items*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: carousel.default.primary.carousel_items[].button_text
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	button_text: prismic.KeyTextField;
-
-	/**
-	 * button link field in *Carousel → Default → Primary → Carousel Items*
-	 *
-	 * - **Field Type**: Link
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: carousel.default.primary.carousel_items[].button_link
-	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-	 */
-	button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
-
-	/**
-	 * background field in *Carousel → Default → Primary → Carousel Items*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: carousel.default.primary.carousel_items[].background
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	background: prismic.ImageField<never>;
-}
-
-/**
- * Primary content in *Carousel → Default → Primary*
- */
-export interface CarouselSliceDefaultPrimary {
-	/**
-	 * Carousel Items field in *Carousel → Default → Primary*
-	 *
-	 * - **Field Type**: Group
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: carousel.default.primary.carousel_items[]
-	 * - **Documentation**: https://prismic.io/docs/field#group
-	 */
-	carousel_items: prismic.GroupField<Simplify<CarouselSliceDefaultPrimaryCarouselItemsItem>>;
-}
-
-/**
- * Default variation for Carousel Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CarouselSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Simplify<CarouselSliceDefaultPrimary>,
-	never
->;
-
-/**
- * Slice variation for *Carousel*
- */
-type CarouselSliceVariation = CarouselSliceDefault;
-
-/**
- * Carousel Shared Slice
- *
- * - **API ID**: `carousel`
- * - **Description**: Carousel
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CarouselSlice = prismic.SharedSlice<'carousel', CarouselSliceVariation>;
 
 /**
  * Default variation for Eventcalendar Slice
@@ -952,73 +863,6 @@ type ImagewithtextSliceVariation = ImagewithtextSliceDefault;
 export type ImagewithtextSlice = prismic.SharedSlice<'imagewithtext', ImagewithtextSliceVariation>;
 
 /**
- * Item in *LargeCarousel → Default → Primary → Large Carousel*
- */
-export interface LargeCarouselSliceDefaultPrimaryLargeCarouselItem {
-	/**
-	 * content field in *LargeCarousel → Default → Primary → Large Carousel*
-	 *
-	 * - **Field Type**: Rich Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: large_carousel.default.primary.large_carousel[].content
-	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-	 */
-	content: prismic.RichTextField;
-}
-
-/**
- * Primary content in *LargeCarousel → Default → Primary*
- */
-export interface LargeCarouselSliceDefaultPrimary {
-	/**
-	 * background field in *LargeCarousel → Default → Primary*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: large_carousel.default.primary.background
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	background: prismic.ImageField<never>;
-
-	/**
-	 * Large Carousel field in *LargeCarousel → Default → Primary*
-	 *
-	 * - **Field Type**: Group
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: large_carousel.default.primary.large_carousel[]
-	 * - **Documentation**: https://prismic.io/docs/field#group
-	 */
-	large_carousel: prismic.GroupField<Simplify<LargeCarouselSliceDefaultPrimaryLargeCarouselItem>>;
-}
-
-/**
- * Default variation for LargeCarousel Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type LargeCarouselSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Simplify<LargeCarouselSliceDefaultPrimary>,
-	never
->;
-
-/**
- * Slice variation for *LargeCarousel*
- */
-type LargeCarouselSliceVariation = LargeCarouselSliceDefault;
-
-/**
- * LargeCarousel Shared Slice
- *
- * - **API ID**: `large_carousel`
- * - **Description**: LargeCarousel
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type LargeCarouselSlice = prismic.SharedSlice<'large_carousel', LargeCarouselSliceVariation>;
-
-/**
  * Primary content in *PageSplit → Default → Primary*
  */
 export interface PageSplitSliceDefaultPrimary {
@@ -1475,11 +1319,6 @@ declare module '@prismicio/client' {
 			BgPageSplitCardsSliceDefaultPrimary,
 			BgPageSplitCardsSliceVariation,
 			BgPageSplitCardsSliceDefault,
-			CarouselSlice,
-			CarouselSliceDefaultPrimaryCarouselItemsItem,
-			CarouselSliceDefaultPrimary,
-			CarouselSliceVariation,
-			CarouselSliceDefault,
 			DndSlice,
 			DndSliceVariation,
 			DndSliceDefault,
@@ -1520,11 +1359,6 @@ declare module '@prismicio/client' {
 			ImagewithtextSliceDefaultPrimary,
 			ImagewithtextSliceVariation,
 			ImagewithtextSliceDefault,
-			LargeCarouselSlice,
-			LargeCarouselSliceDefaultPrimaryLargeCarouselItem,
-			LargeCarouselSliceDefaultPrimary,
-			LargeCarouselSliceVariation,
-			LargeCarouselSliceDefault,
 			PageSplitSlice,
 			PageSplitSliceDefaultPrimary,
 			PageSplitSliceVariation,

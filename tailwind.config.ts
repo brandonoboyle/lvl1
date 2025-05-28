@@ -15,6 +15,11 @@ export default {
 			fontFamily: {
 				heading: ['Advent Pro', 'sans-serif'],
 				body: ['Lato', 'sans-serif']
+			},
+			colors: {
+				// Force dark mode colors
+				background: 'rgb(17, 17, 17)',
+				foreground: 'rgb(255, 255, 255)'
 			}
 		}
 	},

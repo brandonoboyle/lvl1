@@ -5,7 +5,7 @@
 	import Bounded from '$lib/components/Bounded.svelte';
 	import PrismicRichText from '$lib/components/PrismicRichText.svelte';
 
-	import Heading from './Heading.svelte';
+
 
 	interface Props {
 		slice: Content.HeroSlice;
@@ -24,7 +24,7 @@
 					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 rounded-2xl object-cover opacity-40 drop-shadow-2xl"
 				/>
 				<div
-					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 rounded-2xl bg-gradient-to-br from-secondary-400/30 via-surface-400/30 to-tertiary-400/30 mix-blend-overlay"
+					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 rounded-2xl bg-gradient-to-br from-secondary-600/30 via-surface-700/30 to-tertiary-600/30 mix-blend-overlay"
 				></div>
 			{/if}
 		</div>
