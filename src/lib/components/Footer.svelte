@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { PrismicLink, PrismicText } from '@prismicio/svelte';
-	import logo from '$lib/assets/logo/new-logo.png';
 
 	interface Props {
 		navigation: any; // Replace with your actual navigation type
