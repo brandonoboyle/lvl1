@@ -26,7 +26,7 @@
 						</h3>
 						<div class="flex space-x-6">
 							<a
-								href="https://www.facebook.com/levelonegamepub"
+								href="https://www.facebook.com/LevelOneOttawa"
 								aria-label="Facebook"
 								target="_blank"
 								rel="noopener noreferrer"
@@ -39,7 +39,7 @@
 								</svg>
 							</a>
 							<a
-								href="https://www.instagram.com/levelonegamepub"
+								href="https://www.instagram.com/levelonegamepub/?hl=en"
 								aria-label="Instagram"
 								target="_blank"
 								rel="noopener noreferrer"
@@ -52,7 +52,7 @@
 								</svg>
 							</a>
 							<a
-								href="https://www.youtube.com/@levelonegamepub"
+								href="https://www.youtube.com/channel/UCxUrR521vvkLbU_mIE9xLnQ"
 								aria-label="Youtube"
 								target="_blank"
 								rel="noopener noreferrer"
