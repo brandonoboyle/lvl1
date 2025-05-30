@@ -15,8 +15,8 @@
 </script>
 
 <div class="px-6 pb-10 md:px-10">
-	<div class="relative mx-auto w-full pb-4 drop-shadow-2xl">
-		<div class="overflow-hidden rounded-2xl">
+	<div class="relative mx-auto w-full pb-4 bg-gradient-to-br from-surface-600 to-surface-800 rounded-xl">
+		<!-- <div class="overflow-hidden rounded-2xl">
 			{#if isFilled.image(slice.primary.backgroundImage)}
 				<PrismicImage
 					field={slice.primary.backgroundImage}
@@ -27,7 +27,7 @@
 					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 rounded-2xl bg-gradient-to-br from-secondary-600/30 via-surface-700/30 to-tertiary-600/30 mix-blend-overlay"
 				></div>
 			{/if}
-		</div>
+		</div> -->
 		<Bounded tag="div" yPadding="sm" class="relative">
 			<div class="grid justify-items-center gap-8">
 				<div

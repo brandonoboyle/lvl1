@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 	import { repositoryName } from '$lib/prismicio';
 	import Header from '$lib/components/Header.svelte';
-
+	import Footer from '$lib/components/Footer.svelte';
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 
@@ -27,10 +27,12 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 </svelte:head>
-<div>
+<div class="flex min-h-screen flex-col">
 	<Header navigation={data.navigation} />
 
-	<main class="text-tertiary-50 pt-24 md:pt-32">{@render children?.()}</main>
+	<main class="flex-1 pt-24 text-tertiary-50 md:pt-32">{@render children?.()}</main>
+
+	<Footer navigation={data.navigation} />
 </div>
 
 <PrismicPreview {repositoryName} />

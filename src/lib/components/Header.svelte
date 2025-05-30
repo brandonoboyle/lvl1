@@ -1,8 +1,8 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import { PrismicLink, PrismicText, PrismicImage } from '@prismicio/svelte';
-	import squareLogo from '$lib/assets/logo/big-new-logo.png';
-	import logo from '$lib/assets/logo/new-logo.png';
+	import squareLogo from '$lib/assets/logo/big-no-neon.png';
+	import logo from '$lib/assets/logo/no-neon.png';
 	import bg from '$lib/assets/images/bgimage.jpg';
 	import {
 		initializeStores,
