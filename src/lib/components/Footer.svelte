@@ -108,7 +108,7 @@
 									/>
 								</svg>
 								<span class="hover:text-secondary-400">
-									<a href="tel:1-613-695-7529">+1 (613) 695-7529</a>
+									<a href="tel:1-613-695-7529">+1 (613) 979-7529</a>
 								</span>
 							</li>
 						</ul>
