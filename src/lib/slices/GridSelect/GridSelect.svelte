@@ -13,7 +13,9 @@
 </script>
 
 <!--Affects photo size-->
-<li class="relative rounded-xl py-11 md:py-16 [@media(hover:hover)]:hover:shadow-lg [@media(hover:hover)]:hover:shadow-tertiary-600">
+<li
+	class="relative rounded-xl py-11 transition-shadow duration-300 ease-in-out md:py-16 [@media(hover:hover)]:hover:shadow-lg [@media(hover:hover)]:hover:shadow-tertiary-600"
+>
 	{#if isFilled.link(card.gridlink)}
 		<PrismicLink field={card.gridlink}>
 			{#if isFilled.image(card.gridimage)}

@@ -5,8 +5,6 @@
 	import Bounded from '$lib/components/Bounded.svelte';
 	import PrismicRichText from '$lib/components/PrismicRichText.svelte';
 
-
-
 	interface Props {
 		slice: Content.HeroSlice;
 	}
@@ -15,7 +13,9 @@
 </script>
 
 <div class="px-6 pb-10 md:px-10">
-	<div class="relative mx-auto w-full pb-4 bg-gradient-to-br from-surface-600 to-surface-800 rounded-xl">
+	<div
+		class="relative mx-auto w-full rounded-xl bg-gradient-to-br from-surface-600 to-surface-800 pb-4"
+	>
 		<!-- <div class="overflow-hidden rounded-2xl">
 			{#if isFilled.image(slice.primary.backgroundImage)}
 				<PrismicImage
@@ -39,7 +39,7 @@
 				{#if isFilled.link(slice.primary.buttonLink)}
 					<PrismicLink
 						field={slice.primary.buttonLink}
-						class="rounded-xl bg-gradient-to-br from-tertiary-600 to-secondary-600 px-5 py-3 text-2xl text-primary-50 hover:shadow-lg hover:shadow-tertiary-600"
+						class="rounded-xl bg-gradient-to-br from-tertiary-600 to-secondary-600 px-5 py-3 text-2xl text-primary-50 transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-tertiary-600"
 					>
 						{slice.primary.buttonText || 'Learn More'}
 					</PrismicLink>
