@@ -52,7 +52,7 @@
 								</svg>
 							</a>
 							<a
-								href="https://www.youtube.com/channel/UCxUrR521vvkLbU_mIE9xLnQ"
+								href="https://www.youtube.com/@leveloneandtheloft321"
 								aria-label="Youtube"
 								target="_blank"
 								rel="noopener noreferrer"
