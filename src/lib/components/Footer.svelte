@@ -72,7 +72,7 @@
 						>
 							Contact Us
 						</h3>
-						<ul class="ml-8 md:ml-0 text-center md:text-left">
+						<ul class="ml-8 md:ml-0 text-center md:text-left text-primary-200">
 							<li class="flex items-center space-x-2">
 								<svg
 									class="h-4 w-4 text-secondary-400"
