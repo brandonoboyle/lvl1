@@ -3,7 +3,7 @@
 
 	import { PrismicPreview } from '@prismicio/svelte/kit';
 	import { page } from '$app/stores';
-	import { repositoryName } from '$lib/prismicio';
+	import { repositoryName, createClient } from '$lib/prismicio';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { dev } from '$app/environment';
@@ -12,6 +12,8 @@
 	inject({ mode: dev ? 'development' : 'production' });
 
 	let { data, children } = $props();
+
+	const client = createClient();
 </script>
 
 <svelte:head>
