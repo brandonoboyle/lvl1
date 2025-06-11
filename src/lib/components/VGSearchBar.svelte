@@ -52,18 +52,20 @@
 
 {#if search === 'ready'}
 	<div class="grid grid-cols-2 gap-4 py-4">
-		<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-800">
+		<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-800" active="variant-filled-primary">
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Gamecube">Gamecube</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="N64">N64</ListBoxItem>
-			<ListBoxItem bind:group={valueMultiple} name="medium" value="Mini">NES/SNES</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="NES">NES</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="SNES">SNES</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS1">PS1</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS2">PS2</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS3">PS3</ListBoxItem>
 		</ListBox>
-		<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-800">
+		<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-800" active="variant-filled-primary">
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS4">PS4</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS5">PS5</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Switch">Switch</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="Switch2">Switch 2</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Wii">Wii</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="WiiU">WiiU</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Xbox360">Xbox360</ListBoxItem>
@@ -74,20 +76,20 @@
 			<ul class="grid w-full list-none grid-flow-row lg:grid-cols-3">
 				{#each results as result}
 					<a
-							href={result.URL}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="block text-lg lg:text-2xl"
-						>
-							<li class="p-2">
-								<p class="text-pretty">{@html result.Games}</p>
+						href={result.URL}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="block text-lg lg:text-2xl"
+					>
+						<li class="p-2">
+							<p class="text-pretty">{@html result.Games}</p>
 
-								<div class="flex flex-row flex-wrap gap-2">
-									<p class="text-sm text-tertiary-400">{@html result.Category}</p>
-									<p class="text-sm text-secondary-400">{@html result.Bilingual}</p>
-								</div>
-							</li>
-						</a>
+							<div class="flex flex-row flex-wrap gap-2">
+								<p class="text-sm text-tertiary-400">{@html result.Category}</p>
+								<p class="text-sm text-secondary-400">{@html result.Bilingual}</p>
+							</div>
+						</li>
+					</a>
 				{/each}
 			</ul>
 		{/if}
@@ -101,7 +103,7 @@
 			spellcheck="false"
 			type="search"
 			id="Search"
-			class="w-full rounded-xl border-none bg-surface-800 p-6 text-primary-100 outline-none focus:outline-4 focus:outline-tertiary-700 focus:-outline-offset-1 drop-shadow-2xl transition-colors"
+			class="w-full rounded-xl border-none bg-surface-800 p-6 text-primary-100 outline-none drop-shadow-2xl transition-colors focus:outline-4 focus:-outline-offset-1 focus:outline-tertiary-700"
 			onkeydown={(e) => {
 				if (e.key === 'Enter') {
 					searchTerm = e.currentTarget.value;
@@ -119,7 +121,7 @@
 {/if}
 
 {#if search === 'loading'}
-	<section class="card w-full pt-4 bg-surface-900">
+	<section class="card w-full bg-surface-900 pt-4">
 		<div class="placeholder-circle ml-4 w-16 bg-surface-500"></div>
 		<div class="space-y-4 p-4">
 			<div class="placeholder bg-surface-500"></div>

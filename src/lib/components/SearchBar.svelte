@@ -53,7 +53,7 @@
 {#if search === 'ready'}
 	<div class="w-full pb-8">
 		<div class="grid grid-cols-2 gap-4 py-4">
-			<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-700">
+			<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-700" active="variant-filled-primary">
 				<ListBoxItem bind:group={valueMultiple} name="medium" value="New">New</ListBoxItem>
 				<ListBoxItem bind:group={valueMultiple} name="medium" value="Adult">Adult</ListBoxItem>
 				<ListBoxItem bind:group={valueMultiple} name="medium" value="Cooperative"
@@ -67,7 +67,7 @@
 					>Light Strategy</ListBoxItem
 				>
 			</ListBox>
-			<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-700">
+			<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-700" active="variant-filled-primary">
 				<!-- String reads en/fr as bilingual not the term bilingual -->
 				<ListBoxItem bind:group={valueMultiple} name="medium" value="en/fr">Bilingual</ListBoxItem>
 				<ListBoxItem bind:group={valueMultiple} name="medium" value="Party">Party</ListBoxItem>
