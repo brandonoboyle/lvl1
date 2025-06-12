@@ -1,0 +1,24 @@
+{
+  "redirects": [
+		{
+			"source": "/menu",
+			"destination": "/select",
+			"permanent": true
+		},
+		{
+			"source": "/upstairs",
+			"destination": "/",
+			"permanent": true
+		},
+		{
+			"source": "/geek-trivia-league",
+			"destination": "/geek-trivia",
+			"permanent": true
+		},
+		{
+			"source": "/another-old-path",
+			"destination": "/another-new-path",
+			"permanent": true
+		}
+	]
+} 

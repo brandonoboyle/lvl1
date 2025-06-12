@@ -3,7 +3,9 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			user: any; // Replace 'any' with your user type if you have one
+		}
 		// interface PageData {}
 		// interface Platform {}
 	}
