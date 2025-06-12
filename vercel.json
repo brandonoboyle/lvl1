@@ -16,8 +16,8 @@
 			"permanent": true
 		},
 		{
-			"source": "/another-old-path",
-			"destination": "/another-new-path",
+			"source": "/dd-spots-available-for-players-dms",
+			"destination": "/dnd",
 			"permanent": true
 		}
 	]
