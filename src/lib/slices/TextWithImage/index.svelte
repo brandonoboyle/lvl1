@@ -20,7 +20,7 @@
 	data-slice-variation={slice.variation}
 >
 	<div class="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
-		<div>
+		<div class="text-xl/8">
 			<PrismicRichText field={slice.primary.text} />
 		</div>
 		<div>

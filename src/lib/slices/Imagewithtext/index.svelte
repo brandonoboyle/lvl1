@@ -31,7 +31,7 @@
 				</div>
 			{/if}
 		</div>
-		<div>
+		<div class="text-xl/8">
 			<PrismicRichText field={slice.primary.text} />
 		</div>
 	</div>
