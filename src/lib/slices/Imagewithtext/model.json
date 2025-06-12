@@ -29,7 +29,7 @@
             "label": "text",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,heading1,heading2,heading3,strong,em,list-item,o-list-item"
+            "multi": "paragraph,heading1,heading2,heading3,strong,em,list-item,o-list-item,hyperlink"
           }
         }
       },
