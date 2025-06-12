@@ -5,7 +5,7 @@
 	export let slice: Content.PageSplitSlice;
 </script>
 
-<div class="pb-6 md:pb-12 hidden">
+<div class="pb-6 md:pb-12">
 	<div
 		class="flex h-full w-full justify-center bg-gradient-to-br from-surface-800 to-surface-600 py-5 md:py-8 shadow-2xl"
 	>
