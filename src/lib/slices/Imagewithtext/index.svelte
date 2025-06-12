@@ -6,25 +6,33 @@
 	import PrismicRichText from '$lib/components/PrismicRichText.svelte';
 
 	interface Props {
-		slice: Content.TextWithImageSlice;
+		slice: Content.ImagewithtextSlice;
 	}
 
 	let { slice }: Props = $props();
 </script>
 
-<div class="grid grid-cols-1 items-center gap-8 px-6 md:px-10 md:grid-cols-2 py-6">
-	<div>
-		{#if isFilled.image(slice.primary.image)}
-			<div class="drop-shadow-2xl">
-				<PrismicImage
-					field={slice.primary.image}
-					sizes="100vw"
-					class="w-full rounded-lg opacity-50 drop-shadow-2xl "
-				/>
-			</div>
-		{/if}
+<Bounded
+	as="section"
+	yPadding="sm"
+	class="px-5"
+	data-slice-type={slice.slice_type}
+	data-slice-variation={slice.variation}
+>
+	<div class="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+		<div>
+			{#if isFilled.image(slice.primary.image)}
+				<div class="drop-shadow-2xl">
+					<PrismicImage
+						field={slice.primary.image}
+						sizes="100vw"
+						class="w-full rounded-lg opacity-90 drop-shadow-2xl "
+					/>
+				</div>
+			{/if}
+		</div>
+		<div>
+			<PrismicRichText field={slice.primary.text} />
+		</div>
 	</div>
-	<div class="order-first md:order-last text-center">
-		<PrismicRichText field={slice.primary.text} />
-	</div>
-</div>
+</Bounded>
