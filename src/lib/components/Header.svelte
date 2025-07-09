@@ -28,7 +28,7 @@
 		// Native property overrides:
 		bgDrawer: '',
 		bgBackdrop: 'bg-gradient-to-tr from-secondary-600/50 via-surface-600/50 to-tertiary-600/50',
-		width: 'w-[280px] md:w-[480px]',
+		width: 'w-[300px] md:w-[480px]',
 		padding: 'p-4',
 		rounded: 'rounded-xl'
 	};

@@ -9,7 +9,7 @@
 </script>
 
 <footer
-	class="relative mt-auto w-full bg-gradient-to-br from-surface-800 to-surface-600 text-primary-50"
+	class="relative mt-6 lg:mt-10 w-full bg-gradient-to-br from-surface-800 to-surface-600 text-primary-50"
 >
 	<div class="relative w-full">
 		<div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
