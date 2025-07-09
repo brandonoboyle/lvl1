@@ -26,9 +26,17 @@ export function createPostsIndex(data: Post[]) {
 }
 
 export function searchPostsIndex(searchTerm: string, categories: string[] = []) {
-	// Escape special regex characters
-	const match = searchTerm.replace(/[.*+?^${}()|[]\]/g, '$&');
-	let results = postsIndex.search(match);
+	let results: number[];
+	
+	// If we have a search term, search the posts index
+	if (searchTerm.trim()) {
+		// Escape special regex characters
+		const match = searchTerm.replace(/[.*+?^${}()|[]\]/g, '$&');
+		results = postsIndex.search(match);
+	} else {
+		// If no search term, get all posts (all indices)
+		results = Array.from({ length: posts.length }, (_, i) => i);
+	}
 
 	// If we have categories selected, filter the results by category
 	if (categories.length > 0) {
