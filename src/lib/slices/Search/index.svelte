@@ -3,12 +3,7 @@
 
 	import PrismicRichText from '$lib/components/PrismicRichText.svelte';
 
-
-	import Bounded from '$lib/components/Bounded.svelte';
-	import SearchBar from '$lib/components/SearchBar.svelte';
-
-
-
+	import BgSearch from '$lib/components/bgsearch.svelte';
 
 	interface Props {
 		slice: Content.SearchSlice;
@@ -23,6 +18,6 @@
 		{#if slice.primary?.search}
 			<PrismicRichText field={slice.primary.search} />
 		{/if}
-		<SearchBar />
+		<BgSearch />
 	</div>
 </div>
