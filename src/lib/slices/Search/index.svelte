@@ -9,7 +9,7 @@
 		slice: Content.SearchSlice;
 	}
 
-	let { slice } = $props<Props>();
+	let { slice } = $props();
 
 	// Structured data for search engines
 	const structuredData = {
@@ -30,9 +30,7 @@
 </script>
 
 <svelte:head>
-	<script type="application/ld+json">
-		{@html JSON.stringify(structuredData)}
-	</script>
+	<script type="application/ld+json">{JSON.stringify(structuredData)}</script>
 </svelte:head>
 
 <div class="flex justify-center">
