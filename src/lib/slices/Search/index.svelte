@@ -31,7 +31,7 @@
 
 <svelte:head>
 	<script type="application/ld+json">
-		{JSON.stringify(structuredData)}
+		{@html JSON.stringify(structuredData)}
 	</script>
 </svelte:head>
 
