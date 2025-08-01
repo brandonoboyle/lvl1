@@ -29,10 +29,10 @@
 	onMount(async () => {
 		const f = await (
 			await fetch(
-				'https://docs.google.com/spreadsheets/d/e/2PACX-1vThSfipWWiyIoyAETkBte74vb5JV2goo_HkAG-0grRhOlqfVy-i_vc-A0CylY7-6kaWzVmnmks03ZuC/pubhtml'
+				'https://docs.google.com/spreadsheets/d/e/2PACX-1vThSfipWWiyIoyAETkBte74vb5JV2goo_HkAG-0grRhOlqfVy-i_vc-A0CylY7-6kaWzVmnmks03ZuC/pub?output=csv'
 			)
-		).arrayBuffer();
-		const wb = read(f);
+		).text();
+		const wb = read(f, { type: 'string' });
 		const posts = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
 		allPosts = posts;
 		createPostsIndex(posts);

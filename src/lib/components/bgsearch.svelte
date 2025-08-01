@@ -46,10 +46,10 @@
 		try {
 			const f = await (
 				await fetch(
-					'https://docs.google.com/spreadsheets/d/e/2PACX-1vQFx_Iv2nSAN_JE0rcJ4CasXx5bGqHiaffaZTwI-hQyN8WouUed9eV6wTWvOlz5zyRhCy5LK-jIB_3p/pubhtml'
+					'https://docs.google.com/spreadsheets/d/e/2PACX-1vQFx_Iv2nSAN_JE0rcJ4CasXx5bGqHiaffaZTwI-hQyN8WouUed9eV6wTWvOlz5zyRhCy5LK-jIB_3p/pub?output=csv'
 				)
-			).arrayBuffer();
-			const wb = read(f);
+			).text();
+			const wb = read(f, { type: 'string' });
 			const posts = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
 			allPosts = posts;
 			createPostsIndex(posts);
