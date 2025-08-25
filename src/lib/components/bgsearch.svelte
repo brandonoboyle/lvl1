@@ -43,33 +43,33 @@
 	];
 
 	onMount(async () => {
-		try {
-			const f = await (
-				await fetch(
-					'https://docs.google.com/spreadsheets/d/e/2PACX-1vQFx_Iv2nSAN_JE0rcJ4CasXx5bGqHiaffaZTwI-hQyN8WouUed9eV6wTWvOlz5zyRhCy5LK-jIB_3p/pub?output=csv'
-				)
-			).text();
-			const wb = read(f, { type: 'string' });
-			const posts = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
-			allPosts = posts;
-			createPostsIndex(posts);
-			search = 'ready';
-			
-			// Debug: Log unique categories to see what's actually in the data
-			const uniqueCategories = [...new Set(posts.map(post => post.Category))];
-			console.log('Available categories in data:', uniqueCategories);
-			
-			// Debug: Show a few sample posts to see the exact format
-			console.log('Sample posts:', posts.slice(0, 3).map(post => ({
-				Games: post.Games,
-				Category: post.Category,
-				Bilingual: post.Bilingual
-			})));
-		} catch (error) {
-			console.error('Error loading data:', error);
-			search = 'ready';
-		}
-	});
+        try {
+            // Import the local CSV file
+            const csvModule = await import('$lib/assets/tables/bgdata.csv?raw');
+            const csvData = csvModule.default;
+            
+            // Parse the CSV data using xlsx utilities
+            const wb = read(csvData, { type: 'string' });
+            const posts = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
+            allPosts = posts;
+            createPostsIndex(posts);
+            search = 'ready';
+            
+            // Debug: Log unique categories to see what's actually in the data
+            const uniqueCategories = [...new Set(posts.map(post => post.Category))];
+            console.log('Available categories in data:', uniqueCategories);
+            
+            // Debug: Show a few sample posts to see the exact format
+            console.log('Sample posts:', posts.slice(0, 3).map(post => ({
+                Games: post.Games,
+                Category: post.Category,
+                Bilingual: post.Bilingual
+            })));
+        } catch (error) {
+            console.error('Error loading data:', error);
+            search = 'ready';
+        }
+    });
 
 	// Reactive statement to update results when search term or categories change
 	$: if (search === 'ready') {
