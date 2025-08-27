@@ -27,17 +27,32 @@
 	let allPosts: Boardgame[] = [];
 
 	onMount(async () => {
-        // Import the local CSV file
-        const csvModule = await import('$lib/assets/tables/vgdata.csv?raw');
-        const csvData = csvModule.default;
+		const f = await (
+			await fetch(
+				'https://docs.google.com/spreadsheets/d/e/2PACX-1vThSfipWWiyIoyAETkBte74vb5JV2goo_HkAG-0grRhOlqfVy-i_vc-A0CylY7-6kaWzVmnmks03ZuC/pub?output=csv'
+			)
+		).text();
+		const wb = read(f, { type: 'string' });
+		const posts = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
+		allPosts = posts;
+		createPostsIndex(posts);
+		search = 'ready';
+	});
+
+
+	// Import copy of CSV if the google link is down again
+	// onMount(async () => {
+    //     // Import the local CSV file
+    //     const csvModule = await import('$lib/assets/tables/vgdata.csv?raw');
+    //     const csvData = csvModule.default;
         
-        // Parse the CSV data using xlsx utilities
-        const wb = read(csvData, { type: 'string' });
-        const posts = utils.sheet_to_json<Videogame>(wb.Sheets[wb.SheetNames[0]]);
-        allPosts = posts;
-        createPostsIndex(posts);
-        search = 'ready';
-    });
+    //     // Parse the CSV data using xlsx utilities
+    //     const wb = read(csvData, { type: 'string' });
+    //     const posts = utils.sheet_to_json<Videogame>(wb.Sheets[wb.SheetNames[0]]);
+    //     allPosts = posts;
+    //     createPostsIndex(posts);
+    //     search = 'ready';
+    // });
 
 	$effect(() => {
 		if (search === 'ready') {
