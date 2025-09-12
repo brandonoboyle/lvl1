@@ -1,5 +1,7 @@
 import { error } from '@sveltejs/kit';
 
+export const prerender = false;
+
 export async function load() {
 	// Return HTTP 410 Gone status for all old board games subpages
 	// This catches any URLs like /board_games/chess, /board_games/monopoly, etc.
