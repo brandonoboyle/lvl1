@@ -12,7 +12,7 @@
 </script>
 
 <!--Affects photo size-->
-<li class="relative w-full px-6 py-8 md:px-12 md:py-16">
+<li class="relative max-w-sm lg:flex-1 lg:max-w-none min-w-80 px-6 py-8 md:px-12 md:py-16">
 	<PrismicLink field={card.card_link}>
 		<!--				Inner text box-->
 
