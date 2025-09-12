@@ -35,6 +35,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"hero_small": {
+							"type": "SharedSlice"
+						},
 						"geek_trivia_themes": {
 							"type": "SharedSlice"
 						},

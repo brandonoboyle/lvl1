@@ -8,6 +8,7 @@ import GeekTriviaThemes from './GeekTriviaThemes/index.svelte';
 import Googlemap from './Googlemap/index.svelte';
 import GridSelect from './GridSelect/index.svelte';
 import Hero from './Hero/index.svelte';
+import HeroSmall from './HeroSmall/index.svelte';
 import Image from './Image/index.svelte';
 import MenuItems from './MenuItems/index.svelte';
 import Imagewithtext from './Imagewithtext/index.svelte';
@@ -30,6 +31,7 @@ export const components = {
 	googlemap: Googlemap,
 	grid_select: GridSelect,
 	hero: Hero,
+	hero_small: HeroSmall,
 	image: Image,
 	image_cards: MenuItems,
 	imagewithtext: Imagewithtext,
