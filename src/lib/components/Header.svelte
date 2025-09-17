@@ -81,7 +81,7 @@
 			></div>
 			<div class="w-full">
 				<nav class="absolute w-full items-center lg:hidden">
-					<button aria-label="Open mobile nav" class="ml-1.5 mt-5" onclick={drawerOpen}>
+					<button aria-label="Open mobile nav" class="ml-1.5 mr-4 mt-5" onclick={drawerOpen}>
 						<span>
 							<svg
 								class="h-12 w-12 text-tertiary-100"
@@ -107,7 +107,7 @@
 				>
 					<PrismicRichText field={navigation.data?.stayplay} />
 				</div>
-				<div class="grid items-center justify-items-center pt-3 lg:grid-cols-1">
+				<div class="grid items-center justify-items-center pt-3 pl-4 lg:grid-cols-1 lg:pl-0">
 					<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
 						<img src={logo} alt="levelonelogo" class="h-[77px] w-[424px]" />
 					</a>
