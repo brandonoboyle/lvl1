@@ -21,8 +21,10 @@
 		<div class="justify-items-start bg-gradient-to-br from-primary-500 to-tertiary-400 box-decoration-clone bg-clip-text text-transparent">
 			<PrismicRichText field={card.title} />
 		</div>
-		<div class="grid justify-items-end">
-			<PrismicRichText field={card.price} />
+		<div class="grid justify-items-end text-lg">
+			<div class="price-display">
+				<PrismicRichText field={card.price} />
+			</div>
 		</div>
 		<div class="col-span-2 w-full">
 			<div class="">
