@@ -125,6 +125,7 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| LargeResoSlice
 	| HeroSmallSlice
 	| GeekTriviaThemesSlice
 	| GeekTriviaScoresSlice
@@ -989,6 +990,33 @@ type ImagewithtextSliceVariation = ImagewithtextSliceDefault;
 export type ImagewithtextSlice = prismic.SharedSlice<'imagewithtext', ImagewithtextSliceVariation>;
 
 /**
+ * Default variation for LargeReso Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LargeResoSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *LargeReso*
+ */
+type LargeResoSliceVariation = LargeResoSliceDefault;
+
+/**
+ * LargeReso Shared Slice
+ *
+ * - **API ID**: `large_reso`
+ * - **Description**: LargeReso
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LargeResoSlice = prismic.SharedSlice<'large_reso', LargeResoSliceVariation>;
+
+/**
  * Primary content in *PageSplit → Default → Primary*
  */
 export interface PageSplitSliceDefaultPrimary {
@@ -1489,6 +1517,9 @@ declare module '@prismicio/client' {
 			ImagewithtextSliceDefaultPrimary,
 			ImagewithtextSliceVariation,
 			ImagewithtextSliceDefault,
+			LargeResoSlice,
+			LargeResoSliceVariation,
+			LargeResoSliceDefault,
 			PageSplitSlice,
 			PageSplitSliceDefaultPrimary,
 			PageSplitSliceVariation,

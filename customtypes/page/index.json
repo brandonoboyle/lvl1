@@ -35,6 +35,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"large_reso": {
+							"type": "SharedSlice"
+						},
 						"hero_small": {
 							"type": "SharedSlice"
 						},

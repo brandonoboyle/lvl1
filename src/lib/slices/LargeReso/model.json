@@ -1,0 +1,16 @@
+{
+	"id": "large_reso",
+	"type": "SharedSlice",
+	"name": "LargeReso",
+	"description": "LargeReso",
+	"variations": [
+		{
+			"id": "default",
+			"name": "Default",
+			"docURL": "...",
+			"version": "initial",
+			"description": "Default",
+			"imageUrl": ""
+		}
+	]
+}

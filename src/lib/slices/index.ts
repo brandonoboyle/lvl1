@@ -12,6 +12,7 @@ import HeroSmall from './HeroSmall/index.svelte';
 import Image from './Image/index.svelte';
 import MenuItems from './MenuItems/index.svelte';
 import Imagewithtext from './Imagewithtext/index.svelte';
+import LargeReso from './LargeReso/index.svelte';
 import PageSplit from './PageSplit/index.svelte';
 import PageSplitCards from './PageSplitCards/index.svelte';
 import Reservation from './Reservation/index.svelte';
@@ -35,6 +36,7 @@ export const components = {
 	image: Image,
 	image_cards: MenuItems,
 	imagewithtext: Imagewithtext,
+	large_reso: LargeReso,
 	page_split: PageSplit,
 	page_split_cards: PageSplitCards,
 	reservation: Reservation,
