@@ -59,7 +59,7 @@
 			if (searchTerm.trim() === '' && valueMultiple.length === 0) {
 				results = allPosts;
 			} else {
-				results = searchPostsIndex(searchTerm + ' ' + valueMultiple);
+				results = searchPostsIndex(searchTerm, valueMultiple);
 			}
 		}
 	});
