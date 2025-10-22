@@ -49,7 +49,7 @@ export async function POST({ request }) {
 
 		const { error } = await resend.emails.send({
 			from: 'send@levelonegamepub.com',
-			to: ['theloftloungeottawa@gmail.com'],
+			to: ['levelonereservations@gmail.com'],
 			subject,
 			html
 		});
