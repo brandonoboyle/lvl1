@@ -89,9 +89,9 @@
 			<h2 class="text-4xl md:text-5xl font-heading font-bold text-primary-500 mb-4">
 				Large Group Reservation
 			</h2>
-			<p class="text-lg max-w-2xl mx-auto">
+			<!-- <p class="text-lg max-w-2xl mx-auto">
 				If your group is over 10 people, please fill out the form below.
-			</p>
+			</p> -->
 		</div>
 
 		<div class="rounded-xl bg-surface-800 p-6 md:p-8">
