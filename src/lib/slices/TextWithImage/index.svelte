@@ -20,12 +20,12 @@
 	data-slice-variation={slice.variation}
 >
 	<div class="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
-		<div class="text-xl/8">
+		<div class="text-xl/8 text-center">
 			<PrismicRichText field={slice.primary.text} />
 		</div>
 		<div>
 			{#if isFilled.image(slice.primary.image)}
-				<div class="drop-shadow-2xl">
+				<div class="drop-shadow-2xl hidden md:block">
 					<PrismicImage field={slice.primary.image} sizes="100vw" class="w-full opacity-90 rounded-lg drop-shadow-2xl " />
 				</div>
 			{/if}
