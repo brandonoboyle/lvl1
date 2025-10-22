@@ -83,7 +83,7 @@
 	}
 </script>
 
-<Bounded tag="section" class="py-20 md:py-32">
+<Bounded tag="section">
 	<div class="mx-auto max-w-4xl">
 		<div class="text-center mb-12">
 			<h2 class="text-4xl md:text-5xl font-heading font-bold text-primary-500 mb-4">
