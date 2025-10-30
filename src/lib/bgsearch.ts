@@ -19,7 +19,10 @@ export function createPostsIndex(data: Post[]) {
 	bilingualIndex = new FlexSearch.Index({ tokenize: 'forward' });
 
 	data.forEach((post, i) => {
-		const item = `${post.Games} ${post.Category} ${post.URL} ${post.Bilingual} ${post.Hidden}`;
+		// For board games, only index Games, Bilingual, and Hidden - NOT Category or URL
+		// This prevents searching for "light" from matching "Light Strategy" category
+		// and prevents URL text from being searchable
+		const item = `${post.Games} ${post.Bilingual} ${post.Hidden}`;
 		postsIndex.add(i, item);
 		categoryIndex.add(i, post.Category);
 		bilingualIndex.add(i, post.Bilingual);
@@ -41,29 +44,38 @@ export function searchPostsIndex(searchTerm: string, categories: string[] = []) 
 		results = Array.from({ length: posts.length }, (_, i) => i);
 	}
 
-	// If we have categories selected, filter the results by category
-	// For video games, use OR logic (match ANY selected console)
+	// If we have categories selected, filter the results by category using AND logic
 	if (categories.length > 0) {
-		// Filter results to include items that match ANY selected category
+		// Separate bilingual filtering from category filtering
+		const regularCategories = categories.filter(cat => cat !== 'Bilingual');
+		const hasBilingualFilter = categories.includes('Bilingual');
+
+		// Filter results to only include items that match ALL selected categories
 		results = results.filter((index) => {
 			const indexNum = Number(index);
 			const post = posts[indexNum];
 
-			// Handle cases where Category might be undefined or null
-			if (!post.Category) {
-				return false;
+			// Check regular categories with exact matching
+			const matchesRegularCategories = regularCategories.every(category => {
+				// Handle cases where Category might be undefined or null
+				if (!post.Category) {
+					return false;
+				}
+
+				// Split the category field by " / " (forward slash surrounded by spaces) and trim whitespace
+				const postCategories = post.Category.split(' / ').map(cat => cat.trim());
+				const hasMatch = postCategories.some(postCat => postCat === category);
+
+				return hasMatch;
+			});
+
+			// Check bilingual filter if selected
+			if (hasBilingualFilter) {
+				const bilingualMatch = post.Bilingual.includes('en/fr');
+				return matchesRegularCategories && bilingualMatch;
 			}
 
-			// Split the category field by "/" (with or without spaces) and trim whitespace
-			// This handles formats like "Switch/WiiU" or "Switch / WiiU"
-			const postCategories = post.Category.split('/').map(cat => cat.trim());
-
-			// Check if ANY of the selected categories match ANY of the post's categories
-			const hasMatch = categories.some(selectedCat =>
-				postCategories.some(postCat => postCat === selectedCat)
-			);
-
-			return hasMatch;
+			return matchesRegularCategories;
 		});
 	}
 

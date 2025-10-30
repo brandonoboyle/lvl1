@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-	import { createPostsIndex, searchPostsIndex } from '$lib/search';
+	import { createPostsIndex, searchPostsIndex } from '$lib/bgsearch';
 	import { read, utils } from 'xlsx';
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
