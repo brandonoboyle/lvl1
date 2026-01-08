@@ -9,7 +9,7 @@
 	let { slice }: Props = $props();
 </script>
 
-<div class="pb-12 px-10">
+<div class="py-12 px-10">
 	<div class="relative w-full px-12 text-3xl md:text-lg">
 		<div class="">
 			{#if isFilled.image(slice.primary.background)}

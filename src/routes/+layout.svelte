@@ -32,7 +32,7 @@
 <div class="flex min-h-screen flex-col">
 	<Header navigation={data.navigation} />
 
-	<main class="flex-1 pt-24 text-tertiary-50 md:pt-32">{@render children?.()}</main>
+	<main class="flex-1 pt-24 text-tertiary-50 md:pt-20">{@render children?.()}</main>
 
 	<Footer navigation={data.navigation} />
 </div>

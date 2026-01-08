@@ -125,6 +125,7 @@ export type NavigationDocument<Lang extends string = string> = prismic.PrismicDo
 >;
 
 type PageDocumentDataSlicesSlice =
+	| VideoSlice
 	| LargeResoSlice
 	| HeroSmallSlice
 	| GeekTriviaThemesSlice
@@ -1394,6 +1395,48 @@ export type TextWithImageSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Video → Default → Primary*
+ */
+export interface VideoSliceDefaultPrimary {
+	/**
+	 * video field in *Video → Default → Primary*
+	 *
+	 * - **Field Type**: Link to Media
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video.default.primary.video
+	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+	 */
+	video: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for Video Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VideoSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<VideoSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Video*
+ */
+type VideoSliceVariation = VideoSliceDefault;
+
+/**
+ * Video Shared Slice
+ *
+ * - **API ID**: `video`
+ * - **Description**: Video
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VideoSlice = prismic.SharedSlice<'video', VideoSliceVariation>;
+
+/**
  * Primary content in *VideoGameSearch → Default → Primary*
  */
 export interface VideoGameSearchSliceDefaultPrimary {
@@ -1551,6 +1594,10 @@ declare module '@prismicio/client' {
 			TextWithImageSliceDefaultPrimary,
 			TextWithImageSliceVariation,
 			TextWithImageSliceDefault,
+			VideoSlice,
+			VideoSliceDefaultPrimary,
+			VideoSliceVariation,
+			VideoSliceDefault,
 			VideoGameSearchSlice,
 			VideoGameSearchSliceDefaultPrimary,
 			VideoGameSearchSliceVariation,

@@ -12,7 +12,7 @@
 	let { slice }: Props = $props();
 </script>
 
-<div class="px-6 pb-10 md:px-10">
+<div class="px-6 py-10 md:px-10">
 	<div
 		class="relative mx-auto w-full rounded-xl bg-gradient-to-br from-surface-600 to-surface-800 pb-4"
 	>
