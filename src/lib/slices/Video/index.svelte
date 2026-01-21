@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { isFilled, type Content } from '@prismicio/client';
 	import type { SliceComponentProps } from '@prismicio/svelte';
 
@@ -12,10 +12,10 @@
 	data-slice-variation={slice.variation}
 	class="relative h-[calc(100vh-6rem)] w-full overflow-hidden md:h-[calc(100vh-8rem)]"
 >
-	{#if isFilled.linkToMedia(slice.primary.video)}
+	{#if isFilled.link(slice.primary.videolink)}
 		<video
 			class="absolute inset-0 h-full w-full object-cover"
-			src={slice.primary.video.url}
+			src={slice.primary.videolink.url}
 			autoplay
 			muted
 			loop
@@ -24,4 +24,4 @@
 			<track kind="captions" />
 		</video>
 	{/if}
-</section>
+</section> -->

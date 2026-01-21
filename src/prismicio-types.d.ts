@@ -1399,14 +1399,14 @@ export type TextWithImageSlice = prismic.SharedSlice<
  */
 export interface VideoSliceDefaultPrimary {
 	/**
-	 * video field in *Video → Default → Primary*
+	 * VideoLink field in *Video → Default → Primary*
 	 *
-	 * - **Field Type**: Link to Media
+	 * - **Field Type**: Link
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: video.default.primary.video
-	 * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+	 * - **API ID Path**: video.default.primary.videolink
+	 * - **Documentation**: https://prismic.io/docs/fields/link
 	 */
-	video: prismic.LinkToMediaField<prismic.FieldState, never>;
+	videolink: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**

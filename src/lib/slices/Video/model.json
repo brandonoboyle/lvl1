@@ -12,13 +12,15 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "video": {
+        "videolink": {
           "type": "Link",
           "config": {
-            "label": "video",
+            "label": "VideoLink",
             "placeholder": "",
-            "select": "media",
-            "allowText": true
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
           }
         }
       },
