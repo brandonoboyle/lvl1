@@ -79,6 +79,7 @@
 		<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-800" active="variant-filled-primary">
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS4">PS4</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS5">PS5</ListBoxItem>
+			<ListBoxItem bind:group={valueMultiple} name="medium" value="SEGA Genesis">SEGA</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Switch">Switch</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Switch2">Switch 2</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Wii">Wii</ListBoxItem>
