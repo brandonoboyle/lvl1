@@ -47,7 +47,7 @@
 		<div class="h-full bg-gradient-to-br from-surface-600 to-surface-800 px-6 pt-4">
 			<button class="grid w-full justify-center border-none outline-none"
 				><a href="/" class="" onclick={drawerClose}>
-					<img src={squareLogo} alt="Square Logo" class="" />
+					<img src={squareLogo} alt="Levelone Gaming Pub logo" class="" />
 				</a></button
 			>
 			<ul class="pt-2">
@@ -73,7 +73,7 @@
 		<div class="w-full">
 			<img
 				src={bg}
-				alt="levelonelogo"
+				alt="LVL1 Gaming Pub header background"
 				class="absolute inset-0 h-full w-full object-cover object-center opacity-30"
 			/>
 			<div
@@ -109,7 +109,7 @@
 				</div>
 				<div class="grid items-center justify-items-center pt-3 pl-4 lg:grid-cols-1 lg:pl-0">
 					<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
-						<img src={logo} alt="levelonelogo" class="h-[77px] w-[424px]" />
+						<img src={logo} alt="LVL1 Gaming Pub" class="h-[77px] w-[424px]" />
 					</a>
 				</div>
 			</div>

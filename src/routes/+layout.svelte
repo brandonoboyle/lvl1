@@ -14,20 +14,68 @@
 	let { data, children } = $props();
 
 	const client = createClient();
+
+	const siteUrl = 'https://levelonegamepub.com';
+
+	const localBusinessSchema = {
+		'@context': 'https://schema.org',
+		'@type': 'LocalBusiness',
+		'@id': `${siteUrl}/#localbusiness`,
+		name: 'Level One Game Pub',
+		url: siteUrl,
+		telephone: '+1-613-979-7529',
+		email: 'info@levelonegamepub.com',
+		image: `${siteUrl}/android-chrome-512x512.png`,
+		sameAs: [
+			'https://www.facebook.com/LevelOneOttawa',
+			'https://www.instagram.com/levelonegamepub/',
+			'https://www.youtube.com/@leveloneandtheloft321'
+		],
+		address: {
+			'@type': 'PostalAddress',
+			addressLocality: 'Ottawa',
+			addressRegion: 'ON',
+			addressCountry: 'CA'
+		},
+		description: 'Board game pub and gaming community in Ottawa, Ontario.'
+	};
 </script>
 
 <svelte:head>
 	<title>{$page.data.title}</title>
+	<link rel="canonical" href="{siteUrl}{$page.url.pathname}" />
+
 	{#if $page.data.meta_description}
 		<meta name="description" content={$page.data.meta_description} />
 	{/if}
+
+	<!-- Open Graph -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="{siteUrl}{$page.url.pathname}" />
 	{#if $page.data.meta_title}
-		<meta name="og:title" content={$page.data.meta_title} />
+		<meta property="og:title" content={$page.data.meta_title} />
+	{/if}
+	{#if $page.data.meta_description}
+		<meta property="og:description" content={$page.data.meta_description} />
 	{/if}
 	{#if $page.data.meta_image}
-		<meta name="og:image" content={$page.data.meta_image.url} />
-		<meta name="twitter:card" content="summary_large_image" />
+		<meta property="og:image" content={$page.data.meta_image.url} />
 	{/if}
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	{#if $page.data.meta_title}
+		<meta name="twitter:title" content={$page.data.meta_title} />
+	{/if}
+	{#if $page.data.meta_description}
+		<meta name="twitter:description" content={$page.data.meta_description} />
+	{/if}
+	{#if $page.data.meta_image}
+		<meta name="twitter:image" content={$page.data.meta_image.url} />
+	{/if}
+
+	<!-- Structured Data: LocalBusiness + Organization -->
+	{@html `<script type="application/ld+json">${JSON.stringify(localBusinessSchema)}</script>`}
 </svelte:head>
 <div class="flex min-h-screen flex-col">
 	<Header navigation={data.navigation} />
