@@ -1,7 +1,27 @@
 {
   "redirects": [
 		{
+			"source": "/menu/food",
+			"destination": "/food",
+			"permanent": true
+		},
+		{
+			"source": "/menu/drinks",
+			"destination": "/drinks",
+			"permanent": true
+		},
+		{
 			"source": "/menu",
+			"destination": "/select",
+			"permanent": true
+		},
+		{
+			"source": "/pages/home",
+			"destination": "/",
+			"permanent": true
+		},
+		{
+			"source": "/pages/menu",
 			"destination": "/select",
 			"permanent": true
 		},
