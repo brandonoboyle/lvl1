@@ -1,1 +1,49 @@
-Site for Levelonegamepub
+# Level One Game Pub
+
+Website for [Level One Game Pub](https://lvl1.pub) — a game pub featuring board games, trivia, and events.
+
+## Tech Stack
+
+- **Framework**: SvelteKit 2 + Svelte 5
+- **CMS**: Prismic (Slice Machine)
+- **Styling**: Tailwind CSS + Skeleton UI
+- **Deployment**: Vercel
+- **Analytics**: Vercel Analytics + Speed Insights
+- **Email**: Resend
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+`dev` runs both the Vite dev server and Slice Machine UI concurrently.
+
+## Key Routes
+
+| Route | Description |
+|---|---|
+| `/` | Home (Prismic page) |
+| `/board_games` | Board game search and catalog |
+| `/api/send-email` | Contact form email endpoint |
+| `/api/preview` | Prismic preview handler |
+| `/slice-simulator` | Local Slice Machine simulator |
+
+## Slices
+
+Content slices managed via Prismic Slice Machine:
+
+`Hero`, `HeroSmall`, `Text`, `TextCentered`, `TextColumns`, `TextWithImage`, `Image`, `ImageWithText`, `PageSplit`, `PageSplitCards`, `BgPageSplitCards`, `GridSelect`, `Video`, `Form`, `Reservation`, `LargeReso`, `MenuItems`, `Search`, `VideoGameSearch`, `GeekTriviaThemes`, `GeekTriviaScores`, `Googlemap`
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start dev server + Slice Machine |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build |
+| `npm run check` | Type-check with svelte-check |
+| `npm run lint` | Lint and format check |
+| `npm run format` | Auto-format with Prettier |
+| `npm run slicemachine` | Start Slice Machine UI only |
