@@ -109,7 +109,7 @@
 				</div>
 				<div class="grid items-center justify-items-center pt-3 pl-4 lg:grid-cols-1 lg:pl-0">
 					<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
-						<img src={logo} alt="LVL1 Gaming Pub" class="h-[77px] w-[424px]" />
+						<img src={logo} alt="LVL1 Gaming Pub" class="h-[77px]" />
 					</a>
 				</div>
 			</div>
