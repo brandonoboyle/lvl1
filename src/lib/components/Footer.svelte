@@ -25,7 +25,7 @@
 						</h3>
 						<div class="flex space-x-6">
 							<a
-								href="https://www.facebook.com/LevelOneOttawa"
+								href="https://www.facebook.com/LevelOneGamePub"
 								aria-label="Facebook"
 								target="_blank"
 								rel="noopener noreferrer"
