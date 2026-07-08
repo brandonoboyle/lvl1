@@ -11,7 +11,7 @@
 
 	inject({ mode: dev ? 'development' : 'production' });
 
-	let { data, children } = $props();
+	let { children } = $props();
 
 	const client = createClient();
 
@@ -78,11 +78,11 @@
 	{@html `<script type="application/ld+json">${JSON.stringify(localBusinessSchema)}</script>`}
 </svelte:head>
 <div class="flex min-h-screen flex-col">
-	<Header navigation={data.navigation} />
+	<Header />
 
-	<main class="flex-1 pt-24 text-tertiary-50 md:pt-20">{@render children?.()}</main>
+	<main class="flex-1 pt-16 text-tertiary-50">{@render children?.()}</main>
 
-	<Footer navigation={data.navigation} />
+	<Footer />
 </div>
 
 <PrismicPreview {repositoryName} />

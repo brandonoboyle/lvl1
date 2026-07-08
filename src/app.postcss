@@ -4,38 +4,70 @@
 @import '@fontsource/lato/400-italic.css';
 @import '@fontsource/lato/400.css';
 
+/* Display faces for the redesign (Nexa Rust Sans, converted from OTF to woff2 in static/fonts/).
+   Two weights on one family: Book (400) + Black (900). The shadowed cut is its own family
+   ('Nexa Rust Shadow', font-display-shadow utility) since it can't be expressed as a weight. */
+@font-face {
+	font-family: 'Nexa Rust Sans';
+	src: url('/fonts/NexaRustSans-Book.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Nexa Rust Sans';
+	src: url('/fonts/NexaRustSans-Black.woff2') format('woff2');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Nexa Rust Shadow';
+	src: url('/fonts/NexaRustSans-BlackShadow.woff2') format('woff2');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+/* ── Design tokens ──────────────────────────────────────────────
+   Single source of truth for the redesign. Tailwind exposes these
+   as utilities (bg-ink, text-chalk, …) via tailwind.config.ts.
+   Literal color names on purpose — no light/dark theming planned.
+     ink        primary text & dark surfaces
+     chalk      off-white — ALL text on dark + light surfaces (never pure white)
+     ivory      warm off-white surface (cards, panels)
+     red        deep red — structural lines/borders + the dark end of gradients
+     red-bright brand accent — solid text accents (links, labels) + bright end of gradients
+
+   Usage rules (decided as we go — keep these honest):
+   - On-dark text is always `chalk`, never `text-white`. White is retired.
+   - Two reds avoid a flat look: GRADIENTS run red→red-bright; SOLID text
+     accents use red-bright; structural lines/borders use red.
+   - Section dividers: 4px solid red top border on each section seam
+     (border-t-4 border-red). Exception: the hero→first-section seam blends
+     via a bottom scrim instead of a border.
+   ──────────────────────────────────────────────────────────────── */
+:root {
+	--ink: #191412;
+	--chalk: #fcfcf9;
+	--ivory: #fbf8f0;
+	--red: #a91f2c;
+	--red-bright: #c0212f;
+}
 
 :root [data-theme='myCustonTheme'] {
 	--theme-font-family-heading: 'Advent Pro', sans-serif;
 	--theme-font-family-base: 'Lato', sans-serif;
 }
 
-/* Original Gradient */
-/* body {
-	background-image: radial-gradient(
-			at 0% 0%,
-			rgba(var(--color-secondary-500) / 0.33) 0px,
-			transparent 80%
-		),
-		radial-gradient(at 98% 1%, rgba(var(--color-error-500) / 0.33) 0px, transparent 80%),
-		radial-gradient(at 0% 98%, rgba(var(--color-secondary-500) / 0.33) 0px, transparent 50%);
-		
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-} */
-
-/* Photo implication */
+/* Dark ink base — components sit on this instead of the old background photo */
 body {
-	background-image: url('/wideBG.png');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
+	background-color: var(--ink);
 }
 
 /* Price display consistency */

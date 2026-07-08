@@ -1,132 +1,84 @@
 <script lang="ts">
-	import type { Content } from '@prismicio/client';
-	import { PrismicLink, PrismicText, PrismicImage } from '@prismicio/svelte';
-	import squareLogo from '$lib/assets/logo/big-no-neon.png';
 	import logo from '$lib/assets/logo/no-neon.png';
-	import bg from '$lib/assets/images/bgimage.jpg';
-	import {
-		initializeStores,
-		Drawer,
-		getDrawerStore,
-		type DrawerSettings
-	} from '@skeletonlabs/skeleton';
-	import PrismicRichText from './PrismicRichText.svelte';
-	initializeStores();
 
-	const drawerStore = getDrawerStore();
+	// Figma nav. Swap to CMS-driven links later if needed.
+	const links = [
+		{ label: 'Menu', href: '/food' },
+		{ label: 'Games', href: '/board_games' },
+		{ label: 'Events', href: '/#events' },
+		{ label: 'Corporate Parties', href: '/#events' },
+		{ label: 'Gift Cards', href: '#' }
+	];
 
-	function drawerOpen(): void {
-		drawerStore.open(drawerSettings);
-	}
-
-	function drawerClose(): void {
-		drawerStore.close();
-	}
-
-	const drawerSettings: DrawerSettings = {
-		id: 'sidebar',
-		// Native property overrides:
-		bgDrawer: '',
-		bgBackdrop: 'bg-gradient-to-tr from-secondary-600/50 via-surface-600/50 to-tertiary-600/50',
-		width: 'w-[300px] md:w-[480px]',
-		padding: 'p-4',
-		rounded: 'rounded-xl'
-	};
-
-	interface Props {
-		navigation: Content.NavigationDocument;
-	}
-
-	let { navigation }: Props = $props();
+	let open = $state(false);
 </script>
 
-<!--Mobile side drawer nav list -->
-<div class="relative pb-8 text-primary-50 md:pb-12">
-	<Drawer>
-		<!--		Logo positioning-->
-		<div class="h-full bg-gradient-to-br from-surface-600 to-surface-800 px-6 pt-4">
-			<button class="grid w-full justify-center border-none outline-none"
-				><a href="/" class="" onclick={drawerClose}>
-					<img src={squareLogo} alt="Levelone Gaming Pub logo" class="" />
-				</a></button
-			>
-			<ul class="pt-2">
-				{#each navigation.data?.links as item}
-					<button
-						class="grid rounded-xl p-2 text-3xl font-semibold tracking-tight hover:bg-surface-700 hover:text-tertiary-200 hover:shadow-2xl"
-						onclick={drawerClose}
-					>
-						<PrismicLink field={item.link}>
-							<PrismicText field={item.label} />
-						</PrismicLink>
-					</button>
-				{/each}
-			</ul>
-		</div>
-	</Drawer>
+<!-- Keeps `nav.fixed` so MenuNav can measure header height -->
+<nav class="fixed left-0 top-0 z-50 w-full py-1 bg-ink">
+	<div class="flex h-16 items-center justify-between px-6 lg:px-10">
+		<a href="/" class="shrink-0" onclick={() => (open = false)}>
+			<img src={logo} alt="Level One Game Pub" class="h-10 w-auto lg:h-12" />
+		</a>
 
-	<!--Main page top nav bar-->
-	<!--	This is the whole Header-->
-	<nav
-		class="fixed z-10 w-screen items-center justify-items-center bg-surface-800 leading-none drop-shadow-2xl"
-	>
-		<div class="w-full">
-			<img
-				src={bg}
-				alt="LVL1 Gaming Pub header background"
-				class="absolute inset-0 h-full w-full object-cover object-center opacity-30"
-			/>
-			<div
-				class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 bg-gradient-to-br from-tertiary-700/30 via-surface-600/30 to-secondary-600/30 mix-blend-overlay"
-			></div>
-			<div class="w-full">
-				<nav class="absolute w-full items-center lg:hidden">
-					<button aria-label="Open mobile nav" class="ml-1.5 mr-4 mt-5" onclick={drawerOpen}>
-						<span>
-							<svg
-								class="h-12 w-12 text-tertiary-100"
-								aria-hidden="true"
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								fill="none"
-								viewBox="0 0 24 24"
-							>
-								<path
-									stroke="currentColor"
-									stroke-linecap="round"
-									stroke-width="1.5"
-									d="M5 7h14M5 12h14M5 17h14"
-								/>
-							</svg>
-						</span>
-					</button>
-				</nav>
-				<div
-					class="absolute left-36 top-3 hidden rounded-xl bg-gradient-to-r from-secondary-700 to-tertiary-700 p-4 text-2xl font-semibold tracking-tight text-primary-50 lg:block"
-				>
-					<PrismicRichText field={navigation.data?.stayplay} />
-				</div>
-				<div class="grid items-center justify-items-center pt-3 pl-4 lg:grid-cols-1 lg:pl-0">
-					<a href="/" class="grid w-fit scale-75 justify-center pb-2 md:scale-90 lg:pb-0">
-						<img src={logo} alt="LVL1 Gaming Pub" class="h-[77px]" />
-					</a>
-				</div>
-			</div>
-		</div>
-
-		<ul
-			class="relative hidden h-full w-full justify-center bg-surface-800 text-center lg:flex lg:items-center"
-		>
-			{#each navigation.data?.links as item}
-				<li
-					class="text-nowrap px-6 py-1 text-lg tracking-tight bg-gradient-to-br from-primary-500 to-tertiary-400 box-decoration-clone bg-clip-text text-transparent hover:text-secondary-500 hover:shadow-secondary-500"
-				>
-					<PrismicLink class="" field={item.link}>
-						<PrismicText field={item.label} />
-					</PrismicLink>
+		<ul class="hidden items-center gap-10 font-heading text-xl font-bold text-chalk lg:flex xl:gap-14">
+			{#each links as item}
+				<li>
+					<a href={item.href} class="transition-colors hover:text-red-bright">{item.label}</a>
 				</li>
 			{/each}
 		</ul>
-	</nav>
-</div>
+
+		<div class="flex items-center gap-3">
+			<a
+				href="#"
+				class="hidden rounded bg-gradient-to-r from-red to-red-bright px-3 py-1.5 font-heading text-sm font-medium text-ivory shadow-[4px_4px_0px_#191412] sm:inline-block"
+			>
+				$9 Stay &amp; Play
+			</a>
+			<button
+				class="text-chalk lg:hidden"
+				aria-label="Toggle menu"
+				aria-expanded={open}
+				onclick={() => (open = !open)}
+			>
+				<svg
+					class="h-7 w-7"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+				>
+					{#if open}
+						<path d="M6 6l12 12M18 6L6 18" />
+					{:else}
+						<path d="M5 7h14M5 12h14M5 17h14" />
+					{/if}
+				</svg>
+			</button>
+		</div>
+	</div>
+
+	{#if open}
+		<ul
+			class="flex flex-col gap-1 border-t border-white/10 bg-ink px-6 pb-4 pt-2 font-heading text-lg font-bold text-chalk lg:hidden"
+		>
+			{#each links as item}
+				<li>
+					<a href={item.href} class="block py-2 hover:text-red-bright" onclick={() => (open = false)}>
+						{item.label}
+					</a>
+				</li>
+			{/each}
+			<li>
+				<a
+					href="#"
+					class="mt-2 inline-block rounded bg-gradient-to-r from-red to-red-bright px-3 py-1.5 text-sm font-medium text-ivory"
+					onclick={() => (open = false)}
+				>
+					$9 Stay &amp; Play
+				</a>
+			</li>
+		</ul>
+	{/if}
+</nav>
