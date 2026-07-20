@@ -67,7 +67,7 @@
 
 {#if search === 'ready'}
 	<div class="grid grid-cols-2 gap-4 py-4">
-		<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-800" active="variant-filled-primary">
+		<ListBox multiple hover="" rounded="rounded-xl" class="border border-white/10 bg-ink" active="bg-red-bright text-chalk">
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Gamecube">Gamecube</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="N64">N64</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="NES">NES</ListBoxItem>
@@ -76,7 +76,7 @@
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS2">PS2</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS3">PS3</ListBoxItem>
 		</ListBox>
-		<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-800" active="variant-filled-primary">
+		<ListBox multiple hover="" rounded="rounded-xl" class="border border-white/10 bg-ink" active="bg-red-bright text-chalk">
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS4">PS4</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="PS5">PS5</ListBoxItem>
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="SEGA Genesis">SEGA</ListBoxItem>
@@ -87,7 +87,7 @@
 			<ListBoxItem bind:group={valueMultiple} name="medium" value="Xbox360">Xbox360</ListBoxItem>
 		</ListBox>
 	</div>
-	<div class="variant-glass-surface h-96 overflow-y-auto rounded-t-xl opacity-90">
+	<div class="h-96 overflow-y-auto rounded-t-xl border border-white/10 bg-ink/60 backdrop-blur-md">
 		{#if results}
 			<ul class="grid w-full list-none grid-flow-row lg:grid-cols-3">
 				{#each results as result}
@@ -95,14 +95,14 @@
 						href={result.URL}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="block text-lg lg:text-2xl"
+						class="block text-lg text-chalk lg:text-2xl hover:bg-chalk/10 transition-colors"
 					>
 						<li class="p-2">
 							<p class="text-pretty">{@html result.Games}</p>
 
 							<div class="flex flex-row flex-wrap gap-2">
-								<p class="text-sm text-tertiary-400">{@html result.Category}</p>
-								<p class="text-sm text-secondary-400">{@html result.Bilingual}</p>
+								<p class="text-sm text-red-bright">{@html result.Category}</p>
+								<p class="text-sm text-chalk/60">{@html result.Bilingual}</p>
 							</div>
 						</li>
 					</a>
@@ -111,7 +111,7 @@
 		{/if}
 	</div>
 
-	<div class="relative flex w-full gap-2 font-sans text-2xl">
+	<div class="relative flex w-full gap-2 font-body text-2xl">
 		<input
 			value={searchTerm}
 			placeholder="Search..."
@@ -119,7 +119,7 @@
 			spellcheck="false"
 			type="search"
 			id="Search"
-			class="w-full rounded-xl border-none bg-surface-800 p-6 text-primary-100 outline-none drop-shadow-2xl transition-colors focus:outline-4 focus:-outline-offset-1 focus:outline-tertiary-700"
+			class="w-full rounded-xl border border-white/10 bg-chalk/10 p-6 text-chalk placeholder:text-chalk/40 outline-none drop-shadow-2xl transition-colors focus:outline-4 focus:-outline-offset-1 focus:outline-red-bright"
 			onkeydown={(e) => {
 				if (e.key === 'Enter') {
 					searchTerm = e.currentTarget.value;
@@ -127,7 +127,7 @@
 			}}
 		/>
 		<button
-			class="rounded-xl bg-gradient-to-br from-tertiary-600 to-secondary-600 px-5 py-3 text-2xl text-primary-50 hover:shadow-lg hover:shadow-tertiary-600"
+			class="rounded-xl bg-gradient-to-br from-red to-red-bright px-5 py-3 font-display text-2xl font-black text-chalk hover:shadow-lg hover:shadow-red/40"
 			onclick={() => {
 				searchTerm = '';
 				valueMultiple = [];
@@ -137,16 +137,16 @@
 {/if}
 
 {#if search === 'loading'}
-	<section class="card w-full bg-surface-900 pt-4">
-		<div class="placeholder-circle ml-4 w-16 bg-surface-500"></div>
+	<section class="card w-full bg-ink-noise pt-4">
+		<div class="placeholder-circle ml-4 w-16 bg-chalk/10"></div>
 		<div class="space-y-4 p-4">
-			<div class="placeholder bg-surface-500"></div>
+			<div class="placeholder bg-chalk/10"></div>
 			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder bg-surface-500"></div>
-				<div class="placeholder bg-surface-500"></div>
-				<div class="placeholder bg-surface-500"></div>
+				<div class="placeholder bg-chalk/10"></div>
+				<div class="placeholder bg-chalk/10"></div>
+				<div class="placeholder bg-chalk/10"></div>
 			</div>
-			<div class="placeholder bg-surface-500"></div>
+			<div class="placeholder bg-chalk/10"></div>
 		</div>
 	</section>
 {/if}

@@ -278,6 +278,93 @@ export type SettingsDocument<Lang extends string = string> = prismic.PrismicDocu
 export type AllDocumentTypes = NavigationDocument | PageDocument | SettingsDocument;
 
 /**
+ * Item in *Announcements → Default → Primary → Cards*
+ */
+export interface AnnouncementsSliceDefaultPrimaryCardsItem {
+	/**
+	 * Image field in *Announcements → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: announcements.default.primary.cards[].image
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Title field in *Announcements → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: announcements.default.primary.cards[].title
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	title: prismic.RichTextField;
+
+	/**
+	 * Body field in *Announcements → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: announcements.default.primary.cards[].body
+	 * - **Documentation**: https://prismic.io/docs/fields/rich-text
+	 */
+	body: prismic.RichTextField;
+
+	/**
+	 * Link field in *Announcements → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: If needed
+	 * - **API ID Path**: announcements.default.primary.cards[].link
+	 * - **Documentation**: https://prismic.io/docs/fields/link
+	 */
+	link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *Announcements → Default → Primary*
+ */
+export interface AnnouncementsSliceDefaultPrimary {
+	/**
+	 * Cards field in *Announcements → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: announcements.default.primary.cards[]
+	 * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+	 */
+	cards: prismic.GroupField<Simplify<AnnouncementsSliceDefaultPrimaryCardsItem>>;
+}
+
+/**
+ * Default variation for Announcements Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type AnnouncementsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<AnnouncementsSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Announcements*
+ */
+type AnnouncementsSliceVariation = AnnouncementsSliceDefault;
+
+/**
+ * Announcements Shared Slice
+ *
+ * - **API ID**: `announcements`
+ * - **Description**: Announcements
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type AnnouncementsSlice = prismic.SharedSlice<'announcements', AnnouncementsSliceVariation>;
+
+/**
  * Item in *BgPageSplitCards → Default → Primary → Card*
  */
 export interface BgPageSplitCardsSliceDefaultPrimaryCardItem {
@@ -1407,6 +1494,16 @@ export interface VideoSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/fields/link
 	 */
 	videolink: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+	/**
+	 * Poster field in *Video → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: video.default.primary.poster
+	 * - **Documentation**: https://prismic.io/docs/fields/image
+	 */
+	poster: prismic.ImageField<never>;
 }
 
 /**
@@ -1511,6 +1608,11 @@ declare module '@prismicio/client' {
 			SettingsDocument,
 			SettingsDocumentData,
 			AllDocumentTypes,
+			AnnouncementsSlice,
+			AnnouncementsSliceDefaultPrimaryCardsItem,
+			AnnouncementsSliceDefaultPrimary,
+			AnnouncementsSliceVariation,
+			AnnouncementsSliceDefault,
 			BgPageSplitCardsSlice,
 			BgPageSplitCardsSliceDefaultPrimaryCardItem,
 			BgPageSplitCardsSliceDefaultPrimary,

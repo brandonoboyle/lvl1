@@ -13,9 +13,7 @@
 </script>
 
 <div class="px-6 py-10 md:px-10">
-	<div
-		class="relative mx-auto w-full rounded-xl bg-gradient-to-br from-surface-600 to-surface-800 pb-4"
-	>
+	<div class="relative mx-auto w-full rounded-xl bg-ink-noise pb-4">
 		<!-- <div class="overflow-hidden rounded-2xl">
 			{#if isFilled.image(slice.primary.backgroundImage)}
 				<PrismicImage
@@ -30,16 +28,14 @@
 		</div> -->
 		<Bounded tag="div" yPadding="sm" class="relative">
 			<div class="grid justify-items-center gap-8">
-				<div
-					class="max-w-2xl space-y-16 bg-gradient-to-br from-primary-600 to-tertiary-400 box-decoration-clone bg-clip-text px-4 py-6 text-center text-transparent"
-				>
+				<div class="max-w-2xl space-y-16 px-4 py-6 text-center text-chalk">
 					<!-- an error is called for this heading declaration but I swear it works fine -->
 					<PrismicRichText field={slice.primary.text} />
 				</div>
 				{#if isFilled.link(slice.primary.buttonLink)}
 					<PrismicLink
 						field={slice.primary.buttonLink}
-						class="rounded-xl bg-gradient-to-br from-tertiary-600 to-secondary-600 px-5 py-3 text-2xl text-primary-50 transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-tertiary-600"
+						class="rounded-xl bg-gradient-to-br from-red to-red-bright px-5 py-3 font-display text-2xl font-black text-chalk transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-red/40"
 					>
 						{slice.primary.buttonText || 'Learn More'}
 					</PrismicLink>

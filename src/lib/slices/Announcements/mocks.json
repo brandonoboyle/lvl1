@@ -1,0 +1,85 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"cards": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+										"width": 3168,
+										"height": 4752
+									},
+									"url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88?rect=0%2C792%2C3168%2C3168&w=800&h=800",
+									"width": 800,
+									"height": 800,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 792
+										},
+										"background": "transparent"
+									},
+									"alt": "thread",
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Est nisi commodo quis ex sit Lorem irure ut laborum cillum nisi irure labore fugiat. Qui labore duis id proident aliqua magna sint occaecat consequat cillum consectetur."
+											}
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Velit est excepteur minim dolore anim ex qui cillum nostrud commodo fugiat nostrud ad sint. Eu mollit sint cillum proident dolore tempor anim ex sint elit fugiat commodo consequat."
+											}
+										}
+									]
+								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "2e2db716-ab6b-4b9b-ad3a-907332053df5",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "look"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

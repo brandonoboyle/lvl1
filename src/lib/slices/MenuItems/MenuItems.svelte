@@ -17,8 +17,8 @@
 			<PrismicImage class="rounded-xl drop-shadow-2xl" field={card.image} sizes="" />
 		</div>
 	{/if}
-	<div class="grid h-full w-full grid-cols-2 text-pretty">
-		<div class="justify-items-start bg-gradient-to-br from-primary-500 to-tertiary-400 box-decoration-clone bg-clip-text text-transparent">
+	<div class="grid h-full w-full grid-cols-2 text-pretty text-chalk">
+		<div class="justify-items-start font-heading font-semibold">
 			<PrismicRichText field={card.title} />
 		</div>
 		<div class="grid justify-items-end text-lg">
@@ -27,10 +27,10 @@
 			</div>
 		</div>
 		<div class="col-span-2 w-full">
-			<div class="">
+			<div class="text-chalk/75">
 				<PrismicRichText field={card.text} />
 			</div>
-			<div class="justify-items-center p-4 text-center">
+			<div class="justify-items-center p-4 text-center text-chalk/75">
 				<PrismicRichText field={card.notes} />
 			</div>
 		</div>

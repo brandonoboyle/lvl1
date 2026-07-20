@@ -7,6 +7,6 @@
 </script>
 
 
-	<div class="text-center gap-6 grid grid-cols-2 align-middle py-10 px-9">
+	<div class="text-center gap-6 grid grid-cols-2 align-middle py-10 px-9 bg-ink-noise text-chalk font-body">
 		<PrismicRichText field={slice.primary.text_columns} />
 	</div>

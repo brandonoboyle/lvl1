@@ -33,7 +33,7 @@
 	<script type="application/ld+json">{JSON.stringify(structuredData)}</script>
 </svelte:head>
 
-<div class="flex justify-center">
+<div class="flex justify-center bg-ink-noise font-body text-chalk">
 	<div data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="w-4/5">
 		{#if slice.primary?.search}
 			<PrismicRichText field={slice.primary.search} />

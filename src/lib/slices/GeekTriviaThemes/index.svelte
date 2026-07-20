@@ -3,7 +3,7 @@
 
 </script>
 
-<div class="flex h-full w-full items-center justify-center py-4">
+<div class="flex h-full w-full items-center justify-center bg-ink-noise py-4">
 	<iframe
 		title="Geek Trivia Themes"
 		class="h-[460px] w-4/5 md:w-1/2"

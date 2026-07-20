@@ -1,14 +1,8 @@
 <script lang="ts">
 	import logo from '$lib/assets/logo/no-neon.png';
+	import { page } from '$app/stores';
 
-	// Figma nav. Swap to CMS-driven links later if needed.
-	const links = [
-		{ label: 'Menu', href: '/food' },
-		{ label: 'Games', href: '/board_games' },
-		{ label: 'Events', href: '/#events' },
-		{ label: 'Corporate Parties', href: '/#events' },
-		{ label: 'Gift Cards', href: '#' }
-	];
+	let links = $derived($page.data.links);
 
 	let open = $state(false);
 </script>

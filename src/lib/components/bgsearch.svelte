@@ -122,7 +122,7 @@
 		<div class="mb-6">
 			<!-- <h3 class="text-lg font-semibold mb-3 text-primary-100">Filter by Category</h3> -->
 			<div class="grid grid-cols-2 gap-4">
-				<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-700" active="variant-filled-primary">
+				<ListBox multiple hover="" rounded="rounded-xl" class="border border-white/10 bg-ink" active="bg-red-bright text-chalk">
 					<ListBoxItem bind:group={selectedCategories} name="category" value="New">New</ListBoxItem>
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Adult">Adult</ListBoxItem>
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Cooperative">Cooperative</ListBoxItem>
@@ -130,7 +130,7 @@
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Family">Family</ListBoxItem>
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Light Strategy">Light Strategy</ListBoxItem>
 				</ListBox>
-				<ListBox multiple hover="" rounded="rounded-xl" class="bg-surface-700" active="variant-filled-primary">
+				<ListBox multiple hover="" rounded="rounded-xl" class="border border-white/10 bg-ink" active="bg-red-bright text-chalk">
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Bilingual">Bilingual</ListBoxItem>
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Party">Party</ListBoxItem>
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Solo">Solo</ListBoxItem>
@@ -142,7 +142,7 @@
 		</div>
 
 		<!-- Search Results Section -->
-		<div class="variant-glass-surface h-96 w-full overflow-y-auto rounded-t-xl opacity-90">
+		<div class="h-96 w-full overflow-y-auto rounded-t-xl border border-white/10 bg-ink/60 backdrop-blur-md">
 			{#if results && results.length > 0}
 				<ul class="grid w-full list-none grid-flow-row lg:grid-cols-3">
 					{#each results as result}
@@ -150,27 +150,27 @@
 							href={result.URL}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="block text-lg lg:text-2xl hover:bg-surface-600 transition-colors"
+							class="block text-lg text-chalk lg:text-2xl hover:bg-chalk/10 transition-colors"
 						>
 							<li class="p-2">
 								<p class="text-pretty">{@html result.Games}</p>
 								<div class="flex flex-row flex-wrap gap-2">
-									<p class="text-sm text-tertiary-400">{@html result.Category}</p>
-									<p class="text-sm text-secondary-400">{@html result.Bilingual}</p>
+									<p class="text-sm text-red-bright">{@html result.Category}</p>
+									<p class="text-sm text-chalk/60">{@html result.Bilingual}</p>
 								</div>
 							</li>
 						</a>
 					{/each}
 				</ul>
 			{:else if results && results.length === 0}
-				<div class="p-8 text-center text-primary-200">
+				<div class="p-8 text-center text-chalk/60">
 					<p>No results found. Try adjusting your search or filters.</p>
 				</div>
 			{/if}
 		</div>
 
 		<!-- Search Input Section -->
-		<div class="relative flex w-full gap-2 pt-6 font-sans text-2xl">
+		<div class="relative flex w-full gap-2 pt-6 font-body text-2xl">
 			<input
 				bind:value={searchTerm}
 				placeholder="Search games..."
@@ -178,7 +178,7 @@
 				spellcheck="false"
 				type="search"
 				id="Search"
-				class="w-full rounded-xl border-none bg-surface-800 p-6 text-primary-100 outline-none focus:outline-4 focus:outline-tertiary-700 focus:-outline-offset-1 drop-shadow-2xl transition-colors"
+				class="w-full rounded-xl border border-white/10 bg-chalk/10 p-6 text-chalk placeholder:text-chalk/40 outline-none focus:outline-4 focus:outline-red-bright focus:-outline-offset-1 drop-shadow-2xl transition-colors"
 			/>
 			<!-- With search changes this clear all might not be needed -->
 			
@@ -202,16 +202,16 @@
 {/if}
 
 {#if search === 'loading'}
-	<section class="card w-full pt-4 bg-surface-900">
-		<div class="placeholder-circle ml-4 w-16 bg-surface-500"></div>
+	<section class="card w-full bg-ink-noise pt-4">
+		<div class="placeholder-circle ml-4 w-16 bg-chalk/10"></div>
 		<div class="space-y-4 p-4">
-			<div class="placeholder bg-surface-500"></div>
+			<div class="placeholder bg-chalk/10"></div>
 			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder bg-surface-500"></div>
-				<div class="placeholder bg-surface-500"></div>
-				<div class="placeholder bg-surface-500"></div>
+				<div class="placeholder bg-chalk/10"></div>
+				<div class="placeholder bg-chalk/10"></div>
+				<div class="placeholder bg-chalk/10"></div>
 			</div>
-			<div class="placeholder bg-surface-500"></div>
+			<div class="placeholder bg-chalk/10"></div>
 		</div>
 	</section>
 {/if}

@@ -37,24 +37,36 @@
 	}
 </script>
 
-<Bounded tag="div" class="relative p-4">
-	<div class="rounded-xl bg-surface-800 p-4">
+<Bounded tag="div" class="relative bg-ink-noise p-4 font-body text-chalk">
+	<div class="rounded-xl border border-white/10 bg-ink p-4">
 		<form method="POST" action="/api/send-email" on:submit={handleSubmit}>
 			<label class="label py-2">
 				<span>Name</span>
-				<input name="name" class="input bg-surface-700" type="text" placeholder="John Doe" required />
+				<input
+					name="name"
+					class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright"
+					type="text"
+					placeholder="John Doe"
+					required
+				/>
 			</label>
 
 			<label class="label py-2">
 				<span>Email</span>
-				<input name="email" class="input bg-surface-700" type="email" placeholder="John@Doe.com" required />
+				<input
+					name="email"
+					class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright"
+					type="email"
+					placeholder="John@Doe.com"
+					required
+				/>
 			</label>
 
 			<label class="label py-2">
 				<span>Comment</span>
 				<textarea
 					name="message"
-					class="textarea bg-surface-700"
+					class="textarea border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright"
 					placeholder="Get in touch with us!"
 					rows="4"
 					required
@@ -64,16 +76,16 @@
 			<div class="mt-4">
 				<button
 					type="submit"
-					class="rounded-xl bg-gradient-to-br from-primary-600 to-secondary-500 px-5 py-3 text-2xl font-bold text-primary-50 hover:shadow-lg hover:shadow-tertiary-600"
+					class="rounded-xl bg-gradient-to-br from-red to-red-bright px-5 py-3 font-display text-2xl font-black text-chalk hover:shadow-lg hover:shadow-red/40"
 					disabled={submitting}
 				>
 					{submitting ? 'Sending...' : 'Submit'}
 				</button>
 
 				{#if success}
-					<p class="mt-4 text-success-500">Message sent successfully!</p>
+					<p class="mt-4 text-chalk">Message sent successfully!</p>
 				{:else if error}
-					<p class="mt-4 text-error-500">{error}</p>
+					<p class="mt-4 text-red-bright">{error}</p>
 				{/if}
 			</div>
 		</form>

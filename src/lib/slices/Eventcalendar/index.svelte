@@ -3,7 +3,7 @@
 
 </script>
 
-<div class="flex h-screen w-full items-center justify-center py-4">
+<div class="flex h-screen w-full items-center justify-center bg-ink-noise py-4">
 	<iframe
 	class="flex justify-center items-center h-full w-11/12 sm:w-4/5 lg:w-3/5 rounded-xl drop-shadow-2xl"
 		title="calendar"

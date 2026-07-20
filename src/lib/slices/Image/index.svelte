@@ -16,7 +16,7 @@
 <Bounded
 	tag="section"
 	yPadding="sm"
-	class={clsx('', index === 0 && 'pt-0 px-5 md:pt-0')}
+	class={clsx('bg-ink-noise', index === 0 && 'pt-0 px-5 md:pt-0')}
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >

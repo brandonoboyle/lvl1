@@ -3,7 +3,7 @@
 import type { Content } from '@prismicio/client';
 </script>
 
-<div class="flex justify-center w-full items-center">
+<div class="flex justify-center w-full items-center bg-ink-noise">
 	<iframe
 	class="flex justify-center items-center h-[600px] w-11/12 sm:w-4/5 lg:w-3/5 rounded-xl drop-shadow-2xl"
 		title="map"

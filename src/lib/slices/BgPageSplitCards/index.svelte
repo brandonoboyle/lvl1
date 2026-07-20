@@ -9,7 +9,7 @@
 	let { slice }: Props = $props();
 </script>
 
-<div class="py-12 px-10">
+<div class="bg-ink-noise py-12 px-10 text-chalk">
 	<div class="relative w-full px-12 text-3xl md:text-lg">
 		<div class="">
 			{#if isFilled.image(slice.primary.background)}
@@ -19,7 +19,7 @@
 					class="absolute -z-10 inset-0 left-1/2 h-full w-full -translate-x-1/2 select-none rounded-xl object-cover opacity-40"
 				/>
 				<div
-					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 bg-gradient-to-br from-tertiary-400/30 to-secondary-400/30 via-surface-400/30 mix-blend-overlay rounded-xl"
+					class="absolute inset-0 left-1/2 h-full w-full -translate-x-1/2 rounded-xl bg-ink/40"
 				></div>
 			{/if}
 		</div>

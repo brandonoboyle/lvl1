@@ -3,10 +3,13 @@
 @import '@fontsource/advent-pro/600.css';
 @import '@fontsource/lato/400-italic.css';
 @import '@fontsource/lato/400.css';
+@import '@fontsource/lato/900.css';
 
-/* Display faces for the redesign (Nexa Rust Sans, converted from OTF to woff2 in static/fonts/).
-   Two weights on one family: Book (400) + Black (900). The shadowed cut is its own family
-   ('Nexa Rust Shadow', font-display-shadow utility) since it can't be expressed as a weight. */
+/* Display faces for the redesign (Nexa Rust, converted from OTF to woff2 in static/fonts/).
+   Two weights on one family: Book (400, Sans cut) + Black Shadow 01 (900, Slab cut — matches
+   the logo). The plain Black 01 and Sans Black Shadow cuts are retired — all heavy display
+   type uses the Slab shadowed cut. Its shadow is a knocked-out offset, so it reads subtly on
+   dark backgrounds. */
 @font-face {
 	font-family: 'Nexa Rust Sans';
 	src: url('/fonts/NexaRustSans-Book.woff2') format('woff2');
@@ -16,14 +19,7 @@
 }
 @font-face {
 	font-family: 'Nexa Rust Sans';
-	src: url('/fonts/NexaRustSans-Black.woff2') format('woff2');
-	font-weight: 900;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: 'Nexa Rust Shadow';
-	src: url('/fonts/NexaRustSans-BlackShadow.woff2') format('woff2');
+	src: url('/fonts/NexaRustSlab-BlackShadow.woff2') format('woff2');
 	font-weight: 900;
 	font-style: normal;
 	font-display: swap;
@@ -65,9 +61,25 @@
 	--theme-font-family-base: 'Lato', sans-serif;
 }
 
-/* Dark ink base — components sit on this instead of the old background photo */
+/* Dark ink base — components sit on this instead of the old background photo.
+   Noise.png tiles over the ink; `lighten` maps its black exactly to var(--ink)
+   so only the brighter grain specks show. */
 body {
 	background-color: var(--ink);
+	background-image: url('./lib/assets/images/Noise.png');
+	background-blend-mode: lighten;
+	/* Without this, macOS Chrome dilates light-on-dark glyphs and the
+	   Nexa Rust speckle texture + knockout shadow get swallowed */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Opaque ink surface with the same noise treatment as body —
+   for panels that would otherwise cover the body texture */
+.bg-ink-noise {
+	background-color: var(--ink);
+	background-image: url('./lib/assets/images/Noise.png');
+	background-blend-mode: lighten;
 }
 
 /* Price display consistency */

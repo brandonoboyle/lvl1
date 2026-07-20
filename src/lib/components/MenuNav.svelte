@@ -60,7 +60,7 @@
 
 <nav
 	bind:this={navEl}
-	class="fixed left-0 z-[9] w-full border-b border-surface-700 bg-surface-800/95 backdrop-blur-sm"
+	class="fixed left-0 z-[9] w-full border-b border-white/10 bg-ink/95 backdrop-blur-sm"
 	style="top: {headerHeight}px"
 >
 	<div
@@ -73,8 +73,8 @@
 				onclick={() => scrollTo(section.id)}
 				class="shrink-0 rounded-lg px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider transition-colors
 					{activeId === section.id
-					? 'bg-gradient-to-br from-primary-500 to-tertiary-400 text-surface-900'
-					: 'text-tertiary-50 hover:bg-surface-700 hover:text-primary-400'}"
+					? 'bg-gradient-to-r from-red to-red-bright text-chalk'
+					: 'text-chalk/70 hover:bg-chalk/10 hover:text-chalk'}"
 			>
 				{section.label}
 			</button>

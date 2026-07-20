@@ -11,7 +11,7 @@
 <Bounded
 	yPadding="sm"
 	as="section"
-	class="px-5 leading-relaxed text-center"
+	class="px-5 leading-relaxed text-center bg-ink-noise text-chalk font-body"
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
 >

@@ -23,9 +23,9 @@
 
 		<!--				Inner text box-->
 
-		<div class="rounded-xl px-8 py-12 text-xl drop-shadow-2xl">
-			<span class="text-center text-error-100"><PrismicRichText field={card.cardtitle} /></span>
-			<span class="text-center"><PrismicRichText field={card.cardcontent} /></span>
+		<div class="rounded-xl bg-ink/60 px-8 py-12 text-xl drop-shadow-2xl">
+			<span class="text-center text-chalk"><PrismicRichText field={card.cardtitle} /></span>
+			<span class="text-center text-chalk"><PrismicRichText field={card.cardcontent} /></span>
 		</div>
 	</PrismicLink>
 </li>

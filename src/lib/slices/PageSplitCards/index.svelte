@@ -10,7 +10,7 @@
 	let { slice }: Props = $props();
 </script>
 
-<div class="w-full px-10 pb-12 text-3xl md:text-lg">
+<div class="w-full bg-ink-noise px-10 pb-12 text-3xl text-chalk md:text-lg">
 	<div class="flex justify-center pb-6">
 		<PrismicRichText field={slice.primary.title} />
 	</div>

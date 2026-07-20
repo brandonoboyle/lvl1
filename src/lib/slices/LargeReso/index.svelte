@@ -88,10 +88,10 @@
 	}
 </script>
 
-<Bounded tag="section">
+<Bounded tag="section" class="bg-ink-noise font-body text-chalk">
 	<div class="mx-auto max-w-4xl">
 		<div class="text-center mb-12">
-			<h2 class="text-4xl md:text-5xl font-heading font-bold text-primary-500 mb-4">
+			<h2 class="text-4xl md:text-5xl font-display font-black text-chalk mb-4">
 				Large Group Reservation
 			</h2>
 			<!-- <p class="text-lg max-w-2xl mx-auto">
@@ -99,15 +99,15 @@
 			</p> -->
 		</div>
 
-		<div class="rounded-xl bg-surface-800 p-6 md:p-8">
+		<div class="rounded-xl border border-white/10 bg-ink p-6 md:p-8">
 			<form method="POST" action="/api/send-email" onsubmit={handleSubmit}>
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 					<!-- Organizer Name -->
 					<label class="label py-2">
-						<span class="text-primary-400 font-medium">Organizer Name *</span>
+						<span class="text-chalk/70 font-medium">Organizer Name *</span>
 						<input 
 							name="organizerName" 
-							class="input bg-surface-700 border-surface-600 focus:border-primary-500" 
+							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
 							type="text" 
 							placeholder="John Doe" 
 							required 
@@ -116,10 +116,10 @@
 
 					<!-- Contact Phone -->
 					<label class="label py-2">
-						<span class="text-primary-400 font-medium">Contact Phone Number *</span>
+						<span class="text-chalk/70 font-medium">Contact Phone Number *</span>
 						<input 
 							name="phone" 
-							class="input bg-surface-700 border-surface-600 focus:border-primary-500" 
+							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
 							type="tel" 
 							placeholder="(555) 123-4567" 
 							required 
@@ -128,10 +128,10 @@
 
 					<!-- Contact Email -->
 					<label class="label py-2">
-						<span class="text-primary-400 font-medium">Contact Email Address *</span>
+						<span class="text-chalk/70 font-medium">Contact Email Address *</span>
 						<input 
 							name="email" 
-							class="input bg-surface-700 border-surface-600 focus:border-primary-500" 
+							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
 							type="email" 
 							placeholder="john@example.com" 
 							required 
@@ -140,10 +140,10 @@
 
 					<!-- Confirm Email -->
 					<label class="label py-2">
-						<span class="text-primary-400 font-medium">Confirm Email Address *</span>
+						<span class="text-chalk/70 font-medium">Confirm Email Address *</span>
 						<input 
 							name="confirmEmail" 
-							class="input bg-surface-700 border-surface-600 focus:border-primary-500 {!emailMatch ? 'border-error-500' : ''}" 
+							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright {!emailMatch ? 'border-red-bright' : ''}"
 							type="email" 
 							placeholder="john@example.com" 
 							required 
@@ -153,16 +153,16 @@
 							}}
 						/>
 						{#if !emailMatch}
-							<p class="text-error-500 text-sm mt-1">Email addresses do not match</p>
+							<p class="text-red-bright text-sm mt-1">Email addresses do not match</p>
 						{/if}
 					</label>
 
 					<!-- Organization Name (Optional) -->
 					<label class="label py-2">
-						<span class="text-primary-400 font-medium">Organization Name</span>
+						<span class="text-chalk/70 font-medium">Organization Name</span>
 						<input 
 							name="organization" 
-							class="input bg-surface-700 border-surface-600 focus:border-primary-500" 
+							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
 							type="text" 
 							placeholder="Business Inc." 
 						/>
@@ -170,10 +170,10 @@
 
 					<!-- Number of People -->
 					<label class="label py-2">
-						<span class="text-primary-400 font-medium">Number of People *</span>
+						<span class="text-chalk/70 font-medium">Number of People *</span>
 						<input 
 							name="peopleCount" 
-							class="input bg-surface-700 border-surface-600 focus:border-primary-500" 
+							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
 							type="number" 
 							placeholder="25" 
 							min="1"
@@ -183,10 +183,10 @@
 
 					<!-- Date -->
 					<label class="label py-2">
-						<span class="text-primary-400 font-medium">Preferred Date *</span>
+						<span class="text-chalk/70 font-medium">Preferred Date *</span>
 						<input 
 							name="date" 
-							class="input bg-surface-700 border-surface-600 focus:border-primary-500" 
+							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
 							type="date" 
 							required 
 						/>
@@ -194,10 +194,10 @@
 
 					<!-- Time -->
 					<label class="label py-2">
-						<span class="text-primary-400 font-medium">Preferred Time *</span>
+						<span class="text-chalk/70 font-medium">Preferred Time *</span>
 						<select 
 							name="time" 
-							class="input bg-surface-700 border-surface-600 focus:border-primary-500" 
+							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
 							required
 						>
 							<option value="">Select a time</option>
@@ -209,10 +209,10 @@
 
 					<!-- Game Type -->
 					<label class="label py-2">
-						<span class="text-primary-400 font-medium">Game Type *</span>
+						<span class="text-chalk/70 font-medium">Game Type *</span>
 						<select 
 							name="gameType" 
-							class="input bg-surface-700 border-surface-600 focus:border-primary-500" 
+							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
 							required
 						>
 							<option value="">Select game type</option>
@@ -224,10 +224,10 @@
 
 					<!-- Payment Arrangements -->
 					<label class="label py-2">
-						<span class="text-primary-400 font-medium">Payment Arrangements *</span>
+						<span class="text-chalk/70 font-medium">Payment Arrangements *</span>
 						<select 
 							name="paymentArrangements" 
-							class="input bg-surface-700 border-surface-600 focus:border-primary-500" 
+							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
 							required
 						>
 							<option value="">Select payment option</option>
@@ -240,10 +240,10 @@
 
 				<!-- Additional Requirements -->
 				<label class="label py-2 mt-6">
-					<span class="text-primary-400 font-medium">Additional Requirements</span>
+					<span class="text-chalk/70 font-medium">Additional Requirements</span>
 					<textarea
 						name="additionalRequirements"
-						class="textarea bg-surface-700 border-surface-600 focus:border-primary-500"
+						class="textarea border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright"
 						placeholder="Any special requests, dietary restrictions, accessibility needs, or other requirements..."
 						rows="4"
 					></textarea>
@@ -253,18 +253,18 @@
 				<div class="mt-8 text-center">
 					<button
 						type="submit"
-						class="rounded-xl bg-gradient-to-br from-primary-600 to-secondary-500 px-8 py-4 text-xl font-bold text-primary-50 hover:shadow-lg hover:shadow-tertiary-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+						class="rounded-xl bg-gradient-to-br from-red to-red-bright px-8 py-4 font-display text-xl font-black text-chalk hover:shadow-lg hover:shadow-red/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
 						disabled={submitting || !emailMatch}
 					>
 						{submitting ? 'Submitting...' : 'Submit Reservation Request'}
 					</button>
 
 					{#if success}
-						<p class="mt-6 text-success-500 text-lg font-medium">
+						<p class="mt-6 text-chalk text-lg font-medium">
 							Reservation request sent successfully! We'll get back to you within 24 hours.
 						</p>
 					{:else if error}
-						<p class="mt-6 text-error-500 text-lg font-medium">{error}</p>
+						<p class="mt-6 text-red-bright text-lg font-medium">{error}</p>
 					{/if}
 				</div>
 			</form>

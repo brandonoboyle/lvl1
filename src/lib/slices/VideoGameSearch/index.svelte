@@ -13,7 +13,7 @@
 	let { slice }: Props = $props();
 </script>
 
-<Bounded tag="div" yPadding="sm" class="relative px-4">
+<Bounded tag="div" yPadding="sm" class="relative bg-ink-noise px-4 font-body text-chalk">
 	<div data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="">
 		<!--	Placeholder component for {slice.slice_type} (variation: {slice.variation}) Slices-->
 		<PrismicRichText field={slice.primary.video_game_search} />

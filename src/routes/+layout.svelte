@@ -80,7 +80,7 @@
 <div class="flex min-h-screen flex-col">
 	<Header />
 
-	<main class="flex-1 pt-16 text-tertiary-50">{@render children?.()}</main>
+	<main class="flex-1 pt-16 text-chalk">{@render children?.()}</main>
 
 	<Footer />
 </div>

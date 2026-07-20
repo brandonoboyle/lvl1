@@ -10,6 +10,6 @@
 	let { node, children }: Props = $props();
 </script>
 
-<PrismicLink field={node.data} class="underline decoration-1 underline-offset-2">
+<PrismicLink field={node.data} class="text-red-bright underline decoration-1 underline-offset-2">
 	{@render children?.()}
 </PrismicLink>

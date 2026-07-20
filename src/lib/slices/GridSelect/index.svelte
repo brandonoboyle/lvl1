@@ -9,7 +9,7 @@
 	let { slice }: Props = $props();
 </script>
 
-<div class="">
+<div class="bg-ink-noise">
 	<!-- <ul class="grid grid-cols-2 gap-6 p-4 px-6 md:px-10"> -->
 	<ul class="grid grid-cols-2 gap-6 p-4 z-10 px-6 md:px-10">
 		{#each slice.primary.gridgroup as card}

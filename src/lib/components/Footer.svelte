@@ -10,7 +10,7 @@
 
 <footer class="border-t-4 border-red bg-ink font-body text-chalk">
 	<div class="px-6 py-16 lg:px-[120px]">
-		<h2 class="font-display text-4xl tracking-tight text-chalk lg:text-5xl">Find Us</h2>
+		<h2 class="font-display text-4xl font-black tracking-tight text-chalk lg:text-5xl">Find Us</h2>
 		<div class="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3">
 			<!-- Address -->
 			<div>

@@ -48,7 +48,7 @@
 <section
 	data-slice-type={slice.slice_type}
 	data-slice-variation={slice.variation}
-	class="relative -mt-24 h-screen w-screen md:-mt-20"
+	class="relative -mt-24 h-screen w-screen bg-ink-noise md:-mt-20"
 	style="margin-left: calc(-50vw + 50%);"
 >
 	<div class="absolute inset-0 overflow-hidden">
