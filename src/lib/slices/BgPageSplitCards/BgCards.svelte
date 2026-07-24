@@ -12,11 +12,11 @@
 </script>
 
 <!--Affects photo size-->
-<li class="relative max-w-sm lg:flex-1 lg:max-w-none min-w-80 px-6 py-8 md:px-12 md:py-16">
+<li class="relative max-w-sm lg:flex-1 lg:max-w-none min-w-80 px-6 py-4 md:px-12 md:py-6">
 	<PrismicLink field={card.card_link}>
 		<!--				Inner text box-->
 
-		<div class="flex flex-col items-center justify-center rounded-xl bg-ink-noise min-h-64 px-8 py-8 text-xl md:px-12 md:py-12 transition-shadow duration-300 ease-in-out [@media(hover:hover)]:hover:shadow-lg [@media(hover:hover)]:hover:shadow-red/40">
+		<div class="flex flex-col items-center justify-center rounded-xl bg-ink-noise px-8 py-8 text-xl md:px-12 md:py-10 transition-shadow duration-300 ease-in-out [@media(hover:hover)]:hover:shadow-lg [@media(hover:hover)]:hover:shadow-red/40">
 			<span class="text-center text-chalk"><PrismicRichText field={card.card_title} /></span>
 			<span class="text-center text-chalk"><PrismicRichText field={card.card_content} /></span>
 		</div>

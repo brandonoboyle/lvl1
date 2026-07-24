@@ -10,6 +10,15 @@
 	let navEl: HTMLElement | undefined = $state();
 	let scrollContainer: HTMLElement | undefined = $state();
 	let headerHeight = $state(0);
+	let canScrollLeft = $state(false);
+	let canScrollRight = $state(false);
+
+	function updateScrollHints() {
+		if (!scrollContainer) return;
+		canScrollLeft = scrollContainer.scrollLeft > 0;
+		canScrollRight =
+			scrollContainer.scrollLeft + scrollContainer.clientWidth < scrollContainer.scrollWidth - 1;
+	}
 
 	onMount(() => {
 		const header = document.querySelector('nav.fixed');
@@ -20,6 +29,10 @@
 			updateHeight();
 			window.addEventListener('resize', updateHeight);
 		}
+
+		updateScrollHints();
+		scrollContainer?.addEventListener('scroll', updateScrollHints);
+		window.addEventListener('resize', updateScrollHints);
 
 		const observer = new IntersectionObserver(
 			(entries) => {
@@ -38,7 +51,11 @@
 			if (el) observer.observe(el);
 		}
 
-		return () => observer.disconnect();
+		return () => {
+			observer.disconnect();
+			scrollContainer?.removeEventListener('scroll', updateScrollHints);
+			window.removeEventListener('resize', updateScrollHints);
+		};
 	});
 
 	function scrollTo(id: string) {
@@ -63,22 +80,32 @@
 	class="fixed left-0 z-[9] w-full border-b border-white/10 bg-ink/95 backdrop-blur-sm"
 	style="top: {headerHeight}px"
 >
-	<div
-		bind:this={scrollContainer}
-		class="scrollbar-hide flex items-center justify-center gap-1 overflow-x-auto px-4 py-3"
-	>
-		{#each sections as section}
-			<button
-				data-section={section.id}
-				onclick={() => scrollTo(section.id)}
-				class="shrink-0 rounded-lg px-4 py-2 font-heading text-sm font-semibold uppercase tracking-wider transition-colors
-					{activeId === section.id
-					? 'bg-gradient-to-r from-red to-red-bright text-chalk'
-					: 'text-chalk/70 hover:bg-chalk/10 hover:text-chalk'}"
-			>
-				{section.label}
-			</button>
-		{/each}
+	<div class="relative">
+		<div
+			bind:this={scrollContainer}
+			class="scrollbar-hide flex items-center justify-center gap-1 overflow-x-auto px-4 py-3"
+		>
+			{#each sections as section}
+				<button
+					data-section={section.id}
+					onclick={() => scrollTo(section.id)}
+					class="shrink-0 rounded-lg px-4 py-2 font-heading text-sm uppercase tracking-wider transition-colors
+						{activeId === section.id
+						? 'bg-gradient-to-r from-red to-red-bright text-chalk'
+						: 'text-chalk/70 hover:bg-chalk/10 hover:text-chalk'}"
+				>
+					{section.label}
+				</button>
+			{/each}
+		</div>
+		<div
+			class="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-ink to-transparent transition-opacity
+				{canScrollLeft ? 'opacity-100' : 'opacity-0'}"
+		></div>
+		<div
+			class="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-ink to-transparent transition-opacity
+				{canScrollRight ? 'opacity-100' : 'opacity-0'}"
+		></div>
 	</div>
 </nav>
 

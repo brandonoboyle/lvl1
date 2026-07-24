@@ -4,7 +4,7 @@
 	let { data } = $props();
 
 	function slowmo(node: HTMLVideoElement) {
-		node.playbackRate = 0.8;
+		node.playbackRate = 0.9;
 	}
 
 	const announcementsSlice = data.page.data.slices.find(
@@ -54,21 +54,19 @@
 			<p class="text-chalk/75 mt-2 line-clamp-3 min-h-[3.6rem] font-body text-sm leading-snug">
 				{body}
 			</p>
-			<a href="#" class="mt-3 inline-block font-heading text-sm font-semibold text-red-bright">
-				Learn more →
-			</a>
 		</div>
 	</article>
 {/snippet}
 
 <div class="bg-ink font-body text-chalk">
 	<!-- HERO -->
-	<section class="relative flex min-h-[640px] flex-col overflow-hidden lg:min-h-[864px]">
-		<img
-			src="/redesign/hero-loft.jpg"
-			alt="Level One Game Pub interior"
-			class="absolute inset-0 h-full w-full object-cover"
-		/>
+	<section class="relative flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden">
+		<iframe
+			src="https://player.vimeo.com/video/1159445263?background=1&autoplay=1&loop=1&muted=1&app_id=122963"
+			title="Level One Game Pub"
+			allow="autoplay; fullscreen"
+			class="pointer-events-none absolute left-1/2 top-1/2 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2"
+		></iframe>
 		<div class="bg-ink/20 absolute inset-0"></div>
 		<!-- bottom scrim: lifts CTA legibility and blends the hero into the ink section below -->
 		<div
@@ -76,20 +74,20 @@
 		></div>
 
 		<!-- Hero footer block -->
-		<div class="relative z-10 mt-auto px-6 pb-12 lg:px-12 lg:pb-16">
-			<p class="font-display text-3xl font-black tracking-[0.05em] text-chalk lg:text-4xl">
+		<div class="relative z-10 mt-auto px-6 pb-8 lg:px-12 lg:pb-16">
+			<p class="font-display text-xl font-black tracking-[0.05em] text-chalk sm:text-2xl lg:text-4xl">
 				Pub <span class="text-red">•</span> Kitchen <span class="text-red">•</span> Games
 			</p>
-			<div class="mt-6 flex flex-wrap gap-4">
+			<div class="mt-4 flex flex-wrap gap-3 lg:mt-6 lg:gap-4">
 				<a
-					href="#"
-					class="flex h-14 items-center justify-center bg-gradient-to-r from-red to-red-bright px-8 font-display text-lg font-black text-chalk"
+					href="/reservations"
+					class="flex h-11 items-center justify-center bg-gradient-to-r from-red to-red-bright px-5 font-display text-sm font-normal text-chalk lg:h-14 lg:px-8 lg:text-lg"
 				>
 					Reserve a Table
 				</a>
 				<a
 					href="/food"
-					class="flex h-14 items-center justify-center border-2 border-chalk bg-ink px-8 font-display text-lg font-black text-chalk"
+					class="flex h-11 items-center justify-center border-2 border-chalk bg-ink px-5 font-display text-sm font-normal text-chalk lg:h-14 lg:px-8 lg:text-lg"
 				>
 					See the Menu
 				</a>
@@ -223,9 +221,6 @@
 			>
 				Events
 			</h2>
-			<p class="text-chalk/50 mt-3 font-body text-base">
-				Level One is the perfect venue for parties that are actually fun.
-			</p>
 		</div>
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 			{#each events as e}
@@ -256,7 +251,7 @@
 				straight to the good part.
 			</p>
 			<a
-				href="#"
+				href="/reservations"
 				class="mt-2 rounded bg-gradient-to-r from-red-bright to-red px-14 py-5 font-display text-lg font-black tracking-[0.08em] text-chalk"
 			>
 				Reserve Now

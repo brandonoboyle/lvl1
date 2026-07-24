@@ -14,21 +14,21 @@
 		<div class="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3">
 			<!-- Address -->
 			<div>
-				<p class="font-heading text-[11px] font-semibold uppercase tracking-[0.18em] text-red-bright">Address</p>
+				<p class="font-heading text-[11px] uppercase tracking-[0.18em] text-red-bright">Address</p>
 				<p class="mt-4 font-display text-2xl text-chalk">14 Waller St</p>
 				<p class="mt-2 font-body text-base text-chalk/50">Ottawa, ON&nbsp;&nbsp;K1N 9C5</p>
 				<a
 					href="https://maps.google.com/?q=14+Waller+St+Ottawa+ON"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="mt-4 inline-block font-heading text-[13px] font-semibold tracking-[0.08em] text-red-bright"
+					class="mt-4 inline-block font-heading text-[13px] tracking-[0.08em] text-red-bright"
 				>
 					Get directions →
 				</a>
 			</div>
 			<!-- Hours -->
 			<div>
-				<p class="font-heading text-[11px] font-semibold uppercase tracking-[0.18em] text-red-bright">Hours</p>
+				<p class="font-heading text-[11px] uppercase tracking-[0.18em] text-red-bright">Hours</p>
 				<dl class="mt-4">
 					{#each hours as h}
 						<div class="flex justify-between border-t border-chalk/10 py-2.5">
@@ -41,8 +41,8 @@
 			</div>
 			<!-- Contact -->
 			<div>
-				<p class="font-heading text-[11px] font-semibold uppercase tracking-[0.18em] text-red-bright">Contact</p>
-				<a href="tel:+16139797529" class="mt-4 block font-heading text-3xl font-semibold tracking-tight text-chalk">
+				<p class="font-heading text-[11px] uppercase tracking-[0.18em] text-red-bright">Contact</p>
+				<a href="tel:+16139797529" class="mt-4 block font-heading text-3xl tracking-tight text-chalk">
 					(613) 979-7529
 				</a>
 				<a href="mailto:reservations@levelonegamepub.com" class="mt-2 block font-body text-[15px] text-chalk/50">

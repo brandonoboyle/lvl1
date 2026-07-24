@@ -13,10 +13,11 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				// Big display headings (Figma "Nexa Rust"), Advent Pro fallback.
+				// Big display headings (Figma "Nexa Rust"), client-purchased font, self-hosted — no fallback needed.
 				// Weight 900 is the Slab Black Shadow 01 cut, matching the logo (Sans Black Shadow 01 is retired).
-				display: ['Nexa Rust Sans', 'Advent Pro', 'sans-serif'],
-				heading: ['Advent Pro', 'sans-serif'],
+				// Only Book (400) and Black Shadow (900) cuts exist — no mid-weights, so `heading` renders at 400 only.
+				display: ['Nexa Rust Sans', 'sans-serif'],
+				heading: ['Nexa Rust Sans', 'sans-serif'],
 				body: ['Lato', 'sans-serif']
 			},
 			colors: {

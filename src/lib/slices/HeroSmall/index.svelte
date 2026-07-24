@@ -13,7 +13,7 @@
 </script>
 
 <div class="px-4 pb-6 md:px-6">
-	<div class="relative mx-auto w-full rounded-lg bg-ink-noise pb-3 lg:w-1/2">
+	<div class="relative mx-auto w-full rounded-lg border-b-4 border-red bg-ink-noise pb-3 lg:w-1/2">
 		<!-- <div class="overflow-hidden rounded-xl">
 			{#if isFilled.image(slice.primary.backgroundImage)}
 				<PrismicImage

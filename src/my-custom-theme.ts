@@ -5,7 +5,7 @@ export const myCustomTheme: CustomThemeConfig = {
 	properties: {
 		// =~= Theme Properties =~=
 		'--theme-font-family-base': `'Lato', sans-serif`,
-		'--theme-font-family-heading': `'Advent Pro', sans-serif`,
+		'--theme-font-family-heading': `'Nexa Rust Sans', sans-serif`,
 		'--theme-font-color-base': '255 255 255',
 		'--theme-font-color-dark': '0 0 0',
 		'--theme-rounded-base': '9999px',

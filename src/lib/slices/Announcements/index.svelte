@@ -36,13 +36,10 @@
 </script>
 
 <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} class="px-6 py-14 lg:px-16">
-	<div class="mb-8 flex items-center justify-between">
+	<div class="mb-8">
 		<h2 class="font-display text-3xl font-black tracking-[0.05em] text-chalk lg:text-4xl">
 			Announcements
 		</h2>
-		<a href="#" class="text-chalk/80 font-heading text-[13px] font-semibold tracking-[0.08em]">
-			View all →
-		</a>
 	</div>
 
 	<div
@@ -70,7 +67,7 @@
 					{#if isFilled.link(card.link)}
 						<a
 							href={asLink(card.link)}
-							class="mt-3 inline-block font-heading text-sm font-semibold text-red-bright"
+							class="mt-3 inline-block font-heading text-sm text-red-bright"
 						>
 							{card.link.text || 'Learn more'} →
 						</a>

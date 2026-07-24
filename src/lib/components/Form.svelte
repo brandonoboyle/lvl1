@@ -44,7 +44,7 @@
 				<span>Name</span>
 				<input
 					name="name"
-					class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright"
+					class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright"
 					type="text"
 					placeholder="John Doe"
 					required
@@ -55,7 +55,7 @@
 				<span>Email</span>
 				<input
 					name="email"
-					class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright"
+					class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright"
 					type="email"
 					placeholder="John@Doe.com"
 					required
@@ -66,7 +66,7 @@
 				<span>Comment</span>
 				<textarea
 					name="message"
-					class="textarea border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright"
+					class="textarea border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright"
 					placeholder="Get in touch with us!"
 					rows="4"
 					required
