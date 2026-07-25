@@ -1,10 +1,12 @@
 <script lang="ts">
 	// Global footer — Figma "Section — Visit" (Find Us) + socials/copyright bottom bar.
 	const hours = [
-		{ day: 'Mon – Thu', time: '3 pm – 11 pm' },
-		{ day: 'Fri', time: '3 pm – 1 am' },
-		{ day: 'Sat', time: '12 pm – 1 am' },
-		{ day: 'Sun', time: '12 pm – 10 pm' }
+		{ day: 'Sun', time: '12 pm – 12 am' },
+		{ day: 'Mon', time: '4 pm – 12 am' }
+		{ day: 'Tues - Thurs', time: '12 pm – 12 am' },
+		{ day: 'Fri - Sat', time: '12 pm – 2 am' },
+		
+		
 	];
 </script>
 
@@ -16,7 +18,7 @@
 			<div>
 				<p class="font-heading text-[11px] uppercase tracking-[0.18em] text-red-bright">Address</p>
 				<p class="mt-4 font-display text-2xl text-chalk">14 Waller St</p>
-				<p class="mt-2 font-body text-base text-chalk/50">Ottawa, ON&nbsp;&nbsp;K1N 9C5</p>
+				<p class="mt-2 font-body text-base text-chalk/50">Ottawa, ON&nbsp;&nbsp;K1N 9C4</p>
 				<a
 					href="https://maps.google.com/?q=14+Waller+St+Ottawa+ON"
 					target="_blank"
