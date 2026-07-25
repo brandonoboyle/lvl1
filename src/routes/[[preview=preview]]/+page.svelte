@@ -222,8 +222,7 @@
 			</p>
 			<p class="mt-3 font-display text-3xl text-red-bright lg:text-4xl">in our Library</p>
 			<p class="mx-auto mt-6 max-w-md font-body text-base text-chalk">
-				That doesn't even include all of our cool video games and stuff. We could have some kind of
-				info here.
+				That doesn't even include all of our cool video games and stuff.
 			</p>
 			<a
 				href="/board_games"
