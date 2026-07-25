@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Bounded from '$lib/components/Bounded.svelte';
-	import type { Content } from '@prismicio/client';
 </script>
 
 <Bounded>

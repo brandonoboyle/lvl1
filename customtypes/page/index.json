@@ -89,6 +89,9 @@
 						"search": {
 							"type": "SharedSlice"
 						},
+						"announcements": {
+							"type": "SharedSlice"
+						},
 						"hero": {
 							"type": "SharedSlice"
 						},

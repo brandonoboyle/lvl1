@@ -25,7 +25,7 @@
 		url: siteUrl,
 		telephone: '+1-613-979-7529',
 		email: 'info@levelonegamepub.com',
-		image: `${siteUrl}/android-chrome-512x512.png`,
+		image: `${siteUrl}/icon.png`,
 		sameAs: [
 			'https://www.facebook.com/LevelOneOttawa',
 			'https://www.instagram.com/levelonegamepub/',

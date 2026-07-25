@@ -107,7 +107,7 @@
 						<span class="text-chalk/70 font-medium">Organizer Name *</span>
 						<input 
 							name="organizerName" 
-							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
+							class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright" 
 							type="text" 
 							placeholder="John Doe" 
 							required 
@@ -119,7 +119,7 @@
 						<span class="text-chalk/70 font-medium">Contact Phone Number *</span>
 						<input 
 							name="phone" 
-							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
+							class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright" 
 							type="tel" 
 							placeholder="(555) 123-4567" 
 							required 
@@ -131,7 +131,7 @@
 						<span class="text-chalk/70 font-medium">Contact Email Address *</span>
 						<input 
 							name="email" 
-							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
+							class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright" 
 							type="email" 
 							placeholder="john@example.com" 
 							required 
@@ -143,7 +143,7 @@
 						<span class="text-chalk/70 font-medium">Confirm Email Address *</span>
 						<input 
 							name="confirmEmail" 
-							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright {!emailMatch ? 'border-red-bright' : ''}"
+							class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright {!emailMatch ? 'border-red-bright' : ''}"
 							type="email" 
 							placeholder="john@example.com" 
 							required 
@@ -162,7 +162,7 @@
 						<span class="text-chalk/70 font-medium">Organization Name</span>
 						<input 
 							name="organization" 
-							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
+							class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright" 
 							type="text" 
 							placeholder="Business Inc." 
 						/>
@@ -173,7 +173,7 @@
 						<span class="text-chalk/70 font-medium">Number of People *</span>
 						<input 
 							name="peopleCount" 
-							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
+							class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright" 
 							type="number" 
 							placeholder="25" 
 							min="1"
@@ -184,11 +184,11 @@
 					<!-- Date -->
 					<label class="label py-2">
 						<span class="text-chalk/70 font-medium">Preferred Date *</span>
-						<input 
-							name="date" 
-							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
-							type="date" 
-							required 
+						<input
+							name="date"
+							class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright [color-scheme:light]"
+							type="date"
+							required
 						/>
 					</label>
 
@@ -197,7 +197,7 @@
 						<span class="text-chalk/70 font-medium">Preferred Time *</span>
 						<select 
 							name="time" 
-							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
+							class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright" 
 							required
 						>
 							<option value="">Select a time</option>
@@ -212,7 +212,7 @@
 						<span class="text-chalk/70 font-medium">Game Type *</span>
 						<select 
 							name="gameType" 
-							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
+							class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright" 
 							required
 						>
 							<option value="">Select game type</option>
@@ -227,7 +227,7 @@
 						<span class="text-chalk/70 font-medium">Payment Arrangements *</span>
 						<select 
 							name="paymentArrangements" 
-							class="input border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright" 
+							class="input border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright" 
 							required
 						>
 							<option value="">Select payment option</option>
@@ -243,7 +243,7 @@
 					<span class="text-chalk/70 font-medium">Additional Requirements</span>
 					<textarea
 						name="additionalRequirements"
-						class="textarea border border-white/10 bg-chalk/10 text-chalk placeholder:text-chalk/40 focus:border-red-bright"
+						class="textarea border border-white/10 bg-chalk text-ink placeholder:text-ink/40 focus:border-red-bright"
 						placeholder="Any special requests, dietary restrictions, accessibility needs, or other requirements..."
 						rows="4"
 					></textarea>

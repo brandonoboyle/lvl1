@@ -7,7 +7,7 @@
 		},
 		{
 			"source": "/menu/drinks",
-			"destination": "/drinks",
+			"destination": "/drink",
 			"permanent": true
 		},
 		{
@@ -32,7 +32,12 @@
 		},
 		{
 			"source": "/geek-trivia-league",
-			"destination": "/geek-trivia",
+			"destination": "/team-trivia-challenge",
+			"permanent": true
+		},
+		{
+			"source": "/geek-trivia",
+			"destination": "/team-trivia-challenge",
 			"permanent": true
 		},
 		{

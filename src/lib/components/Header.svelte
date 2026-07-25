@@ -57,7 +57,7 @@
 		</a>
 
 		<ul
-			class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 font-body text-xl text-chalk lg:flex xl:gap-10"
+			class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 font-body text-base text-chalk lg:flex xl:gap-10"
 		>
 			{#each links as item}
 				<li>

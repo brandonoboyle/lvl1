@@ -7,55 +7,72 @@
 		node.playbackRate = 0.9;
 	}
 
-	const announcementsSlice = data.page.data.slices.find(
-		(s) => s.slice_type === 'announcements'
-	);
+	const announcementsSlice = data.page.data.slices.find((s) => s.slice_type === 'announcements');
 
 	const events = [
 		{
 			img: '/redesign/ev-trivia.jpg',
+			href: '/team-trivia-challenge',
 			title: 'Geek Trivia',
-			body: 'Cake, games, and zero cleanup. We handle the party — you handle the fun.'
+			body: 'Team based trivia with point tracking. Solo participants welcome.'
 		},
 		{
 			img: '/redesign/ev-tko.jpg',
+			href: '/tko',
 			title: 'TKO Tuesdays',
-			body: 'Rally your crew for an epic session. 500+ games, great food, and drinks on tap.'
+			body: 'Open fighting game gathering with streamed tournaments.'
 		},
 		{
 			img: '/redesign/ev-reddit.jpg',
+			href: '/reddit',
 			title: 'Reddit Meetup',
-			body: 'Book a space for your team or group. Corporate events, meetups, and celebrations.'
+			body: 'r/Ottawa meetup upstairs in the loft. Drop in for your favorite games.'
 		},
 		{
 			img: '/redesign/ev-magic.jpg',
+			href: '/sunday-mtg',
 			title: 'Sunday Night Magic',
-			body: "Celebrate your next birthday surrounded by games, friends, and great vibes. We'll take care of the rest."
+			body: 'Commander is popular but all formats welcome at this weekly magic event.'
 		},
 		{
 			img: '/redesign/ev-clock.jpg',
+			href: '/botc',
 			title: 'Blood on the Clocktower',
-			body: 'Elevate your next team outing with exclusive venue packages built for bonding, clients, and celebrations.'
+			body: 'We handle running the game. Sign up and enjoy the mystery.'
 		},
 		{
 			img: '/redesign/ev-chess.jpg',
+			href: '/chessbar',
 			title: 'ChessBar',
-			body: 'Compete in organized events across board games and video games. Prize pools, glory, and bragging rights.'
+			body: 'Free chess tournaments every Monday at 7pm.'
 		}
 	];
 </script>
 
-{#snippet card(img: string, title: string, body: string)}
-	<article class="relative h-80 overflow-hidden rounded-xl border border-white/[0.08] bg-ink">
-		<img src={img} alt={title} class="absolute inset-0 h-full w-full object-cover" />
+{#snippet card(e: (typeof events)[number])}
+	<!-- ponytail: external links inferred from the href, so adding one needs no extra flag -->
+	{@const external = e.href.startsWith('http')}
+	<a
+		href={e.href}
+		target={external ? '_blank' : null}
+		rel={external ? 'noopener' : null}
+		class="relative block h-80 overflow-hidden rounded-xl border border-white/[0.08] bg-ink transition-colors hover:border-red focus-visible:border-red focus-visible:outline-none"
+	>
+		<img
+			src={e.img}
+			alt=""
+			loading="lazy"
+			decoding="async"
+			class="absolute inset-0 h-full w-full object-cover"
+		/>
 		<div class="via-ink/40 absolute inset-0 bg-gradient-to-b from-transparent to-ink"></div>
 		<div class="absolute inset-x-0 bottom-0 p-6">
-			<h3 class="font-display text-xl font-normal text-chalk">{title}</h3>
+			<h3 class="font-display text-xl font-normal text-chalk">{e.title}</h3>
 			<p class="text-chalk/75 mt-2 line-clamp-3 min-h-[3.6rem] font-body text-sm leading-snug">
-				{body}
+				{e.body}
 			</p>
 		</div>
-	</article>
+	</a>
 {/snippet}
 
 <div class="bg-ink font-body text-chalk">
@@ -75,19 +92,21 @@
 
 		<!-- Hero footer block -->
 		<div class="relative z-10 mt-auto px-6 pb-8 lg:px-12 lg:pb-16">
-			<p class="font-display text-xl font-black tracking-[0.05em] text-chalk sm:text-2xl lg:text-4xl">
+			<h1
+				class="font-display text-xl font-black tracking-[0.05em] text-chalk sm:text-2xl lg:text-4xl"
+			>
 				Pub <span class="text-red">•</span> Kitchen <span class="text-red">•</span> Games
-			</p>
+			</h1>
 			<div class="mt-4 flex flex-wrap gap-3 lg:mt-6 lg:gap-4">
 				<a
 					href="/reservations"
-					class="flex h-11 items-center justify-center bg-gradient-to-r from-red to-red-bright px-5 font-display text-sm font-normal text-chalk lg:h-14 lg:px-8 lg:text-lg"
+					class="flex h-11 items-center justify-center rounded bg-gradient-to-r from-red to-red-bright px-5 font-display text-sm font-normal text-chalk lg:h-14 lg:px-8 lg:text-lg"
 				>
 					Reserve a Table
 				</a>
 				<a
 					href="/food"
-					class="flex h-11 items-center justify-center border-2 border-chalk bg-ink px-5 font-display text-sm font-normal text-chalk lg:h-14 lg:px-8 lg:text-lg"
+					class="flex h-11 items-center justify-center rounded border-2 border-chalk bg-ink px-5 font-display text-sm font-normal text-chalk lg:h-14 lg:px-8 lg:text-lg"
 				>
 					See the Menu
 				</a>
@@ -114,8 +133,8 @@
 				</h3>
 				<span class="my-5 block h-1 w-16 bg-red"></span>
 				<p class="max-w-md font-body font-black leading-8 text-chalk">
-					This is where we could talk about our beers and the like. Maybe we talk about how our
-					beers are all craft beers and such I'm just trying to write 3 lines of text for spacing.
+					Whether it's local Ontario craft beers, handcrafted cocktails, or espresso-based drinks,
+					we have you covered from tap to table.
 				</p>
 				<a href="/food" class="mt-6 font-body font-black text-red-bright underline"
 					>Explore Drinks →</a
@@ -170,8 +189,8 @@
 				</h3>
 				<span class="my-5 block h-1 w-16 bg-red"></span>
 				<p class="max-w-md font-body font-black leading-8 text-chalk">
-					This is where we could talk about our food and the like. Maybe we talk about how our beers
-					are all craft beers and such I'm just trying to write 3 lines of text for spacing.
+					Pizzas and pub staples made fresh daily. Mix and match shareable plates that are easy to
+					pass around mid-game.
 				</p>
 				<a href="/food" class="mt-6 font-body font-black text-red-bright underline"
 					>See the Menu →</a
@@ -186,6 +205,8 @@
 			src="/redesign/games-bg.jpg"
 			alt=""
 			aria-hidden="true"
+			loading="lazy"
+			decoding="async"
 			class="absolute inset-0 h-full w-full object-cover opacity-10"
 		/>
 		<div class="relative mx-auto max-w-xl">
@@ -224,7 +245,7 @@
 		</div>
 		<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 			{#each events as e}
-				{@render card(e.img, e.title, e.body)}
+				{@render card(e)}
 			{/each}
 		</div>
 	</section>
@@ -235,6 +256,8 @@
 			src="/redesign/res-bg.png"
 			alt=""
 			aria-hidden="true"
+			loading="lazy"
+			decoding="async"
 			class="absolute inset-0 h-full w-full object-cover opacity-[0.15]"
 		/>
 		<div
@@ -252,7 +275,7 @@
 			</p>
 			<a
 				href="/reservations"
-				class="mt-2 rounded bg-gradient-to-r from-red-bright to-red px-14 py-5 font-display text-lg font-black tracking-[0.08em] text-chalk"
+				class="mt-2 rounded bg-gradient-to-r from-red to-red-bright px-14 py-5 font-display text-lg font-normal text-chalk"
 			>
 				Reserve Now
 			</a>
