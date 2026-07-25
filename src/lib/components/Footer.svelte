@@ -55,7 +55,7 @@
 		<div class="mt-16 flex flex-col gap-4 border-t border-chalk/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
 			<div class="flex gap-6">
 				<a
-					href="https://www.facebook.com/LevelOneOttawa"
+					href="https://www.facebook.com/LevelOneGamePub"
 					aria-label="Facebook"
 					target="_blank"
 					rel="noopener noreferrer"
