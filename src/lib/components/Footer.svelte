@@ -2,9 +2,9 @@
 	// Global footer — Figma "Section — Visit" (Find Us) + socials/copyright bottom bar.
 	const hours = [
 		{ day: 'Sun', time: '12 pm – 12 am' },
-		{ day: 'Mon', time: '4 pm – 12 am' }
+		{ day: 'Mon', time: '4 pm – 12 am' },
 		{ day: 'Tues - Thurs', time: '12 pm – 12 am' },
-		{ day: 'Fri - Sat', time: '12 pm – 2 am' },
+		{ day: 'Fri - Sat', time: '12 pm – 2 am' }
 		
 		
 	];
