@@ -178,7 +178,7 @@
 				spellcheck="false"
 				type="search"
 				id="Search"
-				class="w-full rounded-xl border border-white/10 bg-chalk/10 p-6 text-chalk placeholder:text-chalk/40 outline-none focus:outline-4 focus:outline-red-bright focus:-outline-offset-1 drop-shadow-2xl transition-colors"
+				class="w-full rounded-xl border border-white/10 bg-chalk p-6 text-ink placeholder:text-ink/40 outline-none focus:outline-4 focus:outline-red-bright focus:-outline-offset-1 drop-shadow-2xl transition-colors"
 			/>
 			<!-- With search changes this clear all might not be needed -->
 			
@@ -203,15 +203,15 @@
 
 {#if search === 'loading'}
 	<section class="card w-full bg-ink-noise pt-4">
-		<div class="placeholder-circle ml-4 w-16 bg-chalk/10"></div>
+		<div class="placeholder-circle ml-4 w-16 bg-white/10"></div>
 		<div class="space-y-4 p-4">
-			<div class="placeholder bg-chalk/10"></div>
+			<div class="placeholder bg-white/10"></div>
 			<div class="grid grid-cols-3 gap-8">
-				<div class="placeholder bg-chalk/10"></div>
-				<div class="placeholder bg-chalk/10"></div>
-				<div class="placeholder bg-chalk/10"></div>
+				<div class="placeholder bg-white/10"></div>
+				<div class="placeholder bg-white/10"></div>
+				<div class="placeholder bg-white/10"></div>
 			</div>
-			<div class="placeholder bg-chalk/10"></div>
+			<div class="placeholder bg-white/10"></div>
 		</div>
 	</section>
 {/if}
