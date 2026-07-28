@@ -32,7 +32,7 @@
 			<PrismicLink field={card.gridlink}>
 				<!--				Inner text box-->
 				<div
-					class="h-min w-min rounded-xl bg-gradient-to-br from-red to-red-bright px-6 py-4 text-center text-chalk drop-shadow-2xl md:text-nowrap"
+					class="h-min w-min max-w-full rounded-xl bg-gradient-to-br from-red to-red-bright px-4 py-4 text-center text-chalk drop-shadow-2xl max-md:[&_:is(h1,h2,h3)]:text-2xl md:px-6 md:text-nowrap"
 				>
 					<PrismicRichText field={card.image_text} />
 				</div>
