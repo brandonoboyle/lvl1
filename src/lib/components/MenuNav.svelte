@@ -83,7 +83,7 @@
 	<div class="relative">
 		<div
 			bind:this={scrollContainer}
-			class="scrollbar-hide flex items-center justify-center gap-1 overflow-x-auto px-4 py-3"
+			class="scrollbar-hide flex items-center gap-1 overflow-x-auto px-4 py-3"
 		>
 			{#each sections as section}
 				<button
@@ -113,6 +113,7 @@
 	.scrollbar-hide {
 		-ms-overflow-style: none;
 		scrollbar-width: none;
+		justify-content: safe center;
 	}
 	.scrollbar-hide::-webkit-scrollbar {
 		display: none;
