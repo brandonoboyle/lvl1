@@ -7,7 +7,7 @@
 </script>
 
 <div class="pb-6 md:pb-12">
-	<div class="flex h-full w-full justify-center border-b-4 border-red bg-ink-noise py-5 shadow-2xl md:py-8">
+	<div class="flex h-full w-full justify-center text-center border-b-4 border-red bg-ink-noise py-5 shadow-2xl md:py-8">
 		<span class="text-chalk">
 			<PrismicRichText field={slice.primary.text} components={{ heading1: Heading1 }} />
 		</span>
