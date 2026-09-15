@@ -22,13 +22,16 @@ npm run dev
 
 ## Key Routes
 
-| Route | Description |
-|---|---|
-| `/` | Home (Prismic page) |
-| `/board_games` | Board game search and catalog |
-| `/api/send-email` | Contact form email endpoint |
-| `/api/preview` | Prismic preview handler |
-| `/slice-simulator` | Local Slice Machine simulator |
+| Route              | Description                                              |
+| ------------------ | -------------------------------------------------------- |
+| `/`                | Home (Prismic page)                                      |
+| `/board_games`     | Board game search and catalog                            |
+| `/food-live`       | Unlisted trial food menu with live Toast labels          |
+| `/drink-live`      | Unlisted trial drink menu with live Toast labels         |
+| `/api/menu-stock`  | Server-only proxy for the protected dashboard stock feed |
+| `/api/send-email`  | Contact form email endpoint                              |
+| `/api/preview`     | Prismic preview handler                                  |
+| `/slice-simulator` | Local Slice Machine simulator                            |
 
 ## Slices
 
@@ -38,12 +41,85 @@ Content slices managed via Prismic Slice Machine:
 
 ## Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start dev server + Slice Machine |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
-| `npm run check` | Type-check with svelte-check |
-| `npm run lint` | Lint and format check |
-| `npm run format` | Auto-format with Prettier |
-| `npm run slicemachine` | Start Slice Machine UI only |
+| Command                  | Description                         |
+| ------------------------ | ----------------------------------- |
+| `npm run dev`            | Start dev server + Slice Machine    |
+| `npm run build`          | Production build                    |
+| `npm run preview`        | Preview production build            |
+| `npm run check`          | Type-check with svelte-check        |
+| `npm run test:food-live` | Test the trial menu and stock proxy |
+| `npm run lint`           | Lint and format check               |
+| `npm run format`         | Format files                        |
+| `npm run slicemachine`   | Start Slice Machine UI only         |
+
+## Side-by-side menu trial
+
+`/food` and `/drink` stay unchanged. `/food-live` and `/drink-live` read the same Prismic
+documents and add live Toast availability and NEW labels. The trial routes are not in the
+navigation or sitemap. They also use `noindex,nofollow` so search engines do not list them.
+
+Merging this pull request does not replace the current menu routes. The current `/food` and
+`/drink` pages remain the public menu while the unlisted `/food-live` and `/drink-live` pages run
+beside them for review. Replacing the current menu handles is a separate future change. Make that
+change only after the trial has run for an agreed period and the website owner accepts the result.
+
+Set `DASHBOARD_STOCK_API_URL` and `DASHBOARD_STOCK_API_TOKEN` in Vercel Preview and Production.
+The token stays on the server. The page checks stock every 30 seconds while it is visible. It
+removes live labels after five failed checks. It also rejects stock data older than 45 minutes.
+Add `?stock-preview=1` to either trial route to show sample labels during review.
+
+The Prismic `remove_items` field is the switch labeled `86 item`. On the current menu, this switch
+hides the card. On a trial menu, a named card stays visible and shows `Temporarily unavailable`.
+This manual switch has priority because it remains active even when Toast reports the item as
+available. Empty menu placeholders stay hidden. A named item that is no longer sold, such as Drip
+Coffee, can be excluded on its trial route. `/drink-live` excludes Drip Coffee because it is
+retired. If the item returns, remove `drip-coffee` from `retiredCardKeys` in
+`src/routes/drink-live/+page.svelte` after review. This exclusion does not change Prismic or the
+current `/drink` page.
+
+For a real stock test, use the trial route without `?stock-preview=1`. The Vercel environment must
+have both stock settings, the dashboard stock feed must be current, and the Toast item must have a
+confirmed website mapping. The sample query does not call the stock feed.
+
+Dashboard pull request #145 was merged as commit
+`d99913f15be162942aacd461a86ec9a2c5aede99`. Vercel production deployment
+`dpl_48q8YZW1DL1osgxhVnp8AEZR2qZF` reached READY on `level-one-dashboard.vercel.app` from that exact
+commit. Its production logs had no errors in the 15-minute check period.
+
+The dashboard release has a two-step activation safeguard for new automatic mappings. The first
+refresh gets fresh Toast stock evidence for each proposed identity. The second refresh activates
+the mappings only when every identity for the website card has fresh, valid evidence. New pairs
+start in review and activate together for each card. Existing active and manual mappings do not
+change while new evidence is pending. This process does not create a stock state from missing data.
+
+The controlled first refresh checked all 54 proposed drink cards. It found 52 available, 2
+unavailable, and 0 unknown. The second refresh activated a feed of 87 website cards: 86 use Toast
+mappings, with 32 food cards and 54 drink cards. Drip Coffee is the one default card. It remains
+hidden only on `/drink-live` because it is retired.
+
+On September 7, 2026, Garlic Breadsticks passed the full food test on the personal `/food-live`
+deployment. Changing the Toast stock value from blank to `0` made the proxy report the item as
+unavailable and the page showed `Temporarily unavailable` automatically. Restoring the Toast value
+made the proxy and page available again. Garlic Breadsticks remains restored and available.
+
+On the same date, Summer Slam passed the full drink test on `/drink-live`. Changing its Toast stock
+value from blank to `0` made the proxy report it as unavailable and showed the label automatically
+on desktop. The label also fit in a 390 by 844 browser viewport. The page content width was 380
+pixels, so there was no horizontal overflow. The browser console had no errors. Restoring the Toast
+value removed the label automatically on desktop and at the mobile browser size. Summer Slam
+remains restored and available. Toast applied the stock changes after Save; the full menu did not
+need publication.
+
+The tested personal preview uses website commit `ab037fe0abf7f140e0a6c183e04827d9cb00a065`:
+
+- Live food: https://lvl1-stock-preview-kfjqqces1-alessandro-argentina-s-projects.vercel.app/food-live
+- Live drinks: https://lvl1-stock-preview-kfjqqces1-alessandro-argentina-s-projects.vercel.app/drink-live
+- Sample food: https://lvl1-stock-preview-kfjqqces1-alessandro-argentina-s-projects.vercel.app/food-live?stock-preview=1
+- Sample drinks: https://lvl1-stock-preview-kfjqqces1-alessandro-argentina-s-projects.vercel.app/drink-live?stock-preview=1
+
+A later documentation-only commit can create a different Vercel preview URL. The links above identify
+the tested code commit. Vercel Deployment Protection can require a login.
+
+To stop the trial before merge, close this pull request or delete its branch. After merge, revert
+the pull request in GitHub. This removes the trial routes and stock proxy. The existing `/food` and
+`/drink` routes do not change during the trial.
