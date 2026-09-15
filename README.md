@@ -52,11 +52,16 @@ Content slices managed via Prismic Slice Machine:
 | `npm run format`         | Format files                        |
 | `npm run slicemachine`   | Start Slice Machine UI only         |
 
-## Trial food menu
+## Side-by-side menu trial
 
 `/food` and `/drink` stay unchanged. `/food-live` and `/drink-live` read the same Prismic
 documents and add live Toast availability and NEW labels. The trial routes are not in the
 navigation or sitemap. They also use `noindex,nofollow` so search engines do not list them.
+
+Merging this pull request does not replace the current menu routes. The current `/food` and
+`/drink` pages remain the public menu while the unlisted `/food-live` and `/drink-live` pages run
+beside them for review. Replacing the current menu handles is a separate future change. Make that
+change only after the trial has run for an agreed period and the website owner accepts the result.
 
 Set `DASHBOARD_STOCK_API_URL` and `DASHBOARD_STOCK_API_TOKEN` in Vercel Preview and Production.
 The token stays on the server. The page checks stock every 30 seconds while it is visible. It
