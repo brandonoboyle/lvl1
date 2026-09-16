@@ -53,37 +53,14 @@ export async function readMenuStock(
 	timeoutMs: number,
 	init: RequestInit = {}
 ): Promise<WebsiteMenuStockPayload> {
-	const controller = new AbortController();
-	const cancel = () => controller.abort();
-	let rejectAbort: () => void = () => {};
-	const aborted = new Promise<never>((_resolve, reject) => {
-		rejectAbort = () => reject(new Error('Stock request stopped or timed out'));
-		controller.signal.addEventListener('abort', rejectAbort, { once: true });
-	});
-	init.signal?.addEventListener('abort', cancel, { once: true });
-	if (init.signal?.aborted) cancel();
-	const timer = setTimeout(cancel, timeoutMs);
-	try {
-		return await Promise.race([
-			aborted,
-			(async () => {
-				controller.signal.throwIfAborted();
-				const response = await fetcher(endpoint, {
-					...init,
-					cache: 'no-store',
-					signal: controller.signal
-				});
-				if (!response.ok) throw new Error('Stock service request failed');
-				const payload: unknown = await response.json();
-				if (!isMenuStockPayload(payload)) throw new Error('Stock service data is invalid or stale');
-				return payload;
-			})()
-		]);
-	} finally {
-		clearTimeout(timer);
-		init.signal?.removeEventListener('abort', cancel);
-		controller.signal.removeEventListener('abort', rejectAbort);
-	}
+	const signal = init.signal
+		? AbortSignal.any([init.signal, AbortSignal.timeout(timeoutMs)])
+		: AbortSignal.timeout(timeoutMs);
+	const response = await fetcher(endpoint, { ...init, cache: 'no-store', signal });
+	if (!response.ok) throw new Error('Stock service request failed');
+	const payload: unknown = await response.json();
+	if (!isMenuStockPayload(payload)) throw new Error('Stock service data is invalid or stale');
+	return payload;
 }
 
 export function isFreshStockCheck(
