@@ -76,9 +76,9 @@
 							"remove_items": {
 								"type": "Boolean",
 								"config": {
-									"label": "86 item",
-									"placeholder_false": "in stock",
-									"placeholder_true": "86",
+									"label": "Temporarily unavailable",
+									"placeholder_false": "available",
+									"placeholder_true": "unavailable",
 									"default_value": false
 								}
 							},

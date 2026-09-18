@@ -961,7 +961,7 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	notes: prismic.RichTextField;
 
 	/**
-	 * 86 item field in *MenuItems → Default → Primary → Cards*
+	 * Temporarily unavailable field in *MenuItems → Default → Primary → Cards*
 	 *
 	 * - **Field Type**: Boolean
 	 * - **Placeholder**: *None*

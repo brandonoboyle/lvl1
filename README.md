@@ -60,14 +60,15 @@ An item is labeled unavailable when either:
 
 - **Toast** reports it out of stock, via the dashboard stock feed. No Prismic
   publication or site rebuild is needed; the label appears and clears on its own.
-- **Prismic** has the `86 item` switch on. This is the manual override and it wins
+- **Prismic** has the `Temporarily unavailable` switch on. This is the manual override and it wins
   even when Toast says the item is available.
 
-Toast items are matched to Prismic cards by slugifying the card title, so a rename
-on either side breaks the match and the item silently shows as available. Check both
-when a label does not appear.
+Toast items are matched to Prismic cards by their `Website Menu ID`, so renaming a
+card is safe. A card with no ID yet falls back to its title, and renaming that card
+does break the match until the ID is filled in — the item then shows as available
+with no error, so check the ID first when a label does not appear.
 
-Cards with the `86 item` switch on and no image, price, text or notes are treated as
+Cards with the `Temporarily unavailable` switch on and no image, price, text or notes are treated as
 empty Prismic placeholders and stay hidden. Give a card a price to keep it visible.
 
 To retire an item for good, delete its card in Prismic.
