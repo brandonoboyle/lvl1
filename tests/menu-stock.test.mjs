@@ -26,14 +26,9 @@ registerHooks({
 });
 
 const { GET } = await import('../src/routes/api/menu-stock/+server.ts');
-const {
-	isMenuStockPayload,
-	isFreshStockCheck,
-	websiteMenuKey,
-	isStockRoute,
-	isSamplePreview,
-	menuCardStockKey
-} = await import('../src/lib/menuStock.ts');
+const { isMenuStockPayload, isFreshStockCheck, isStockRoute, isSamplePreview } = await import(
+	'../src/lib/menuStock.ts'
+);
 
 const good = () => ({
 	ok: true,
@@ -59,7 +54,6 @@ test('stock payload accepts strict NEW and availability values', () => {
 		isMenuStockPayload({ ...good(), items: [{ ...good().items[0], unavailable: 'no' }] }),
 		false
 	);
-	assert.equal(websiteMenuKey('Fish & Chips'), 'fish-and-chips');
 });
 
 test('stock payload rejects old and future snapshots', () => {
@@ -112,19 +106,6 @@ test('proxy rejects bad upstream results', async (t) => {
 
 // Shared contract with the dashboard: it builds feed keys from the same Prismic
 // title with the same rules. Keep this table identical in both projects.
-test('menu keys match the dashboard key rules', () => {
-	const cases = [
-		['Fish & Chips', 'fish-and-chips'],
-		['Fish&Chips', 'fish-and-chips'],
-		["Chef's Fish & Chips", 'chefs-fish-and-chips'],
-		['Crème Brûlée', 'creme-brulee'],
-		['"Loaded" Fries.', 'loaded-fries'],
-		['Mac  —  Cheese', 'mac-cheese'],
-		['IPA 16oz', 'ipa-16oz']
-	];
-	for (const [title, key] of cases) assert.equal(websiteMenuKey(title), key);
-});
-
 test('stock applies to the menu pages only', () => {
 	assert.equal(isStockRoute('/food'), true);
 	assert.equal(isStockRoute('/drink/'), true);
@@ -140,15 +121,6 @@ test('sample labels are unavailable in production', () => {
 	assert.equal(isSamplePreview('?stock-preview=1', false), false);
 	assert.equal(isSamplePreview('', true), false);
 	assert.equal(isSamplePreview('?stock-preview=0', true), false);
-});
-
-test('a card prefers its Website Menu ID over its title', () => {
-	assert.equal(menuCardStockKey('wm-0007', 'House Salad'), 'wm-0007');
-	assert.equal(menuCardStockKey('  wm-0007  ', 'House Salad'), 'wm-0007');
-	// Not backfilled yet: fall back to the title rule both sides share.
-	assert.equal(menuCardStockKey(null, 'Fish & Chips'), 'fish-and-chips');
-	assert.equal(menuCardStockKey('', 'Fish & Chips'), 'fish-and-chips');
-	assert.equal(menuCardStockKey('   ', 'Fish & Chips'), 'fish-and-chips');
 });
 
 test('proxy forwards only the fields the page renders', async () => {

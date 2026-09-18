@@ -27,7 +27,7 @@ const createTestServer = (appEnvironmentStub, cacheKey) =>
 
 const richText = (text) => [{ type: 'paragraph', text, spans: [] }];
 const card = (title, extra = {}) => ({
-	website_menu_id: null,
+	website_menu_id: 'wm-0007',
 	title: richText(title),
 	image: {},
 	price: [],
@@ -67,7 +67,7 @@ test('menu cards label instead of hiding', async (t) => {
 
 		await t.test('New and unavailable can show together', () => {
 			const html = renderCards([card('House Salad')], {
-				'house-salad': { unavailable: true, isNew: true }
+				'wm-0007': { unavailable: true, isNew: true }
 			});
 			assert.match(html, /House Salad/);
 			assert.match(html, />New</);
@@ -76,7 +76,7 @@ test('menu cards label instead of hiding', async (t) => {
 
 		await t.test('available items have no label', () => {
 			const html = renderCards([card('House Salad')], {
-				'house-salad': { unavailable: false, isNew: false }
+				'wm-0007': { unavailable: false, isNew: false }
 			});
 			assert.match(html, /House Salad/);
 			assert.doesNotMatch(html, />New<|Temporarily unavailable/);
@@ -118,23 +118,18 @@ test('menu cards label instead of hiding', async (t) => {
 			assert.match(html, /Temporarily unavailable/);
 		});
 
-		await t.test('stock keys tolerate punctuation and case differences', () => {
-			const html = renderCards([card("Chef's Fish & Chips")], {
-				'chefs-fish-and-chips': { unavailable: true }
-			});
-			assert.match(html, /Temporarily unavailable/);
-		});
-
 		// The store survives a client-side nav, so /wizard must ignore what's in it.
 		await t.test('labels never render outside the menu pages', () => {
-			const byKey = { 'house-salad': { unavailable: true, isNew: true } };
+			const byKey = { 'wm-0007': { unavailable: true, isNew: true } };
 			assert.match(renderCards([card('House Salad')], byKey, '/drink'), /Temporarily unavailable/);
 			const wizard = renderCards([card('House Salad')], byKey, '/wizard');
 			assert.match(wizard, /House Salad/);
 			assert.doesNotMatch(wizard, />New<|Temporarily unavailable/);
 		});
 
-		await t.test('the Website Menu ID is preferred over the title', () => {
+		// The title is editable, so it is never a stock key: a feed entry keyed
+		// by the old title rule must not label the card.
+		await t.test('only the Website Menu ID matches', () => {
 			const html = renderCards([card('House Salad', { website_menu_id: 'wm-0007' })], {
 				'wm-0007': { unavailable: true },
 				'house-salad': { unavailable: false }
@@ -142,12 +137,16 @@ test('menu cards label instead of hiding', async (t) => {
 			assert.match(html, /Temporarily unavailable/);
 		});
 
-		await t.test('cards without an ID still match on their title', () => {
-			for (const id of [null, '', '   ']) {
+		// Until the backfill runs, a card with no ID is simply unlabelled. The
+		// dashboard alerts on the blank ID; the menu page still renders.
+		await t.test('cards without an ID are never labelled', () => {
+			for (const id of [null, undefined, '', '   ']) {
 				const html = renderCards([card('House Salad', { website_menu_id: id })], {
-					'house-salad': { unavailable: true }
+					'house-salad': { unavailable: true, isNew: true },
+					'': { unavailable: true, isNew: true }
 				});
-				assert.match(html, /Temporarily unavailable/);
+				assert.match(html, /House Salad/);
+				assert.doesNotMatch(html, />New<|Temporarily unavailable/);
 			}
 		});
 

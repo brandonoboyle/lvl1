@@ -6,7 +6,7 @@
 
 	import MenuItems from './MenuItems.svelte';
 	import Heading from '$lib/components/Heading.svelte';
-	import { isSamplePreview, isStockRoute, menuCardStockKey } from '$lib/menuStock';
+	import { isSamplePreview, isStockRoute } from '$lib/menuStock';
 	import { menuStock, startMenuStockPolling } from '$lib/menuStock.svelte';
 
 	interface Props {
@@ -60,9 +60,10 @@
 	{/if}
 	<ul class="grid gap-12 rounded-xl p-8 drop-shadow-2xl lg:grid-cols-2">
 		{#each visibleCards as card, index}
-			{@const stock = stockEnabled
-				? menuStock.byKey[menuCardStockKey(card.website_menu_id, asText(card.title))]
-				: undefined}
+			<!-- Stock matches on the permanent Website Menu ID only: a card without
+			     one is left unlabelled rather than matched on its editable title. -->
+			{@const stockKey = stockEnabled ? card.website_menu_id?.trim() : ''}
+			{@const stock = stockKey ? menuStock.byKey[stockKey] : undefined}
 			<MenuItems
 				{card}
 				unavailable={card.remove_items === true ||

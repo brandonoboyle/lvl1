@@ -73,17 +73,6 @@ export function isFreshStockCheck(
 	return Number.isFinite(checkedAt) && checkedAt <= now + 60_000 && now - checkedAt <= maxAgeMs;
 }
 
-export function websiteMenuKey(value: string): string {
-	return value
-		.normalize('NFKD')
-		.replace(/[\u0300-\u036f]/g, '')
-		.toLowerCase()
-		.replace(/&/g, ' and ')
-		.replace(/[\u2019']/g, '')
-		.replace(/[^a-z0-9]+/g, '-')
-		.replace(/(^-|-$)/g, '');
-}
-
 // Stock only applies to the two menu pages. Other pages (/wizard) use the same
 // MenuItems slice and must not poll or label.
 export const STOCK_ROUTES = ['/food', '/drink'];
@@ -97,11 +86,4 @@ export function isStockRoute(pathname: string): boolean {
 // a hostname can be aliased to production, so it can't be trusted for this.
 export function isSamplePreview(search: string, allowed: boolean): boolean {
 	return allowed && new URLSearchParams(search).get('stock-preview') === '1';
-}
-
-// The permanent link to a Toast item. Prismic's own card UUID isn't in the
-// published API, so the editor holds the id in `website_menu_id`; cards that
-// haven't been backfilled yet still match on their title.
-export function menuCardStockKey(websiteMenuId: string | null | undefined, title: string): string {
-	return websiteMenuId?.trim() || websiteMenuKey(title);
 }
