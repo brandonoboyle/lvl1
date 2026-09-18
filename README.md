@@ -77,9 +77,14 @@ To retire an item for good, delete its card in Prismic.
 Set `DASHBOARD_STOCK_API_URL` and `DASHBOARD_STOCK_API_TOKEN` in Vercel Preview and
 Production; see `.env.example`. The token stays on the server behind `/api/menu-stock`.
 
-The page re-checks every 30 seconds while visible, keeps the last known labels through
-a brief outage, and drops them after five consecutive failures. Stock data older than
-45 minutes is rejected as stale.
+Only `/food` and `/drink` check stock. Other pages using the same `MenuItems` slice
+(`/wizard`) never call the feed.
+
+The page re-checks every 30 seconds while visible and keeps the last confirmed labels
+if the feed fails, so an outage can never make an unavailable item look available.
+Stock data older than 45 minutes is rejected as stale, and `/api/menu-stock` forwards
+only `key`, `name`, `unavailable`, `isNew` and `source`.
 
 Add `?stock-preview=1` to `/food` or `/drink` to render sample labels without calling
-the feed, for reviewing the design.
+the feed, for reviewing the design. It works in `npm run dev` and on Vercel previews
+only; on the production domain the parameter does nothing.

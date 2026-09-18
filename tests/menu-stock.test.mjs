@@ -26,9 +26,8 @@ registerHooks({
 });
 
 const { GET } = await import('../src/routes/api/menu-stock/+server.ts');
-const { isMenuStockPayload, isFreshStockCheck, websiteMenuKey } = await import(
-	'../src/lib/menuStock.ts'
-);
+const { isMenuStockPayload, isFreshStockCheck, websiteMenuKey, isStockRoute, isSamplePreview } =
+	await import('../src/lib/menuStock.ts');
 
 const good = () => ({
 	ok: true,
@@ -103,4 +102,58 @@ test('proxy rejects bad upstream results', async (t) => {
 	]) {
 		assert.equal((await GET({ fetch })).status, 503);
 	}
+});
+
+// Shared contract with the dashboard: it builds feed keys from the same Prismic
+// title with the same rules. Keep this table identical in both projects.
+test('menu keys match the dashboard key rules', () => {
+	const cases = [
+		['Fish & Chips', 'fish-and-chips'],
+		['Fish&Chips', 'fish-and-chips'],
+		["Chef's Fish & Chips", 'chefs-fish-and-chips'],
+		['Crème Brûlée', 'creme-brulee'],
+		['"Loaded" Fries.', 'loaded-fries'],
+		['Mac  —  Cheese', 'mac-cheese'],
+		['IPA 16oz', 'ipa-16oz']
+	];
+	for (const [title, key] of cases) assert.equal(websiteMenuKey(title), key);
+});
+
+test('stock applies to the menu pages only', () => {
+	assert.equal(isStockRoute('/food'), true);
+	assert.equal(isStockRoute('/drink/'), true);
+	// The MenuItems slice also renders here and must not check Toast.
+	assert.equal(isStockRoute('/wizard'), false);
+	assert.equal(isStockRoute('/'), false);
+	assert.equal(isStockRoute('/food-truck'), false);
+});
+
+test('sample labels are unavailable in production', () => {
+	assert.equal(isSamplePreview('?stock-preview=1', 'localhost', true), true);
+	assert.equal(isSamplePreview('?stock-preview=1', 'lvl1-git-menu-stock.vercel.app', false), true);
+	assert.equal(isSamplePreview('?stock-preview=1', 'lvl1.com', false), false);
+	assert.equal(isSamplePreview('', 'localhost', true), false);
+});
+
+test('proxy forwards only the fields the page renders', async () => {
+	Object.assign(globalThis.__stockFixtureEnv, {
+		DASHBOARD_STOCK_API_URL: 'https://fixture.invalid/menu-stock',
+		DASHBOARD_STOCK_API_TOKEN: 'fixture-token'
+	});
+	const upstream = good();
+	upstream.checkedAt = new Date().toISOString();
+	upstream.items[0].toastItemName = 'FISH N CHIPS (KITCHEN)';
+	upstream.items[0].overrideNote = 'set by manager';
+
+	const result = await GET({ fetch: async () => Response.json(upstream) });
+	const body = await result.json();
+	assert.equal(result.status, 200);
+	assert.deepEqual(Object.keys(body).sort(), ['items', 'ok', 'stockCheckedAt']);
+	assert.deepEqual(Object.keys(body.items[0]).sort(), [
+		'isNew',
+		'key',
+		'name',
+		'source',
+		'unavailable'
+	]);
 });

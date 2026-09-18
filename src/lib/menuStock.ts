@@ -83,3 +83,19 @@ export function websiteMenuKey(value: string): string {
 		.replace(/[^a-z0-9]+/g, '-')
 		.replace(/(^-|-$)/g, '');
 }
+
+// Stock only applies to the two menu pages. Other pages (/wizard) use the same
+// MenuItems slice and must not poll or label.
+export const STOCK_ROUTES = ['/food', '/drink'];
+
+export function isStockRoute(pathname: string): boolean {
+	return STOCK_ROUTES.includes(pathname.replace(/\/+$/, ''));
+}
+
+// Sample labels are a design-review aid, never something a visitor can turn on.
+export function isSamplePreview(search: string, hostname: string, dev: boolean): boolean {
+	if (new URLSearchParams(search).get('stock-preview') !== '1') return false;
+	return (
+		dev || hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.vercel.app')
+	);
+}

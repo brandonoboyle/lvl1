@@ -1,5 +1,11 @@
-import { browser } from '$app/environment';
-import { readMenuStock, CLIENT_STOCK_TIMEOUT_MS, type WebsiteMenuStockItem } from '$lib/menuStock';
+import { browser, dev } from '$app/environment';
+import {
+	readMenuStock,
+	isSamplePreview,
+	isStockRoute,
+	CLIENT_STOCK_TIMEOUT_MS,
+	type WebsiteMenuStockItem
+} from '$lib/menuStock';
 
 // ponytail: one module-level poller shared by every menu section on the page,
 // so /food and /drink need no changes at all. Per-page state would only matter
@@ -12,20 +18,19 @@ const stock = $state({
 export const menuStock = stock;
 
 const REFRESH_MS = 30_000;
-const GIVE_UP_AFTER = 5;
 
 let started = false;
 
-/** Safe to call from every section; only the first call does anything. */
+/** Safe to call from every section; only the first call on a menu page does anything. */
 export function startMenuStockPolling() {
-	if (!browser || started) return;
+	// Not `started` first: a client-side nav from /wizard to /food must still start it.
+	if (!browser || !isStockRoute(window.location.pathname) || started) return;
 	started = true;
 
-	stock.preview = new URLSearchParams(window.location.search).get('stock-preview') === '1';
+	stock.preview = isSamplePreview(window.location.search, window.location.hostname, dev);
 	if (stock.preview) return;
 
 	let inFlight = false;
-	let failures = 0;
 
 	const load = async () => {
 		if (inFlight) return;
@@ -33,11 +38,9 @@ export function startMenuStockPolling() {
 		try {
 			const payload = await readMenuStock(fetch, '/api/menu-stock', CLIENT_STOCK_TIMEOUT_MS);
 			stock.byKey = Object.fromEntries(payload.items.map((item) => [item.key, item]));
-			failures = 0;
 		} catch (error) {
-			failures += 1;
-			// Keep the last known labels through a blip; drop them once it looks sustained.
-			if (failures >= GIVE_UP_AFTER) stock.byKey = {};
+			// Keep the last confirmed labels. A dead feed must never make an
+			// unavailable item look available; a stale label is the safe direction.
 			console.error('[menu-stock] refresh failed', error);
 		} finally {
 			inFlight = false;
