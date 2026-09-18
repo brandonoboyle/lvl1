@@ -16,7 +16,8 @@ const createTestServer = (appEnvironmentStub, cacheKey) =>
 		resolve: {
 			alias: {
 				$lib: path.join(root, 'src/lib'),
-				'$app/environment': path.join(root, appEnvironmentStub)
+				'$app/environment': path.join(root, appEnvironmentStub),
+				'$app/stores': path.join(root, 'tests/stubs/app-stores.js')
 			}
 		},
 		server: { host: '127.0.0.1', middlewareMode: true, hmr: false, watch: null },
@@ -26,6 +27,7 @@ const createTestServer = (appEnvironmentStub, cacheKey) =>
 
 const richText = (text) => [{ type: 'paragraph', text, spans: [] }];
 const card = (title, extra = {}) => ({
+	website_menu_id: null,
 	title: richText(title),
 	image: {},
 	price: [],
@@ -44,8 +46,12 @@ test('menu cards label instead of hiding', async (t) => {
 			'/src/lib/slices/MenuItems/index.svelte'
 		);
 		const { menuStock } = await server.ssrLoadModule('/src/lib/menuStock.svelte.ts');
+		const { setTestPage } = await server.ssrLoadModule('/tests/stubs/app-stores.js');
+		const setPage = (pathname, { search = '', data = {} } = {}) =>
+			setTestPage({ url: new URL(`http://localhost${pathname}${search}`), data });
 
-		const renderCards = (cards, byKey = {}) => {
+		const renderCards = (cards, byKey = {}, route = '/food', pageOptions) => {
+			setPage(route, pageOptions);
 			menuStock.byKey = byKey;
 			return render(MenuSection, {
 				props: {
@@ -118,6 +124,60 @@ test('menu cards label instead of hiding', async (t) => {
 			});
 			assert.match(html, /Temporarily unavailable/);
 		});
+
+		// The store survives a client-side nav, so /wizard must ignore what's in it.
+		await t.test('labels never render outside the menu pages', () => {
+			const byKey = { 'house-salad': { unavailable: true, isNew: true } };
+			assert.match(renderCards([card('House Salad')], byKey, '/drink'), /Temporarily unavailable/);
+			const wizard = renderCards([card('House Salad')], byKey, '/wizard');
+			assert.match(wizard, /House Salad/);
+			assert.doesNotMatch(wizard, />New<|Temporarily unavailable/);
+		});
+
+		await t.test('the Website Menu ID is preferred over the title', () => {
+			const html = renderCards([card('House Salad', { website_menu_id: 'wm-0007' })], {
+				'wm-0007': { unavailable: true },
+				'house-salad': { unavailable: false }
+			});
+			assert.match(html, /Temporarily unavailable/);
+		});
+
+		await t.test('cards without an ID still match on their title', () => {
+			for (const id of [null, '', '   ']) {
+				const html = renderCards([card('House Salad', { website_menu_id: id })], {
+					'house-salad': { unavailable: true }
+				});
+				assert.match(html, /Temporarily unavailable/);
+			}
+		});
+
+		await t.test('renaming a card with an ID does not break its label', () => {
+			const byKey = { 'wm-0007': { unavailable: true } };
+			const before = renderCards(
+				[card('House Salad', { website_menu_id: 'wm-0007', price: richText('$9') })],
+				byKey
+			);
+			const after = renderCards(
+				[card('Garden Salad', { website_menu_id: 'wm-0007', price: richText('$11') })],
+				byKey
+			);
+			assert.match(before, /Temporarily unavailable/);
+			assert.match(after, /Garden Salad/);
+			assert.match(after, /Temporarily unavailable/);
+		});
+
+		// Two cards sharing an ID is a content error the dashboard alerts on. The
+		// page must stay predictable rather than pick one at random.
+		await t.test('cards sharing an ID share its label', () => {
+			const html = renderCards(
+				[
+					card('House Salad', { website_menu_id: 'wm-0007' }),
+					card('Garden Salad', { website_menu_id: 'wm-0007' })
+				],
+				{ 'wm-0007': { unavailable: true } }
+			);
+			assert.equal(html.match(/Temporarily unavailable/g).length, 2);
+		});
 	} finally {
 		await server.close();
 	}
@@ -125,7 +185,7 @@ test('menu cards label instead of hiding', async (t) => {
 
 // A separate server so the poller sees browser: true without the render tests
 // above starting a real poll.
-test('the poller keeps the last confirmed labels when the feed fails', async (t) => {
+test('in the browser', async (t) => {
 	t.mock.method(console, 'error', () => {});
 	const server = await createTestServer(
 		'tests/stubs/app-environment-browser.js',
@@ -160,19 +220,57 @@ test('the poller keeps the last confirmed labels when the feed fails', async (t)
 			'/src/lib/menuStock.svelte.ts'
 		);
 
-		startMenuStockPolling();
-		await settle();
-		assert.equal(menuStock.byKey['house-salad'].unavailable, true);
-
-		// Ten failures in a row, well past the old five-failure give-up.
-		respond = async () => {
-			throw new Error('fixture outage');
-		};
-		for (let attempt = 0; attempt < 10; attempt += 1) {
-			tick();
+		await t.test('the last confirmed labels survive a failing feed', async () => {
+			startMenuStockPolling();
 			await settle();
-		}
-		assert.equal(menuStock.byKey['house-salad'].unavailable, true);
+			assert.equal(menuStock.byKey['house-salad'].unavailable, true);
+
+			// Ten failures in a row, well past the old five-failure give-up.
+			respond = async () => {
+				throw new Error('fixture outage');
+			};
+			for (let attempt = 0; attempt < 10; attempt += 1) {
+				tick();
+				await settle();
+			}
+			assert.equal(menuStock.byKey['house-salad'].unavailable, true);
+		});
+
+		// Sample labels are client-side only, so they can't be checked by the
+		// prerender-shaped tests above.
+		await t.test('sample labels need the server to allow them', async () => {
+			const { render } = await server.ssrLoadModule('svelte/server');
+			const { default: MenuSection } = await server.ssrLoadModule(
+				'/src/lib/slices/MenuItems/index.svelte'
+			);
+			const { setTestPage } = await server.ssrLoadModule('/tests/stubs/app-stores.js');
+
+			const withFlag = (stockPreviewAllowed) => {
+				// Clear what the poller subtest left behind: this asserts on sample
+				// labels only.
+				menuStock.byKey = {};
+				setTestPage({
+					url: new URL('http://localhost/food?stock-preview=1'),
+					data: { stockPreviewAllowed }
+				});
+				return render(MenuSection, {
+					props: {
+						slice: {
+							id: 'food',
+							slice_type: 'image_cards',
+							variation: 'default',
+							primary: {
+								heading: richText('Food menu'),
+								cards: [card('House Salad')]
+							}
+						}
+					}
+				}).body;
+			};
+
+			assert.match(withFlag(true), /Temporarily unavailable/);
+			assert.doesNotMatch(withFlag(false), /Temporarily unavailable/);
+		});
 	} finally {
 		globalThis.fetch = realFetch;
 		delete globalThis.window;

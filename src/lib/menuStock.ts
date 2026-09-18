@@ -93,9 +93,15 @@ export function isStockRoute(pathname: string): boolean {
 }
 
 // Sample labels are a design-review aid, never something a visitor can turn on.
-export function isSamplePreview(search: string, hostname: string, dev: boolean): boolean {
-	if (new URLSearchParams(search).get('stock-preview') !== '1') return false;
-	return (
-		dev || hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.vercel.app')
-	);
+// `allowed` comes from the server, which knows the real deployment environment;
+// a hostname can be aliased to production, so it can't be trusted for this.
+export function isSamplePreview(search: string, allowed: boolean): boolean {
+	return allowed && new URLSearchParams(search).get('stock-preview') === '1';
+}
+
+// The permanent link to a Toast item. Prismic's own card UUID isn't in the
+// published API, so the editor holds the id in `website_menu_id`; cards that
+// haven't been backfilled yet still match on their title.
+export function menuCardStockKey(websiteMenuId: string | null | undefined, title: string): string {
+	return websiteMenuId?.trim() || websiteMenuKey(title);
 }

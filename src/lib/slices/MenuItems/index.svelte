@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { isFilled, asText, type Content } from '@prismicio/client';
 	import { PrismicText } from '@prismicio/svelte';
+	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 
 	import MenuItems from './MenuItems.svelte';
 	import Heading from '$lib/components/Heading.svelte';
-	import { websiteMenuKey } from '$lib/menuStock';
+	import { isSamplePreview, isStockRoute, menuCardStockKey } from '$lib/menuStock';
 	import { menuStock, startMenuStockPolling } from '$lib/menuStock.svelte';
 
 	interface Props {
@@ -13,7 +15,19 @@
 
 	let { slice }: Props = $props();
 
-	startMenuStockPolling();
+	// The store outlives a client-side navigation, so every read is gated on the
+	// page we are on now, not on where polling started.
+	const stockEnabled = $derived(isStockRoute($page.url.pathname));
+	// browser-only: these pages prerender, and a query string doesn't exist then.
+	const preview = $derived(
+		browser &&
+			stockEnabled &&
+			isSamplePreview($page.url.search, $page.data.stockPreviewAllowed === true)
+	);
+
+	$effect(() => {
+		if (stockEnabled && !preview) startMenuStockPolling();
+	});
 
 	// ponytail: an 86'd card with no image, price, text or notes is a Prismic
 	// placeholder ("Currently Unavailable. Sorry!"), not a real menu item.
@@ -46,13 +60,15 @@
 	{/if}
 	<ul class="grid gap-12 rounded-xl p-8 drop-shadow-2xl lg:grid-cols-2">
 		{#each visibleCards as card, index}
-			{@const stock = menuStock.byKey[websiteMenuKey(asText(card.title))]}
+			{@const stock = stockEnabled
+				? menuStock.byKey[menuCardStockKey(card.website_menu_id, asText(card.title))]
+				: undefined}
 			<MenuItems
 				{card}
 				unavailable={card.remove_items === true ||
 					stock?.unavailable === true ||
-					(menuStock.preview && index === 0)}
-				isNew={stock?.isNew === true || (menuStock.preview && index <= 1)}
+					(preview && index === 0)}
+				isNew={stock?.isNew === true || (preview && index <= 1)}
 			/>
 		{/each}
 	</ul>

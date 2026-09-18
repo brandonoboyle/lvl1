@@ -1,7 +1,6 @@
-import { browser, dev } from '$app/environment';
+import { browser } from '$app/environment';
 import {
 	readMenuStock,
-	isSamplePreview,
 	isStockRoute,
 	CLIENT_STOCK_TIMEOUT_MS,
 	type WebsiteMenuStockItem
@@ -10,9 +9,10 @@ import {
 // ponytail: one module-level poller shared by every menu section on the page,
 // so /food and /drink need no changes at all. Per-page state would only matter
 // if two menus ever had to show different stock, which they don't.
+// Because it outlives a client-side navigation, callers must decide whether the
+// current page may render what's in here.
 const stock = $state({
-	byKey: {} as Record<string, WebsiteMenuStockItem>,
-	preview: false
+	byKey: {} as Record<string, WebsiteMenuStockItem>
 });
 
 export const menuStock = stock;
@@ -26,9 +26,6 @@ export function startMenuStockPolling() {
 	// Not `started` first: a client-side nav from /wizard to /food must still start it.
 	if (!browser || !isStockRoute(window.location.pathname) || started) return;
 	started = true;
-
-	stock.preview = isSamplePreview(window.location.search, window.location.hostname, dev);
-	if (stock.preview) return;
 
 	let inFlight = false;
 

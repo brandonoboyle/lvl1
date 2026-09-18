@@ -26,8 +26,14 @@ registerHooks({
 });
 
 const { GET } = await import('../src/routes/api/menu-stock/+server.ts');
-const { isMenuStockPayload, isFreshStockCheck, websiteMenuKey, isStockRoute, isSamplePreview } =
-	await import('../src/lib/menuStock.ts');
+const {
+	isMenuStockPayload,
+	isFreshStockCheck,
+	websiteMenuKey,
+	isStockRoute,
+	isSamplePreview,
+	menuCardStockKey
+} = await import('../src/lib/menuStock.ts');
 
 const good = () => ({
 	ok: true,
@@ -129,10 +135,20 @@ test('stock applies to the menu pages only', () => {
 });
 
 test('sample labels are unavailable in production', () => {
-	assert.equal(isSamplePreview('?stock-preview=1', 'localhost', true), true);
-	assert.equal(isSamplePreview('?stock-preview=1', 'lvl1-git-menu-stock.vercel.app', false), true);
-	assert.equal(isSamplePreview('?stock-preview=1', 'lvl1.com', false), false);
-	assert.equal(isSamplePreview('', 'localhost', true), false);
+	assert.equal(isSamplePreview('?stock-preview=1', true), true);
+	// The server says production, whatever the hostname looks like.
+	assert.equal(isSamplePreview('?stock-preview=1', false), false);
+	assert.equal(isSamplePreview('', true), false);
+	assert.equal(isSamplePreview('?stock-preview=0', true), false);
+});
+
+test('a card prefers its Website Menu ID over its title', () => {
+	assert.equal(menuCardStockKey('wm-0007', 'House Salad'), 'wm-0007');
+	assert.equal(menuCardStockKey('  wm-0007  ', 'House Salad'), 'wm-0007');
+	// Not backfilled yet: fall back to the title rule both sides share.
+	assert.equal(menuCardStockKey(null, 'Fish & Chips'), 'fish-and-chips');
+	assert.equal(menuCardStockKey('', 'Fish & Chips'), 'fish-and-chips');
+	assert.equal(menuCardStockKey('   ', 'Fish & Chips'), 'fish-and-chips');
 });
 
 test('proxy forwards only the fields the page renders', async () => {
