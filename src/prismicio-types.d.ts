@@ -25,16 +25,14 @@ type PickContentRelationshipFieldData<
 			TSubRelationship['customtypes'],
 			TLang
 		>;
-	} & // Group
-	{
+	} & { // Group
 		[TGroup in Extract<
 			TRelationship['fields'][number],
 			prismic.CustomTypeModelFetchGroupLevel1 | prismic.CustomTypeModelFetchGroupLevel2
 		> as TGroup['id']]: TData[TGroup['id']] extends prismic.GroupField<infer TGroupData>
 			? prismic.GroupField<PickContentRelationshipFieldData<TGroup, TGroupData, TLang>>
 			: never;
-	} & // Other fields
-	{
+	} & { // Other fields
 		[TFieldKey in Extract<TRelationship['fields'][number], string>]: TFieldKey extends keyof TData
 			? TData[TFieldKey]
 			: never;
@@ -963,7 +961,7 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	notes: prismic.RichTextField;
 
 	/**
-	 * 86 item field in *MenuItems → Default → Primary → Cards*
+	 * Temporarily unavailable field in *MenuItems → Default → Primary → Cards*
 	 *
 	 * - **Field Type**: Boolean
 	 * - **Placeholder**: *None*
@@ -972,6 +970,16 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	 * - **Documentation**: https://prismic.io/docs/fields/boolean
 	 */
 	remove_items: prismic.BooleanField;
+
+	/**
+	 * Website Menu ID field in *MenuItems → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: Permanent stock link. Do not change after this card is linked.
+	 * - **API ID Path**: image_cards.default.primary.cards[].website_menu_id
+	 * - **Documentation**: https://prismic.io/docs/fields/text
+	 */
+	website_menu_id: prismic.KeyTextField;
 }
 
 /**

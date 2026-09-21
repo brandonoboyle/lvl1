@@ -1,93 +1,100 @@
 {
-  "id": "image_cards",
-  "type": "SharedSlice",
-  "name": "MenuItems",
-  "description": "ImageCards",
-  "variations": [
-    {
-      "id": "default",
-      "name": "Default",
-      "docURL": "...",
-      "version": "sktwi1xtmkfgx8626",
-      "description": "ImageCards",
-      "primary": {
-        "heading": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Heading",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "heading1"
-          }
-        },
-        "cards": {
-          "type": "Group",
-          "config": {
-            "label": "Cards",
-            "repeat": true,
-            "fields": {
-              "image": {
-                "type": "Image",
-                "config": {
-                  "label": "Image",
-                  "constraint": {
-                    "width": 600,
-                    "height": 600
-                  },
-                  "thumbnails": []
-                }
-              },
-              "title": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "Title",
-                  "placeholder": "",
-                  "allowTargetBlank": true,
-                  "single": "heading3"
-                }
-              },
-              "price": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "price",
-                  "placeholder": "price",
-                  "allowTargetBlank": true,
-                  "single": "paragraph"
-                }
-              },
-              "text": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "Text",
-                  "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph,em,strong"
-                }
-              },
-              "notes": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "notes",
-                  "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph"
-                }
-              },
-              "remove_items": {
-                "type": "Boolean",
-                "config": {
-                  "label": "86 item",
-                  "placeholder_false": "in stock",
-                  "placeholder_true": "86",
-                  "default_value": false
-                }
-              }
-            }
-          }
-        }
-      },
-      "items": {},
-      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
-    }
-  ]
+	"id": "image_cards",
+	"type": "SharedSlice",
+	"name": "MenuItems",
+	"description": "ImageCards",
+	"variations": [
+		{
+			"id": "default",
+			"name": "Default",
+			"docURL": "...",
+			"version": "sktwi1xtmkfgx8626",
+			"description": "ImageCards",
+			"primary": {
+				"heading": {
+					"type": "StructuredText",
+					"config": {
+						"label": "Heading",
+						"placeholder": "",
+						"allowTargetBlank": true,
+						"multi": "heading1"
+					}
+				},
+				"cards": {
+					"type": "Group",
+					"config": {
+						"label": "Cards",
+						"repeat": true,
+						"fields": {
+							"image": {
+								"type": "Image",
+								"config": {
+									"label": "Image",
+									"constraint": {
+										"width": 600,
+										"height": 600
+									},
+									"thumbnails": []
+								}
+							},
+							"title": {
+								"type": "StructuredText",
+								"config": {
+									"label": "Title",
+									"placeholder": "",
+									"allowTargetBlank": true,
+									"single": "heading3"
+								}
+							},
+							"price": {
+								"type": "StructuredText",
+								"config": {
+									"label": "price",
+									"placeholder": "price",
+									"allowTargetBlank": true,
+									"single": "paragraph"
+								}
+							},
+							"text": {
+								"type": "StructuredText",
+								"config": {
+									"label": "Text",
+									"placeholder": "",
+									"allowTargetBlank": true,
+									"multi": "paragraph,em,strong"
+								}
+							},
+							"notes": {
+								"type": "StructuredText",
+								"config": {
+									"label": "notes",
+									"placeholder": "",
+									"allowTargetBlank": true,
+									"multi": "paragraph"
+								}
+							},
+							"remove_items": {
+								"type": "Boolean",
+								"config": {
+									"label": "Temporarily unavailable",
+									"placeholder_false": "available",
+									"placeholder_true": "unavailable",
+									"default_value": false
+								}
+							},
+							"website_menu_id": {
+								"type": "Text",
+								"config": {
+									"label": "Website Menu ID",
+									"placeholder": "Permanent stock link. Do not change after this card is linked."
+								}
+							}
+						}
+					}
+				}
+			},
+			"items": {},
+			"imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+		}
+	]
 }

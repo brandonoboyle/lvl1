@@ -22,13 +22,14 @@ npm run dev
 
 ## Key Routes
 
-| Route | Description |
-|---|---|
-| `/` | Home (Prismic page) |
-| `/board_games` | Board game search and catalog |
-| `/api/send-email` | Contact form email endpoint |
-| `/api/preview` | Prismic preview handler |
-| `/slice-simulator` | Local Slice Machine simulator |
+| Route              | Description                                              |
+| ------------------ | -------------------------------------------------------- |
+| `/`                | Home (Prismic page)                                      |
+| `/board_games`     | Board game search and catalog                            |
+| `/api/menu-stock`  | Server-only proxy for the protected dashboard stock feed |
+| `/api/send-email`  | Contact form email endpoint                              |
+| `/api/preview`     | Prismic preview handler                                  |
+| `/slice-simulator` | Local Slice Machine simulator                            |
 
 ## Slices
 
@@ -38,12 +39,59 @@ Content slices managed via Prismic Slice Machine:
 
 ## Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start dev server + Slice Machine |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
-| `npm run check` | Type-check with svelte-check |
-| `npm run lint` | Lint and format check |
-| `npm run format` | Auto-format with Prettier |
-| `npm run slicemachine` | Start Slice Machine UI only |
+| Command                | Description                          |
+| ---------------------- | ------------------------------------ |
+| `npm run dev`          | Start dev server + Slice Machine     |
+| `npm run build`        | Production build                     |
+| `npm run preview`      | Preview production build             |
+| `npm run check`        | Type-check with svelte-check         |
+| `npm run test:menu`    | Test the menu labels and stock proxy |
+| `npm run lint`         | Lint and format check                |
+| `npm run format`       | Format files                         |
+| `npm run slicemachine` | Start Slice Machine UI only          |
+
+## Live menu availability
+
+`/food` and `/drink` show every menu item. An item that is unavailable is labeled
+`Temporarily unavailable` with a diagonal stripe over a greyed photo, rather than
+being removed from the page.
+
+An item is labeled unavailable when either:
+
+- **Toast** reports it out of stock, via the dashboard stock feed. No Prismic
+  publication or site rebuild is needed; the label appears and clears on its own.
+- **Prismic** has the `Temporarily unavailable` switch on. This is the manual override and it wins
+  even when Toast says the item is available.
+
+Toast items are matched to Prismic cards by their `Website Menu ID`, so renaming a
+card is safe. A card with no ID yet falls back to its title, and renaming that card
+does break the match until the ID is filled in — the item then shows as available
+with no error, so check the ID first when a label does not appear.
+
+Cards with the `Temporarily unavailable` switch on and no image, price, text or notes are treated as
+empty Prismic placeholders and stay hidden. Give a card a price to keep it visible.
+
+To retire an item for good, delete its card in Prismic.
+
+### Stock feed
+
+Set `DASHBOARD_STOCK_API_URL` and `DASHBOARD_STOCK_API_TOKEN` in Vercel Preview and
+Production; see `.env.example`. The token stays on the server behind `/api/menu-stock`.
+
+Only `/food` and `/drink` check stock. Other pages using the same `MenuItems` slice
+(`/wizard`) never call the feed and never render its labels, including after a
+client-side navigation away from a menu page.
+
+Each card is matched to the stock feed by its `Website Menu ID`, a permanent value
+the dashboard also uses. Cards that don't have one yet fall back to the old rule —
+their title, lowercased and hyphenated — so the field can be backfilled gradually.
+Once a card is linked, its ID must not change.
+
+The page re-checks every 30 seconds while visible and keeps the last confirmed labels
+if the feed fails, so an outage can never make an unavailable item look available.
+Stock data older than 45 minutes is rejected as stale, and `/api/menu-stock` forwards
+only `key`, `name`, `unavailable`, `isNew` and `source`.
+
+Add `?stock-preview=1` to `/food` or `/drink` to render sample labels without calling
+the feed, for reviewing the design. The server decides whether it is allowed: it works
+in `npm run dev` and in Vercel Preview builds, and does nothing in production.
