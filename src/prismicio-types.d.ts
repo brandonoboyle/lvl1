@@ -25,14 +25,16 @@ type PickContentRelationshipFieldData<
 			TSubRelationship['customtypes'],
 			TLang
 		>;
-	} & { // Group
+	} & // Group
+	{
 		[TGroup in Extract<
 			TRelationship['fields'][number],
 			prismic.CustomTypeModelFetchGroupLevel1 | prismic.CustomTypeModelFetchGroupLevel2
 		> as TGroup['id']]: TData[TGroup['id']] extends prismic.GroupField<infer TGroupData>
 			? prismic.GroupField<PickContentRelationshipFieldData<TGroup, TGroupData, TLang>>
 			: never;
-	} & { // Other fields
+	} & // Other fields
+	{
 		[TFieldKey in Extract<TRelationship['fields'][number], string>]: TFieldKey extends keyof TData
 			? TData[TFieldKey]
 			: never;
@@ -980,6 +982,17 @@ export interface ImageCardsSliceDefaultPrimaryCardsItem {
 	 * - **Documentation**: https://prismic.io/docs/fields/text
 	 */
 	website_menu_id: prismic.KeyTextField;
+
+	/**
+	 * Hidden field in *MenuItems → Default → Primary → Cards*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: image_cards.default.primary.cards[].hidden
+	 * - **Documentation**: https://prismic.io/docs/fields/boolean
+	 */
+	hidden: prismic.BooleanField;
 }
 
 /**

@@ -108,6 +108,13 @@
 									"__TYPE__": "BooleanContent",
 									"value": false
 								}
+							],
+							[
+								"hidden",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
 							]
 						]
 					}

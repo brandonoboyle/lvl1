@@ -39,7 +39,9 @@
 		!isFilled.richText(card.text) &&
 		!isFilled.richText(card.notes);
 
-	const visibleCards = $derived(slice.primary.cards.filter((card) => !isPlaceholder(card)));
+	const visibleCards = $derived(
+		slice.primary.cards.filter((card) => card.hidden !== true && !isPlaceholder(card))
+	);
 
 	const sectionId = isFilled.richText(slice.primary.heading)
 		? asText(slice.primary.heading)
