@@ -19,7 +19,7 @@
 			<PrismicImage
 				class="rounded-xl drop-shadow-2xl {unavailable ? 'opacity-50 grayscale' : ''}"
 				field={card.image}
-				sizes=""
+				sizes="(min-width: 768px) 240px, 100vw"
 			/>
 			{#if unavailable}
 				<!-- Decorative: the text label below carries the meaning for screen readers. -->
