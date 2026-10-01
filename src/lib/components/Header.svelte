@@ -69,7 +69,7 @@
 		<div
 			class="hidden rounded bg-gradient-to-r from-red to-red-bright px-3 py-1.5 font-heading text-sm text-ivory shadow-[4px_4px_0px_#191412] ml-auto sm:inline-block"
 		>
-			$9 Stay &amp; Play*
+			$10 Stay &amp; Play*
 		</div>
 	</div>
 </nav>
@@ -99,7 +99,7 @@
 			<div
 				class="mt-2 inline-block rounded bg-gradient-to-r from-red to-red-bright px-3 py-1.5 text-sm font-medium text-ivory"
 			>
-				$9 Stay &amp; Play*
+				$10 Stay &amp; Play*
 			</div>
 		</li>
 	</ul>
