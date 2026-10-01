@@ -53,7 +53,7 @@
 			class="absolute left-1/2 top-1/2 shrink-0 -translate-x-1/2 -translate-y-1/2 lg:static lg:translate-x-0 lg:translate-y-0"
 			onclick={close}
 		>
-			<img src={logo} alt="Level One Game Pub" class="h-10 w-auto lg:h-12" />
+			<img src={logo} alt="Level One Game Pub" class="h-7 w-auto sm:h-10 lg:h-12" />
 		</a>
 
 		<ul
@@ -67,7 +67,7 @@
 		</ul>
 
 		<div
-			class="hidden rounded bg-gradient-to-r from-red to-red-bright px-3 py-1.5 font-heading text-sm text-ivory shadow-[4px_4px_0px_#191412] ml-auto sm:inline-block"
+			class="-mr-0.5 ml-auto inline-block rounded bg-gradient-to-r from-red to-red-bright px-2 py-1 font-heading text-xs tracking-tighter text-ivory shadow-[4px_4px_0px_#191412] sm:px-3 sm:py-1.5 sm:text-sm sm:mr-0 sm:tracking-normal"
 		>
 			$10 Stay &amp; Play*
 		</div>
@@ -95,12 +95,5 @@
 				</a>
 			</li>
 		{/each}
-		<li>
-			<div
-				class="mt-2 inline-block rounded bg-gradient-to-r from-red to-red-bright px-3 py-1.5 text-sm font-medium text-ivory"
-			>
-				$10 Stay &amp; Play*
-			</div>
-		</li>
 	</ul>
 {/if}
