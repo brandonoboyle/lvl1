@@ -25,9 +25,11 @@
 
 <!-- Keeps `nav.fixed` so MenuNav can measure header height -->
 <nav aria-label="Main" class="fixed left-0 top-0 z-50 w-full py-1 bg-ink">
-	<div class="relative flex h-16 items-center justify-between px-6 lg:px-10">
+	<div
+		class="relative grid h-16 grid-cols-[1fr_auto_1fr] items-center px-6 lg:flex lg:justify-between lg:px-10"
+	>
 		<button
-			class="absolute left-6 top-1/2 -translate-y-1/2 text-chalk lg:hidden"
+			class="justify-self-start text-chalk lg:hidden"
 			aria-label="Toggle menu"
 			aria-expanded={open}
 			onclick={() => (open = !open)}
@@ -50,7 +52,7 @@
 
 		<a
 			href="/"
-			class="absolute left-1/2 top-1/2 shrink-0 -translate-x-1/2 -translate-y-1/2 lg:static lg:translate-x-0 lg:translate-y-0"
+			class="shrink-0 justify-self-center"
 			onclick={close}
 		>
 			<img src={logo} alt="Level One Game Pub" class="h-7 w-auto sm:h-10 lg:h-12" />
@@ -67,9 +69,9 @@
 		</ul>
 
 		<div
-			class="-mr-0.5 ml-auto inline-block rounded bg-gradient-to-r from-red to-red-bright px-2 py-1 font-heading text-xs tracking-tighter text-ivory shadow-[4px_4px_0px_#191412] sm:px-3 sm:py-1.5 sm:text-sm sm:mr-0 sm:tracking-normal"
+			class="-mr-0.5 inline-block justify-self-end rounded bg-gradient-to-r from-red to-red-bright px-2 py-1 text-center font-heading text-xs leading-tight tracking-tighter sm:leading-normal text-ivory shadow-[4px_4px_0px_#191412] sm:px-3 sm:py-1.5 sm:text-sm sm:mr-0 sm:tracking-normal"
 		>
-			$10 Stay &amp; Play*
+			$10 Stay &amp;<br class="sm:hidden" /> Play*
 		</div>
 	</div>
 </nav>
