@@ -7,6 +7,7 @@
 	import MenuItems from './MenuItems.svelte';
 	import Heading from '$lib/components/Heading.svelte';
 	import { isSamplePreview, isStockRoute } from '$lib/menuStock';
+	import { isNewWithin, newDaysForPath } from '$lib/menuNew';
 	import { menuStock, startMenuStockPolling } from '$lib/menuStock.svelte';
 
 	interface Props {
@@ -28,6 +29,16 @@
 	$effect(() => {
 		if (stockEnabled && !preview) startMenuStockPolling();
 	});
+
+	// New lasts 60 days on /food and 14 on /drink, counted from the card's Prismic
+	// "New since" date. These pages prerender, so the date is only checked in the
+	// browser; a card with a date ignores the stock feed's New flag.
+	const newDays = $derived(newDaysForPath($page.url.pathname));
+	const now = browser ? Date.now() : null;
+	const showNew = (card: Content.ImageCardsSliceDefaultPrimaryCardsItem, feedNew: boolean) =>
+		card.new_since
+			? newDays !== undefined && now !== null && isNewWithin(card.new_since, newDays, now)
+			: feedNew;
 
 	// ponytail: an 86'd card with no image, price, text or notes is a Prismic
 	// placeholder ("Currently Unavailable. Sorry!"), not a real menu item.
@@ -71,7 +82,7 @@
 				unavailable={card.remove_items === true ||
 					stock?.unavailable === true ||
 					(preview && index === 0)}
-				isNew={stock?.isNew === true || (preview && index <= 1)}
+				isNew={showNew(card, stock?.isNew === true) || (preview && index <= 1)}
 			/>
 		{/each}
 	</ul>

@@ -73,6 +73,22 @@ empty Prismic placeholders and stay hidden. Give a card a price to keep it visib
 
 To retire an item for good, delete its card in Prismic.
 
+### New and best seller labels
+
+Each menu card in Prismic has two more fields:
+
+- **New since (first day on menu)** is a date. When it is set, it alone decides the
+  `New` label and the stock feed's `isNew` flag is ignored for that card. The label
+  shows on that date and stays for 60 days on `/food` or 14 days on `/drink`. A date in
+  the future shows nothing yet. The limits are in `NEW_DAYS` in `src/lib/menuNew.ts`.
+  These pages prerender, so the browser checks the date after load. A card with no date
+  still follows the stock feed.
+- **Best seller** is a switch. When it is on, the card shows a yellow `Best Seller`
+  label. It is independent of the `New` and `Temporarily unavailable` labels.
+
+After changing the slice model, push it from Slice Machine (`npm run slicemachine`,
+then Push) so Prismic has the two new fields.
+
 ### Stock feed
 
 Set `DASHBOARD_STOCK_API_URL` and `DASHBOARD_STOCK_API_TOKEN` in Vercel Preview and
