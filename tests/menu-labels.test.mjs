@@ -167,6 +167,29 @@ test('menu cards label instead of hiding', async (t) => {
 
 		// Two cards sharing an ID is a content error the dashboard alerts on. The
 		// page must stay predictable rather than pick one at random.
+		await t.test('best seller shows a yellow label next to New and unavailable', () => {
+			const star = card('House Salad', { best_seller: true });
+			const plain = renderCards([star]);
+			assert.match(plain, />Best Seller<\/span>/);
+			assert.match(plain, /bg-yellow-400[^>]*>Best Seller/);
+			assert.doesNotMatch(plain, />New<|Temporarily unavailable/);
+			const all = renderCards([star], { 'wm-0007': { unavailable: true, isNew: true } });
+			assert.match(all, />Best Seller<\/span>/);
+			assert.match(all, />New</);
+			assert.match(all, /Temporarily unavailable/);
+			assert.doesNotMatch(
+				renderCards([card('House Salad', { best_seller: false })]),
+				/Best Seller/
+			);
+		});
+
+		// SSR has no clock: the date window is a browser-only check (see the
+		// "in the browser" test below), so a dated card never prerenders New.
+		await t.test('a card with a New since date does not prerender New', () => {
+			const html = renderCards([card('House Salad', { new_since: '2026-10-01' })]);
+			assert.doesNotMatch(html, />New</);
+		});
+
 		await t.test('cards sharing an ID share its label', () => {
 			const html = renderCards(
 				[
@@ -233,6 +256,56 @@ test('in the browser', async (t) => {
 				await settle();
 			}
 			assert.equal(menuStock.byKey['house-salad'].unavailable, true);
+		});
+
+		await t.test('New lasts 14 days on /drink and 60 on /food from the Prismic date', async (t) => {
+			const { render } = await server.ssrLoadModule('svelte/server');
+			const { default: MenuSection } = await server.ssrLoadModule(
+				'/src/lib/slices/MenuItems/index.svelte'
+			);
+			const { setTestPage } = await server.ssrLoadModule('/tests/stubs/app-stores.js');
+			t.mock.timers.enable({ apis: ['Date'], now: new Date(2026, 9, 31, 12) });
+			const dateAgo = (n) => {
+				const d = new Date(2026, 9, 31 - n);
+				const pad = (v) => String(v).padStart(2, '0');
+				return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+			};
+			const shows = (route, daysOld, byKey = {}, extra = {}) => {
+				menuStock.byKey = byKey;
+				setTestPage({ url: new URL(`http://localhost${route}`), data: {} });
+				return />New</.test(
+					render(MenuSection, {
+						props: {
+							slice: {
+								id: 'menu',
+								slice_type: 'image_cards',
+								variation: 'default',
+								primary: {
+									heading: richText('Menu'),
+									cards: [card('House Salad', { new_since: dateAgo(daysOld), ...extra })]
+								}
+							}
+						}
+					}).body
+				);
+			};
+			assert.equal(shows('/drink', 0), true);
+			assert.equal(shows('/drink', 13), true);
+			assert.equal(shows('/drink', 14), false);
+			assert.equal(shows('/food', 14), true);
+			assert.equal(shows('/food', 59), true);
+			assert.equal(shows('/food', 60), false);
+			assert.equal(shows('/food', -1), false);
+			// The date wins over the stock feed; no date leaves the feed in charge.
+			assert.equal(shows('/food', 90, { 'wm-0007': { unavailable: false, isNew: true } }), false);
+			assert.equal(shows('/food', 0, { 'wm-0007': { unavailable: false, isNew: false } }), true);
+			assert.equal(
+				shows('/food', 0, { 'wm-0007': { unavailable: false, isNew: true } }, { new_since: null }),
+				true
+			);
+			// Not a menu page: no window, so no date-based New.
+			assert.equal(shows('/wizard', 0), false);
+			t.mock.timers.reset();
 		});
 
 		// Sample labels are client-side only, so they can't be checked by the
