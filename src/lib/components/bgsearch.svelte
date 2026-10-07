@@ -1,70 +1,44 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-	import { createPostsIndex, searchPostsIndex } from '$lib/bgsearch';
+	import { createPostsIndex, searchPostsIndex, type Boardgame } from '$lib/bgsearch';
 	import { read, utils } from 'xlsx';
 	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
 
-	interface Boardgame {
-		Games: string;
-		Bilingual: string;
-		Category: string;
-		URL: string;
-		Hidden: string;
-	}
-
-	type SearchResult = {
-		Games: string;
-		Bilingual: string;
-		Category: string;
-		URL: string;
-		Hidden: string;
-	};
-
 	let search: 'loading' | 'ready' = 'loading';
 	let searchTerm = '';
-	let results: SearchResult[] = [];
+	let results: Boardgame[] = [];
 	let selectedCategories: string[] = [];
 	let allPosts: Boardgame[] = [];
 
-	// Available categories for filtering
-	const availableCategories = [
-		'New',
-		'Adult',
-		'Cooperative',
-		'Dexterity',
-		'Family',
-		'Light Strategy',
-		'Bilingual', // Special filter for Bilingual column
-		'Party',
-		'Solo',
-		'Strategy',
-		'Trivia',
-		'Two Player'
-	];
+	const isTrue = (value: string) => value === 'TRUE';
 
 	onMount(async () => {
 		try {
+			// Published "STAFF VIEW" tab of the Board_Games_Master sheet
 			const f = await (
 				await fetch(
-					'https://docs.google.com/spreadsheets/d/e/2PACX-1vQFx_Iv2nSAN_JE0rcJ4CasXx5bGqHiaffaZTwI-hQyN8WouUed9eV6wTWvOlz5zyRhCy5LK-jIB_3p/pub?output=csv'
+					'https://docs.google.com/spreadsheets/d/e/2PACX-1vSnG5JwtPRi5bbD2Kmv6urecglvlMJctQFoaNEiJtzKOuLIcyqfI_dtP9dipYFmjKBepGgXjS72m__n/pub?gid=1311831870&single=true&output=csv'
 				)
 			).text();
 			const wb = read(f, { type: 'string' });
-			const posts = utils.sheet_to_json<Boardgame>(wb.Sheets[wb.SheetNames[0]]);
+			// raw: false gives every cell as its displayed text, so booleans arrive as "TRUE"/"FALSE"
+			const rows = utils.sheet_to_json<Record<string, string>>(wb.Sheets[wb.SheetNames[0]], {
+				raw: false,
+				defval: ''
+			});
+			const posts: Boardgame[] = rows
+				.filter((row) => row.Game && !isTrue(row['Hidden?']))
+				.map((row) => ({
+					Game: row.Game,
+					Category: row.Category,
+					URL: row.URL,
+					Bilingual: isTrue(row['Bilingual?']),
+					Solo: isTrue(row['Solo?']),
+					New: isTrue(row['New?'])
+				}));
 			allPosts = posts;
 			createPostsIndex(posts);
 			search = 'ready';
-			
-			// Debug: Log unique categories to see what's actually in the data
-			const uniqueCategories = [...new Set(posts.map(post => post.Category))];
-			console.log('Available categories in data:', uniqueCategories);
-			
-			// Debug: Show a few sample posts to see the exact format
-			console.log('Sample posts:', posts.slice(0, 3).map(post => ({
-				Games: post.Games,
-				Category: post.Category,
-				Bilingual: post.Bilingual
-			})));
 		} catch (error) {
 			console.error('Error loading data:', error);
 			search = 'ready';
@@ -125,7 +99,7 @@
 				<ListBox multiple hover="" rounded="rounded-xl" class="border border-white/10 bg-ink" active="bg-red-bright text-chalk">
 					<ListBoxItem bind:group={selectedCategories} name="category" value="New">New</ListBoxItem>
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Adult">Adult</ListBoxItem>
-					<ListBoxItem bind:group={selectedCategories} name="category" value="Cooperative">Cooperative</ListBoxItem>
+					<ListBoxItem bind:group={selectedCategories} name="category" value="Coop">Cooperative</ListBoxItem>
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Dexterity">Dexterity</ListBoxItem>
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Family">Family</ListBoxItem>
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Light Strategy">Light Strategy</ListBoxItem>
@@ -136,7 +110,7 @@
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Solo">Solo</ListBoxItem>
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Strategy">Strategy</ListBoxItem>
 					<ListBoxItem bind:group={selectedCategories} name="category" value="Trivia">Trivia</ListBoxItem>
-					<ListBoxItem bind:group={selectedCategories} name="category" value="Two Player">Two Player</ListBoxItem>
+					<ListBoxItem bind:group={selectedCategories} name="category" value="2 Player">Two Player</ListBoxItem>
 				</ListBox>
 			</div>
 		</div>
@@ -151,15 +125,17 @@
 					{#each results as result}
 						<li class="p-2">
 							<a
-								href={result.URL}
+								href={result.URL || undefined}
 								target="_blank"
 								rel="noopener noreferrer"
 								class="block text-lg text-chalk lg:text-2xl hover:bg-chalk/10 transition-colors"
 							>
-								<p class="text-pretty">{@html result.Games}</p>
+								<p class="text-pretty">{@html result.Game}</p>
 								<div class="flex flex-row flex-wrap gap-2">
 									<p class="text-sm text-red-bright">{@html result.Category}</p>
-									<p class="text-sm text-chalk/60">{@html result.Bilingual}</p>
+									{#if result.Bilingual}
+										<p class="text-sm text-chalk/60">Bilingual</p>
+									{/if}
 								</div>
 							</a>
 						</li>

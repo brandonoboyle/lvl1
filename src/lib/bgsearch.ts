@@ -1,37 +1,32 @@
 import FlexSearch from 'flexsearch';
 
-interface Post {
-	Games: string;
+export interface Boardgame {
+	Game: string;
 	Category: string;
 	URL: string;
-	Bilingual: string;
-	Hidden: string;
+	Bilingual: boolean;
+	Solo: boolean;
+	New: boolean;
 }
 
+// These filters read their own TRUE/FALSE column instead of the Category list
+const flagFilters = ['Bilingual', 'Solo', 'New'] as const;
+type Flag = (typeof flagFilters)[number];
+const isFlag = (filter: string): filter is Flag => (flagFilters as readonly string[]).includes(filter);
+
 let postsIndex: FlexSearch.Index;
-let categoryIndex: FlexSearch.Index;
-let bilingualIndex: FlexSearch.Index;
-let posts: Post[];
+let posts: Boardgame[];
 
-export function createPostsIndex(data: Post[]) {
+export function createPostsIndex(data: Boardgame[]) {
 	postsIndex = new FlexSearch.Index({ tokenize: 'forward' });
-	categoryIndex = new FlexSearch.Index({ tokenize: 'forward' });
-	bilingualIndex = new FlexSearch.Index({ tokenize: 'forward' });
 
-	data.forEach((post, i) => {
-		// For board games, only index Games, Bilingual, and Hidden - NOT Category or URL
-		// This prevents searching for "light" from matching "Light Strategy" category
-		// and prevents URL text from being searchable
-		const item = `${post.Games} ${post.Bilingual} ${post.Hidden}`;
-		postsIndex.add(i, item);
-		categoryIndex.add(i, post.Category);
-		bilingualIndex.add(i, post.Bilingual);
-	});
+	// Only the game name is searchable, so "light" doesn't match the Light Strategy category
+	data.forEach((post, i) => postsIndex.add(i, post.Game));
 
 	posts = data;
 }
 
-export function searchPostsIndex(searchTerm: string, categories: string[] = []) {
+export function searchPostsIndex(searchTerm: string, filters: string[] = []) {
 	let results: (number | string)[];
 
 	// If we have a search term, search the posts index
@@ -44,52 +39,19 @@ export function searchPostsIndex(searchTerm: string, categories: string[] = []) 
 		results = Array.from({ length: posts.length }, (_, i) => i);
 	}
 
-	// If we have categories selected, filter the results by category using AND logic
-	if (categories.length > 0) {
-		// Separate bilingual filtering from category filtering
-		const regularCategories = categories.filter(cat => cat !== 'Bilingual');
-		const hasBilingualFilter = categories.includes('Bilingual');
+	// Games must match ALL selected filters
+	const flags = filters.filter(isFlag);
+	const categories = filters.filter((f) => !isFlag(f));
 
-		// Filter results to only include items that match ALL selected categories
-		results = results.filter((index) => {
-			const indexNum = Number(index);
-			const post = posts[indexNum];
-
-			// Check regular categories with exact matching
-			const matchesRegularCategories = regularCategories.every(category => {
-				// Handle cases where Category might be undefined or null
-				if (!post.Category) {
-					return false;
-				}
-
-				// Split the category field by " / " (forward slash surrounded by spaces) and trim whitespace
-				const postCategories = post.Category.split(' / ').map(cat => cat.trim());
-				const hasMatch = postCategories.some(postCat => postCat === category);
-
-				return hasMatch;
-			});
-
-			// Check bilingual filter if selected
-			if (hasBilingualFilter) {
-				const bilingualMatch = post.Bilingual.includes('en/fr');
-				return matchesRegularCategories && bilingualMatch;
-			}
-
-			return matchesRegularCategories;
-		});
-	}
-
-	// Map results to the original posts
-	const mappedResults = results.map((index) => posts[Number(index)]);
-
-	// Filter out items that have any value in the Hidden column
-	const filteredResults = mappedResults.filter(post => !post.Hidden);
-
-	// Sort the filtered results alphabetically by Games
-	const sortedResults = filteredResults.sort((a, b) => a.Games.localeCompare(b.Games));
-
-	// Format the sorted results
-	return sortedResults.map(({ Games, Bilingual, Category, URL, Hidden }) => {
-		return { Games, Bilingual, Category, URL, Hidden };
-	});
+	return results
+		.map((index) => posts[Number(index)])
+		.filter((post) => {
+			// Category holds comma-separated values, e.g. "Coop, 2 Player"
+			const postCategories = post.Category.split(',').map((cat) => cat.trim());
+			return (
+				flags.every((flag) => post[flag]) &&
+				categories.every((category) => postCategories.includes(category))
+			);
+		})
+		.sort((a, b) => a.Game.localeCompare(b.Game));
 }
