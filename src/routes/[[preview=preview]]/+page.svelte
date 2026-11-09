@@ -225,7 +225,7 @@
 				That doesn't even include all of our cool video games and stuff.
 			</p>
 			<a
-				href="/board_games"
+				href="/board-games"
 				class="mt-6 inline-block font-body font-black text-red-bright underline"
 			>
 				Browse our Library →
