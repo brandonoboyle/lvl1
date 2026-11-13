@@ -22,14 +22,19 @@ npm run dev
 
 ## Key Routes
 
-| Route              | Description                                              |
-| ------------------ | -------------------------------------------------------- |
-| `/`                | Home (Prismic page)                                      |
-| `/board_games`     | Board game search and catalog                            |
-| `/api/menu-stock`  | Server-only proxy for the protected dashboard stock feed |
-| `/api/send-email`  | Contact form email endpoint                              |
-| `/api/preview`     | Prismic preview handler                                  |
-| `/slice-simulator` | Local Slice Machine simulator                            |
+| Route                | Description                                              |
+| -------------------- | -------------------------------------------------------- |
+| `/`                  | Home (Prismic page)                                      |
+| `/board_games`       | Board game search and catalog                            |
+| `/api/menu-stock`    | Server-only proxy for the protected dashboard stock feed |
+| `/api/send-email`    | Contact form email endpoint                              |
+| `/api/preview`       | Prismic preview handler                                  |
+| `/slice-simulator`   | Local Slice Machine simulator                            |
+| `/shop`              | Live Shopify Public shop collection                      |
+| `/shop/[handle]`     | Public shop product and variant selection                |
+| `/shop/cart`         | Guest cart and Shopify checkout                          |
+| `/bookings/[handle]` | Direct-link booking outside Public shop                  |
+| `/bookings/cart`     | Separate booking cart and Shopify checkout               |
 
 ## Slices
 
@@ -39,16 +44,46 @@ Content slices managed via Prismic Slice Machine:
 
 ## Scripts
 
-| Command                | Description                          |
-| ---------------------- | ------------------------------------ |
-| `npm run dev`          | Start dev server + Slice Machine     |
-| `npm run build`        | Production build                     |
-| `npm run preview`      | Preview production build             |
-| `npm run check`        | Type-check with svelte-check         |
-| `npm run test:menu`    | Test the menu labels and stock proxy |
-| `npm run lint`         | Lint and format check                |
-| `npm run format`       | Format files                         |
-| `npm run slicemachine` | Start Slice Machine UI only          |
+| Command                | Description                             |
+| ---------------------- | --------------------------------------- |
+| `npm run dev`          | Start dev server + Slice Machine        |
+| `npm run build`        | Production build                        |
+| `npm run preview`      | Preview production build                |
+| `npm run check`        | Type-check with svelte-check            |
+| `npm run test:menu`    | Test the menu labels and stock proxy    |
+| `npm run test:shop`    | Test the shop, cart and purchase checks |
+| `npm run lint`         | Lint and format check                   |
+| `npm run format`       | Format files                            |
+| `npm run slicemachine` | Start Slice Machine UI only             |
+
+## Shopify shop
+
+Add public items to the manual **Public shop** collection in Shopify. The main
+site reads its products, prices and availability on each request. Shopify keeps
+the cart, checkout and orders. See [the shop guide](docs/SHOPIFY_SHOP.md) for the
+product steps, local checks, access limits and release plan.
+
+Edit the shop heading, intro, banner and notice in the Prismic **Shop settings**
+document. Publish the document to use the changes on the next shop request.
+Products, prices and stock stay in Shopify. This connection needs the website
+release before it changes the live shop.
+
+For a physical item, keep **Physical product** on and check its shipping settings.
+For an event ticket, reservation or deposit with no shipment, turn **Physical
+product** off. A private product also needs **Unlisted** status, Online Store
+publication and no membership in **Public shop**. These settings keep its link
+available without adding it to the public shop.
+
+For a booking or deposit outside Public shop, use `/bookings/<product-handle>`.
+It uses the main site's design and a separate booking cart. These pages have
+no public listing or sitemap entry and ask search engines not to index them.
+Anyone with the direct link can open them. Existing Shopify product links keep
+working; the new main-site links need the website release before they are sent.
+
+The Prismic Shop settings release was published on November 13, 2026. Test is
+Unlisted and outside Public shop. Use `/bookings/test` for its private preview;
+`/shop/test` must return 404. Public shop contains the two Blood on the Clocktower
+event products. Brandon will merge the complete website PR after its checks pass.
 
 ## Live menu availability
 
