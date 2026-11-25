@@ -1,5 +1,20 @@
 {
-  "redirects": [
+	"redirects": [
+		{
+			"source": "/legal/privacy",
+			"destination": "/legal#privacy",
+			"permanent": false
+		},
+		{
+			"source": "/legal/terms",
+			"destination": "/legal",
+			"permanent": false
+		},
+		{
+			"source": "/legal/data-deletion",
+			"destination": "/legal#data-deletion",
+			"permanent": false
+		},
 		{
 			"source": "/menu/food",
 			"destination": "/food",
@@ -46,4 +61,4 @@
 			"permanent": true
 		}
 	]
-} 
+}
